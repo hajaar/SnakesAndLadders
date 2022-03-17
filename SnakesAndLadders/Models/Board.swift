@@ -17,8 +17,8 @@ struct Board {
     }
     
     mutating func resetBoard() {
-        for i in 1...tiles.count {
-            tiles[i - 1].tId = i - 1
+        for i in 0...tiles.count - 1 {
+            tiles[i].tId = i
         }
         //print(tiles)
     }
@@ -32,21 +32,16 @@ struct Tile {
     var tColor: UIColor {
         self.tId.isMultiple(of: 2) ? Colors.tileColor.0 : Colors.tileColor.1
     }
-    var tImage: UIImage {
-        var tmpString: String
+    var tImage: UIImage? {
+        var tmpString: String = ""
         if tOccupiedBy.isEmpty {
-            switch tSnakeOrLadder.status {
-            case .ladder:
-                tmpString = Names.ladderStart
-            case .snake:
-                tmpString = Names.ladderEnd
-            default:
-                tmpString = String(tId) + Names.tileName
+            if tSnakeOrLadder.status != .none {
+                tmpString = tSnakeOrLadder.status == .ladder ? Names.ladderStart : Names.snakeStart
             }
         } else {
             tmpString = tOccupiedBy.last! + Names.playerName
         }
-        return UIImage(systemName: tmpString)!
+        return UIImage(systemName: tmpString)
     }
 
 }

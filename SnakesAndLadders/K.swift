@@ -10,7 +10,7 @@ import UIKit
 
 
 struct Colors {
-    static let tileColor = (UIColor.black, UIColor.white)
+    static let tileColor = (UIColor.gray, UIColor.white)
 }
 
 struct Names {
@@ -23,7 +23,7 @@ struct Names {
 }
 
 struct Limits{
-    static let boardSize = 9
+    static let boardSize = 100
     static let numberofPlayers = 2
     static var startId = -1
     
