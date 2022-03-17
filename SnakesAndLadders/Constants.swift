@@ -23,7 +23,7 @@ struct Names {
 }
 
 struct Limits {
-    static let boardLength = 3
+    static let boardLength = 10
     static let boardSize = boardLength * boardLength
     static let numberofPlayers = 2
     static var startId = -1
