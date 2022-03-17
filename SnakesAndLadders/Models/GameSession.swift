@@ -15,7 +15,7 @@ struct GameSession {
         board = Board()
         players = [Player]()
         for i in 1...Limits.numberofPlayers {
-            players.append(Player(name: String(i), token: String(i), snakeAndLadders: []))
+            players.append(Player(name: String(i), token: String(i))) //add function to get player input and pass it here
         }
     }
     

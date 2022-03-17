@@ -11,9 +11,9 @@ struct Player {
     let name: String
     let token: String
     var balance: Int = 0
-    var snakeAndLadders: [SnakeAndLadder]
+    var createdSnakesAndLadders: [SnakeAndLadder] = []
     var wins: Int = 0
-    
+    var remainingSnakesAndLaddersOptions: [lengthSnakeAndLadder] = [.small, .medium, .large, .extraLarge]
 }
 
 

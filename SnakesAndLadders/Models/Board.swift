@@ -10,26 +10,18 @@ import UIKit
 
 
 struct Board {
-    var tiles: [Tile] = [Tile](repeating: Tile(), count: Limits.boardSize)
+    var tiles: [Tile]
     
     init() {
+        tiles = [Tile]()
         resetBoard()
     }
     
     mutating func resetBoard() {
-        
-        for i in 0...tiles.count - 1 {
-            tiles[i].tId = i
-            tiles[i].tOccupiedBy = []
-            tiles[i].tSnakeOrLadder = (tileType.none, -1)
+        for i in 0...Limits.boardSize - 1 {
+            tiles.append(Tile(tId: i, tOccupiedBy: [], tSnakeOrLadder: (tileType.none, -1)))
         }
-        print(tiles)
-        tiles[1].tSnakeOrLadder.status = .ladderStart
-        tiles[2].tSnakeOrLadder.status = .snakeStart
-        tiles[3].tSnakeOrLadder.status = .ladderEnd
-        tiles[4].tSnakeOrLadder.status = .snakeEnd
     }
-    
 }
 	
 
