@@ -24,7 +24,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! CollectionViewCell
                 
         cell.myImage.image = gameSession.board.tiles[indexPath.row].tImage
-        cell.myLabel.text = String(gameSession.board.tiles[indexPath.row].tId + 1)
+        cell.myLabel.text = String(gameSession.board.tiles[indexPath.row].tId)
         cell.backgroundColor = gameSession.board.tiles[indexPath.row].tColor
         
         return cell
