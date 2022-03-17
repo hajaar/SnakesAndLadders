@@ -19,8 +19,14 @@ struct Board {
     mutating func resetBoard() {
         for i in 0...tiles.count - 1 {
             tiles[i].tId = i
+            tiles[i].tOccupiedBy = []
+            tiles[i].tSnakeOrLadder = (tileType.none, -1)
         }
-        //print(tiles)
+        print(tiles)
+        tiles[1].tSnakeOrLadder.status = .ladderStart
+        tiles[2].tSnakeOrLadder.status = .snakeStart
+        tiles[3].tSnakeOrLadder.status = .ladderEnd
+        tiles[4].tSnakeOrLadder.status = .snakeEnd
     }
     
 }
@@ -35,8 +41,17 @@ struct Tile {
     var tImage: UIImage? {
         var tmpString: String = ""
         if tOccupiedBy.isEmpty {
-            if tSnakeOrLadder.status != .none {
-                tmpString = tSnakeOrLadder.status == .ladder ? Names.ladderStart : Names.snakeStart
+            switch tSnakeOrLadder.status {
+            case .ladderStart:
+                tmpString = Names.ladderStart
+            case .ladderEnd:
+                tmpString = Names.ladderEnd
+            case .snakeStart:
+                tmpString = Names.snakeStart
+            case .snakeEnd:
+                tmpString = Names.snakeEnd
+            default:
+                tmpString = ""
             }
         } else {
             tmpString = tOccupiedBy.last! + Names.playerName

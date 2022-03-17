@@ -10,15 +10,12 @@ import UIKit
 class ViewController: UIViewController {
 
     var board = Board()
-    
-    
-    let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
+    let reuseIdentifier = "cell"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
     }
 
 

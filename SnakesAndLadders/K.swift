@@ -23,7 +23,8 @@ struct Names {
 }
 
 struct Limits{
-    static let boardSize = 100
+    static let boardLength = 10
+    static let boardSize = boardLength * boardLength
     static let numberofPlayers = 2
     static var startId = -1
     
@@ -35,5 +36,5 @@ enum tileOccupiedStatus {
 }
 
 enum  tileType {
-    case snake, ladder, none
+    case snakeStart, snakeEnd, ladderStart, ladderEnd, none
 }
