@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F2926F9F27E1A52E00D14578 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2926F9E27E1A52E00D14578 /* K.swift */; };
+		F223552B27E2D0D300CA48EB /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223552A27E2D0D300CA48EB /* Tile.swift */; };
+		F223552D27E2D1D100CA48EB /* CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223552C27E2D1D100CA48EB /* CollectionViewExtension.swift */; };
+		F2926F9F27E1A52E00D14578 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2926F9E27E1A52E00D14578 /* Constants.swift */; };
 		F2926FA327E1F53200D14578 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2926FA227E1F53200D14578 /* CollectionViewCell.swift */; };
 		F2A5527E27DDEF4400D0D15C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5527D27DDEF4400D0D15C /* AppDelegate.swift */; };
 		F2A5528027DDEF4400D0D15C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5527F27DDEF4400D0D15C /* SceneDelegate.swift */; };
@@ -19,7 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F2926F9E27E1A52E00D14578 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		F223552A27E2D0D300CA48EB /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		F223552C27E2D1D100CA48EB /* CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtension.swift; sourceTree = "<group>"; };
+		F2926F9E27E1A52E00D14578 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F2926FA227E1F53200D14578 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		F2A5527A27DDEF4400D0D15C /* SnakesAndLadders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnakesAndLadders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A5527D27DDEF4400D0D15C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F223552E27E2D23800CA48EB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F2A5528127DDEF4400D0D15C /* ViewController.swift */,
+				F223552C27E2D1D100CA48EB /* CollectionViewExtension.swift */,
+				F2926FA227E1F53200D14578 /* CollectionViewCell.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		F2A5527127DDEF4400D0D15C = {
 			isa = PBXGroup;
 			children = (
@@ -62,12 +76,11 @@
 		F2A5527C27DDEF4400D0D15C /* SnakesAndLadders */ = {
 			isa = PBXGroup;
 			children = (
-				F2926F9E27E1A52E00D14578 /* K.swift */,
-				F2C4959727E0B2ED0067ED90 /* Models */,
 				F2A5527D27DDEF4400D0D15C /* AppDelegate.swift */,
 				F2A5527F27DDEF4400D0D15C /* SceneDelegate.swift */,
-				F2A5528127DDEF4400D0D15C /* ViewController.swift */,
-				F2926FA227E1F53200D14578 /* CollectionViewCell.swift */,
+				F2926F9E27E1A52E00D14578 /* Constants.swift */,
+				F2C4959727E0B2ED0067ED90 /* Models */,
+				F223552E27E2D23800CA48EB /* Controllers */,
 				F2A5528327DDEF4400D0D15C /* Main.storyboard */,
 				F2A5528627DDEF4500D0D15C /* Assets.xcassets */,
 				F2A5528827DDEF4500D0D15C /* LaunchScreen.storyboard */,
@@ -80,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				F2C4959527E0B2E40067ED90 /* Board.swift */,
+				F223552A27E2D0D300CA48EB /* Tile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,8 +170,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2A5528227DDEF4400D0D15C /* ViewController.swift in Sources */,
-				F2926F9F27E1A52E00D14578 /* K.swift in Sources */,
+				F2926F9F27E1A52E00D14578 /* Constants.swift in Sources */,
 				F2926FA327E1F53200D14578 /* CollectionViewCell.swift in Sources */,
+				F223552B27E2D0D300CA48EB /* Tile.swift in Sources */,
+				F223552D27E2D1D100CA48EB /* CollectionViewExtension.swift in Sources */,
 				F2A5527E27DDEF4400D0D15C /* AppDelegate.swift in Sources */,
 				F2C4959627E0B2E40067ED90 /* Board.swift in Sources */,
 				F2A5528027DDEF4400D0D15C /* SceneDelegate.swift in Sources */,

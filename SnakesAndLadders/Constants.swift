@@ -27,7 +27,6 @@ struct Limits{
     static let boardSize = boardLength * boardLength
     static let numberofPlayers = 2
     static var startId = -1
-    
 }
 
 
