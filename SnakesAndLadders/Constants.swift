@@ -22,11 +22,15 @@ struct Names {
     static let tileName: String = ".square"
 }
 
-struct Limits{
+struct Limits {
     static let boardLength = 10
     static let boardSize = boardLength * boardLength
     static let numberofPlayers = 2
     static var startId = -1
+    static let lengthSmall = 5
+    static let lengthMedium = 10
+    static let lengthLarge = 20
+    static let lengthExtraLarge = 40
 }
 
 
@@ -36,4 +40,8 @@ enum tileOccupiedStatus {
 
 enum  tileType {
     case snakeStart, snakeEnd, ladderStart, ladderEnd, none
+}
+
+enum lengthSnakeAndLadder {
+    case small, medium, large, extraLarge
 }

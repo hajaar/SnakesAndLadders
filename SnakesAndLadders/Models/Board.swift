@@ -17,6 +17,7 @@ struct Board {
     }
     
     mutating func resetBoard() {
+        
         for i in 0...tiles.count - 1 {
             tiles[i].tId = i
             tiles[i].tOccupiedBy = []

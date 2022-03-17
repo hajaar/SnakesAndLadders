@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var board = Board()
+    var gameSession = GameSession()
     let reuseIdentifier = "cell"
     
     
