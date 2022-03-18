@@ -38,23 +38,24 @@ struct Dice {
         return diceValues
     }
     
-    static func returnRollSymbols(fill: Bool = true) -> [String] {
-        var rollSymbols: [String] = [String]()
+    static func returnAllRollSymbols(fill: Bool = true) -> [UIImage] {
+        var rollSymbols: [UIImage] = [UIImage]()
         generatedRoll.forEach { i in
-            rollSymbols.append("die.face." + String(i) + (fill ? ".fill" : ""))
+            rollSymbols.append(returnFirstRollSymbol(value: i, fill: fill))
         }
         return rollSymbols
     }
-    static func returnFirstRollSymbol(fill: Bool = true) -> String {
-        return "die.face." + String(generatedRoll[0]) + (fill ? ".fill" : "")
+    static func returnFirstRollSymbol(value: Int = generatedRoll[0], fill: Bool = true) -> UIImage {
+        return UIImage(systemName: noOfSides > 6 ? String(value) + ".square" + (fill ? ".fill" : "") : "die.face." + String(value) + (fill ? ".fill" : ""))!
     }
     
     static func animateSingleDieRoll(fill: Bool = true) -> [UIImage] {
         var dieRollAnimation = [UIImage]()
         for _ in 1...12 {
-            dieRollAnimation.append(UIImage(systemName: "die.face." + String(Int.random(in: 1...noOfSides)) + (fill ? ".fill" : ""))!)
+            let i = Int.random(in: 1...noOfSides)
+            dieRollAnimation.append(returnFirstRollSymbol(value: i, fill: fill))
         }
-        dieRollAnimation.append(UIImage(systemName: returnFirstRollSymbol())!)
+        dieRollAnimation.append(returnFirstRollSymbol())
         return dieRollAnimation
     }
 }

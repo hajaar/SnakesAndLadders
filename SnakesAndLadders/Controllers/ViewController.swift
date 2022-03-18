@@ -27,15 +27,18 @@ class ViewController: UIViewController {
 
     }
     @IBAction func rollDice(_ sender: UIButton) {
+        rollDiceButton.isEnabled = false
         Dice.roll()
         diceImage.animationImages = Dice.animateSingleDieRoll()
         diceImage.tintColor = Colors.boardTextColor
         diceImage.animationDuration = 1.0
         diceImage.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.diceImage.stopAnimating()
-            self.diceImage.image = UIImage(systemName: Dice.returnFirstRollSymbol())!
+                        self.diceImage.stopAnimating()
+            self.diceImage.image = Dice.returnFirstRollSymbol()
         }
+        rollDiceButton.isEnabled = true
+
     }
     
 
