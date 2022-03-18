@@ -23,10 +23,15 @@ class ViewController: UIViewController {
         myCollectionView.layer.borderWidth = 1
         myCollectionView.layer.cornerRadius = 2
         Dice.create(numberOfDice: 6, numberOfSides: 20)
-        print(Dice.rollArray())
-        print(Dice.rollSum())
-        print(Dice.rollArray())
-        print(Dice.rollSum())
+        print(Dice.returnRollValues())
+        print(Dice.returnRollSum())
+        print(Dice.returnRollSymbols())
+        print(Dice.returnRollSymbols(fill: false))
+        Dice.roll()
+        print(Dice.returnRollValues())
+        print(Dice.returnRollSum())
+        print(Dice.returnRollSymbols())
+        print(Dice.returnRollSymbols(fill: false))
     }
 
 
