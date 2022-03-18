@@ -17,10 +17,11 @@ struct Colors {
     private static let lightBlue = UIColor(red: 0.60, green: 0.82, blue: 0.93, alpha: 1.00)
     static let boardTextColor = UIColor.black
     static let boardColor = skirretGreen
+    static let highlightTileColor = nanohanachaGold
     static let tileColor = (lightBlue, darkBlue)
 }
 
-struct Names {
+struct symbolNames {
     static let ladderStart: String = "arrowtriangle.up"
     static let ladderEnd: String = "stop.circle"
     static let snakeStart: String = "arrowtriangle.down"

@@ -23,18 +23,18 @@ struct Tile {
         if tOccupiedBy.isEmpty {
             switch tSnakeOrLadder.status {
             case .ladderStart:
-                tmpString = Names.ladderStart
+                tmpString = symbolNames.ladderStart
             case .ladderEnd:
-                tmpString = Names.ladderEnd
+                tmpString = symbolNames.ladderEnd
             case .snakeStart:
-                tmpString = Names.snakeStart
+                tmpString = symbolNames.snakeStart
             case .snakeEnd:
-                tmpString = Names.snakeEnd
+                tmpString = symbolNames.snakeEnd
             default:
                 tmpString = ""
             }
         } else {
-            tmpString = tOccupiedBy.last! + Names.playerName
+            tmpString = tOccupiedBy.last! + symbolNames.playerName
         }
         return UIImage(systemName: tmpString)
     }

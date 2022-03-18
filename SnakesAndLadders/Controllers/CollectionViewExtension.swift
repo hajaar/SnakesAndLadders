@@ -37,11 +37,20 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         
         return cell
     }
+
     
         // MARK: - UICollectionViewDelegate protocol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             // handle tap events
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = Colors.highlightTileColor
         print("You selected cell #\(indexPath.item)!")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = gameSession.board.tiles[indexPath.row].tColor
+        print("You deselected cell #\(indexPath.item)!")
     }
 }
