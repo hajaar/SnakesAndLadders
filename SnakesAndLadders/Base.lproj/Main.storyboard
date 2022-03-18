@@ -21,7 +21,7 @@
                                 <rect key="frame" x="60" y="0.0" width="692" height="354"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lmN-Wh-MHV">
-                                        <rect key="frame" x="0.0" y="0.0" width="463.66666666666669" height="354"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="456.66666666666669" height="354"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewLayout key="collectionViewLayout" id="ii7-ph-jCn" customClass="myCollectionViewLayout" customModule="SnakesAndLadders" customModuleProvider="target"/>
                                         <cells>
@@ -69,15 +69,21 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="dgH-rF-rBU"/>
                                         </connections>
                                     </collectionView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eLM-eY-bBC" userLabel="Space Stack View">
+                                        <rect key="frame" x="456.66666666666652" y="0.0" width="7" height="354"/>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="x3B-dh-vlR">
-                                        <rect key="frame" x="463.66666666666657" y="0.0" width="228.33333333333331" height="354"/>
+                                        <rect key="frame" x="463.66666666666652" y="0.0" width="228.33333333333331" height="354"/>
+                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="eLM-eY-bBC" firstAttribute="width" secondItem="YwV-ga-cYM" secondAttribute="width" multiplier="0.01" id="7oq-Pz-8GH"/>
                                     <constraint firstItem="lmN-Wh-MHV" firstAttribute="height" secondItem="YwV-ga-cYM" secondAttribute="height" id="88d-xi-4OF"/>
+                                    <constraint firstItem="eLM-eY-bBC" firstAttribute="height" secondItem="YwV-ga-cYM" secondAttribute="height" id="9Um-hv-PLy"/>
                                     <constraint firstItem="x3B-dh-vlR" firstAttribute="width" secondItem="YwV-ga-cYM" secondAttribute="width" multiplier="0.33" id="Jx1-7V-uVc"/>
-                                    <constraint firstItem="lmN-Wh-MHV" firstAttribute="width" secondItem="YwV-ga-cYM" secondAttribute="width" multiplier="0.67" id="Mcf-np-oQu"/>
+                                    <constraint firstItem="lmN-Wh-MHV" firstAttribute="width" secondItem="YwV-ga-cYM" secondAttribute="width" multiplier="0.66" id="Mcf-np-oQu"/>
                                     <constraint firstItem="x3B-dh-vlR" firstAttribute="height" secondItem="YwV-ga-cYM" secondAttribute="height" id="Xzp-Id-xas"/>
                                 </constraints>
                             </stackView>
@@ -102,11 +108,11 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
