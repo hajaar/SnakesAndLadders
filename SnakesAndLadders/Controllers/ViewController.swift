@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController {
 
     var gameSession = GameSession()
-    var board: Board = Board()
     let reuseIdentifier = "cell"
     @IBOutlet weak var diceImage: UIImageView!
     
@@ -20,23 +19,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var rollDiceButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        board = gameSession.getBoard()
         mainView.backgroundColor = Colors.boardColor
         myCollectionView.layer.borderColor = Colors.boardColor.cgColor
         myCollectionView.layer.borderWidth = 1
         myCollectionView.layer.cornerRadius = 2
+        diceImage.tintColor = Colors.highlightTileColor
+        diceImage.image = gameSession.playTurn().2
 
     }
     @IBAction func rollDice(_ sender: UIButton) {
         rollDiceButton.isEnabled = false
-        Dice.roll()
-        diceImage.animationImages = Dice.animateSingleDieRoll()
-        diceImage.tintColor = Colors.boardTextColor
+        let diceValues: (Int, [UIImage], UIImage) = gameSession.playTurn()
+        diceImage.animationImages = diceValues.1
         diceImage.animationDuration = 1.0
         diceImage.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.diceImage.stopAnimating()
-            self.diceImage.image = Dice.returnFirstRollSymbol()
+            self.diceImage.stopAnimating()
+            self.diceImage.image = diceValues.2
         }
         rollDiceButton.isEnabled = true
 

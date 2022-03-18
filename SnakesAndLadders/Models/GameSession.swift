@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct GameSession {
     private var board: Board
@@ -14,18 +15,25 @@ struct GameSession {
     init() {
         board = Board()
         players = [Player]()
-        for i in 1...Limits.numberofPlayers {
-            players.append(Player(name: String(i), token: String(i))) //add function to get player input and pass it here
+        for _ in 1...Limits.numberofPlayers {
+            players.append(Player()) //add function to get player input and pass it here
         }
     }
     
-    func getBoard() -> Board {
-        return board
+    func getTileInfo(index: Int) -> Tile {
+        return board.getTileInfo(index: index)
+        
     }
-    
-    
     
     private mutating func newBoard() {
         board.resetBoard()
+        for i in 1...Limits.numberofPlayers {
+            players[i].startNewGame()
+        }
+    }
+    
+    func playTurn() -> (Int, [UIImage], UIImage) {
+        Dice.roll()
+        return (Dice.returnRollSum(), Dice.animateSingleDieRoll(),Dice.returnFirstRollSymbol())
     }
 }

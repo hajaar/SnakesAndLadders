@@ -11,6 +11,7 @@ struct Dice {
     static private var noOfDice: Int = 1
     static private var noOfSides: Int = 6
     static private var generatedRoll: [Int] = [Int]()
+    static private var animationCount: Int = 12
     
     static func create(numberOfDice: Int = 1, numberOfSides: Int = 6) {
         self.noOfDice = numberOfDice
@@ -51,7 +52,7 @@ struct Dice {
     
     static func animateSingleDieRoll(fill: Bool = true) -> [UIImage] {
         var dieRollAnimation = [UIImage]()
-        for _ in 1...12 {
+        for _ in 1...animationCount {
             let i = Int.random(in: 1...noOfSides)
             dieRollAnimation.append(returnFirstRollSymbol(value: i, fill: fill))
         }

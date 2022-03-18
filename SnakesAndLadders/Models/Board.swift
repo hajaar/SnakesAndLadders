@@ -10,7 +10,7 @@ import UIKit
 
 
 struct Board {
-    var tiles: [Tile]
+    private var tiles: [Tile]
     
     init() {
         tiles = [Tile]()
