@@ -19,7 +19,6 @@ struct Board {
     
     mutating func resetBoard() {
         tiles = [Tile]()
-        var flip = false
         for i in stride(from: Limits.boardSize, to: Limits.boardSize - (Limits.boardSize/Limits.boardLength), by: -1) {
             tiles.append(Tile(tId: i, tOccupiedBy: [], tSnakeOrLadder: (tileType.none, -1)))
         }

@@ -15,6 +15,9 @@ struct Tile {
     var tColor: UIColor {
         self.tId.isMultiple(of: 2) ? Colors.tileColor.0 : Colors.tileColor.1
     }
+    var tBorderColor: UIColor {
+        self.tId.isMultiple(of: 2) ? Colors.tileColor.1 : Colors.tileColor.0
+    }
     var tImage: UIImage? {
         var tmpString: String = ""
         if tOccupiedBy.isEmpty {
