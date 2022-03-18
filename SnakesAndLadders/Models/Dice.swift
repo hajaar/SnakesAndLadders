@@ -9,24 +9,31 @@ import Foundation
 struct Dice {
     static private var noOfDice: Int = 1
     static private var noOfSides: Int = 6
+    static private var generatedRoll: [Int] = [Int]()
     
-    static func createDice(numberOfDice: Int = 1, numberOfSides: Int = 6) {
+    static func create(numberOfDice: Int = 1, numberOfSides: Int = 6) {
         self.noOfDice = numberOfDice
         self.noOfSides = numberOfSides
+        roll()
     }
     
-    static func rollDiceIndividual() -> [Int] {
-        var diceValues = [Int]()
-        for _ in 0...noOfDice - 1{
-            diceValues.append(Int.random(in: 1...noOfSides))
+    static private func roll() {
+        generatedRoll = [Int]()
+        for _ in 0...noOfDice - 1 {
+            generatedRoll.append(Int.random(in: 1...noOfSides))
         }
-        return diceValues
     }
     
-    static func rollDiceTotal() -> Int {
+    
+    static func rollArray() -> [Int] {
+        roll()
+        return generatedRoll
+    }
+    
+    static func rollSum() -> Int {
         var diceValues = 0
-        for _ in 0...noOfDice - 1{
-            diceValues += Int.random(in: 1...noOfSides)
+        for i in 0...noOfDice - 1{
+            diceValues += generatedRoll[i]
         }
         return diceValues
     }
