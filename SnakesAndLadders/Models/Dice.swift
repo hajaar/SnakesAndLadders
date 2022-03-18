@@ -48,4 +48,14 @@ struct Dice {
     static func returnFirstRollSymbol(fill: Bool = true) -> String {
         return "die.face." + String(generatedRoll[0]) + (fill ? ".fill" : "")
     }
+    
+    static func animateSingleDieRoll(fill: Bool = true) -> [UIImage] {
+        var dieRollAnimation = [UIImage]()
+        for _ in 1...12 {
+            dieRollAnimation.append(UIImage(systemName: "die.face." + String(Int.random(in: 1...noOfSides)) + (fill ? ".fill" : ""))!)
+        }
+        dieRollAnimation.append(UIImage(systemName: returnFirstRollSymbol())!)
+        return dieRollAnimation
+    }
 }
+

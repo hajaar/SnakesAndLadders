@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwV-ga-cYM" userLabel="Main Stack">
-                                <rect key="frame" x="60" y="0.0" width="692" height="354"/>
+                                <rect key="frame" x="60" y="8" width="692" height="346"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lmN-Wh-MHV">
-                                        <rect key="frame" x="0.0" y="0.0" width="456.66666666666669" height="354"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="456.66666666666669" height="346"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewLayout key="collectionViewLayout" id="ii7-ph-jCn" customClass="myCollectionViewLayout" customModule="SnakesAndLadders" customModuleProvider="target"/>
                                         <cells>
@@ -70,11 +70,53 @@
                                         </connections>
                                     </collectionView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eLM-eY-bBC" userLabel="Space Stack View">
-                                        <rect key="frame" x="456.66666666666652" y="0.0" width="7" height="354"/>
+                                        <rect key="frame" x="456.66666666666663" y="0.0" width="7" height="346"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="x3B-dh-vlR">
-                                        <rect key="frame" x="463.66666666666652" y="0.0" width="228.33333333333331" height="354"/>
-                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="x3B-dh-vlR" userLabel="Control Stack">
+                                        <rect key="frame" x="463.66666666666657" y="0.0" width="228.33333333333331" height="346"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-ih-ULU" userLabel="Player Stack">
+                                                <rect key="frame" x="0.0" y="0.0" width="228.33333333333334" height="231.66666666666666"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-gq-n56" userLabel="Dice Stack">
+                                                <rect key="frame" x="0.0" y="231.66666666666666" width="228.33333333333334" height="114.33333333333334"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lbF-kj-v6U">
+                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="114.33333333333333"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu3-57-nJg">
+                                                                <rect key="frame" x="0.0" y="0.0" width="114" height="20.333333333333332"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qim-kR-fU1">
+                                                                <rect key="frame" x="0.0" y="20.333333333333343" width="114" height="94"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-mS-x9h">
+                                                        <rect key="frame" x="114" y="0.0" width="114.33333333333331" height="114.33333333333333"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Roll">
+                                                            <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="rollDice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P7F-gh-ST5"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="lbF-kj-v6U" firstAttribute="width" secondItem="rdh-gq-n56" secondAttribute="width" multiplier="0.5" id="9SG-72-3yh"/>
+                                                    <constraint firstItem="2jz-mS-x9h" firstAttribute="width" secondItem="rdh-gq-n56" secondAttribute="width" multiplier="0.5" id="kk5-1l-OgK"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                        <constraints>
+                                            <constraint firstItem="rdh-gq-n56" firstAttribute="height" secondItem="x3B-dh-vlR" secondAttribute="height" multiplier="0.33" id="RFx-BV-mTA"/>
+                                            <constraint firstItem="hdr-ih-ULU" firstAttribute="height" secondItem="x3B-dh-vlR" secondAttribute="height" multiplier="0.67" id="njV-Dv-98D"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,12 +136,14 @@
                             <constraint firstItem="YwV-ga-cYM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="SA8-1i-cYt"/>
                             <constraint firstItem="YwV-ga-cYM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="XWS-tC-DGj"/>
                             <constraint firstItem="YwV-ga-cYM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-16" id="d3o-a3-2C7"/>
-                            <constraint firstItem="YwV-ga-cYM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="llY-Pm-Y1p"/>
+                            <constraint firstItem="YwV-ga-cYM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="llY-Pm-Y1p"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="diceImage" destination="Qim-kR-fU1" id="Wp2-Wf-Dmk"/>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="EHM-Ka-a8d"/>
                         <outlet property="myCollectionView" destination="lmN-Wh-MHV" id="2u6-9d-Mei"/>
+                        <outlet property="rollDiceButton" destination="2jz-mS-x9h" id="eqT-KE-AQj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -108,11 +152,14 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
