@@ -61,11 +61,11 @@ class myCollectionViewLayout: UICollectionViewLayout {
         
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
-            
+            let width = columnWidth
             let height = cellPadding * 2 + rowHeight
             let frame = CGRect(x: xOffset[column],
                                y: yOffset[column],
-                               width: columnWidth,
+                               width: width,
                                height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
             
@@ -85,7 +85,6 @@ class myCollectionViewLayout: UICollectionViewLayout {
     -> [UICollectionViewLayoutAttributes]? {
         var visibleLayoutAttributes: [UICollectionViewLayoutAttributes] = []
         
-            // Loop through the cache and look for items in the rect
         for attributes in cache {
             if attributes.frame.intersects(rect) {
                 visibleLayoutAttributes.append(attributes)

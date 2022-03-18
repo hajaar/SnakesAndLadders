@@ -22,7 +22,6 @@ struct Board {
         for i in stride(from: Limits.boardSize, to: Limits.boardSize - (Limits.boardSize/Limits.boardLength), by: -1) {
             tiles.append(Tile(tId: i, tOccupiedBy: [], tSnakeOrLadder: (tileType.none, -1)))
         }
-        
         var start = 0
         var end = start + (Limits.boardSize/Limits.boardLength)
         for _ in 1...Limits.boardLength {
@@ -31,7 +30,6 @@ struct Board {
                 tmpId.append(tiles[i].tId - Limits.boardLength)
                 print(tmpId)
             }
-
             tmpId = tmpId.reversed()
             for i in 0...Limits.boardLength - 1{
                 tiles.append(Tile(tId: tmpId[i], tOccupiedBy: [], tSnakeOrLadder: (tileType.none, -1)))
@@ -40,6 +38,10 @@ struct Board {
             end = start + (Limits.boardSize/Limits.boardLength)
         }
         print(tiles)
+    }
+    
+    func getTileInfo(index: Int) -> Tile {
+        return tiles[index]
     }
 }
 

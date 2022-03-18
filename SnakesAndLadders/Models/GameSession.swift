@@ -8,8 +8,8 @@
 import Foundation
 
 struct GameSession {
-    var board: Board
-    var players: [Player]
+    private var board: Board
+    private var players: [Player]
     
     init() {
         board = Board()
@@ -19,7 +19,13 @@ struct GameSession {
         }
     }
     
-    mutating func newBoard() {
+    func getBoard() -> Board {
+        return board
+    }
+    
+    
+    
+    private mutating func newBoard() {
         board.resetBoard()
     }
 }
