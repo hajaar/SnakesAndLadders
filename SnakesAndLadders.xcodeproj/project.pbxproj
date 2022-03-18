@@ -13,6 +13,7 @@
 		F223553227E2DFD900CA48EB /* SnakeAndLadder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223553127E2DFD900CA48EB /* SnakeAndLadder.swift */; };
 		F223553527E2E1F500CA48EB /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223553427E2E1F400CA48EB /* GameSession.swift */; };
 		F223553727E2FD4600CA48EB /* myCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223553627E2FD4600CA48EB /* myCollectionViewLayout.swift */; };
+		F287BC2B27E451C500197B8B /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BC2A27E451C500197B8B /* Dice.swift */; };
 		F2926F9F27E1A52E00D14578 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2926F9E27E1A52E00D14578 /* Constants.swift */; };
 		F2926FA327E1F53200D14578 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2926FA227E1F53200D14578 /* CollectionViewCell.swift */; };
 		F2A5527E27DDEF4400D0D15C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5527D27DDEF4400D0D15C /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 		F223553127E2DFD900CA48EB /* SnakeAndLadder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeAndLadder.swift; sourceTree = "<group>"; };
 		F223553427E2E1F400CA48EB /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		F223553627E2FD4600CA48EB /* myCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCollectionViewLayout.swift; sourceTree = SOURCE_ROOT; };
+		F287BC2A27E451C500197B8B /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		F2926F9E27E1A52E00D14578 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F2926FA227E1F53200D14578 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		F2A5527A27DDEF4400D0D15C /* SnakesAndLadders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnakesAndLadders.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +108,7 @@
 				F223552A27E2D0D300CA48EB /* Tile.swift */,
 				F223552F27E2DA5600CA48EB /* Player.swift */,
 				F223553427E2E1F400CA48EB /* GameSession.swift */,
+				F287BC2A27E451C500197B8B /* Dice.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				F223553027E2DA5600CA48EB /* Player.swift in Sources */,
 				F223553227E2DFD900CA48EB /* SnakeAndLadder.swift in Sources */,
 				F2A5528027DDEF4400D0D15C /* SceneDelegate.swift in Sources */,
+				F287BC2B27E451C500197B8B /* Dice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
