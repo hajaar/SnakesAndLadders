@@ -11,16 +11,5 @@ struct SnakeAndLadder {
     var snakeStart: Int //need to add observable here
     var ladderStart: Int //need to add observable here
     var size: lengthSnakeAndLadder
-    var length: Int {
-        switch size {
-        case .small:
-            return Limits.lengthSmall
-        case .medium:
-            return Limits.lengthMedium
-        case .large:
-            return Limits.lengthLarge
-        case .extraLarge:
-            return Limits.lengthExtraLarge
-        }
-    }
+
 }

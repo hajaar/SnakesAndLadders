@@ -17,7 +17,9 @@ struct GameSession {
         players = [Player]()
         for _ in 1...Limits.numberofPlayers {
             players.append(Player()) //add function to get player input and pass it here
+            Log.log("hello", level: .info)
         }
+        
     }
     
     func getTileInfo(index: Int) -> Tile {

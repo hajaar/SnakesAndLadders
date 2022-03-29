@@ -23,6 +23,7 @@
 		F2A5528727DDEF4500D0D15C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2A5528627DDEF4500D0D15C /* Assets.xcassets */; };
 		F2A5528A27DDEF4500D0D15C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A5528827DDEF4500D0D15C /* LaunchScreen.storyboard */; };
 		F2C4959627E0B2E40067ED90 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4959527E0B2E40067ED90 /* Board.swift */; };
+		F2FCA3DB27F2AAD900A56E50 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FCA3DA27F2AAD900A56E50 /* Log.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		F2A5528927DDEF4500D0D15C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2A5528B27DDEF4500D0D15C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2C4959527E0B2E40067ED90 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		F2FCA3DA27F2AAD900A56E50 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				F2A5527D27DDEF4400D0D15C /* AppDelegate.swift */,
 				F2A5527F27DDEF4400D0D15C /* SceneDelegate.swift */,
+				F2FCA3DA27F2AAD900A56E50 /* Log.swift */,
 				F2926F9E27E1A52E00D14578 /* Constants.swift */,
 				F2C4959727E0B2ED0067ED90 /* Models */,
 				F223552E27E2D23800CA48EB /* Controllers */,
@@ -192,6 +195,7 @@
 				F223552B27E2D0D300CA48EB /* Tile.swift in Sources */,
 				F223552D27E2D1D100CA48EB /* CollectionViewExtension.swift in Sources */,
 				F2A5527E27DDEF4400D0D15C /* AppDelegate.swift in Sources */,
+				F2FCA3DB27F2AAD900A56E50 /* Log.swift in Sources */,
 				F2C4959627E0B2E40067ED90 /* Board.swift in Sources */,
 				F223553027E2DA5600CA48EB /* Player.swift in Sources */,
 				F223553227E2DFD900CA48EB /* SnakeAndLadder.swift in Sources */,

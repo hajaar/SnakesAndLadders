@@ -28,7 +28,7 @@ struct Board {
             var tmpId = [Int]()
             for i in start...end-1  {
                 tmpId.append(tiles[i].tId - Limits.boardLength)
-                print(tmpId)
+
             }
             tmpId = tmpId.reversed()
             for i in 0...Limits.boardLength - 1{
@@ -37,7 +37,7 @@ struct Board {
             start = end
             end = start + (Limits.boardSize/Limits.boardLength)
         }
-        print(tiles)
+        Log.log(tiles, level: .trace)
     }
     
     func getTileInfo(index: Int) -> Tile {
