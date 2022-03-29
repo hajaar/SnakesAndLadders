@@ -105,8 +105,8 @@ struct Board {
     
     private func checkOutcomeOfRoll(player: Player, roll: Int) -> (win: Bool, newPosition: Int) {
         var newPosition = player.getPosition() + roll
-        newPosition = newPosition >= AppConfig.boardSize - 1 ? AppConfig.boardSize - 1 : newPosition
-        let win = newPosition >= AppConfig.boardSize - 1 ? true : false
+        newPosition = newPosition > AppConfig.boardSize - 1 ? player.getPosition() : newPosition
+        let win = newPosition == AppConfig.boardSize - 1 ? true : false
         return (win,newPosition)
     }
     
