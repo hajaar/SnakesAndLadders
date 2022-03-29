@@ -13,7 +13,7 @@ struct Player {
     private var token: String = ""
     private var position: Int = 0 {
         didSet {
-            Log.log("playerId \(playerId) moved from \(oldValue) to \(position) ", level: .trace)
+            Log.log("playerId \(playerId) moved from \(oldValue) to \(position) ", level: .debug)
         }
     }
     private var balance: Int = 0 {
@@ -37,7 +37,7 @@ struct Player {
         balance = 0
         createdSnakesAndLadders = []
         remainingSnakesAndLaddersOptions = [.small, .medium, .large, .extraLarge]
-        Log.log("player: \(playerId) position: \(position) balance: \(balance)", level: .debug)
+        Log.log("player: \(playerId) position: \(position) balance: \(balance)", level: .trace)
     }
     
     func getBalance() -> Int {
@@ -61,6 +61,9 @@ struct Player {
         self.position = position
     }
     
+    func getId() -> Int {
+        return playerId
+    }
 }
 
 

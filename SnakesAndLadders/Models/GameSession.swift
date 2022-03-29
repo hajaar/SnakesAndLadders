@@ -21,7 +21,7 @@ struct GameSession {
     }
     
     private mutating func createPlayers(name: String, token: String) {
-        for i in 1...AppConfig.numberofPlayers {
+        for i in 0...AppConfig.numberofPlayers - 1 {
             players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and pass it here
         }
     }
@@ -35,9 +35,9 @@ struct GameSession {
         board.startNewGame(players: players)
 
     }
-    
     func playTurn() -> (Int, [UIImage], UIImage) {
         Dice.roll()
         return (Dice.returnRollSum(), Dice.animateSingleDieRoll(),Dice.returnFirstRollSymbol())
     }
+
 }

@@ -1,16 +1,20 @@
-//
-//  Tile.swift
-//  SnakesAndLadders
-//
-//  Created by Kartik Narayanan on 17/03/22.
-//
+    //
+    //  Tile.swift
+    //  SnakesAndLadders
+    //
+    //  Created by Kartik Narayanan on 17/03/22.
+    //
 
 import Foundation
 import UIKit
 
 struct Tile {
     var tId: Int = 0
-    var tOccupiedBy: [Int] = []
+    var tOccupiedBy: [Int] = [] {
+        didSet {
+            Log.log("tileID: \(tId) contains \(tOccupiedBy)", level: .trace)
+        }
+    }
     var tSnakeOrLadder: (status: tileType, terminus: Int) = (tileType.none, -1)
     var tColor: UIColor {
         self.tId.isMultiple(of: 2) ? AppConfig.tileColor.0 : AppConfig.tileColor.1
@@ -53,9 +57,10 @@ struct Tile {
                 tOccupiedBy.remove(at: i)
                 return
             }
-        
+            
         }
         
     }
+    
     
 }
