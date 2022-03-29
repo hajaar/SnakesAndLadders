@@ -11,7 +11,7 @@ import UIKit
 class myCollectionViewLayout: UICollectionViewLayout {
 
 
-    private let numberOfColumns = Limits.boardLength
+    private let numberOfColumns = AppConfig.boardLength
     private let cellPadding: CGFloat = 0
     
  

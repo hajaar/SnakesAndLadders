@@ -16,7 +16,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Limits.boardSize
+        return AppConfig.boardSize
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -31,7 +31,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.myLabel.text = String(tmpTile.tId)
         cell.backgroundColor = tmpTile.tColor
         cell.layer.borderColor = tmpTile.tBorderColor.cgColor
-        cell.myLabel.textColor = Colors.boardTextColor
+        cell.myLabel.textColor = AppConfig.boardTextColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 2
         
@@ -44,7 +44,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             // handle tap events
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor = Colors.highlightTileColor
+        cell?.backgroundColor = AppConfig.highlightTileColor
         print("You selected cell #\(indexPath.item)!")
     }
     

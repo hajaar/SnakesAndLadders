@@ -8,42 +8,65 @@
 import Foundation
 import UIKit
 
-struct Colors {
-    private static let mattPurple = UIColor(red: 0.55, green: 0.48, blue: 0.90, alpha: 1.00)
-    private static let skirretGreen = UIColor(red: 0.27, green: 0.74, blue: 0.20, alpha: 1.00)
-    private static let nanohanachaGold = UIColor(red: 0.88, green: 0.69, blue: 0.17, alpha: 1.00)
-    private static let darkBlue = UIColor(red: 0.08, green: 0.45, blue: 0.63, alpha: 1.00)
-    private static let lightBlue = UIColor(red: 0.60, green: 0.82, blue: 0.93, alpha: 1.00)
-    static let boardTextColor = UIColor.black
-    static let boardColor = skirretGreen
-    static let highlightTileColor = nanohanachaGold
-    static let tileColor = (lightBlue, darkBlue)
+struct FlatColors {
+
+     static let Turquoise = UIColor("#1ABC9C")
+     static let GreenSea = UIColor("#16A085")
+     static let Emerald = UIColor("#2ECC71")
+     static let Nephritis = UIColor("#27AE60")
+     static let PeterRiver = UIColor("#3498DB")
+     static let BelizeHole = UIColor("#2980B9")
+     static let Amethyst = UIColor("#9B59B6")
+     static let Wisteria = UIColor("#8E44AD")
+     static let SunFlower = UIColor("#F1C40F")
+     static let Orange = UIColor("#F39C12")
+     static let Carrot = UIColor("#E67E22")
+     static let Pumpkin = UIColor("#D35400")
+     static let Alizarin = UIColor("#E74C3C")
+     static let Pomegranate = UIColor("#C0392B")
+     static let Clouds = UIColor("#ECF0F1")
+     static let Silver = UIColor("#BDC3C7")
+     static let Concrete = UIColor("#95A5A6")
+     static let Asbestos = UIColor("#7F8C8D")
+     static let WetAsphalt = UIColor("#34495E")
+     static let MidnightBlue = UIColor("#2C3E50")
+    
 }
 
 extension UIColor {
-    public convenience init?(hex: String) {
-        let r, g, b, a: CGFloat
+    convenience init(_ hexString: String, alpha: CGFloat = 1.0) {
+        let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let scanner = Scanner(string: hexString)
         
-        if hex.hasPrefix("#") {
-            let start = hex.index(hex.startIndex, offsetBy: 1)
-            let hexColor = String(hex[start...])
-            
-            if hexColor.count == 8 {
-                let scanner = Scanner(string: hexColor)
-                var hexNumber: UInt64 = 0
-                
-                if scanner.scanHexInt64(&hexNumber) {
-                    r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
-                    g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
-                    b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
-                    a = CGFloat(hexNumber & 0x000000ff) / 255
-                    
-                    self.init(red: r, green: g, blue: b, alpha: a)
-                    return
-                }
-            }
+        if (hexString.hasPrefix("#")) {
+            scanner.scanLocation = 1
         }
         
-        return nil
+        var color: UInt32 = 0
+        scanner.scanHexInt32(&color)
+        
+        let mask = 0x000000FF
+        let r = Int(color >> 16) & mask
+        let g = Int(color >> 8) & mask
+        let b = Int(color) & mask
+        
+        let red   = CGFloat(r) / 255.0
+        let green = CGFloat(g) / 255.0
+        let blue  = CGFloat(b) / 255.0
+        
+        self.init(red:red, green:green, blue:blue, alpha:alpha)
+    }
+    
+    func toHexString() -> String {
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        
+        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        
+        return String(format:"#%06x", rgb)
     }
 }

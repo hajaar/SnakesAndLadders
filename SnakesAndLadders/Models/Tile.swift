@@ -13,10 +13,10 @@ struct Tile {
     var tOccupiedBy: [String] = []
     var tSnakeOrLadder: (status: tileType, terminus: Int) = (tileType.none, -1)
     var tColor: UIColor {
-        self.tId.isMultiple(of: 2) ? Colors.tileColor.0 : Colors.tileColor.1
+        self.tId.isMultiple(of: 2) ? AppConfig.tileColor.0 : AppConfig.tileColor.1
     }
     var tBorderColor: UIColor {
-        self.tId.isMultiple(of: 2) ? Colors.tileColor.1 : Colors.tileColor.0
+        self.tId.isMultiple(of: 2) ? AppConfig.tileColor.1 : AppConfig.tileColor.0
     }
     var tImage: UIImage? {
         var tmpString: String = ""

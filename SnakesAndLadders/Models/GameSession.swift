@@ -15,7 +15,7 @@ struct GameSession {
     init() {
         board = Board()
         players = [Player]()
-        for _ in 1...Limits.numberofPlayers {
+        for _ in 1...AppConfig.numberofPlayers {
             players.append(Player()) //add function to get player input and pass it here
             Log.log("hello", level: .info)
         }
@@ -29,7 +29,7 @@ struct GameSession {
     
     private mutating func newBoard() {
         board.resetBoard()
-        for i in 1...Limits.numberofPlayers {
+        for i in 1...AppConfig.numberofPlayers {
             players[i].startNewGame()
         }
     }

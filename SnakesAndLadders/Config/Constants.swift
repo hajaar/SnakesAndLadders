@@ -8,11 +8,15 @@
 import Foundation
 import UIKit
 
-struct Limits {
+struct AppConfig {
     static let boardLength = 10
     static let boardSize = boardLength * boardLength
     static let numberofPlayers = 2
     static var startId = -1
+    static let boardTextColor = UIColor.black
+    static let boardColor = FlatColors.Nephritis
+    static let highlightTileColor = FlatColors.SunFlower
+    static let tileColor = (FlatColors.PeterRiver, FlatColors.BelizeHole)
 }
 
 

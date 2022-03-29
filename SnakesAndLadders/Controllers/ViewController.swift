@@ -19,11 +19,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var rollDiceButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.backgroundColor = Colors.boardColor
-        myCollectionView.layer.borderColor = Colors.boardColor.cgColor
+        mainView.backgroundColor = AppConfig.boardColor
+        myCollectionView.layer.borderColor = AppConfig.boardColor.cgColor
         myCollectionView.layer.borderWidth = 1
         myCollectionView.layer.cornerRadius = 2
-        diceImage.tintColor = Colors.highlightTileColor
+        diceImage.tintColor = AppConfig.highlightTileColor
         diceImage.image = gameSession.playTurn().2
 
     }
