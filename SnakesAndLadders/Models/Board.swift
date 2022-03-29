@@ -8,11 +8,16 @@
 import Foundation
 import UIKit
 
+protocol BoardDelegate {
+    func playerDidSomething(_ controller: Board)
+}
+
 
 struct Board {
     private var tiles: [Tile]
     private var players: [Player]
     private var isGameOver: Bool = false
+    var delegate: BoardDelegate?
     
     init() {
         tiles = [Tile]()
@@ -95,6 +100,7 @@ struct Board {
                 let roll = Dice.returnRollSum()
                 let outcome = checkOutcomeOfRoll(player: player, roll: roll)
                 updatePlayerPosition(player: player, tileId: outcome.newPosition)
+                delegate?.playerDidSomething(self)
                 if outcome.win {
                     isGameOver = true
                     return

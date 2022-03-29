@@ -7,10 +7,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, BoardDelegate {
+    func playerDidSomething(_ controller: Board) {
+        myCollectionView.reloadData()
+        print(counter)
+        counter += 1
+    }
+    
 
     var gameSession = GameSession()
     let reuseIdentifier = "cell"
+    var counter: Int = 1
+    
     @IBOutlet weak var diceImage: UIImageView!
     
     @IBOutlet weak var messageLabel: UILabel!
@@ -28,6 +36,8 @@ class ViewController: UIViewController {
         
         diceImage.tintColor = AppConfig.diceColor
         diceImage.image = gameSession.playTurn().2
+        
+        gameSession.board.delegate = self
 
     }
     @IBAction func rollDice(_ sender: UIButton) {

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct GameSession {
-    private var board: Board
+    var board: Board
     private var players: [Player]
     
     init() {
