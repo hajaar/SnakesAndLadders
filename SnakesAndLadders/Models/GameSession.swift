@@ -13,25 +13,24 @@ struct GameSession {
     private var players: [Player]
     
     init() {
-        board = Board()
+        
         players = [Player]()
         for _ in 1...AppConfig.numberofPlayers {
             players.append(Player()) //add function to get player input and pass it here
-            Log.log("hello", level: .info)
         }
-        
+        board = Board()
+
     }
+    
     
     func getTileInfo(index: Int) -> Tile {
         return board.getTileInfo(index: index)
         
     }
     
-    private mutating func newBoard() {
-        board.resetBoard()
-        for i in 1...AppConfig.numberofPlayers {
-            players[i].startNewGame()
-        }
+    mutating func newBoard(players: [Player]) {
+        board.startNewGame(players: players)
+
     }
     
     func playTurn() -> (Int, [UIImage], UIImage) {

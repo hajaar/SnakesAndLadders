@@ -11,13 +11,20 @@ import UIKit
 
 struct Board {
     private var tiles: [Tile]
+    private var players: [Player]
     
     init() {
         tiles = [Tile]()
-        resetBoard()
+        self.players = [Player]()
     }
     
-    mutating func resetBoard() {
+    mutating func startNewGame(players: [Player]) {
+        self.players = players
+        resetBoard()
+        setPlayers()
+    }
+    
+    private mutating func resetBoard() {
         tiles = [Tile]()
         for i in stride(from: AppConfig.boardSize, to: AppConfig.boardSize - (AppConfig.boardSize/AppConfig.boardLength), by: -1) {
             tiles.append(Tile(tId: i, tOccupiedBy: [], tSnakeOrLadder: (tileType.none, -1)))
@@ -28,7 +35,7 @@ struct Board {
             var tmpId = [Int]()
             for i in start...end-1  {
                 tmpId.append(tiles[i].tId - AppConfig.boardLength)
-
+                
             }
             tmpId = tmpId.reversed()
             for i in 0...AppConfig.boardLength - 1{
@@ -38,6 +45,12 @@ struct Board {
             end = start + (AppConfig.boardSize/AppConfig.boardLength)
         }
         Log.log(tiles, level: .trace)
+    }
+    
+    private mutating func setPlayers() {
+        for i in 1...AppConfig.numberofPlayers {
+            players[i - 1].startNewGame()
+        }
     }
     
     func getTileInfo(index: Int) -> Tile {
