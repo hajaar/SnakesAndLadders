@@ -23,7 +23,9 @@ class ViewController: UIViewController {
         myCollectionView.layer.borderColor = AppConfig.boardColor.cgColor
         myCollectionView.layer.borderWidth = 1
         myCollectionView.layer.cornerRadius = 2
-        diceImage.tintColor = AppConfig.highlightTileColor
+
+        
+        diceImage.tintColor = AppConfig.diceColor
         diceImage.image = gameSession.playTurn().2
 
     }

@@ -13,10 +13,13 @@ struct AppConfig {
     static let boardSize = boardLength * boardLength
     static let numberofPlayers = 2
     static var startId = -1
-    static let boardTextColor = UIColor.black
-    static let boardColor = FlatColors.Nephritis
-    static let highlightTileColor = FlatColors.SunFlower
-    static let tileColor = (FlatColors.PeterRiver, FlatColors.BelizeHole)
+    static let boardTextColor = (IndianColors.ShipsOfficer, IndianColors.HoneyGlow)
+    static let boardColor = IndianColors.Keppel
+    static let highlightTileColor = IndianColors.RichGardenia
+    static let tileColor = (IndianColors.SpiroDiscoBall, IndianColors.EndingNavyBlue)
+    static let diceColor = UIColor.black
+    
+    
 }
 
 

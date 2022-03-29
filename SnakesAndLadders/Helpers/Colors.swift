@@ -30,6 +30,20 @@ struct FlatColors {
      static let Asbestos = UIColor("#7F8C8D")
      static let WetAsphalt = UIColor("#34495E")
      static let MidnightBlue = UIColor("#2C3E50")
+}
+
+struct IndianColors {
+    static let SpiroDiscoBall = UIColor("#25CCF7")
+    static let ClearChill = UIColor("#1B9CFC")
+    static let BlueBell = UIColor("#3B3B98")
+    static let EndingNavyBlue = UIColor("#182C61")
+    static let SarawakWhitePepper = UIColor("#F8EFBA")
+    static let ShipsOfficer = UIColor("#2C3A47")
+    static let RichGardenia = UIColor("#F97F51")
+    static let MagentaPurple = UIColor("#6D214F")
+    static let Keppel = UIColor("#58B19F")
+    static let HoneyGlow = UIColor("#EAB543")
+
     
 }
 

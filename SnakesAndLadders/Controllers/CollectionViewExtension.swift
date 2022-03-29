@@ -31,7 +31,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.myLabel.text = String(tmpTile.tId)
         cell.backgroundColor = tmpTile.tColor
         cell.layer.borderColor = tmpTile.tBorderColor.cgColor
-        cell.myLabel.textColor = AppConfig.boardTextColor
+        cell.myLabel.textColor = tmpTile.tTextColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 2
         
