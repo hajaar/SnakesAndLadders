@@ -26,10 +26,10 @@ struct Log {
             }
         }
     }
-    private static let logLevel: LogLevel = .info
+    private static let logLevel: LogLevel = .debug
     static public func log(_ message: Any, file: String = (#file as NSString).lastPathComponent, function: String = #function, line: Int = #line, level: LogLevel) {
         if level.value >= logLevel.value {
-            print("\(message) called from \(function) \(file):\(line)")
+            print(" \(file): \(function): \(line): \(message) ")
         }
         
     }
