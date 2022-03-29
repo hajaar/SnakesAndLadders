@@ -48,19 +48,39 @@ struct Board {
     }
     
     private mutating func setPlayers() {
-        for i in 1...AppConfig.numberofPlayers {
-            players[i - 1].startNewGame()
-            addPlayerToTile(playerID: i - 1, tileId: 0)
+        for i in 0...AppConfig.numberofPlayers - 1{
+            players[i].startNewGame()
+            addPlayerToTile(playerId: i, tileId: 0)
         }
+        updatePlayerPosition(playerId: 2, tileId: 10)
+        updatePlayerPosition(playerId: 3, tileId: 6)
+        updatePlayerPosition(playerId: 2, tileId: 25)
     }
     
     func getTileInfo(index: Int) -> Tile {
         return tiles[index]
     }
     
-    mutating private func addPlayerToTile(playerID: Int, tileId: Int){
-        tiles[tileId].addPlayer(playerID: playerID)
+    mutating private func updatePlayerPosition(playerId: Int, tileId: Int){
+        if tileId > -1 && tileId < AppConfig.boardSize {
+            removePlayerFromTile(playerId: playerId)
+            addPlayerToTile(playerId: playerId, tileId: tileId)
+        }
     }
+    
+    mutating private func addPlayerToTile(playerId: Int, tileId: Int){
+        tiles[tileId].addPlayer(playerId: playerId)
+        players[playerId].setPosition(position: tileId)
+        Log.log("Added to tileID: \(tileId) \(tiles[tileId].tOccupiedBy)", level: .debug)
+    }
+    
+    mutating private func removePlayerFromTile(playerId: Int){
+        let currentPosition = players[playerId].getPosition()
+        Log.log("playerID: \(playerId) currentpos: \(currentPosition)", level: .trace)
+        tiles[currentPosition].removePlayer(playerId: playerId)
+        Log.log("Removed from tileID: \(currentPosition) \(tiles[currentPosition].tOccupiedBy)", level: .debug)
+    }
+    
 }
 
 

@@ -16,7 +16,8 @@ struct GameSession {
         
         players = [Player]()
         board = Board()
-
+        createPlayers(name: "", token: "")
+        newBoard(players: players)
     }
     
     private mutating func createPlayers(name: String, token: String) {

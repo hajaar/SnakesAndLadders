@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     let reuseIdentifier = "cell"
     @IBOutlet weak var diceImage: UIImageView!
     
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet var mainView: UIView!
     

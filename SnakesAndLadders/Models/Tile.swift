@@ -43,9 +43,19 @@ struct Tile {
         return UIImage(systemName: tmpString)
     }
     
-    mutating func addPlayer(playerID: Int){
-        tOccupiedBy.append(playerID)
+    mutating func addPlayer(playerId: Int){
+        tOccupiedBy.append(playerId)
     }
     
+    mutating func removePlayer(playerId: Int){
+        for i in 0...tOccupiedBy.count - 1 {
+            if tOccupiedBy[i] == playerId {
+                tOccupiedBy.remove(at: i)
+                return
+            }
+        
+        }
+        
+    }
     
 }

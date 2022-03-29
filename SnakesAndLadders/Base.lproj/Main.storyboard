@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="landscape" appearance="light"/>
+    <device id="ipad7_9" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,14 +14,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SnakesAndLadders" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwV-ga-cYM" userLabel="Main Stack">
-                                <rect key="frame" x="60" y="8" width="692" height="346"/>
+                                <rect key="frame" x="16" y="32" width="1101" height="692"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lmN-Wh-MHV">
-                                        <rect key="frame" x="0.0" y="0.0" width="456.66666666666669" height="346"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="726.5" height="692"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewLayout key="collectionViewLayout" id="ii7-ph-jCn" customClass="myCollectionViewLayout" customModule="SnakesAndLadders" customModuleProvider="target"/>
                                         <cells>
@@ -70,33 +70,33 @@
                                         </connections>
                                     </collectionView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eLM-eY-bBC" userLabel="Space Stack View">
-                                        <rect key="frame" x="456.66666666666663" y="0.0" width="7" height="346"/>
+                                        <rect key="frame" x="726.5" y="0.0" width="11" height="692"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="x3B-dh-vlR" userLabel="Control Stack">
-                                        <rect key="frame" x="463.66666666666657" y="0.0" width="228.33333333333331" height="346"/>
+                                        <rect key="frame" x="737.5" y="0.0" width="363.5" height="692"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-ih-ULU" userLabel="Player Stack">
-                                                <rect key="frame" x="0.0" y="0.0" width="228.33333333333334" height="231.66666666666666"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="363.5" height="463.5"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-gq-n56" userLabel="Dice Stack">
-                                                <rect key="frame" x="0.0" y="231.66666666666666" width="228.33333333333334" height="114.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="463.5" width="363.5" height="228.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lbF-kj-v6U">
-                                                        <rect key="frame" x="0.0" y="0.0" width="114" height="114.33333333333333"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="228.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu3-57-nJg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="114" height="20.333333333333332"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu3-57-nJg" userLabel="Message">
+                                                                <rect key="frame" x="0.0" y="0.0" width="182" height="134.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qim-kR-fU1">
-                                                                <rect key="frame" x="0.0" y="20.333333333333343" width="114" height="94"/>
+                                                                <rect key="frame" x="0.0" y="134.5" width="182" height="94"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-mS-x9h">
-                                                        <rect key="frame" x="114" y="0.0" width="114.33333333333331" height="114.33333333333333"/>
+                                                        <rect key="frame" x="182" y="0.0" width="181.5" height="228.5"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Roll">
                                                             <color key="baseForegroundColor" systemColor="labelColor"/>
@@ -142,6 +142,7 @@
                     <connections>
                         <outlet property="diceImage" destination="Qim-kR-fU1" id="Wp2-Wf-Dmk"/>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="EHM-Ka-a8d"/>
+                        <outlet property="messageLabel" destination="Hu3-57-nJg" id="ztg-A3-oMn"/>
                         <outlet property="myCollectionView" destination="lmN-Wh-MHV" id="2u6-9d-Mei"/>
                         <outlet property="rollDiceButton" destination="2jz-mS-x9h" id="eqT-KE-AQj"/>
                     </connections>
