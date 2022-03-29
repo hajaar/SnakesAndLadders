@@ -8,13 +8,20 @@
 import Foundation
 
 struct Player {
-    private var name: String = ""
-    private var token: String = ""
+    private var playerId: Int
+    private var name: String
+    private var token: String
     private var position: Int = 0
     private var balance: Int = 0
     private var createdSnakesAndLadders: [SnakeAndLadder] = []
     private var wins: Int = 0
     private var remainingSnakesAndLaddersOptions: [lengthSnakeAndLadder] = [.small, .medium, .large, .extraLarge]
+    
+    init(playerID: Int, name: String, token: String) {
+        self.playerId = playerID
+        self.name = name
+        self.token = token
+    }
     
     mutating func startNewGame()  {
         position = 0

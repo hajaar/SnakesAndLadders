@@ -15,13 +15,15 @@ struct GameSession {
     init() {
         
         players = [Player]()
-        for _ in 1...AppConfig.numberofPlayers {
-            players.append(Player()) //add function to get player input and pass it here
-        }
         board = Board()
 
     }
     
+    private mutating func createPlayers(name: String, token: String) {
+        for i in 1...AppConfig.numberofPlayers {
+            players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and pass it here
+        }
+    }
     
     func getTileInfo(index: Int) -> Tile {
         return board.getTileInfo(index: index)

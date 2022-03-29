@@ -50,11 +50,16 @@ struct Board {
     private mutating func setPlayers() {
         for i in 1...AppConfig.numberofPlayers {
             players[i - 1].startNewGame()
+            addPlayerToTile(playerID: i - 1, tileId: 0)
         }
     }
     
     func getTileInfo(index: Int) -> Tile {
         return tiles[index]
+    }
+    
+    mutating private func addPlayerToTile(playerID: Int, tileId: Int){
+        tiles[tileId].addPlayer(playerID: playerID)
     }
 }
 

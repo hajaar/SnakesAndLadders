@@ -10,7 +10,7 @@ import UIKit
 
 struct Tile {
     var tId: Int = 0
-    var tOccupiedBy: [String] = []
+    var tOccupiedBy: [Int] = []
     var tSnakeOrLadder: (status: tileType, terminus: Int) = (tileType.none, -1)
     var tColor: UIColor {
         self.tId.isMultiple(of: 2) ? AppConfig.tileColor.0 : AppConfig.tileColor.1
@@ -38,9 +38,14 @@ struct Tile {
                 tmpString = ""
             }
         } else {
-            tmpString = tOccupiedBy.last! + symbolNames.playerName
+            tmpString = String(tOccupiedBy.last!) + symbolNames.playerName
         }
         return UIImage(systemName: tmpString)
     }
+    
+    mutating func addPlayer(playerID: Int){
+        tOccupiedBy.append(playerID)
+    }
+    
     
 }
