@@ -43,6 +43,7 @@ struct IndianColors {
     static let MagentaPurple = UIColor("#6D214F")
     static let Keppel = UIColor("#58B19F")
     static let HoneyGlow = UIColor("#EAB543")
+    static let HighlighterLavender = UIColor("#82589F")
 
     
 }

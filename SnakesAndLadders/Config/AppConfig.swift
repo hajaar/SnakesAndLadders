@@ -11,11 +11,11 @@ import UIKit
 struct AppConfig {
     static let boardLength = 10
     static let boardSize = boardLength * boardLength
-    static let numberofPlayers = 2
+    static let numberofPlayers = 4
     static var startId = -1
     static let boardTextColor = (IndianColors.ShipsOfficer, IndianColors.HoneyGlow)
     static let boardColor = IndianColors.Keppel
-    static let highlightTileColor = IndianColors.RichGardenia
+    static let highlightTileColor = IndianColors.HighlighterLavender
     static let tileColor = (IndianColors.SpiroDiscoBall, IndianColors.EndingNavyBlue)
     static let diceColor = UIColor.black
     
