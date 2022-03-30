@@ -30,23 +30,28 @@ struct Tile {
         self.tId.isMultiple(of: 2) ? AppConfig.tileColor.1 : AppConfig.tileColor.0
     }
     
-    var tImage: UIImage? {
+    var tSnakeOrLadderImage: (symbol: UIImage?, symbolColor: UIColor) {
         var tmpString: String = ""
+        var tmpColor: UIColor = AppConfig.diceColor
         
             switch tSnakeOrLadder.status {
             case .ladderStart:
                 tmpString = symbolNames.ladderStart
+                tmpColor = AppConfig.ladderColor
             case .ladderEnd:
                 tmpString = symbolNames.ladderEnd
+                tmpColor = AppConfig.ladderColor
             case .snakeStart:
                 tmpString = symbolNames.snakeStart
+                tmpColor = AppConfig.snakeColor
             case .snakeEnd:
                 tmpString = symbolNames.snakeEnd
+                
             default:
                 tmpString = ""
             }
-        
-        return UIImage(systemName: tmpString)
+
+        return (UIImage(systemName: tmpString),tmpColor)
     }
     
     var tPlayerImages: [UIImage?] {

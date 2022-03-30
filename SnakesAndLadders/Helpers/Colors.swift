@@ -41,9 +41,14 @@ struct IndianColors {
     static let ShipsOfficer = UIColor("#2C3A47")
     static let RichGardenia = UIColor("#F97F51")
     static let MagentaPurple = UIColor("#6D214F")
+    static let SweetGarden = UIColor("#55E6C1")
     static let Keppel = UIColor("#58B19F")
     static let HoneyGlow = UIColor("#EAB543")
     static let HighlighterLavender = UIColor("#82589F")
+    static let SasquatchSocks = UIColor("#FC427B")
+    static let GeorgiaPeach = UIColor("#FD7272")
+    static let BrightUbe = UIColor("#D6A2E8")
+    static let FallingStar = UIColor("#CAD3C8")
 
     
 }

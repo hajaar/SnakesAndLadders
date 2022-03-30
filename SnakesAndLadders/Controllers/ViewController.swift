@@ -11,9 +11,9 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
     func getAnimateSingleDieRoll(animatedImages: [UIImage], finalImage: UIImage) {
         rollDiceButton.isEnabled = false
         diceImage.animationImages = animatedImages
-        diceImage.animationDuration = 1.0
+        diceImage.animationDuration = 0.75
         diceImage.startAnimating()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
             self.diceImage.stopAnimating()
             self.diceImage.image = finalImage
         }

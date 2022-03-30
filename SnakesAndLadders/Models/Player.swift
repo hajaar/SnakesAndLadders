@@ -6,11 +6,13 @@
     //
 
 import Foundation
+import UIKit
 
 struct Player {
     private var playerId: Int
     private var name: String = ""
     private var token: String = ""
+
     private var position: Int = 1 {
         didSet {
             Log.log("playerId \(playerId) moved from \(oldValue) to \(position) ", level: .debug)
@@ -29,6 +31,7 @@ struct Player {
         self.playerId = playerID
         self.name = name
         self.token = token
+
         Log.log("\(self.playerId) \(self.name) \(self.token)", level: .debug)
     }
     

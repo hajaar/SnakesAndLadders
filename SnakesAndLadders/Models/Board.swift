@@ -36,7 +36,9 @@ struct Board {
     }
 
     private mutating func createPlayers(name: String, token: String) {
+
         for i in 0...AppConfig.numberofPlayers - 1 {
+
             players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and pass it here
         }
     }

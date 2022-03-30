@@ -13,29 +13,26 @@ struct AppConfig {
     static let boardSize = boardLength * boardLength
     static let numberofPlayers = 4
     static var startId = -1
-    static let boardTextColor = (IndianColors.ShipsOfficer, IndianColors.HoneyGlow)
-    static let boardColor = IndianColors.Keppel
+    static let boardTextColor = (FlatColors.Clouds, IndianColors.SarawakWhitePepper)
+    static let boardColor = FlatColors.GreenSea
     static let highlightTileColor = IndianColors.HighlighterLavender
-    static let tileColor = (IndianColors.SpiroDiscoBall, IndianColors.EndingNavyBlue)
+    static let tileColor = (FlatColors.BelizeHole, IndianColors.EndingNavyBlue)
     static let diceColor = UIColor.black
-    
-    
+    static let ladderColor = FlatColors.Emerald
+    static let snakeColor = FlatColors.Alizarin
+    static let playerColors = [IndianColors.FallingStar, FlatColors.Turquoise, IndianColors.HoneyGlow, IndianColors.GeorgiaPeach]
 }
 
 
 struct symbolNames {
-    static let ladderStart: String = "arrowtriangle.up"
+    static let ladderStart: String = "arrowtriangle.up.fill"
     static let ladderEnd: String = "stop.circle"
-    static let snakeStart: String = "arrowtriangle.down"
+    static let snakeStart: String = "arrowtriangle.down.fill"
     static let snakeEnd: String = "stop.circle"
     static let playerName: String = ".circle.fill"
     static let tileName: String = ".square"
 }
 
-
-enum tileOccupiedStatus {
-    case unoccupied, player1, player2
-}
 
 enum  tileType {
     case snakeStart, snakeEnd, ladderStart, ladderEnd, none
