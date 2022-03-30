@@ -158,6 +158,7 @@ struct Board {
 
         Log.log(playerCounter, level: .debug)
         let currentPosition = players[playerCounter].getPosition()
+
         Dice.roll()
         let roll = Dice.returnRollSum()
         let outcome = checkOutcomeOfRoll(player: players[playerCounter], roll: roll)
@@ -168,6 +169,8 @@ struct Board {
         if roll != 6 {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
         }
+        delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"))
+
         return (getTileIndexFromId(tileId: currentPosition) , getTileIndexFromId(tileId: outcome.newPosition), getTileIndexFromId(tileId: outcome.terminus) )
 
     }

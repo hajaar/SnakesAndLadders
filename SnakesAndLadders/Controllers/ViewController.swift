@@ -24,7 +24,6 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
     
     
     func playerDidSomething(_ controller: Board, text: String) {
-        self.myCollectionView.reloadData()
         print(text)
         self.messageLabel.text = text
     }
@@ -64,19 +63,23 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
         let outcome = board.playTurn()
         rollDiceButton.isEnabled = false
         diceImage.animationImages = Dice.animateSingleDieRoll()
-        diceImage.animationDuration = 1.0
+        diceImage.animationDuration = 0.75
         diceImage.startAnimating()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
             self.diceImage.stopAnimating()
             self.diceImage.image = Dice.returnFirstRollSymbol()
             var indexPaths: [NSIndexPath] = []
-
             indexPaths.append(NSIndexPath(item: outcome.currentIndex, section: 0))
-            indexPaths.append(NSIndexPath(item: outcome.newIndex, section: 0))
-            if outcome.terminusIndex > -1 {
-            indexPaths.append(NSIndexPath(item: outcome.terminusIndex, section: 0))
-            }
             self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
+            indexPaths = [NSIndexPath]()
+            indexPaths.append(NSIndexPath(item: outcome.newIndex, section: 0))
+            self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
+            indexPaths = [NSIndexPath]()
+            if outcome.terminusIndex > -1 {
+                indexPaths.append(NSIndexPath(item: outcome.terminusIndex, section: 0))
+                self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
+                indexPaths = [NSIndexPath]()
+            }
         } 
         rollDiceButton.isEnabled = true
 
