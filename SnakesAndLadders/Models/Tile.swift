@@ -15,7 +15,11 @@ struct Tile {
             Log.log("tileID: \(tId) contains \(tOccupiedBy)", level: .trace)
         }
     }
-    var tSnakeOrLadder: (status: tileType, terminus: Int) = (tileType.none, -1)
+    var tSnakeOrLadder: (status: tileType, terminus: Int) = (tileType.none, -1) {
+        didSet {
+            Log.log("tileID: \(tId) contains \(tSnakeOrLadder.status) ending at \(tSnakeOrLadder.terminus )" , level: .debug)
+        }
+    }
     var tColor: UIColor {
         self.tId.isMultiple(of: 2) ? AppConfig.tileColor.0 : AppConfig.tileColor.1
     }
@@ -28,7 +32,7 @@ struct Tile {
     
     var tImage: UIImage? {
         var tmpString: String = ""
-        if tOccupiedBy.isEmpty {
+        
             switch tSnakeOrLadder.status {
             case .ladderStart:
                 tmpString = symbolNames.ladderStart
@@ -41,7 +45,7 @@ struct Tile {
             default:
                 tmpString = ""
             }
-        }
+        
         return UIImage(systemName: tmpString)
     }
     
@@ -57,10 +61,13 @@ struct Tile {
         print(playerId)
         print(tOccupiedBy)
         tOccupiedBy[playerId] = true
+        Log.log("player \(playerId) is at tileId: \(tId) \(tOccupiedBy) ", level: .trace)
     }
     
     mutating func removePlayer(playerId: Int){
         tOccupiedBy[playerId] = false
+        Log.log("player \(playerId) removed from tileId: \(tId) \(tOccupiedBy) ", level: .trace)
+
         
     }
     

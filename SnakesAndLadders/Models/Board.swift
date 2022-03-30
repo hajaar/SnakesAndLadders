@@ -27,6 +27,7 @@ struct Board {
     
     mutating func startNewGame() {
         resetBoard()
+        addRandomSnakesAndLadder(count: 3)
         createPlayers(name: "", token: "")
         setPlayers()
         playGame()
@@ -74,6 +75,31 @@ struct Board {
         return tiles[index]
     }
     
+    private mutating func addRandomSnakesAndLadder(count: Int) {
+        for _ in 0...count - 1{
+            let isSnake = Bool.random()
+            let startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
+            var length = lengthSnakeAndLadder.allCases.randomElement()?.value
+            var endingPosition = 0
+            if isSnake {
+                endingPosition = startingPosition - length!
+                while  endingPosition  <= 1 {
+                    length = lengthSnakeAndLadder.allCases.randomElement()?.value
+                    endingPosition = startingPosition - length!
+
+                }
+            } else {
+                endingPosition = startingPosition + length!
+                while startingPosition + length! >= AppConfig.boardSize {
+                    length = lengthSnakeAndLadder.allCases.randomElement()?.value
+                    endingPosition = startingPosition + length!
+                }
+            }
+            Log.log("count: \(count) snake? \(isSnake) start \(startingPosition) length \(length!)", level: .trace)
+            tiles[getTileIndexFromId(tileId: startingPosition)].tSnakeOrLadder = (isSnake ? tileType.snakeStart : tileType.ladderStart, endingPosition)
+        }
+    }
+    
     mutating private func updatePlayerPosition(playerId: Int, tileId: Int){
         if tileId > -1 && tileId <= AppConfig.boardSize {
             removePlayerFromTile(playerId: playerId)
@@ -116,8 +142,8 @@ struct Board {
                     
                 }
                 
+            }
         }
-    }
     }
     
     private func checkOutcomeOfRoll(player: Player, roll: Int) -> (win: Bool, newPosition: Int) {

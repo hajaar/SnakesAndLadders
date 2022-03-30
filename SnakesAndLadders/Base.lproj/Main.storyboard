@@ -32,6 +32,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g1f-bR-YC9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-DP-jgy">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <subviews>
@@ -72,11 +75,15 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="Bcm-DP-jgy" secondAttribute="trailing" id="86V-aw-WQI"/>
+                                                        <constraint firstItem="g1f-bR-YC9" firstAttribute="top" secondItem="0hu-SZ-Aui" secondAttribute="top" id="9br-jj-zqG"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ogb-a3-az2" secondAttribute="trailing" id="Ku7-u4-zgf"/>
                                                         <constraint firstAttribute="bottom" secondItem="Bcm-DP-jgy" secondAttribute="bottom" id="Mlh-QT-6Ht"/>
                                                         <constraint firstItem="Ogb-a3-az2" firstAttribute="top" secondItem="0hu-SZ-Aui" secondAttribute="top" id="T2c-jM-wkE"/>
                                                         <constraint firstItem="Bcm-DP-jgy" firstAttribute="top" secondItem="0hu-SZ-Aui" secondAttribute="top" id="d5k-st-iGA"/>
+                                                        <constraint firstAttribute="bottom" secondItem="g1f-bR-YC9" secondAttribute="bottom" id="gc8-eW-cLA"/>
+                                                        <constraint firstItem="g1f-bR-YC9" firstAttribute="leading" secondItem="0hu-SZ-Aui" secondAttribute="leading" id="n2p-bd-ED3"/>
                                                         <constraint firstItem="Bcm-DP-jgy" firstAttribute="leading" secondItem="0hu-SZ-Aui" secondAttribute="leading" id="sEJ-S3-C7Z"/>
+                                                        <constraint firstAttribute="trailing" secondItem="g1f-bR-YC9" secondAttribute="trailing" id="tnf-wD-eqZ"/>
                                                         <constraint firstAttribute="bottom" secondItem="Ogb-a3-az2" secondAttribute="bottom" id="xd9-Fg-jnY"/>
                                                         <constraint firstItem="Ogb-a3-az2" firstAttribute="leading" secondItem="0hu-SZ-Aui" secondAttribute="leading" id="xmB-Vw-OhI"/>
                                                     </constraints>
@@ -88,6 +95,7 @@
                                                     <outlet property="myImage3" destination="5mL-VD-QrJ" id="M4F-ez-CE3"/>
                                                     <outlet property="myImage4" destination="qt7-98-AcT" id="570-Hq-iJf"/>
                                                     <outlet property="myLabel" destination="Ogb-a3-az2" id="ZlK-hY-gnN"/>
+                                                    <outlet property="snakeOrLadderImage" destination="g1f-bR-YC9" id="DIT-0t-NxQ"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>

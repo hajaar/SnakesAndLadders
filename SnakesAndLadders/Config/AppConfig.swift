@@ -28,7 +28,7 @@ struct symbolNames {
     static let ladderEnd: String = "stop.circle"
     static let snakeStart: String = "arrowtriangle.down"
     static let snakeEnd: String = "stop.circle"
-    static let playerName: String = ".circle"
+    static let playerName: String = ".circle.fill"
     static let tileName: String = ".square"
 }
 
@@ -41,7 +41,7 @@ enum  tileType {
     case snakeStart, snakeEnd, ladderStart, ladderEnd, none
 }
 
-enum lengthSnakeAndLadder: Int {
+enum lengthSnakeAndLadder: Int, CaseIterable {
     case small, medium, large, extraLarge
     
     var value: Int {
