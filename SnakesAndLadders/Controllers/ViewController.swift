@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, BoardDelegate, DiceDelegate {
     func getAnimateSingleDieRoll(animatedImages: [UIImage], finalImage: UIImage) {
-        print("sup")
+     /*   print("sup")
         rollDiceButton.isEnabled = false
         diceImage.animationImages = animatedImages
         diceImage.animationDuration = 1.0
@@ -18,7 +18,7 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
             self.diceImage.stopAnimating()
             self.diceImage.image = finalImage
         }
-        rollDiceButton.isEnabled = true
+        rollDiceButton.isEnabled = true */
     }
     
     
@@ -54,14 +54,25 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
         
         
         diceImage.tintColor = AppConfig.diceColor
-     //   diceImage.image = Dice.returnFirstRollSymbol()
+        Dice.roll()
+        diceImage.image = Dice.returnFirstRollSymbol()
         board.startNewGame()
         
     }
     @IBAction func rollDice(_ sender: UIButton) {
 
         board.playTurn()
-        myCollectionView.reloadData()
+        rollDiceButton.isEnabled = false
+        diceImage.animationImages = Dice.animateSingleDieRoll()
+        diceImage.animationDuration = 1.0
+        diceImage.startAnimating()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
+            self.diceImage.stopAnimating()
+            self.diceImage.image = Dice.returnFirstRollSymbol()
+            self.myCollectionView.reloadData()
+        } 
+        rollDiceButton.isEnabled = true
+
     }
     
     
