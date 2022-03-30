@@ -75,30 +75,34 @@ struct Board {
         return tiles[index]
     }
     
-    private mutating func addRandomSnakesAndLadder(count: Int) {
+     mutating private func addRandomSnakesAndLadder(count: Int) {
         for _ in 0...count - 1{
             let isSnake = Bool.random()
             let startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
-            var length = lengthSnakeAndLadder.allCases.randomElement()?.value
-            var endingPosition = 0
-            if isSnake {
-                endingPosition = startingPosition - length!
-                while  endingPosition  <= 1 {
-                    length = lengthSnakeAndLadder.allCases.randomElement()?.value
-                    endingPosition = startingPosition - length!
-
-                }
-            } else {
-                endingPosition = startingPosition + length!
-                while startingPosition + length! >= AppConfig.boardSize {
-                    length = lengthSnakeAndLadder.allCases.randomElement()?.value
-                    endingPosition = startingPosition + length!
-                }
+            var length = lengthSnakeAndLadder.allCases.randomElement()!.value
+            while doesSnakeOrLadderExceedBoardSize(isSnake: isSnake, start: startingPosition, length: length) {
+                length = lengthSnakeAndLadder.allCases.randomElement()!.value
             }
-            Log.log("count: \(count) snake? \(isSnake) start \(startingPosition) length \(length!)", level: .trace)
+            let endingPosition = returnEndingPosition(isSnake: isSnake, start: startingPosition, length: length)
+            Log.log("count: \(count) snake? \(isSnake) start \(startingPosition) length \(length)", level: .trace)
             tiles[getTileIndexFromId(tileId: startingPosition)].tSnakeOrLadder = (isSnake ? tileType.snakeStart : tileType.ladderStart, endingPosition)
         }
     }
+    mutating private func doesSnakeOrLadderOverlap(isSnake: Bool, start: Int, length: Int) -> Bool {
+        
+        return true
+    }
+    
+    
+    mutating private func doesSnakeOrLadderExceedBoardSize(isSnake: Bool, start: Int, length: Int) -> Bool {
+        let endingPosition = returnEndingPosition(isSnake: isSnake, start: start, length: length)
+        return isSnake ? endingPosition <= 1 : endingPosition >= AppConfig.boardSize
+    }
+    
+    mutating func returnEndingPosition(isSnake: Bool, start: Int, length: Int) -> Int {
+        return start + ( isSnake ? -1 : 1 ) * length
+    }
+    
     
     mutating private func updatePlayerPosition(playerId: Int, tileId: Int){
         if tileId > -1 && tileId <= AppConfig.boardSize {
