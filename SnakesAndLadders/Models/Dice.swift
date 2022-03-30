@@ -7,11 +7,19 @@
 
 import Foundation
 import UIKit
+
+
+protocol DiceDelegate {
+    func getAnimateSingleDieRoll(animatedImages: [UIImage], finalImage: UIImage)
+}
+
+
 struct Dice {
     static private var noOfDice: Int = 1
     static private var noOfSides: Int = 6
     static private var generatedRoll: [Int] = [Int]()
     static private var animationCount: Int = 12
+    static var delegate: DiceDelegate?
     
     static func create(numberOfDice: Int = 1, numberOfSides: Int = 6) {
         self.noOfDice = numberOfDice
@@ -56,7 +64,10 @@ struct Dice {
             let i = Int.random(in: 1...noOfSides)
             dieRollAnimation.append(returnFirstRollSymbol(value: i, fill: fill))
         }
-        dieRollAnimation.append(returnFirstRollSymbol())
+        let firstRoll = returnFirstRollSymbol()
+        dieRollAnimation.append(firstRoll)
+        delegate?.getAnimateSingleDieRoll(animatedImages: dieRollAnimation, finalImage: firstRoll)
+
         return dieRollAnimation
     }
 }

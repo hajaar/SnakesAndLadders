@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol BoardDelegate {
-    func playerDidSomething(_ controller: Board)
+    func playerDidSomething(_ controller: Board, text: String)
 }
 
 
@@ -95,16 +95,20 @@ struct Board {
     mutating func playGame() {
         while !isGameOver {
             players.forEach { player in
+                
                 Log.log(player.getId(), level: .debug)
+                
                 Dice.roll()
                 let roll = Dice.returnRollSum()
                 let outcome = checkOutcomeOfRoll(player: player, roll: roll)
                 updatePlayerPosition(player: player, tileId: outcome.newPosition)
-                delegate?.playerDidSomething(self)
+                delegate?.playerDidSomething(self, text: String(outcome.newPosition))
                 if outcome.win {
                     isGameOver = true
                     return
+                    
                 }
+                
         }
     }
     }
