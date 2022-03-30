@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, BoardDelegate, DiceDelegate {
     func getAnimateSingleDieRoll(animatedImages: [UIImage], finalImage: UIImage) {
+        print("sup")
         rollDiceButton.isEnabled = false
         diceImage.animationImages = animatedImages
         diceImage.animationDuration = 1.0
@@ -29,7 +30,7 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
     }
     
     
-    var gameSession = GameSession()
+    var board = Board()
     let reuseIdentifier = "cell"
     var counter: Int = 1
     
@@ -43,7 +44,7 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gameSession.board.delegate = self
+        board.delegate = self
         Dice.delegate = self
         
         mainView.backgroundColor = AppConfig.boardColor
@@ -53,13 +54,13 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
         
         
         diceImage.tintColor = AppConfig.diceColor
-        diceImage.image = gameSession.playTurn().2
         
+        board.startNewGame()
         
     }
     @IBAction func rollDice(_ sender: UIButton) {
-        rollDiceButton.isEnabled = false
-        let diceValues: (Int, [UIImage], UIImage) = gameSession.playTurn()
+  /*      rollDiceButton.isEnabled = false
+       let diceValues: (Int, [UIImage], UIImage) = board.playTurn()
         diceImage.animationImages = diceValues.1
         diceImage.animationDuration = 1.0
         diceImage.startAnimating()
@@ -67,7 +68,7 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
             self.diceImage.stopAnimating()
             self.diceImage.image = diceValues.2
         }
-        rollDiceButton.isEnabled = true
+        rollDiceButton.isEnabled = true */
         
     }
     

@@ -21,14 +21,21 @@ struct Board {
     
     init() {
         tiles = [Tile]()
-        self.players = [Player]()
+        players = [Player]()
+        resetBoard()
     }
     
-    mutating func startNewGame(players: [Player]) {
-        self.players = players
+    mutating func startNewGame() {
         resetBoard()
+        createPlayers(name: "", token: "")
         setPlayers()
         playGame()
+    }
+    
+    private mutating func createPlayers(name: String, token: String) {
+        for i in 0...AppConfig.numberofPlayers - 1 {
+            players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and pass it here
+        }
     }
     
     private mutating func resetBoard() {
@@ -59,7 +66,7 @@ struct Board {
     private mutating func setPlayers() {
         for i in 0...AppConfig.numberofPlayers - 1{
             players[i].startNewGame()
-            addPlayerToTile(playerId: i, tileId: 0)
+            addPlayerToTile(playerId: i, tileId: 1)
         }
     }
     
@@ -68,7 +75,7 @@ struct Board {
     }
     
     mutating private func updatePlayerPosition(playerId: Int, tileId: Int){
-        if tileId > -1 && tileId < AppConfig.boardSize {
+        if tileId > -1 && tileId <= AppConfig.boardSize {
             removePlayerFromTile(playerId: playerId)
             addPlayerToTile(playerId: playerId, tileId: tileId)
         }
@@ -115,15 +122,15 @@ struct Board {
     
     private func checkOutcomeOfRoll(player: Player, roll: Int) -> (win: Bool, newPosition: Int) {
         var newPosition = player.getPosition() + roll
-        newPosition = newPosition > AppConfig.boardSize - 1 ? player.getPosition() : newPosition
-        let win = newPosition == AppConfig.boardSize - 1 ? true : false
+        newPosition = newPosition > AppConfig.boardSize ? player.getPosition() : newPosition
+        let win = newPosition == AppConfig.boardSize ? true : false
         return (win,newPosition)
     }
     
     private func getTileIndexFromId(tileId: Int) -> Int {
-        for i in 0...AppConfig.boardSize - 1 {
-            if tiles[i].tId == tileId {
-                return i
+        for index in 0...AppConfig.boardSize - 1 {
+            if tiles[index].tId == tileId {
+                return index
             }
         }
         return 0

@@ -11,11 +11,11 @@ struct Player {
     private var playerId: Int
     private var name: String = ""
     private var token: String = ""
-    private var position: Int = 0 {
+    private var position: Int = 1 {
         didSet {
             Log.log("playerId \(playerId) moved from \(oldValue) to \(position) ", level: .debug)
         }
-    }
+    } // position is based on tId and not index.
     private var balance: Int = 0 {
         didSet {
             Log.log("playerId \(playerId) balance changed from \(oldValue) to \(balance) ", level: .trace)
@@ -33,7 +33,7 @@ struct Player {
     }
     
     mutating func startNewGame()  {
-        position = 0
+        position = 1
         balance = 0
         createdSnakesAndLadders = []
         remainingSnakesAndLaddersOptions = [.small, .medium, .large, .extraLarge]

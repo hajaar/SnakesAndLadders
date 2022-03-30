@@ -28,7 +28,7 @@ struct symbolNames {
     static let ladderEnd: String = "stop.circle"
     static let snakeStart: String = "arrowtriangle.down"
     static let snakeEnd: String = "stop.circle"
-    static let playerName: String = ".book.closed"
+    static let playerName: String = ".circle"
     static let tileName: String = ".square"
 }
 

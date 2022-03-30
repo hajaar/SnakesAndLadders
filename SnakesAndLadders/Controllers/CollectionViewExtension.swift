@@ -26,7 +26,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
 
 
-        let tmpTile = gameSession.getTileInfo(index: indexPath.row)
+        let tmpTile = board.getTileInfo(index: indexPath.row)
 
         cell.myImage.image = tmpTile.tImage
         cell.myLabel.text = String(tmpTile.tId)
@@ -51,7 +51,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        let tmpTile = gameSession.getTileInfo(index: indexPath.row)
+        let tmpTile = board.getTileInfo(index: indexPath.row)
         cell?.backgroundColor = tmpTile.tColor
         print("You deselected cell #\(indexPath.item)!")
     }
