@@ -147,18 +147,17 @@ struct Board {
                     return
 
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 
-                }
             }
 
         }
     }
 
-    mutating func playTurn() {
+    mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
 
 
         Log.log(playerCounter, level: .debug)
+        let currentPosition = players[playerCounter].getPosition()
         Dice.roll()
         let roll = Dice.returnRollSum()
         let outcome = checkOutcomeOfRoll(player: players[playerCounter], roll: roll)
@@ -167,9 +166,9 @@ struct Board {
             updatePlayerPosition(player: players[playerCounter], tileId: outcome.terminus)
         }
         if roll != 6 {
-            playerCounter = playerCounter == 3 ? 0 : playerCounter + 1
+            playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
         }
-
+        return (getTileIndexFromId(tileId: currentPosition) , getTileIndexFromId(tileId: outcome.newPosition), getTileIndexFromId(tileId: outcome.terminus) )
 
     }
 

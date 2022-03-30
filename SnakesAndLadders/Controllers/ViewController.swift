@@ -61,7 +61,7 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
     }
     @IBAction func rollDice(_ sender: UIButton) {
 
-        board.playTurn()
+        let outcome = board.playTurn()
         rollDiceButton.isEnabled = false
         diceImage.animationImages = Dice.animateSingleDieRoll()
         diceImage.animationDuration = 1.0
@@ -69,7 +69,14 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
             self.diceImage.stopAnimating()
             self.diceImage.image = Dice.returnFirstRollSymbol()
-            self.myCollectionView.reloadData()
+            var indexPaths: [NSIndexPath] = []
+
+            indexPaths.append(NSIndexPath(item: outcome.currentIndex, section: 0))
+            indexPaths.append(NSIndexPath(item: outcome.newIndex, section: 0))
+            if outcome.terminusIndex > -1 {
+            indexPaths.append(NSIndexPath(item: outcome.terminusIndex, section: 0))
+            }
+            self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
         } 
         rollDiceButton.isEnabled = true
 
