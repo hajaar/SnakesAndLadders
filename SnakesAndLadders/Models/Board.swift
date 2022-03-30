@@ -163,7 +163,9 @@ struct Board {
         let roll = Dice.returnRollSum()
         let outcome = checkOutcomeOfRoll(player: players[playerCounter], roll: roll)
         updatePlayerPosition(player: players[playerCounter], tileId: outcome.newPosition)
-        playerCounter = playerCounter == 3 ? 0 : playerCounter + 1
+        if roll != 6 {
+            playerCounter = playerCounter == 3 ? 0 : playerCounter + 1
+        }
 
 
     }
