@@ -32,6 +32,7 @@ struct Dice {
         for _ in 0...noOfDice - 1 {
             generatedRoll.append(Int.random(in: 1...noOfSides))
         }
+        delegate?.getAnimateSingleDieRoll(animatedImages: animateSingleDieRoll(), finalImage: returnFirstRollSymbol())
     }
     
     
@@ -66,7 +67,6 @@ struct Dice {
         }
         let firstRoll = returnFirstRollSymbol()
         dieRollAnimation.append(firstRoll)
-        delegate?.getAnimateSingleDieRoll(animatedImages: dieRollAnimation, finalImage: firstRoll)
 
         return dieRollAnimation
     }

@@ -9,7 +9,6 @@ import UIKit
 
 class ViewController: UIViewController, BoardDelegate, DiceDelegate {
     func getAnimateSingleDieRoll(animatedImages: [UIImage], finalImage: UIImage) {
-     /*   print("sup")
         rollDiceButton.isEnabled = false
         diceImage.animationImages = animatedImages
         diceImage.animationDuration = 1.0
@@ -18,7 +17,7 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
             self.diceImage.stopAnimating()
             self.diceImage.image = finalImage
         }
-        rollDiceButton.isEnabled = true */
+        rollDiceButton.isEnabled = true
     }
     
     
@@ -64,12 +63,7 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
 
         let outcome = board.playTurn()
         rollDiceButton.isEnabled = false
-        diceImage.animationImages = Dice.animateSingleDieRoll()
-        diceImage.animationDuration = 0.75
-        diceImage.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-            self.diceImage.stopAnimating()
-            self.diceImage.image = Dice.returnFirstRollSymbol()
             var indexPaths: [NSIndexPath] = []
             indexPaths.append(NSIndexPath(item: outcome.currentIndex, section: 0))
             self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
