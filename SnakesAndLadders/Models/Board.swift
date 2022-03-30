@@ -163,6 +163,9 @@ struct Board {
         let roll = Dice.returnRollSum()
         let outcome = checkOutcomeOfRoll(player: players[playerCounter], roll: roll)
         updatePlayerPosition(player: players[playerCounter], tileId: outcome.newPosition)
+        if outcome.terminus > -1 {
+            updatePlayerPosition(player: players[playerCounter], tileId: outcome.terminus)
+        }
         if roll != 6 {
             playerCounter = playerCounter == 3 ? 0 : playerCounter + 1
         }
@@ -170,11 +173,19 @@ struct Board {
 
     }
 
-    private func checkOutcomeOfRoll(player: Player, roll: Int) -> (win: Bool, newPosition: Int) {
+    private func checkOutcomeOfRoll(player: Player, roll: Int) -> (win: Bool, newPosition: Int, terminus: Int) {
         var newPosition = player.getPosition() + roll
-        newPosition = newPosition > AppConfig.boardSize ? player.getPosition() : newPosition
+        var terminus = -1
+        if newPosition > AppConfig.boardSize || newPosition < 1 {
+            newPosition = player.getPosition()
+        } else {
+            let newTile = tiles[getTileIndexFromId(tileId: newPosition)].tSnakeOrLadder
+            if newTile.status != .none {
+                terminus = newTile.terminus
+            }
+        }
         let win = newPosition == AppConfig.boardSize ? true : false
-        return (win, newPosition)
+        return (win, newPosition, terminus)
     }
 
     private func getTileIndexFromId(tileId: Int) -> Int {
