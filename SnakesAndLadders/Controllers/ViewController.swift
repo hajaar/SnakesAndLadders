@@ -25,13 +25,15 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
     
     func playerDidSomething(_ controller: Board, text: String) {
         print(text)
-        self.messageLabel.text = text
+        messageText = text
+        
     }
     
     
     var board = Board()
     let reuseIdentifier = "cell"
     var counter: Int = 1
+    var messageText: String = ""
     
     @IBOutlet weak var diceImage: UIImageView!
     
@@ -80,6 +82,7 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
                 self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
                 indexPaths = [NSIndexPath]()
             }
+            self.messageLabel.text = self.messageText
         } 
         rollDiceButton.isEnabled = true
 
