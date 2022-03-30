@@ -78,9 +78,10 @@ struct Board {
      mutating private func addRandomSnakesAndLadder(count: Int) {
         for _ in 0...count - 1{
             let isSnake = Bool.random()
-            let startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
+            var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
             var length = lengthSnakeAndLadder.allCases.randomElement()!.value
-            while doesSnakeOrLadderExceedBoardSize(isSnake: isSnake, start: startingPosition, length: length) {
+            while doesSnakeOrLadderViolateConstraints(isSnake: isSnake, start: startingPosition, length: length) {
+                startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
                 length = lengthSnakeAndLadder.allCases.randomElement()!.value
             }
             let endingPosition = returnEndingPosition(isSnake: isSnake, start: startingPosition, length: length)
@@ -88,14 +89,15 @@ struct Board {
             tiles[getTileIndexFromId(tileId: startingPosition)].tSnakeOrLadder = (isSnake ? tileType.snakeStart : tileType.ladderStart, endingPosition)
         }
     }
-    mutating private func doesSnakeOrLadderOverlap(isSnake: Bool, start: Int, length: Int) -> Bool {
-        
-        return true
-    }
     
-    
-    mutating private func doesSnakeOrLadderExceedBoardSize(isSnake: Bool, start: Int, length: Int) -> Bool {
+    mutating private func doesSnakeOrLadderViolateConstraints(isSnake: Bool, start: Int, length: Int) -> Bool {
+        if tiles[getTileIndexFromId(tileId: start)].tSnakeOrLadder.status != .none  {
+            return true
+        }
         let endingPosition = returnEndingPosition(isSnake: isSnake, start: start, length: length)
+        if tiles[getTileIndexFromId(tileId: endingPosition)].tSnakeOrLadder.status != .none {
+            return true
+        }
         return isSnake ? endingPosition <= 1 : endingPosition >= AppConfig.boardSize
     }
     
