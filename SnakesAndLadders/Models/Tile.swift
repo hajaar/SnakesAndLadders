@@ -10,7 +10,7 @@ import UIKit
 
 struct Tile {
     var tId: Int = 0
-    var tOccupiedBy: [Int] = [] {
+    var tOccupiedBy: [Bool] = [Bool](repeating: false, count: AppConfig.numberofPlayers) {
         didSet {
             Log.log("tileID: \(tId) contains \(tOccupiedBy)", level: .trace)
         }
@@ -41,24 +41,26 @@ struct Tile {
             default:
                 tmpString = ""
             }
-        } else {
-            tmpString = String(tOccupiedBy.last!) + symbolNames.playerName
         }
         return UIImage(systemName: tmpString)
     }
     
+    var tPlayerImages: [UIImage?] {
+        var playerImages = [UIImage](repeating: UIImage(), count: AppConfig.numberofPlayers)
+        for i in 0...AppConfig.numberofPlayers - 1 {
+            playerImages[i] = tOccupiedBy[i] ? UIImage(systemName:  String(i) + symbolNames.playerName)! : UIImage()
+        }
+        return playerImages
+    }
+    
     mutating func addPlayer(playerId: Int){
-        tOccupiedBy.append(playerId)
+        print(playerId)
+        print(tOccupiedBy)
+        tOccupiedBy[playerId] = true
     }
     
     mutating func removePlayer(playerId: Int){
-        for i in 0...tOccupiedBy.count - 1 {
-            if tOccupiedBy[i] == playerId {
-                tOccupiedBy.remove(at: i)
-                return
-            }
-            
-        }
+        tOccupiedBy[playerId] = false
         
     }
     

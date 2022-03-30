@@ -32,10 +32,34 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tGO-h5-nPf">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-DP-jgy">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </imageView>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Jhb-jt-UhZ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tGO-h5-nPf">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </imageView>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qt7-98-AcT">
+                                                                            <rect key="frame" x="25" y="0.0" width="25" height="25"/>
+                                                                        </imageView>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="e0K-Qf-Sca">
+                                                                    <rect key="frame" x="0.0" y="25" width="50" height="25"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Avm-YP-f4T">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                        </imageView>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5mL-VD-QrJ">
+                                                                            <rect key="frame" x="25" y="0.0" width="25" height="25"/>
+                                                                        </imageView>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                        </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogb-a3-az2">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,12 +71,12 @@
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="tGO-h5-nPf" firstAttribute="leading" secondItem="0hu-SZ-Aui" secondAttribute="leading" id="J2D-Br-mMc"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Bcm-DP-jgy" secondAttribute="trailing" id="86V-aw-WQI"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ogb-a3-az2" secondAttribute="trailing" id="Ku7-u4-zgf"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Bcm-DP-jgy" secondAttribute="bottom" id="Mlh-QT-6Ht"/>
                                                         <constraint firstItem="Ogb-a3-az2" firstAttribute="top" secondItem="0hu-SZ-Aui" secondAttribute="top" id="T2c-jM-wkE"/>
-                                                        <constraint firstAttribute="trailing" secondItem="tGO-h5-nPf" secondAttribute="trailing" id="Ydo-nM-1ak"/>
-                                                        <constraint firstAttribute="bottom" secondItem="tGO-h5-nPf" secondAttribute="bottom" id="sxb-r1-iYP"/>
-                                                        <constraint firstItem="tGO-h5-nPf" firstAttribute="top" secondItem="0hu-SZ-Aui" secondAttribute="top" id="twv-WH-lCK"/>
+                                                        <constraint firstItem="Bcm-DP-jgy" firstAttribute="top" secondItem="0hu-SZ-Aui" secondAttribute="top" id="d5k-st-iGA"/>
+                                                        <constraint firstItem="Bcm-DP-jgy" firstAttribute="leading" secondItem="0hu-SZ-Aui" secondAttribute="leading" id="sEJ-S3-C7Z"/>
                                                         <constraint firstAttribute="bottom" secondItem="Ogb-a3-az2" secondAttribute="bottom" id="xd9-Fg-jnY"/>
                                                         <constraint firstItem="Ogb-a3-az2" firstAttribute="leading" secondItem="0hu-SZ-Aui" secondAttribute="leading" id="xmB-Vw-OhI"/>
                                                     </constraints>
@@ -60,6 +84,9 @@
                                                 <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                                 <connections>
                                                     <outlet property="myImage" destination="tGO-h5-nPf" id="deD-56-YgO"/>
+                                                    <outlet property="myImage2" destination="Avm-YP-f4T" id="2ES-4g-UD3"/>
+                                                    <outlet property="myImage3" destination="5mL-VD-QrJ" id="M4F-ez-CE3"/>
+                                                    <outlet property="myImage4" destination="qt7-98-AcT" id="570-Hq-iJf"/>
                                                     <outlet property="myLabel" destination="Ogb-a3-az2" id="ZlK-hY-gnN"/>
                                                 </connections>
                                             </collectionViewCell>

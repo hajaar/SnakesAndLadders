@@ -28,7 +28,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
         let tmpTile = board.getTileInfo(index: indexPath.row)
 
-        cell.myImage.image = tmpTile.tImage
+        cell.myImage.image = tmpTile.tPlayerImages[0]
+        cell.myImage2.image = tmpTile.tPlayerImages[1]
+        cell.myImage3.image = tmpTile.tPlayerImages[2]
+        cell.myImage4.image = tmpTile.tPlayerImages[3]
         cell.myLabel.text = String(tmpTile.tId)
         cell.backgroundColor = tmpTile.tColor
         cell.layer.borderColor = tmpTile.tBorderColor.cgColor
