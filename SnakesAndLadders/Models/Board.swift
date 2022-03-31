@@ -186,13 +186,17 @@ struct Board {
     }
 
     private func getTileIndexFromId(tileId: Int) -> Int {
-        for index in 0...AppConfig.boardSize - 1 {
-            if tiles[index].tId == tileId {
-                return index
-            }
-        }
-        return 0
-    }
+        
+        return (tiles.filter() {$0.tId == tileId})[0].tIndex
+
+//
+//        for index in 0...AppConfig.boardSize - 1 {
+//            if tiles[index].tId == tileId {
+//                return index
+//            }
+//        }
+//        return 0
+   }
 }
 
 
