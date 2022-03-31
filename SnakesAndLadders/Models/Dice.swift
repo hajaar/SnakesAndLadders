@@ -35,6 +35,14 @@ struct Dice {
         delegate?.getAnimateSingleDieRoll(animatedImages: animateSingleDieRoll(), finalImage: returnFirstRollSymbol())
     }
     
+    static func returnNumberOfDice() -> Int {
+        return noOfDice
+    }
+    
+    static func returnNumberOfSides() -> Int {
+        return noOfSides
+    }
+    
     
     static func returnRollValues() -> [Int] {
         return generatedRoll

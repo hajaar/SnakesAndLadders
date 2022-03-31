@@ -22,9 +22,20 @@
 		F2A5528727DDEF4500D0D15C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2A5528627DDEF4500D0D15C /* Assets.xcassets */; };
 		F2A5528A27DDEF4500D0D15C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A5528827DDEF4500D0D15C /* LaunchScreen.storyboard */; };
 		F2C4959627E0B2E40067ED90 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4959527E0B2E40067ED90 /* Board.swift */; };
+		F2ECB09527F5ABC7003FD12F /* DiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ECB09427F5ABC7003FD12F /* DiceTests.swift */; };
 		F2FCA3DB27F2AAD900A56E50 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FCA3DA27F2AAD900A56E50 /* Log.swift */; };
 		F2FCA3DF27F2AD6A00A56E50 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FCA3DE27F2AD6A00A56E50 /* Colors.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F2ECB08E27F5ABAC003FD12F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2A5527227DDEF4400D0D15C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2A5527927DDEF4400D0D15C;
+			remoteInfo = SnakesAndLadders;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F223552A27E2D0D300CA48EB /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
@@ -44,12 +55,22 @@
 		F2A5528927DDEF4500D0D15C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2A5528B27DDEF4500D0D15C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2C4959527E0B2E40067ED90 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		F2ECB08A27F5ABAC003FD12F /* SnakesAndLaddersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnakesAndLaddersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2ECB09327F5ABC7003FD12F /* SnakesAndLaddersTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnakesAndLaddersTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		F2ECB09427F5ABC7003FD12F /* DiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceTests.swift; sourceTree = "<group>"; };
 		F2FCA3DA27F2AAD900A56E50 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		F2FCA3DE27F2AD6A00A56E50 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F2A5527727DDEF4400D0D15C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2ECB08727F5ABAC003FD12F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -74,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				F2A5527C27DDEF4400D0D15C /* SnakesAndLadders */,
+				F2ECB08B27F5ABAC003FD12F /* SnakesAndLaddersTests */,
 				F2A5527B27DDEF4400D0D15C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				F2A5527A27DDEF4400D0D15C /* SnakesAndLadders.app */,
+				F2ECB08A27F5ABAC003FD12F /* SnakesAndLaddersTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +136,15 @@
 				F287BC2A27E451C500197B8B /* Dice.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F2ECB08B27F5ABAC003FD12F /* SnakesAndLaddersTests */ = {
+			isa = PBXGroup;
+			children = (
+				F2ECB09427F5ABC7003FD12F /* DiceTests.swift */,
+				F2ECB09327F5ABC7003FD12F /* SnakesAndLaddersTests-Bridging-Header.h */,
+			);
+			path = SnakesAndLaddersTests;
 			sourceTree = "<group>";
 		};
 		F2FCA3DC27F2AC3C00A56E50 /* Helpers */ = {
@@ -152,6 +184,24 @@
 			productReference = F2A5527A27DDEF4400D0D15C /* SnakesAndLadders.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F2ECB08927F5ABAC003FD12F /* SnakesAndLaddersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2ECB09027F5ABAC003FD12F /* Build configuration list for PBXNativeTarget "SnakesAndLaddersTests" */;
+			buildPhases = (
+				F2ECB08627F5ABAC003FD12F /* Sources */,
+				F2ECB08727F5ABAC003FD12F /* Frameworks */,
+				F2ECB08827F5ABAC003FD12F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F2ECB08F27F5ABAC003FD12F /* PBXTargetDependency */,
+			);
+			name = SnakesAndLaddersTests;
+			productName = SnakesAndLaddersTests;
+			productReference = F2ECB08A27F5ABAC003FD12F /* SnakesAndLaddersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -159,11 +209,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					F2A5527927DDEF4400D0D15C = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					F2ECB08927F5ABAC003FD12F = {
+						CreatedOnToolsVersion = 13.3;
+						LastSwiftMigration = 1330;
+						TestTargetID = F2A5527927DDEF4400D0D15C;
 					};
 				};
 			};
@@ -181,6 +236,7 @@
 			projectRoot = "";
 			targets = (
 				F2A5527927DDEF4400D0D15C /* SnakesAndLadders */,
+				F2ECB08927F5ABAC003FD12F /* SnakesAndLaddersTests */,
 			);
 		};
 /* End PBXProject section */
@@ -193,6 +249,13 @@
 				F2A5528A27DDEF4500D0D15C /* LaunchScreen.storyboard in Resources */,
 				F2A5528727DDEF4500D0D15C /* Assets.xcassets in Resources */,
 				F2A5528527DDEF4400D0D15C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2ECB08827F5ABAC003FD12F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +283,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F2ECB08627F5ABAC003FD12F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2ECB09527F5ABC7003FD12F /* DiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F2ECB08F27F5ABAC003FD12F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2A5527927DDEF4400D0D15C /* SnakesAndLadders */;
+			targetProxy = F2ECB08E27F5ABAC003FD12F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F2A5528327DDEF4400D0D15C /* Main.storyboard */ = {
@@ -418,6 +497,59 @@
 			};
 			name = Release;
 		};
+		F2ECB09127F5ABAC003FD12F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QWMG9ABUKA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.digitalamrit.SnakesAndLaddersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "SnakesAndLaddersTests/SnakesAndLaddersTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnakesAndLadders.app/SnakesAndLadders";
+			};
+			name = Debug;
+		};
+		F2ECB09227F5ABAC003FD12F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QWMG9ABUKA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.digitalamrit.SnakesAndLaddersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "SnakesAndLaddersTests/SnakesAndLaddersTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnakesAndLadders.app/SnakesAndLadders";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -435,6 +567,15 @@
 			buildConfigurations = (
 				F2A5528F27DDEF4500D0D15C /* Debug */,
 				F2A5529027DDEF4500D0D15C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2ECB09027F5ABAC003FD12F /* Build configuration list for PBXNativeTarget "SnakesAndLaddersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2ECB09127F5ABAC003FD12F /* Debug */,
+				F2ECB09227F5ABAC003FD12F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
