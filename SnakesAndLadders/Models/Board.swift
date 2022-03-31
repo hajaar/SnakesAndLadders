@@ -30,7 +30,7 @@ struct Board {
         resetBoard()
         addRandomSnakeAndLadder(count: 3)
         createPlayers(name: "", token: "")
-        setPlayers()
+
         playerCounter = 0
         //    playGame()
     }
@@ -40,6 +40,7 @@ struct Board {
         for i in 0...AppConfig.numberofPlayers - 1 {
 
             players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and pass it here
+            addPlayerToTile(playerId: i, tileId: 1)
         }
     }
 
@@ -68,12 +69,7 @@ struct Board {
         }
     }
 
-    private mutating func setPlayers() {
-        for i in 0...AppConfig.numberofPlayers - 1 {
-            players[i].startNewGame()
-            addPlayerToTile(playerId: i, tileId: 1)
-        }
-    }
+
 
     func getTileInfo(index: Int) -> Tile {
         return tiles[index]

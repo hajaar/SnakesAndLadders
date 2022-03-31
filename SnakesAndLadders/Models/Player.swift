@@ -33,15 +33,15 @@ struct Player {
         self.token = token
 
         Log.log("\(self.playerId) \(self.name) \(self.token)", level: .debug)
-    }
-    
-    mutating func startNewGame()  {
+        
         position = 1
         balance = 0
         createdSnakesAndLadders = []
         remainingSnakesAndLaddersOptions = [.small, .medium, .large, .extraLarge]
         Log.log("player: \(playerId) position: \(position) balance: \(balance)", level: .trace)
     }
+    
+
     
     func getBalance() -> Int {
         return balance
