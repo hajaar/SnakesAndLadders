@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 struct Tile {
-    var tId: Int = 0
+    var tId: Int = 0 //shows the number of tile on the board
+    var tIndex: Int = AppConfig.tileStartId //index of the tile in the array created by Board
     var tOccupiedBy: [Bool] = [Bool](repeating: false, count: AppConfig.numberofPlayers) {
         didSet {
             Log.log("tileID: \(tId) contains \(tOccupiedBy)", level: .trace)
@@ -60,6 +61,13 @@ struct Tile {
             playerImages[i] = tOccupiedBy[i] ? UIImage(systemName:  String(i) + symbolNames.playerName)! : UIImage()
         }
         return playerImages
+    }
+    
+    init(tId: Int, tSnakeOrLadder: (status: tileType, terminus: Int)) {
+        self.tId = tId
+        self.tSnakeOrLadder.status = tSnakeOrLadder.status
+        self.tSnakeOrLadder.terminus = tSnakeOrLadder.terminus
+        AppConfig.tileStartId += 1
     }
     
     mutating func addPlayer(playerId: Int){

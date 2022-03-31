@@ -23,28 +23,25 @@ struct Board {
     init() {
         tiles = [Tile]()
         players = [Player]()
-        resetBoard()
     }
 
     mutating func startNewGame() {
         resetBoard()
         addRandomSnakeAndLadder(count: 3)
         createPlayers(name: "", token: "")
-
         playerCounter = 0
         //    playGame()
     }
 
     private mutating func createPlayers(name: String, token: String) {
-
         for i in 0...AppConfig.numberofPlayers - 1 {
-
-            players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and pass it here
+            players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and
             addPlayerToTile(playerId: i, tileId: 1)
         }
     }
 
     private mutating func resetBoard() {
+        AppConfig.tileStartId = 0
         tiles = [Tile]()
         for i in stride(from: AppConfig.boardSize, to: AppConfig.boardSize - (AppConfig.boardSize / AppConfig.boardLength), by: -1) {
             tiles.append(Tile(tId: i, tSnakeOrLadder: (tileType.none, -1)))
@@ -65,7 +62,7 @@ struct Board {
             end = start + (AppConfig.boardSize / AppConfig.boardLength)
         }
         for i in 0...AppConfig.boardSize - 1 {
-            Log.log("index \(i) id \(tiles[i].tId)", level: .trace)
+            Log.log("index \(i) id \(tiles[i].tId) pos \(tiles[i].tIndex)", level: .trace)
         }
     }
 

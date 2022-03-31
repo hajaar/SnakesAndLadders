@@ -12,7 +12,7 @@ struct AppConfig {
     static let boardLength = 10
     static let boardSize = boardLength * boardLength
     static let numberofPlayers = 4
-    static var startId = -1
+    static var tileStartId = 0
     static let boardTextColor = (FlatColors.Clouds, IndianColors.SarawakWhitePepper)
     static let boardColor = FlatColors.GreenSea
     static let highlightTileColor = IndianColors.HighlighterLavender

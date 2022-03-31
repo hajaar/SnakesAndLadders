@@ -38,6 +38,7 @@ struct Player {
         balance = 0
         createdSnakesAndLadders = []
         remainingSnakesAndLaddersOptions = [.small, .medium, .large, .extraLarge]
+        
         Log.log("player: \(playerId) position: \(position) balance: \(balance)", level: .trace)
     }
     

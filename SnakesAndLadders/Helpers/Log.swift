@@ -26,7 +26,7 @@ struct Log {
             }
         }
     }
-    private static let logLevel: LogLevel = .debug
+    private static let logLevel: LogLevel = .trace
     static public func log(_ message: Any, file: String = (#file as NSString).lastPathComponent, function: String = #function, line: Int = #line, level: LogLevel) {
         if level.value >= logLevel.value {
             print(" \(file): \(function): \(line): \(message) ")
