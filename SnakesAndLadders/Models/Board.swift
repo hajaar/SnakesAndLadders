@@ -113,64 +113,21 @@ struct Board {
         players[playerId].setPosition(tileId)
     }
     
-    mutating func playGame() {
-        while !isGameOver {
-            players.forEach { player in
-                Log.log(player.getId(), level: .debug)
-                Dice.roll()
-                let roll = Dice.returnRollSum()
-                let outcome = checkOutcomeOfRoll(playerId: player.getId(), roll: roll)
-                updatePlayerPosition(playerId: player.getId(), tileId: outcome.newPosition)
-                delegate?.playerDidSomething(self, text: String(outcome.newPosition))
-                if outcome.win {
-                    isGameOver = true
-                    return
-                }
-            }
-        }
-    }
     
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
-        Log.log(playerCounter, level: .trace)
-        let currentPosition = getPlayerPositionFromTilesForPlayer(playerCounter)
-        Dice.roll()
-        let roll = Dice.returnRollSum()
-        let outcome = checkOutcomeOfRoll(playerId: playerCounter, roll: roll)
-        updatePlayerPosition(playerId: playerCounter, tileId: outcome.newPosition)
-        if outcome.terminus > -1 {
-            updatePlayerPosition(playerId: playerCounter, tileId: outcome.terminus)
-        }
-        if roll != 6 {
+        let currentPosition = players[playerCounter].getPosition()
+        print(currentPosition)
+        let newPosition = players[playerCounter].playerRollsDice()
+        print(newPosition)
+        let newTile = tiles[getTileIndexFromId(newPosition)].tType
+        let terminus = players[playerCounter].playerHasComeToSpecialTile(status: newTile.status, terminus: newTile.terminus)
+        print(terminus)
+        if Dice.returnRollSum() != 6 {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
         }
         delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"))
-        return (getTileIndexFromId(currentPosition) , getTileIndexFromId(outcome.newPosition), getTileIndexFromId(outcome.terminus) )
-    }
-    
-    private mutating func checkOutcomeOfRoll(playerId: Int, roll: Int) -> (win: Bool, newPosition: Int, terminus: Int) {
-        let currentPosition = getPlayerPositionFromTilesForPlayer(playerId)
-        let modifiedRoll = players[playerId].nextTurnValue(roll: roll)
-        var newPosition = currentPosition + modifiedRoll
-        var terminus = -1
-        if newPosition > AppConfig.boardSize || newPosition < 1 {
-            newPosition = currentPosition
-        } else {
-            let newTile = tiles[getTileIndexFromId(newPosition)].tType
-            switch newTile.status {
-            case .snakeStart:
-                terminus = newTile.terminus
-            case .fastStart:
-                players[playerId].setNextTurnType(turnType: .fast)
-            case .ladderStart:
-                terminus = newTile.terminus
-            case .slowStart:
-                players[playerId].setNextTurnType(turnType: .slow)
-            case .none:
-                terminus = -1
-            }
-        }
         let win = newPosition == AppConfig.boardSize ? true : false
-        return (win, newPosition, terminus)
+        return (getTileIndexFromId(currentPosition) , getTileIndexFromId(newPosition), getTileIndexFromId(terminus) )
     }
     
     private func getTileIndexFromId(_ tileId: Int) -> Int {

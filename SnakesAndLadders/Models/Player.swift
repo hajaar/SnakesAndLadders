@@ -19,7 +19,7 @@ struct Player {
     }
     
     private var playerColor: UIColor
-
+    
     private var balance: Int = 0 {
         didSet {
             Log.log("playerId \(playerId) balance changed from \(oldValue) to \(balance) ", level: .trace)
@@ -28,7 +28,7 @@ struct Player {
     private var createdSnakesAndLadders: [SnakeAndLadder] = []
     private var wins: Int = 0
     private var remainingSnakesAndLaddersOptions: [lengthSnakeAndLadder] = [.small, .medium, .large, .extraLarge]
-
+    
     private var nextTurnType: TurnType = .normal
     
     
@@ -38,9 +38,9 @@ struct Player {
         self.token = token
         
         self.playerColor = AppConfig.playerColors.randomElement()!
-
+        
         Log.log("\(self.playerId) \(self.name) \(self.token)", level: .debug)
-
+        
         balance = 0
         createdSnakesAndLadders = []
         remainingSnakesAndLaddersOptions = [.small, .medium, .large, .extraLarge]
@@ -48,7 +48,7 @@ struct Player {
         Log.log("player: \(playerId) balance: \(balance)", level: .trace)
     }
     
-
+    
     
     func getBalance() -> Int {
         return balance
@@ -62,7 +62,7 @@ struct Player {
     func checkForAvailableFunds(amount: Int = 0) -> Bool {
         return balance - amount >= 0
     }
-
+    
     func getId() -> Int {
         return playerId
     }
@@ -75,7 +75,7 @@ struct Player {
         self.nextTurnType = turnType
     }
     
-    mutating func nextTurnValue(roll: Int) -> Int {
+    mutating private func nextTurnValue(roll: Int) -> Int {
         var modifiedRoll = roll
         switch nextTurnType {
         case .normal:
@@ -113,6 +113,37 @@ struct Player {
         return playerColor
     }
     
+    mutating func playerRollsDice() -> Int{
+        Log.log(playerId, level: .trace)
+        let currentPosition = position
+        Dice.roll()
+        let roll = Dice.returnRollSum()
+        let modifiedRoll = nextTurnValue(roll: roll)
+        var newPosition = currentPosition + modifiedRoll
+        if newPosition > AppConfig.boardSize || newPosition < 1 {
+            newPosition = currentPosition
+        }
+        position = newPosition
+        return newPosition
+    }
+    
+    mutating func playerHasComeToSpecialTile(status: tileType, terminus: Int) -> Int {
+        var value = -1
+        switch status {
+        case .snakeStart:
+            value = terminus
+            position = terminus
+        case .fastStart:
+            setNextTurnType(turnType: .fast)
+        case .ladderStart:
+            value = terminus
+            position = terminus
+        case .slowStart:
+            setNextTurnType(turnType: .slow)
+        case .none:
+            value = -1
+        }
+        return value 
+    }
 }
-
 
