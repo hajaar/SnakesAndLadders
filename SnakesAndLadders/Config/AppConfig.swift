@@ -25,8 +25,8 @@ struct AppConfig {
 
 
 struct symbolNames {
-    static let ladderStart: String = "capsule.portrait.fill"
-    static let snakeStart: String = "capsule.portrait.fill"
+    static let ladderStart: String = "arrowtriangle.up.fill"
+    static let snakeStart: String = "arrowtriangle.down.fill"
     static let playerName: String = ".circle.fill"
     static let tileName: String = ".square"
     static let fastTile: String = "hare.fill"
