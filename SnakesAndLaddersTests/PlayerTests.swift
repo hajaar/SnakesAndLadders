@@ -9,6 +9,7 @@ import XCTest
 @testable import SnakesAndLadders
 
 class PlayerTests: XCTestCase {
+
     var player = Player(playerID: 1, name: "Gummeemama", token: "capsule.fill")
     
     func testPlayerIsCreatedWithId() {
@@ -25,6 +26,15 @@ class PlayerTests: XCTestCase {
     
     func testPlayerIsCreatedWithNormalNextTurnType() {
         XCTAssertEqual(player.getNextTurnType(), TurnType.normal)
+    }
+    
+    func testPlayerHasBeenCreatedAtPositionOne() {
+        XCTAssertEqual(player.getPosition(), 1)
+    }
+    
+    func testPlayerHasAnImageOnCreation() {
+        let tmpImage = UIImage(systemName: "\(1)\(symbolNames.playerName)")
+        XCTAssertEqual(player.getPlayerImage(), tmpImage)
     }
     
     func testPlayerReturnsUnmodifiedRollValueWhenTurnTypeIsNormal() {
@@ -50,6 +60,16 @@ class PlayerTests: XCTestCase {
         let modifiedRoll = player.nextTurnValue(roll: 5)
         XCTAssertEqual(modifiedRoll, 2)
         XCTAssertEqual(player.getNextTurnType(), .normal)
+    }
+
+    func testPlayerHasANewPosition() {
+        player.setPosition(2)
+        XCTAssertEqual(player.getPosition(), 2)
+    }
+    
+    func testPlayerShouldNotMoveBeyondMaximumSizeOfBoardnDiceRoll() {
+        player.setPosition(99)
+        XCTAssertEqual(player.playerRollsDice(), 99)
     }
 
 }

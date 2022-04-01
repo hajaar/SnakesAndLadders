@@ -18,6 +18,7 @@ struct Board {
     private var players: [Player]
     private var isGameOver: Bool = false
     private var playerCounter: Int = 0
+    private var isGameWon: Bool = false
     var delegate: BoardDelegate?
     
     init() {
@@ -26,6 +27,8 @@ struct Board {
     }
     
     mutating func startNewGame() {
+        isGameWon = false
+        isGameOver = true
         resetBoard()
         addRandomSpecialTiles(count: 3, isSnakeAndLadder: true)
         addRandomSpecialTiles(count: 3, isSnakeAndLadder: false)
@@ -126,7 +129,7 @@ struct Board {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
         }
         delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"))
-        let win = newPosition == AppConfig.boardSize ? true : false
+        isGameWon = newPosition == AppConfig.boardSize ? true : false
         return (getTileIndexFromId(currentPosition) , getTileIndexFromId(newPosition), getTileIndexFromId(terminus) )
     }
     

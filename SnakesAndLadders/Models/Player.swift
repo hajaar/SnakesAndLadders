@@ -75,7 +75,7 @@ struct Player {
         self.nextTurnType = turnType
     }
     
-    mutating private func nextTurnValue(roll: Int) -> Int {
+    mutating func nextTurnValue(roll: Int) -> Int {
         var modifiedRoll = roll
         switch nextTurnType {
         case .normal:
