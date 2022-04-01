@@ -123,9 +123,7 @@ struct Board {
         }
     }
 
-    mutating private func updatePlayerPosition(player: Player, tileId: Int) {
-        updatePlayerPosition(playerId: player.getId(), tileId: tileId)
-    }
+
 
 
     mutating func playGame() {
@@ -135,7 +133,7 @@ struct Board {
                 Dice.roll()
                 let roll = Dice.returnRollSum()
                 let outcome = checkOutcomeOfRoll(player: player, roll: roll)
-                updatePlayerPosition(player: player, tileId: outcome.newPosition)
+                updatePlayerPosition(playerId: player.getId(), tileId: outcome.newPosition)
                 delegate?.playerDidSomething(self, text: String(outcome.newPosition))
                 if outcome.win {
                     isGameOver = true
@@ -157,9 +155,9 @@ struct Board {
         Dice.roll()
         let roll = Dice.returnRollSum()
         let outcome = checkOutcomeOfRoll(player: players[playerCounter], roll: roll)
-        updatePlayerPosition(player: players[playerCounter], tileId: outcome.newPosition)
+        updatePlayerPosition(playerId: players[playerCounter].getId(), tileId: outcome.newPosition)
         if outcome.terminus > -1 {
-            updatePlayerPosition(player: players[playerCounter], tileId: outcome.terminus)
+            updatePlayerPosition(playerId: players[playerCounter].getId(), tileId: outcome.terminus)
         }
         if roll != 6 {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
