@@ -160,15 +160,26 @@ struct Board {
     }
     
     private func checkOutcomeOfRoll(player: Player, roll: Int) -> (win: Bool, newPosition: Int, terminus: Int) {
-        var newPosition = getPlayerPositionFromTiles(playerId: player.getId()) + roll
+        let currentPosition = getPlayerPositionFromTiles(playerId: player.getId())
+        var newPosition = currentPosition + roll
         var terminus = -1
         if newPosition > AppConfig.boardSize || newPosition < 1 {
-            newPosition = getPlayerPositionFromTiles(playerId: player.getId())
+            newPosition = currentPosition
         } else {
             let newTile = tiles[getTileIndexFromId(tileId: newPosition)].tType
-            if newTile.status != .none {
+            switch newTile.status {
+            case .snakeStart:
                 terminus = newTile.terminus
+            case .fastStart:
+                terminus = -1
+            case .ladderStart:
+                terminus = newTile.terminus
+            case .slowStart:
+                terminus = -1
+            case .none:
+                terminus = -1
             }
+            
         }
         let win = newPosition == AppConfig.boardSize ? true : false
         return (win, newPosition, terminus)
