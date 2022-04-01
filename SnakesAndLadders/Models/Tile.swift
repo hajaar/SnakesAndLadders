@@ -74,6 +74,9 @@ struct Tile {
         }
     }
     
+
+    
+    
     mutating func addPlayer(playerId: Int){
         tOccupiedBy[playerId] = true
         Log.log("player \(playerId) is at tileId: \(tId) \(tOccupiedBy) ", level: .trace)
