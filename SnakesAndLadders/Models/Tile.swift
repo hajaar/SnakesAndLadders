@@ -69,6 +69,9 @@ struct Tile {
         self.tType.status = tType.status
         self.tType.terminus = tType.terminus
         AppConfig.tileStartId += 1
+        if self.tId == 1 {
+            self.tOccupiedBy = self.tOccupiedBy.map {_ in true }
+        }
     }
     
     mutating func addPlayer(playerId: Int){

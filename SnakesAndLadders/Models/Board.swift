@@ -37,7 +37,6 @@ struct Board {
     private mutating func createPlayers(name: String, token: String) {
         for i in 0...AppConfig.numberofPlayers - 1 {
             players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and
-            tiles[getTileIndexFromId(tileId: 1)].addPlayer(playerId: i)
             Log.log("Added to tileID: 1 \(tiles[1].tOccupiedBy)", level: .trace)
         }
     }
@@ -161,7 +160,7 @@ struct Board {
     
     private mutating func checkOutcomeOfRoll(playerId: Int, roll: Int) -> (win: Bool, newPosition: Int, terminus: Int) {
         let currentPosition = getPlayerPositionFromTiles(playerId: playerId)
-        let modifiedRoll = players[playerId].nextTurnValue(roll: roll)        
+        let modifiedRoll = players[playerId].nextTurnValue(roll: roll)
         var newPosition = currentPosition + modifiedRoll
         var terminus = -1
         if newPosition > AppConfig.boardSize || newPosition < 1 {
