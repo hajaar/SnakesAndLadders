@@ -82,12 +82,12 @@ struct Board {
             }
             let endingPosition = isSnakeAndLadder ? returnEndingPosition(isSnake: isFirstValue, start: startingPosition, length: length) : startingPosition
             Log.log("count: \(count) isSnakeAndLadder: \(isSnakeAndLadder)  isFirstValue? \(isFirstValue) start \(startingPosition) length \(length)", level: .trace)
-            tiles[getTileIndexFromId(tileId: startingPosition)].tType = isSnakeAndLadder ? (isFirstValue ? tileType.snakeStart : tileType.ladderStart, endingPosition) : (isFirstValue ? tileType.slowStart : tileType.fastStart, endingPosition)
+            tiles[getTileIndexFromId(startingPosition)].tType = isSnakeAndLadder ? (isFirstValue ? tileType.snakeStart : tileType.ladderStart, endingPosition) : (isFirstValue ? tileType.slowStart : tileType.fastStart, endingPosition)
         }
     }
     
     mutating private func doesSpecialTileViolateConstraints(isFirstValue: Bool, start: Int, length: Int = 0) -> Bool {
-        if tiles[getTileIndexFromId(tileId: start)].tType.status != .none {
+        if tiles[getTileIndexFromId(start)].tType.status != .none {
             return true
         }
         let endingPosition = returnEndingPosition(isSnake: isFirstValue, start: start, length: length)
@@ -99,7 +99,7 @@ struct Board {
                 return true
             }
         }
-        if tiles[getTileIndexFromId(tileId: endingPosition)].tType.status != .none {
+        if tiles[getTileIndexFromId(endingPosition)].tType.status != .none {
             return true
         }
         return false
@@ -112,11 +112,11 @@ struct Board {
     
     mutating private func updatePlayerPosition(playerId: Int, tileId: Int) {
         if tileId > -1 && tileId <= AppConfig.boardSize {
-            let currentPosition = getPlayerPositionFromTiles(playerId: playerId)
-            tiles[getTileIndexFromId(tileId: currentPosition)].removePlayer(playerId: playerId)
+            let currentPosition = getPlayerPositionFromTilesForPlayer(playerId)
+            tiles[getTileIndexFromId(currentPosition)].removePlayer(playerId: playerId)
             Log.log("Removed from tileID: \(currentPosition) \(tiles[currentPosition].tOccupiedBy)", level: .trace
             )
-            tiles[getTileIndexFromId(tileId: tileId)].addPlayer(playerId: playerId)
+            tiles[getTileIndexFromId(tileId)].addPlayer(playerId: playerId)
             Log.log("Added to tileID: \(tileId) \(tiles[tileId].tOccupiedBy)", level: .trace
             )
         }
@@ -141,7 +141,7 @@ struct Board {
     
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
         Log.log(playerCounter, level: .trace)
-        let currentPosition = getPlayerPositionFromTiles(playerId: playerCounter)
+        let currentPosition = getPlayerPositionFromTilesForPlayer(playerCounter)
         Dice.roll()
         let roll = Dice.returnRollSum()
         let outcome = checkOutcomeOfRoll(playerId: playerCounter, roll: roll)
@@ -153,18 +153,18 @@ struct Board {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
         }
         delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"))
-        return (getTileIndexFromId(tileId: currentPosition) , getTileIndexFromId(tileId: outcome.newPosition), getTileIndexFromId(tileId: outcome.terminus) )
+        return (getTileIndexFromId(currentPosition) , getTileIndexFromId(outcome.newPosition), getTileIndexFromId(outcome.terminus) )
     }
     
     private mutating func checkOutcomeOfRoll(playerId: Int, roll: Int) -> (win: Bool, newPosition: Int, terminus: Int) {
-        let currentPosition = getPlayerPositionFromTiles(playerId: playerId)
+        let currentPosition = getPlayerPositionFromTilesForPlayer(playerId)
         let modifiedRoll = players[playerId].nextTurnValue(roll: roll)
         var newPosition = currentPosition + modifiedRoll
         var terminus = -1
         if newPosition > AppConfig.boardSize || newPosition < 1 {
             newPosition = currentPosition
         } else {
-            let newTile = tiles[getTileIndexFromId(tileId: newPosition)].tType
+            let newTile = tiles[getTileIndexFromId(newPosition)].tType
             switch newTile.status {
             case .snakeStart:
                 terminus = newTile.terminus
@@ -182,10 +182,10 @@ struct Board {
         return (win, newPosition, terminus)
     }
     
-    private func getTileIndexFromId(tileId: Int) -> Int {
+    private func getTileIndexFromId(_ tileId: Int) -> Int {
         return Tile.mapIdToIndex[tileId] ?? -1
     }
-    private func getPlayerPositionFromTiles(playerId: Int) -> Int {
+    private func getPlayerPositionFromTilesForPlayer(_ playerId: Int) -> Int {
         return (tiles.filter() {$0.tOccupiedBy[playerId] == true})[0].tId
     }
 }
