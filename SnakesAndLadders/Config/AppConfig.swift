@@ -29,8 +29,8 @@ struct symbolNames {
     static let snakeStart: String = "capsule.portrait.fill"
     static let playerName: String = ".circle.fill"
     static let tileName: String = ".square"
-    static let fastTile: String = "tortoise.fill"
-    static let slowTile: String = "hare.fill"
+    static let fastTile: String = "hare.fill"
+    static let slowTile: String = "tortoise.fill"
 }
 
 

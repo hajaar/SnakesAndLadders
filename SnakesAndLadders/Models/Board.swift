@@ -28,6 +28,7 @@ struct Board {
     mutating func startNewGame() {
         resetBoard()
         addRandomSnakeAndLadder(count: 3)
+        addFastAndSlowTiles(count: 3)
         createPlayers(name: "", token: "")
         playerCounter = 0
         //    playGame()
@@ -78,7 +79,7 @@ struct Board {
             let isSnake = Bool.random()
             var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
             var length = lengthSnakeAndLadder.allCases.randomElement()!.value
-            while doesSnakeOrLadderViolateConstraints(isSnake: isSnake, start: startingPosition, length: length) {
+            while doesSpecialTileViolateConstraints(isSnake: isSnake, start: startingPosition, length: length) {
                 startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
                 length = lengthSnakeAndLadder.allCases.randomElement()!.value
             }
@@ -90,14 +91,18 @@ struct Board {
     
     mutating private func addFastAndSlowTiles(count: Int) {
         for _ in 0...count-1 {
-            let isFast = Bool.random()
-            var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1/2)
-            
+            let isFastOrSlow = Bool.random()
+            var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
+            while doesSpecialTileViolateConstraints(isSnake: false, start: startingPosition, length: 0) {
+                startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
+            }
+            Log.log("count: \(count) Fast? \(isFastOrSlow) start \(startingPosition) ", level: .trace)
+            tiles[getTileIndexFromId(tileId: startingPosition)].tType = (isFastOrSlow ? tileType.fastStart : tileType.slowStart, startingPosition)
         }
     }
         
 
-    mutating private func doesSnakeOrLadderViolateConstraints(isSnake: Bool, start: Int, length: Int) -> Bool {
+    mutating private func doesSpecialTileViolateConstraints(isSnake: Bool, start: Int, length: Int) -> Bool {
         if tiles[getTileIndexFromId(tileId: start)].tType.status != .none {
             return true
         }

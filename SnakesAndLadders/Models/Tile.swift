@@ -41,12 +41,13 @@ struct Tile {
                 tmpColor = AppConfig.ladderColor
             case .slowStart:
                 tmpString = symbolNames.slowTile
-                tmpColor = AppConfig.ladderColor
+                tmpColor = AppConfig.snakeColor
             case .snakeStart:
                 tmpString = symbolNames.snakeStart
                 tmpColor = AppConfig.snakeColor
             case .fastStart:
                 tmpString = symbolNames.fastTile
+                tmpColor = AppConfig.ladderColor
                 
             default:
                 tmpString = ""
