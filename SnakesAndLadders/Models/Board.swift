@@ -131,7 +131,7 @@ struct Board {
                 Log.log(player.getId(), level: .debug)
                 Dice.roll()
                 let roll = Dice.returnRollSum()
-                let outcome = checkOutcomeOfRoll(player: player, roll: roll)
+                let outcome = checkOutcomeOfRoll(playerId: player.getId(), roll: roll)
                 updatePlayerPosition(playerId: player.getId(), tileId: outcome.newPosition)
                 delegate?.playerDidSomething(self, text: String(outcome.newPosition))
                 if outcome.win {
@@ -147,10 +147,10 @@ struct Board {
         let currentPosition = getPlayerPositionFromTiles(playerId: playerCounter)
         Dice.roll()
         let roll = Dice.returnRollSum()
-        let outcome = checkOutcomeOfRoll(player: players[playerCounter], roll: roll)
-        updatePlayerPosition(playerId: players[playerCounter].getId(), tileId: outcome.newPosition)
+        let outcome = checkOutcomeOfRoll(playerId: playerCounter, roll: roll)
+        updatePlayerPosition(playerId: playerCounter, tileId: outcome.newPosition)
         if outcome.terminus > -1 {
-            updatePlayerPosition(playerId: players[playerCounter].getId(), tileId: outcome.terminus)
+            updatePlayerPosition(playerId: playerCounter, tileId: outcome.terminus)
         }
         if roll != 6 {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
@@ -159,8 +159,8 @@ struct Board {
         return (getTileIndexFromId(tileId: currentPosition) , getTileIndexFromId(tileId: outcome.newPosition), getTileIndexFromId(tileId: outcome.terminus) )
     }
     
-    private func checkOutcomeOfRoll(player: Player, roll: Int) -> (win: Bool, newPosition: Int, terminus: Int) {
-        let currentPosition = getPlayerPositionFromTiles(playerId: player.getId())
+    private func checkOutcomeOfRoll(playerId: Int, roll: Int) -> (win: Bool, newPosition: Int, terminus: Int) {
+        let currentPosition = getPlayerPositionFromTiles(playerId: playerId)
         var newPosition = currentPosition + roll
         var terminus = -1
         if newPosition > AppConfig.boardSize || newPosition < 1 {
@@ -179,7 +179,6 @@ struct Board {
             case .none:
                 terminus = -1
             }
-            
         }
         let win = newPosition == AppConfig.boardSize ? true : false
         return (win, newPosition, terminus)

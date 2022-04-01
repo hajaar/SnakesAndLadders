@@ -21,6 +21,9 @@ struct Player {
     private var createdSnakesAndLadders: [SnakeAndLadder] = []
     private var wins: Int = 0
     private var remainingSnakesAndLaddersOptions: [lengthSnakeAndLadder] = [.small, .medium, .large, .extraLarge]
+
+    private var nextTurnType: TurnType = .normal
+    
     
     init(playerID: Int, name: String, token: String) {
         self.playerId = playerID
@@ -54,6 +57,15 @@ struct Player {
     func getId() -> Int {
         return playerId
     }
+    
+    func getNextTurnType() -> TurnType {
+        return nextTurnType
+    }
+    
+    mutating func setNextTurnType(turnType: TurnType) {
+        self.nextTurnType = turnType
+    }
+    
 }
 
 

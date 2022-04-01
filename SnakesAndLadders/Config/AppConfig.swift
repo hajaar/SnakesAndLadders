@@ -38,6 +38,10 @@ enum  tileType {
     case snakeStart, fastStart, ladderStart, slowStart, none
 }
 
+enum TurnType {
+    case normal, slow, fast
+}
+
 enum lengthSnakeAndLadder: Int, CaseIterable {
     case small, medium, large, extraLarge
     
