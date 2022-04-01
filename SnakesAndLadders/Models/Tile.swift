@@ -10,7 +10,7 @@ import UIKit
 
 struct Tile {
     var tId: Int = 0 //shows the number of tile on the board
-    var tIndex: Int = AppConfig.tileStartId //index of the tile in the array created by Board
+    var tIndex: Int = 0 //index of the tile in the array created by Board
     var tOccupiedBy: [Bool] = [Bool](repeating: false, count: AppConfig.numberofPlayers) {
         didSet {
             Log.log("tileID: \(tId) contains \(tOccupiedBy)", level: .debug)
@@ -58,7 +58,6 @@ struct Tile {
     
     static var mapIdToIndex = [Int: Int]()
     
-    
     var tPlayerImages: [UIImage?] {
         var playerImages = [UIImage](repeating: UIImage(), count: AppConfig.numberofPlayers)
         for i in 0...AppConfig.numberofPlayers - 1 {
@@ -67,14 +66,13 @@ struct Tile {
         return playerImages
     }
     
-    init(tId: Int) {
+    init(tId: Int, tIndex: Int = 0) {
         self.tId = tId
-        AppConfig.tileStartId += 1
+        self.tIndex = tIndex
         if self.tId == 1 {
             self.tOccupiedBy = self.tOccupiedBy.map {_ in true }
         }
         Self.mapIdToIndex[self.tId] = self.tIndex
-        print(Self.mapIdToIndex)
     }
     
 

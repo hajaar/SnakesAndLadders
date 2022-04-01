@@ -63,6 +63,7 @@ struct Board {
             end = start + (AppConfig.boardSize / AppConfig.boardLength)
         }
         for i in 0...AppConfig.boardSize - 1 {
+            tiles[i].tIndex = i
             Log.log("index \(i) id \(tiles[i].tId) pos \(tiles[i].tIndex)", level: .trace)
         }
     }
