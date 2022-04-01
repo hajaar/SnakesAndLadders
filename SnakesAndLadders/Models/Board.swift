@@ -45,7 +45,7 @@ struct Board {
         AppConfig.tileStartId = 0
         tiles = [Tile]()
         for i in stride(from: AppConfig.boardSize, to: AppConfig.boardSize - (AppConfig.boardSize / AppConfig.boardLength), by: -1) {
-            tiles.append(Tile(tId: i, tType: (tileType.none, -1)))
+            tiles.append(Tile(tId: i))
         }
         var start = 0
         var end = start + (AppConfig.boardSize / AppConfig.boardLength)
@@ -57,7 +57,7 @@ struct Board {
             }
             tmpId = tmpId.reversed()
             for i in 0...AppConfig.boardLength - 1 {
-                tiles.append(Tile(tId: tmpId[i], tType: (tileType.none, -1)))
+                tiles.append(Tile(tId: tmpId[i]))
             }
             start = end
             end = start + (AppConfig.boardSize / AppConfig.boardLength)

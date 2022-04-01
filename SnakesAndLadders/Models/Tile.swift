@@ -64,10 +64,8 @@ struct Tile {
         return playerImages
     }
     
-    init(tId: Int, tType: (status: tileType, terminus: Int)) {
+    init(tId: Int) {
         self.tId = tId
-        self.tType.status = tType.status
-        self.tType.terminus = tType.terminus
         AppConfig.tileStartId += 1
         if self.tId == 1 {
             self.tOccupiedBy = self.tOccupiedBy.map {_ in true }
