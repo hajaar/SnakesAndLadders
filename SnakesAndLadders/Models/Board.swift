@@ -127,7 +127,8 @@ struct Board {
     }
 
     mutating private func removePlayerFromTile(playerId: Int) {
-        let currentPosition = players[playerId].getPosition()
+     //   let currentPosition = players[playerId].getPosition()
+        let currentPosition = getPlayerPositionFromTiles(playerId: playerId)
         Log.log("playerID: \(playerId) currentpos: \(currentPosition)", level: .trace)
         tiles[getTileIndexFromId(tileId: currentPosition)].removePlayer(playerId: playerId)
         Log.log("Removed from tileID: \(currentPosition) \(tiles[currentPosition].tOccupiedBy)", level: .trace
@@ -157,7 +158,7 @@ struct Board {
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
 
 
-        Log.log(playerCounter, level: .debug)
+        Log.log(playerCounter, level: .trace)
         let currentPosition = players[playerCounter].getPosition()
 
         Dice.roll()
@@ -192,17 +193,13 @@ struct Board {
     }
 
     private func getTileIndexFromId(tileId: Int) -> Int {
-        
         return (tiles.filter() {$0.tId == tileId})[0].tIndex
-
-//
-//        for index in 0...AppConfig.boardSize - 1 {
-//            if tiles[index].tId == tileId {
-//                return index
-//            }
-//        }
-//        return 0
    }
+    private func getPlayerPositionFromTiles(playerId: Int) -> Int {
+        return (tiles.filter() {$0.tOccupiedBy[playerId] == true})[0].tId
+    }
+ 
+    
 }
 
 

@@ -71,8 +71,6 @@ struct Tile {
     }
     
     mutating func addPlayer(playerId: Int){
-        print(playerId)
-        print(tOccupiedBy)
         tOccupiedBy[playerId] = true
         Log.log("player \(playerId) is at tileId: \(tId) \(tOccupiedBy) ", level: .trace)
     }
@@ -81,7 +79,4 @@ struct Tile {
         tOccupiedBy[playerId] = false
         Log.log("player \(playerId) removed from tileId: \(tId) \(tOccupiedBy) ", level: .trace)
     }
-    
-
-    
 }
