@@ -122,12 +122,10 @@ struct Board {
 
     mutating private func addPlayerToTile(playerId: Int, tileId: Int) {
         tiles[getTileIndexFromId(tileId: tileId)].addPlayer(playerId: playerId)
-        players[playerId].setPosition(position: tileId)
         Log.log("Added to tileID: \(tileId) \(tiles[tileId].tOccupiedBy)", level: .trace)
     }
 
     mutating private func removePlayerFromTile(playerId: Int) {
-     //   let currentPosition = players[playerId].getPosition()
         let currentPosition = getPlayerPositionFromTiles(playerId: playerId)
         Log.log("playerID: \(playerId) currentpos: \(currentPosition)", level: .trace)
         tiles[getTileIndexFromId(tileId: currentPosition)].removePlayer(playerId: playerId)
@@ -159,7 +157,7 @@ struct Board {
 
 
         Log.log(playerCounter, level: .trace)
-        let currentPosition = players[playerCounter].getPosition()
+        let currentPosition = getPlayerPositionFromTiles(playerId: playerCounter)
 
         Dice.roll()
         let roll = Dice.returnRollSum()
@@ -178,10 +176,10 @@ struct Board {
     }
 
     private func checkOutcomeOfRoll(player: Player, roll: Int) -> (win: Bool, newPosition: Int, terminus: Int) {
-        var newPosition = player.getPosition() + roll
+        var newPosition = getPlayerPositionFromTiles(playerId: player.getId()) + roll
         var terminus = -1
         if newPosition > AppConfig.boardSize || newPosition < 1 {
-            newPosition = player.getPosition()
+            newPosition = getPlayerPositionFromTiles(playerId: player.getId())
         } else {
             let newTile = tiles[getTileIndexFromId(tileId: newPosition)].tSnakeOrLadder
             if newTile.status != .none {
