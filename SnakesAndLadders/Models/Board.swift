@@ -36,7 +36,8 @@ struct Board {
     private mutating func createPlayers(name: String, token: String) {
         for i in 0...AppConfig.numberofPlayers - 1 {
             players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and
-            addPlayerToTile(playerId: i, tileId: 1)
+            tiles[getTileIndexFromId(tileId: 1)].addPlayer(playerId: i)
+            Log.log("Added to tileID: 1 \(tiles[1].tOccupiedBy)", level: .trace)
         }
     }
 
@@ -111,8 +112,14 @@ struct Board {
 
     mutating private func updatePlayerPosition(playerId: Int, tileId: Int) {
         if tileId > -1 && tileId <= AppConfig.boardSize {
-            removePlayerFromTile(playerId: playerId)
-            addPlayerToTile(playerId: playerId, tileId: tileId)
+            let currentPosition = getPlayerPositionFromTiles(playerId: playerId)
+            Log.log("playerID: \(playerId) currentpos: \(currentPosition)", level: .trace)
+            tiles[getTileIndexFromId(tileId: currentPosition)].removePlayer(playerId: playerId)
+            Log.log("Removed from tileID: \(currentPosition) \(tiles[currentPosition].tOccupiedBy)", level: .trace
+            )
+            tiles[getTileIndexFromId(tileId: tileId)].addPlayer(playerId: playerId)
+            Log.log("Added to tileID: \(tileId) \(tiles[tileId].tOccupiedBy)", level: .trace
+            )
         }
     }
 
@@ -120,18 +127,6 @@ struct Board {
         updatePlayerPosition(playerId: player.getId(), tileId: tileId)
     }
 
-    mutating private func addPlayerToTile(playerId: Int, tileId: Int) {
-        tiles[getTileIndexFromId(tileId: tileId)].addPlayer(playerId: playerId)
-        Log.log("Added to tileID: \(tileId) \(tiles[tileId].tOccupiedBy)", level: .trace)
-    }
-
-    mutating private func removePlayerFromTile(playerId: Int) {
-        let currentPosition = getPlayerPositionFromTiles(playerId: playerId)
-        Log.log("playerID: \(playerId) currentpos: \(currentPosition)", level: .trace)
-        tiles[getTileIndexFromId(tileId: currentPosition)].removePlayer(playerId: playerId)
-        Log.log("Removed from tileID: \(currentPosition) \(tiles[currentPosition].tOccupiedBy)", level: .trace
-        )
-    }
 
     mutating func playGame() {
         while !isGameOver {
