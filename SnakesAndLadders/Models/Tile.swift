@@ -16,9 +16,9 @@ struct Tile {
             Log.log("tileID: \(tId) contains \(tOccupiedBy)", level: .trace)
         }
     }
-    var tSnakeOrLadder: (status: tileType, terminus: Int) = (tileType.none, -1) {
+    var tType: (status: tileType, terminus: Int) = (tileType.none, -1) {
         didSet {
-            Log.log("tileID: \(tId) contains \(tSnakeOrLadder.status) ending at \(tSnakeOrLadder.terminus )" , level: .debug)
+            Log.log("tileID: \(tId) contains \(tType.status) ending at \(tType.terminus )" , level: .debug)
         }
     }
     var tColor: UIColor {
@@ -31,22 +31,22 @@ struct Tile {
         self.tId.isMultiple(of: 2) ? AppConfig.tileColor.1 : AppConfig.tileColor.0
     }
     
-    var tSnakeOrLadderImage: (symbol: UIImage?, symbolColor: UIColor) {
+    var tTypeImage: (symbol: UIImage?, symbolColor: UIColor) {
         var tmpString: String = ""
         var tmpColor: UIColor = AppConfig.diceColor
         
-            switch tSnakeOrLadder.status {
+            switch tType.status {
             case .ladderStart:
                 tmpString = symbolNames.ladderStart
                 tmpColor = AppConfig.ladderColor
-            case .ladderEnd:
-                tmpString = symbolNames.ladderEnd
+            case .slowStart:
+                tmpString = symbolNames.slowTile
                 tmpColor = AppConfig.ladderColor
             case .snakeStart:
                 tmpString = symbolNames.snakeStart
                 tmpColor = AppConfig.snakeColor
-            case .snakeEnd:
-                tmpString = symbolNames.snakeEnd
+            case .fastStart:
+                tmpString = symbolNames.fastTile
                 
             default:
                 tmpString = ""
@@ -63,10 +63,10 @@ struct Tile {
         return playerImages
     }
     
-    init(tId: Int, tSnakeOrLadder: (status: tileType, terminus: Int)) {
+    init(tId: Int, tType: (status: tileType, terminus: Int)) {
         self.tId = tId
-        self.tSnakeOrLadder.status = tSnakeOrLadder.status
-        self.tSnakeOrLadder.terminus = tSnakeOrLadder.terminus
+        self.tType.status = tType.status
+        self.tType.terminus = tType.terminus
         AppConfig.tileStartId += 1
     }
     

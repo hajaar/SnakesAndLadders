@@ -25,17 +25,17 @@ struct AppConfig {
 
 
 struct symbolNames {
-    static let ladderStart: String = "arrowtriangle.up.fill"
-    static let ladderEnd: String = "stop.circle"
-    static let snakeStart: String = "arrowtriangle.down.fill"
-    static let snakeEnd: String = "stop.circle"
+    static let ladderStart: String = "capsule.portrait.fill"
+    static let snakeStart: String = "capsule.portrait.fill"
     static let playerName: String = ".circle.fill"
     static let tileName: String = ".square"
+    static let fastTile: String = "tortoise.fill"
+    static let slowTile: String = "hare.fill"
 }
 
 
 enum  tileType {
-    case snakeStart, snakeEnd, ladderStart, ladderEnd, none
+    case snakeStart, fastStart, ladderStart, slowStart, none
 }
 
 enum lengthSnakeAndLadder: Int, CaseIterable {

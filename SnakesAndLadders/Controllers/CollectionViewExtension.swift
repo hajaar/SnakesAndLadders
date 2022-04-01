@@ -36,8 +36,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.myImage3.tintColor = AppConfig.playerColors[2]
         cell.myImage4.image = tmpTile.tPlayerImages[3]
         cell.myImage4.tintColor = AppConfig.playerColors[3]
-        cell.snakeOrLadderImage.image = tmpTile.tSnakeOrLadderImage.symbol
-        cell.snakeOrLadderImage.tintColor = tmpTile.tSnakeOrLadderImage.symbolColor
+        cell.snakeOrLadderImage.image = tmpTile.tTypeImage.symbol
+        cell.snakeOrLadderImage.tintColor = tmpTile.tTypeImage.symbolColor
         cell.myLabel.text = String(tmpTile.tId)
         cell.backgroundColor = tmpTile.tColor
         cell.layer.borderColor = tmpTile.tBorderColor.cgColor
