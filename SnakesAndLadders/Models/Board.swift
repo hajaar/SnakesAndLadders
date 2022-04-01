@@ -92,10 +92,16 @@ struct Board {
             return true
         }
         let endingPosition = returnEndingPosition(isSnake: isSnake, start: start, length: length)
+        if isSnake && endingPosition <= 1 {
+            return true
+        }
+        if !isSnake && endingPosition >= AppConfig.boardSize {
+            return true
+        }
         if tiles[getTileIndexFromId(tileId: endingPosition)].tSnakeOrLadder.status != .none {
             return true
         }
-        return isSnake ? endingPosition <= 1: endingPosition >= AppConfig.boardSize
+        return false
     }
 
     mutating func returnEndingPosition(isSnake: Bool, start: Int, length: Int) -> Int {
