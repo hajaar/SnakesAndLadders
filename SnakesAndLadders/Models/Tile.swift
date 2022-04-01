@@ -72,10 +72,12 @@ struct Tile {
         if self.tId == 1 {
             self.tOccupiedBy = self.tOccupiedBy.map {_ in true }
         }
-        Self.mapIdToIndex[self.tId] = self.tIndex
     }
     
-
+    static func getIdFromIndex(value: Int) -> Int {
+        let keys = (Self.mapIdToIndex as NSDictionary).allKeys(for: value) as! [Int]
+        return keys[0]
+    }
     
     
     mutating func addPlayer(playerId: Int){

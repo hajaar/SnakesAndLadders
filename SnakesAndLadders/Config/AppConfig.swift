@@ -12,7 +12,6 @@ struct AppConfig {
     static let boardLength = 10
     static let boardSize = boardLength * boardLength
     static let numberofPlayers = 4
-    static var tileStartId = 0
     static let boardTextColor = (FlatColors.Clouds, IndianColors.SarawakWhitePepper)
     static let boardColor = FlatColors.GreenSea
     static let highlightTileColor = IndianColors.HighlighterLavender
@@ -21,6 +20,8 @@ struct AppConfig {
     static let ladderColor = FlatColors.Emerald
     static let snakeColor = FlatColors.Alizarin
     static let playerColors = [IndianColors.FallingStar, FlatColors.Turquoise, IndianColors.HoneyGlow, IndianColors.GeorgiaPeach]
+    
+
 }
 
 
@@ -58,6 +59,7 @@ enum lengthSnakeAndLadder: Int, CaseIterable {
         }
     }
 }
+
 
 
 
