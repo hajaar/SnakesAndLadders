@@ -66,6 +66,20 @@ struct Player {
         self.nextTurnType = turnType
     }
     
+    mutating func nextTurnValue(roll: Int) -> Int {
+        var modifiedRoll = roll
+        switch nextTurnType {
+        case .normal:
+            modifiedRoll = roll
+        case .slow:
+            modifiedRoll = roll/2
+        case .fast:
+            modifiedRoll = roll * 2
+        }
+        nextTurnType = .normal
+        return modifiedRoll
+    }
+    
 }
 
 

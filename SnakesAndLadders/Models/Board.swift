@@ -161,19 +161,7 @@ struct Board {
     
     private mutating func checkOutcomeOfRoll(playerId: Int, roll: Int) -> (win: Bool, newPosition: Int, terminus: Int) {
         let currentPosition = getPlayerPositionFromTiles(playerId: playerId)
-        var modifiedRoll = roll
-        switch players[playerId].getNextTurnType() {
-
-        case .normal:
-            modifiedRoll = roll
-        case .slow:
-            modifiedRoll = roll/2
-            
-        case .fast:
-            modifiedRoll = roll * 2
-        }
-        players[playerId].setNextTurnType(turnType: .normal)
-        
+        let modifiedRoll = players[playerId].nextTurnValue(roll: roll)        
         var newPosition = currentPosition + modifiedRoll
         var terminus = -1
         if newPosition > AppConfig.boardSize || newPosition < 1 {

@@ -13,7 +13,7 @@ struct Tile {
     var tIndex: Int = AppConfig.tileStartId //index of the tile in the array created by Board
     var tOccupiedBy: [Bool] = [Bool](repeating: false, count: AppConfig.numberofPlayers) {
         didSet {
-            Log.log("tileID: \(tId) contains \(tOccupiedBy)", level: .trace)
+            Log.log("tileID: \(tId) contains \(tOccupiedBy)", level: .debug)
         }
     }
     var tType: (status: tileType, terminus: Int) = (tileType.none, -1) {
