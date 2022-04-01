@@ -56,6 +56,9 @@ struct Tile {
         return (UIImage(systemName: tmpString),tmpColor)
     }
     
+    static var mapIdToIndex = [Int: Int]()
+    
+    
     var tPlayerImages: [UIImage?] {
         var playerImages = [UIImage](repeating: UIImage(), count: AppConfig.numberofPlayers)
         for i in 0...AppConfig.numberofPlayers - 1 {
@@ -70,6 +73,8 @@ struct Tile {
         if self.tId == 1 {
             self.tOccupiedBy = self.tOccupiedBy.map {_ in true }
         }
+        Self.mapIdToIndex[self.tId] = self.tIndex
+        print(Self.mapIdToIndex)
     }
     
 
