@@ -159,9 +159,22 @@ struct Board {
         return (getTileIndexFromId(tileId: currentPosition) , getTileIndexFromId(tileId: outcome.newPosition), getTileIndexFromId(tileId: outcome.terminus) )
     }
     
-    private func checkOutcomeOfRoll(playerId: Int, roll: Int) -> (win: Bool, newPosition: Int, terminus: Int) {
+    private mutating func checkOutcomeOfRoll(playerId: Int, roll: Int) -> (win: Bool, newPosition: Int, terminus: Int) {
         let currentPosition = getPlayerPositionFromTiles(playerId: playerId)
-        var newPosition = currentPosition + roll
+        var modifiedRoll = roll
+        switch players[playerId].getNextTurnType() {
+
+        case .normal:
+            modifiedRoll = roll
+        case .slow:
+            modifiedRoll = roll/2
+            
+        case .fast:
+            modifiedRoll = roll * 2
+        }
+        players[playerId].setNextTurnType(turnType: .normal)
+        
+        var newPosition = currentPosition + modifiedRoll
         var terminus = -1
         if newPosition > AppConfig.boardSize || newPosition < 1 {
             newPosition = currentPosition
@@ -171,11 +184,11 @@ struct Board {
             case .snakeStart:
                 terminus = newTile.terminus
             case .fastStart:
-                terminus = -1
+                players[playerId].setNextTurnType(turnType: .fast)
             case .ladderStart:
                 terminus = newTile.terminus
             case .slowStart:
-                terminus = -1
+                players[playerId].setNextTurnType(turnType: .slow)
             case .none:
                 terminus = -1
             }
