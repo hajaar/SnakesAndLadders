@@ -80,6 +80,14 @@ struct Player {
         return modifiedRoll
     }
     
+    func getName() -> String {
+        return name
+    }
+    
+    func getToken() -> String {
+        return token
+    }
+    
 }
 
 
