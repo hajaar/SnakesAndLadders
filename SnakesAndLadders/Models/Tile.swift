@@ -18,11 +18,7 @@ struct Tile {
     
     var tId: Int = 0 //shows the number of tile on the board
     var tIndex: Int = 0 //index of the tile in the array created by Board
-    var tOccupiedBy: [Bool] = [Bool](repeating: false, count: AppConfig.numberofPlayers) {
-        didSet {
-            Log.log("tileID: \(tId) contains \(tOccupiedBy)", level: .debug)
-        }
-    }
+
     var tType: (status: tileType, terminus: Int) = (tileType.none, -1) {
         didSet {
             Log.log("tileID: \(tId) contains \(tType.status) ending at \(tType.terminus )" , level: .debug)
@@ -63,31 +59,13 @@ struct Tile {
         return (UIImage(systemName: tmpString),tmpColor)
     }
     
-    
-    var tPlayerImages: [UIImage?] {
-        var playerImages = [UIImage](repeating: UIImage(), count: AppConfig.numberofPlayers)
-        for i in 0...AppConfig.numberofPlayers - 1 {
-            playerImages[i] = tOccupiedBy[i] ? UIImage(systemName:  String(i) + symbolNames.playerName)! : UIImage()
-        }
-        return playerImages
-    }
+
     
     init(tId: Int, tIndex: Int = 0) {
         self.tId = tId
         self.tIndex = tIndex
-        if self.tId == 1 {
-            self.tOccupiedBy = self.tOccupiedBy.map {_ in true }
-        }
     }
 
-    mutating func addPlayer(playerId: Int){
-        tOccupiedBy[playerId] = true
-        Log.log("player \(playerId) is at tileId: \(tId) \(tOccupiedBy) ", level: .trace)
-    }
-    
-    mutating func removePlayer(playerId: Int){
-        tOccupiedBy[playerId] = false
-        Log.log("player \(playerId) removed from tileId: \(tId) \(tOccupiedBy) ", level: .trace)
-    }
+
 
 }

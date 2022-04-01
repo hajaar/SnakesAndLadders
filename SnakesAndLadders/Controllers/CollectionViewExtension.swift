@@ -23,14 +23,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! CollectionViewCell
-        let imageArray = [cell.myImage!, cell.myImage2!, cell.myImage3!, cell.myImage4!]
-        let tmpTile = board.getTileInfo(index: indexPath.row)
-        
-        for i in 0...AppConfig.numberofPlayers - 1{
-            imageArray[i].image = tmpTile.tPlayerImages[i]
-            imageArray[i].tintColor = AppConfig.playerColors[i]
-        }
 
+        let tmpTile = board.getTileInfo(index: indexPath.row)
         cell.snakeOrLadderImage.image = tmpTile.tTypeImage.symbol
         cell.snakeOrLadderImage.tintColor = tmpTile.tTypeImage.symbolColor
         cell.myLabel.text = String(tmpTile.tId)
@@ -39,6 +33,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.myLabel.textColor = tmpTile.tTextColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 2
+        
+        let imageArray = [cell.myImage!, cell.myImage2!, cell.myImage3!, cell.myImage4!]
+        imageArray.forEach { u in
+            u.image = nil
+        }
+        let players = board.getPlayerInfo()
+        players.forEach { player in
+            if indexPath.row == player.tileIndex {
+                imageArray[player.playerId].image = player.playerImage
+                imageArray[player.playerId].tintColor = player.playerColor
+            }
+        }
 
         return cell
     }

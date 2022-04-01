@@ -37,7 +37,6 @@ struct Board {
     private mutating func createPlayers(name: String, token: String) {
         for i in 0...AppConfig.numberofPlayers - 1 {
             players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and
-            Log.log("Added to tileID: 1 \(tiles[1].tOccupiedBy)", level: .trace)
         }
     }
     
@@ -111,15 +110,7 @@ struct Board {
     
     
     mutating private func updatePlayerPosition(playerId: Int, tileId: Int) {
-        if tileId > -1 && tileId <= AppConfig.boardSize {
-            let currentPosition = getPlayerPositionFromTilesForPlayer(playerId)
-            tiles[getTileIndexFromId(currentPosition)].removePlayer(playerId: playerId)
-            Log.log("Removed from tileID: \(currentPosition) \(tiles[currentPosition].tOccupiedBy)", level: .trace
-            )
-            tiles[getTileIndexFromId(tileId)].addPlayer(playerId: playerId)
-            Log.log("Added to tileID: \(tileId) \(tiles[tileId].tOccupiedBy)", level: .trace
-            )
-        }
+        players[playerId].setPosition(tileId)
     }
     
     mutating func playGame() {
@@ -186,7 +177,19 @@ struct Board {
         return Tile.mapIdToIndex[tileId] ?? -1
     }
     private func getPlayerPositionFromTilesForPlayer(_ playerId: Int) -> Int {
-        return (tiles.filter() {$0.tOccupiedBy[playerId] == true})[0].tId
+        return players[playerId].getPosition()
+    }
+    
+    func getPlayerInfo() -> [(playerId: Int, tileIndex: Int, playerImage: UIImage, playerColor: UIColor)] {
+        var returnValue = [(playerId: Int, tileIndex: Int, playerImage: UIImage, playerColor: UIColor)]()
+        players.forEach { player in
+            let tmpId = player.getId()
+            let tmpTileIndex = getTileIndexFromId(player.getPosition())
+            let tmpPlayerImage = player.getPlayerImage()
+            let tmpPlayerColor = player.getPlayerColor()
+            returnValue.append((playerId: tmpId, tileIndex: tmpTileIndex, playerImage: tmpPlayerImage, playerColor: tmpPlayerColor))
+        }
+        return returnValue
     }
 }
 

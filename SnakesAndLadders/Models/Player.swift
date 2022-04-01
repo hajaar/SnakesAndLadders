@@ -12,6 +12,13 @@ struct Player {
     private var playerId: Int
     private var name: String = ""
     private var token: String = ""
+    private var position: Int = 1
+    
+    private var playerImage: UIImage {
+        UIImage(systemName: "\(playerId)\(symbolNames.playerName)")!
+    }
+    
+    private var playerColor: UIColor
 
     private var balance: Int = 0 {
         didSet {
@@ -29,6 +36,8 @@ struct Player {
         self.playerId = playerID
         self.name = name
         self.token = token
+        
+        self.playerColor = AppConfig.playerColors.randomElement()!
 
         Log.log("\(self.playerId) \(self.name) \(self.token)", level: .debug)
 
@@ -86,6 +95,22 @@ struct Player {
     
     func getToken() -> String {
         return token
+    }
+    
+    func getPosition() -> Int {
+        return position
+    }
+    
+    mutating func setPosition(_ position: Int) {
+        self.position = position
+    }
+    
+    func getPlayerImage() -> UIImage {
+        return playerImage
+    }
+    
+    func getPlayerColor() -> UIColor {
+        return playerColor
     }
     
 }
