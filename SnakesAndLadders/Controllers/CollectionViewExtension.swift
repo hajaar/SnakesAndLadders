@@ -26,19 +26,11 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         let imageArray = [cell.myImage!, cell.myImage2!, cell.myImage3!, cell.myImage4!]
         let tmpTile = board.getTileInfo(index: indexPath.row)
         
-        
         for i in 0...AppConfig.numberofPlayers - 1{
             imageArray[i].image = tmpTile.tPlayerImages[i]
             imageArray[i].tintColor = AppConfig.playerColors[i]
         }
-//        cell.myImage.image = tmpTile.tPlayerImages[0]
-//        cell.myImage.tintColor = AppConfig.playerColors[0]
-//        cell.myImage2.image = tmpTile.tPlayerImages[1]
-//        cell.myImage2.tintColor = AppConfig.playerColors[1]
-//        cell.myImage3.image = tmpTile.tPlayerImages[2]
-//        cell.myImage3.tintColor = AppConfig.playerColors[2]
-//        cell.myImage4.image = tmpTile.tPlayerImages[3]
-//        cell.myImage4.tintColor = AppConfig.playerColors[3]
+
         cell.snakeOrLadderImage.image = tmpTile.tTypeImage.symbol
         cell.snakeOrLadderImage.tintColor = tmpTile.tTypeImage.symbolColor
         cell.myLabel.text = String(tmpTile.tId)

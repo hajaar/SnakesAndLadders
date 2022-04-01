@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F202073427F6F61A00529E8A /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F202073327F6F61A00529E8A /* PlayerTests.swift */; };
+		F202073627F70A0C00529E8A /* Tiletests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F202073527F70A0C00529E8A /* Tiletests.swift */; };
 		F223552B27E2D0D300CA48EB /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223552A27E2D0D300CA48EB /* Tile.swift */; };
 		F223552D27E2D1D100CA48EB /* CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223552C27E2D1D100CA48EB /* CollectionViewExtension.swift */; };
 		F223553027E2DA5600CA48EB /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223552F27E2DA5600CA48EB /* Player.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		F202073327F6F61A00529E8A /* PlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		F202073527F70A0C00529E8A /* Tiletests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tiletests.swift; sourceTree = "<group>"; };
 		F223552A27E2D0D300CA48EB /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F223552C27E2D1D100CA48EB /* CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtension.swift; sourceTree = "<group>"; };
 		F223552F27E2DA5600CA48EB /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				F2ECB09427F5ABC7003FD12F /* DiceTests.swift */,
 				F2ECB09327F5ABC7003FD12F /* SnakesAndLaddersTests-Bridging-Header.h */,
 				F202073327F6F61A00529E8A /* PlayerTests.swift */,
+				F202073527F70A0C00529E8A /* Tiletests.swift */,
 			);
 			path = SnakesAndLaddersTests;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			files = (
 				F202073427F6F61A00529E8A /* PlayerTests.swift in Sources */,
 				F2ECB09527F5ABC7003FD12F /* DiceTests.swift in Sources */,
+				F202073627F70A0C00529E8A /* Tiletests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
