@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 
 struct Tile {
+    static var mapIdToIndex = [Int: Int]()
+    
+    static func getIdFromIndex(value: Int) -> Int {
+        let keys = (Self.mapIdToIndex as NSDictionary).allKeys(for: value) as! [Int]
+        return keys[0]
+    }
+    
     var tId: Int = 0 //shows the number of tile on the board
     var tIndex: Int = 0 //index of the tile in the array created by Board
     var tOccupiedBy: [Bool] = [Bool](repeating: false, count: AppConfig.numberofPlayers) {
@@ -56,7 +63,6 @@ struct Tile {
         return (UIImage(systemName: tmpString),tmpColor)
     }
     
-    static var mapIdToIndex = [Int: Int]()
     
     var tPlayerImages: [UIImage?] {
         var playerImages = [UIImage](repeating: UIImage(), count: AppConfig.numberofPlayers)
@@ -73,13 +79,7 @@ struct Tile {
             self.tOccupiedBy = self.tOccupiedBy.map {_ in true }
         }
     }
-    
-    static func getIdFromIndex(value: Int) -> Int {
-        let keys = (Self.mapIdToIndex as NSDictionary).allKeys(for: value) as! [Int]
-        return keys[0]
-    }
-    
-    
+
     mutating func addPlayer(playerId: Int){
         tOccupiedBy[playerId] = true
         Log.log("player \(playerId) is at tileId: \(tId) \(tOccupiedBy) ", level: .trace)
@@ -89,4 +89,5 @@ struct Tile {
         tOccupiedBy[playerId] = false
         Log.log("player \(playerId) removed from tileId: \(tId) \(tOccupiedBy) ", level: .trace)
     }
+
 }

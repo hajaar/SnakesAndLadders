@@ -67,8 +67,6 @@ struct Board {
         }
     }
     
-    
-    
     func getTileInfo(index: Int) -> Tile {
         return tiles[index]
     }
@@ -185,7 +183,7 @@ struct Board {
     }
     
     private func getTileIndexFromId(tileId: Int) -> Int {
-        return (tiles.filter() {$0.tId == tileId})[0].tIndex
+        return Tile.mapIdToIndex[tileId] ?? -1
     }
     private func getPlayerPositionFromTiles(playerId: Int) -> Int {
         return (tiles.filter() {$0.tOccupiedBy[playerId] == true})[0].tId
