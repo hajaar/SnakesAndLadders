@@ -49,6 +49,7 @@ struct IndianColors {
     static let GeorgiaPeach = UIColor("#FD7272")
     static let BrightUbe = UIColor("#D6A2E8")
     static let FallingStar = UIColor("#CAD3C8")
+    static let OrchidOrange = UIColor("#FEA47F")
 
     
 }

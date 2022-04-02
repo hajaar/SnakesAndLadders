@@ -19,7 +19,7 @@ struct Tile {
     var tId: Int = 0 //shows the number of tile on the board
     var tIndex: Int = 0 //index of the tile in the array created by Board
 
-    var tType: (status: tileType, terminus: Int) = (tileType.none, -1) {
+    var tType: (status: TileType, terminus: Int) = (TileType.normal, -1) {
         didSet {
             Log.log("tileID: \(tId) contains \(tType.status) ending at \(tType.terminus )" , level: .debug)
         }
@@ -31,7 +31,7 @@ struct Tile {
         self.tId.isMultiple(of: 2) ? AppDesign.boardTextColor.0 : AppDesign.boardTextColor.1
     }
     var tBorderColor: UIColor {
-        self.tId.isMultiple(of: 2) ? AppDesign.tileColor.1 : AppDesign.tileColor.0
+        AppDesign.tileBorderColor
     }
     
     var tTypeImage: (symbol: UIImage?, symbolColor: UIColor) {
@@ -39,17 +39,17 @@ struct Tile {
         var tmpColor: UIColor = AppDesign.diceColor
         
             switch tType.status {
-            case .ladderStart:
-                tmpString = symbolNames.ladderStart
+            case .ladder:
+                tmpString = symbolNames.ladder
                 tmpColor = AppDesign.ladderColor
-            case .slowStart:
-                tmpString = symbolNames.slowTile
+            case .slow:
+                tmpString = symbolNames.slow
                 tmpColor = AppDesign.snakeColor
-            case .snakeStart:
-                tmpString = symbolNames.snakeStart
+            case .snake:
+                tmpString = symbolNames.snake
                 tmpColor = AppDesign.snakeColor
-            case .fastStart:
-                tmpString = symbolNames.fastTile
+            case .fast:
+                tmpString = symbolNames.fast
                 tmpColor = AppDesign.ladderColor
                 
             default:

@@ -27,7 +27,7 @@ struct Player {
     }
     private var createdSnakesAndLadders: [SnakeAndLadder] = []
     private var wins: Int = 0
-    private var remainingSnakesAndLaddersOptions: [lengthSnakeAndLadder] = [.small, .medium, .large, .extraLarge]
+    private var remainingSnakesAndLaddersOptions: [lengthSnakeAndLadder] = [.S, .M, .L, .XL]
     
     private var nextTurnType: TurnType = .normal
     
@@ -43,7 +43,7 @@ struct Player {
         
         balance = 0
         createdSnakesAndLadders = []
-        remainingSnakesAndLaddersOptions = [.small, .medium, .large, .extraLarge]
+        remainingSnakesAndLaddersOptions = [.S, .M, .L, .XL]
         
         Log.log("player: \(playerId) balance: \(balance)", level: .trace)
     }
@@ -127,20 +127,20 @@ struct Player {
         return newPosition
     }
     
-    mutating func playerHasComeToSpecialTile(status: tileType, terminus: Int) -> Int {
+    mutating func playerHasComeToSpecialTile(status: TileType, terminus: Int) -> Int {
         var value = -1
         switch status {
-        case .snakeStart:
+        case .snake:
             value = terminus
             position = terminus
-        case .fastStart:
+        case .fast:
             setNextTurnType(turnType: .fast)
-        case .ladderStart:
+        case .ladder:
             value = terminus
             position = terminus
-        case .slowStart:
+        case .slow:
             setNextTurnType(turnType: .slow)
-        case .none:
+        case .normal:
             value = -1
         }
         return value 

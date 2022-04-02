@@ -48,7 +48,7 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
         Dice.delegate = self
         
         mainView.backgroundColor = AppDesign.boardColor
-        myCollectionView.layer.borderColor = AppDesign.boardColor.cgColor
+        myCollectionView.layer.borderColor = AppDesign.tileBorderColor.cgColor
         myCollectionView.layer.borderWidth = 1
         myCollectionView.layer.cornerRadius = 2
         

@@ -21,10 +21,11 @@ struct AppDesign {
     static let boardColor = FlatColors.GreenSea
     static let highlightTileColor = IndianColors.HighlighterLavender
     static let tileColor = (FlatColors.MidnightBlue, IndianColors.EndingNavyBlue)
+    static let tileBorderColor = FlatColors.SunFlower
     static let diceColor = UIColor.black
     static let ladderColor = FlatColors.Emerald
-    static let snakeColor = FlatColors.Alizarin
-    static var playerColors = [IndianColors.FallingStar, FlatColors.Turquoise, IndianColors.HoneyGlow, IndianColors.GeorgiaPeach, IndianColors.ClearChill, FlatColors.Emerald]
+    static let snakeColor = FlatColors.Carrot
+    static var playerColors = [IndianColors.FallingStar, IndianColors.SweetGarden, IndianColors.HoneyGlow, IndianColors.OrchidOrange, IndianColors.SpiroDiscoBall, IndianColors.BrightUbe]
     
     static func returnRandomPlayerColor() -> UIColor {
         let i = Int.random(in: 0...playerColors.count-1)
@@ -37,17 +38,17 @@ struct AppDesign {
 }
 
 struct symbolNames {
-    static let ladderStart: String = "arrowtriangle.up.fill"
-    static let snakeStart: String = "arrowtriangle.down.fill"
+    static let ladder: String = "arrowtriangle.up.fill"
+    static let snake: String = "arrowtriangle.down.fill"
     static let playerName: String = ".circle.fill"
-    static let tileName: String = ".square"
-    static let fastTile: String = "hare.fill"
-    static let slowTile: String = "tortoise.fill"
+    static let tile: String = ".square"
+    static let fast: String = "hare.fill"
+    static let slow: String = "tortoise.fill"
 }
 
 
-enum  tileType {
-    case snakeStart, fastStart, ladderStart, slowStart, none
+enum  TileType {
+    case snake, fast, ladder, slow, normal
 }
 
 enum TurnType {
@@ -55,17 +56,17 @@ enum TurnType {
 }
 
 enum lengthSnakeAndLadder: Int, CaseIterable {
-    case small, medium, large, extraLarge
+    case S, M, L, XL
     
     var value: Int {
         switch self {
-        case .small:
+        case .S:
             return 5
-        case .medium:
+        case .M:
             return 10
-        case .large:
+        case .L:
             return 20
-        case .extraLarge:
+        case .XL:
             return 40
         }
     }

@@ -84,12 +84,12 @@ struct Board {
             }
             let endingPosition = isSnakeAndLadder ? returnEndingPosition(isSnake: isFirstValue, start: startingPosition, length: length) : startingPosition
             Log.log("count: \(count) isSnakeAndLadder: \(isSnakeAndLadder)  isFirstValue? \(isFirstValue) start \(startingPosition) length \(length)", level: .trace)
-            tiles[getTileIndexFromId(startingPosition)].tType = isSnakeAndLadder ? (isFirstValue ? tileType.snakeStart : tileType.ladderStart, endingPosition) : (isFirstValue ? tileType.slowStart : tileType.fastStart, endingPosition)
+            tiles[getTileIndexFromId(startingPosition)].tType = isSnakeAndLadder ? (isFirstValue ? TileType.snake : TileType.ladder, endingPosition) : (isFirstValue ? TileType.slow : TileType.fast, endingPosition)
         }
     }
     
     mutating private func doesSpecialTileViolateConstraints(isFirstValue: Bool, start: Int, length: Int = 0) -> Bool {
-        if tiles[getTileIndexFromId(start)].tType.status != .none {
+        if tiles[getTileIndexFromId(start)].tType.status != .normal {
             return true
         }
         let endingPosition = returnEndingPosition(isSnake: isFirstValue, start: start, length: length)
@@ -101,7 +101,7 @@ struct Board {
                 return true
             }
         }
-        if tiles[getTileIndexFromId(endingPosition)].tType.status != .none {
+        if tiles[getTileIndexFromId(endingPosition)].tType.status != .normal {
             return true
         }
         return false
