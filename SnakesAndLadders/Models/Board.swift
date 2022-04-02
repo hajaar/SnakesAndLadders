@@ -16,6 +16,7 @@ protocol BoardDelegate {
 struct Board {
     private var tiles: [Tile]
     private var players: [Player]
+    private var snakesAndLadders: [SnakeAndLadder]
     private var isGameOver: Bool = false
     private var playerCounter: Int = 0
     private var isGameWon: Bool = false
@@ -24,6 +25,7 @@ struct Board {
     init() {
         tiles = [Tile]()
         players = [Player]()
+        snakesAndLadders = [SnakeAndLadder]()
     }
     
     mutating func startNewGame() {
@@ -31,8 +33,7 @@ struct Board {
         isGameOver = true
         resetBoard()
         createPlayers(name: "", token: "")
-        addRandomSpecialTiles(count: 3, specialTile: .snake)
-        addRandomSpecialTiles(count: 3, specialTile: .slow)
+        addRandomSnakesAndLadders(count: 3)
 
         playerCounter = 0
             //    playGame()
@@ -74,45 +75,71 @@ struct Board {
         return tiles[index]
     }
     
-    mutating private func addRandomSpecialTiles(count: Int = 0, specialTile: TileType = .normal) {
-        for _ in 0...count - 1 {
-            
-            var tileType: TileType = .normal
+
+    
+    mutating private func addRandomSnakesAndLadders(count: Int = 0) {
+        for _ in 0...count - 1{
+            let isSnake = Bool.random()
+            let tileType = isSnake ? TileType.snake : TileType.ladder
             var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
-            var length = 0
+            var length = lengthSnakeAndLadder.allCases.randomElement()!
             var endingPosition = startingPosition
-            
-            switch specialTile {
-            case .snake, .ladder:
-                length = lengthSnakeAndLadder.allCases.randomElement()!.value
-                tileType =  Bool.random() ? TileType.snake : TileType.ladder
-            case .slow, .fast:
-                tileType = Bool.random() ? TileType.slow : TileType.fast
-            case .normal:
-                return
-            }
+
             
             var value = doesSpecialTileViolateConstraints(tileType: tileType, start: startingPosition, length: length)
             endingPosition = value.endingPosition
             while value.valid {
                 startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
-                length = lengthSnakeAndLadder.allCases.randomElement()!.value
+                length = lengthSnakeAndLadder.allCases.randomElement()!
                 value = doesSpecialTileViolateConstraints(tileType: tileType, start: startingPosition, length: length)
                 endingPosition = value.endingPosition
-
+                
             }
-            tiles[getTileIndexFromId(startingPosition)].tType = (tileType, endingPosition)
+            snakesAndLadders.append(SnakeAndLadder(isSnake: isSnake, length: length, start: endingPosition))
         }
     }
     
-    mutating private func doesSpecialTileViolateConstraints(tileType: TileType, start: Int, length: Int = 0) -> (valid: Bool, endingPosition: Int) {
+    
+    
+//    mutating private func addRandomSpecialTiles(count: Int = 0, specialTile: TileType = .normal) {
+//        for _ in 0...count - 1 {
+//
+//            var tileType: TileType = .normal
+//            var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
+//            var length = 0
+//            var endingPosition = startingPosition
+//
+//            switch specialTile {
+//            case .snake, .ladder:
+//                length = lengthSnakeAndLadder.allCases.randomElement()!.value
+//                tileType =  Bool.random() ? TileType.snake : TileType.ladder
+//            case .slow, .fast:
+//                tileType = Bool.random() ? TileType.slow : TileType.fast
+//            case .normal:
+//                return
+//            }
+//
+//            var value = doesSpecialTileViolateConstraints(tileType: tileType, start: startingPosition, length: length)
+//            endingPosition = value.endingPosition
+//            while value.valid {
+//                startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
+//                length = lengthSnakeAndLadder.allCases.randomElement()!.value
+//                value = doesSpecialTileViolateConstraints(tileType: tileType, start: startingPosition, length: length)
+//                endingPosition = value.endingPosition
+//
+//            }
+//            tiles[getTileIndexFromId(startingPosition)].tType = (tileType, endingPosition)
+//        }
+//    }
+    
+    mutating private func doesSpecialTileViolateConstraints(tileType: TileType, start: Int, length: lengthSnakeAndLadder) -> (valid: Bool, endingPosition: Int) {
         var endingPosition = 0
-        if tiles[getTileIndexFromId(start)].tType.status != .normal {
+        if isTileSnakeAndLadder(position: start)  {
             return (true, endingPosition)
         }
         do {
-            endingPosition = try Tile.returnEndingPosition(tileType: tileType, start: start, length: length)
-            if tiles[getTileIndexFromId(endingPosition)].tType.status != .normal {
+            endingPosition = try SnakeAndLadder.returnEndingPosition(tileType: tileType, start: start, length: length)
+            if isTileSnakeAndLadder(position: endingPosition) == true {
                 return (true, endingPosition)
             }
             return (false, endingPosition)
@@ -139,12 +166,22 @@ struct Board {
         return returnValue
     }
 
+    func getSnakeAndLadderInfo() -> [(tileIndex: Int, symbol: UIImage, symbolColor: UIColor)] {
+        var returnValue = [(tileIndex: Int, symbol: UIImage, symbolColor: UIColor)]()
+        snakesAndLadders.forEach { s in
+            let tmpIndex = Tile.mapIdToIndex[s.getStart()]!
+            let sym = s.getSymbolImage()
+            returnValue.append((tileIndex: tmpIndex, symbol: sym.0, symbolColor: sym.1))
+        }
+        return returnValue
+    }
+    
     
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
         let currentPosition = players[playerCounter].getPosition()
         let newPosition = players[playerCounter].playerRollsDice()
-        let newTile = tiles[getTileIndexFromId(newPosition)].tType
-        let terminus = players[playerCounter].playerHasComeToSpecialTile(status: newTile.status, terminus: newTile.terminus)
+        let terminus = getEndOfSnakeAndLadderTileAt(position: newPosition)
+
         if Dice.returnRollSum() != 6 {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
         }
@@ -153,6 +190,26 @@ struct Board {
         return (getTileIndexFromId(currentPosition) , getTileIndexFromId(newPosition), getTileIndexFromId(terminus) )
     }
     
+    private func isTileSnakeAndLadder(position: Int) -> Bool {
+        return !snakesAndLadders.filter() {$0.getStart() == position}.isEmpty
+    }
+    
+    private func getEndOfSnakeAndLadderTileAt(position: Int) -> Int {
+        var end = position
+        if isTileSnakeAndLadder(position: position) {
+            end = snakesAndLadders.filter() {$0.getStart() == position}[0].getEnd()
+        }
+        return end
+    }
+    
+    private func getIndexOfSnakeAndLadderTileAt(position: Int) -> Int {
+        for i in 0...snakesAndLadders.count - 1 {
+            if snakesAndLadders[i].getStart() == position {
+                return i
+            }
+        }
+        return -1
+    }
 
 }
 

@@ -16,24 +16,7 @@ struct Tile {
         return keys[0]
     }
     
-    static func returnEndingPosition(tileType: TileType, start: Int, length: Int) throws -> Int {
-        var endingPosition = 0
-        switch tileType {
-        case .fast, .slow, .normal:
-            endingPosition = start
-        case .snake:
-            endingPosition = start - length
-            if endingPosition <= 1 {
-                throw BoardError.exceedsBoardSize
-            }
-        case .ladder:
-            endingPosition = start + length
-            if endingPosition >= AppConfig.boardSize {
-                throw BoardError.exceedsBoardSize
-            }
-        }
-        return endingPosition
-    }
+
     
     var tId: Int = 0 //shows the number of tile on the board
     var tIndex: Int = 0 //index of the tile in the array created by Board
@@ -43,11 +26,6 @@ struct Tile {
         self.tIndex = tIndex
     }
     
-    var tType: (status: TileType, terminus: Int) = (TileType.normal, -1) {
-        didSet {
-            Log.log("tileID: \(tId) contains \(tType.status) ending at \(tType.terminus )" , level: .debug)
-        }
-    }
     var tColor: UIColor {
         self.tId.isMultiple(of: 2) ? AppDesign.tileColor.0 : AppDesign.tileColor.1
     }
@@ -58,29 +36,6 @@ struct Tile {
         AppDesign.tileBorderColor
     }
     
-    var tTypeImage: (symbol: UIImage?, symbolColor: UIColor) {
-        var tmpString: String = ""
-        var tmpColor: UIColor = AppDesign.diceColor
-        
-            switch tType.status {
-            case .ladder:
-                tmpString = symbolNames.ladder
-                tmpColor = AppDesign.ladderColor
-            case .slow:
-                tmpString = symbolNames.slow
-                tmpColor = AppDesign.snakeColor
-            case .snake:
-                tmpString = symbolNames.snake
-                tmpColor = AppDesign.snakeColor
-            case .fast:
-                tmpString = symbolNames.fast
-                tmpColor = AppDesign.ladderColor
-                
-            default:
-                tmpString = ""
-            }
 
-        return (UIImage(systemName: tmpString),tmpColor)
-    }
 
 }

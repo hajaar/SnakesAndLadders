@@ -25,14 +25,22 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! CollectionViewCell
 
         let tmpTile = board.getTileInfo(index: indexPath.row)
-        cell.snakeOrLadderImage.image = tmpTile.tTypeImage.symbol
-        cell.snakeOrLadderImage.tintColor = tmpTile.tTypeImage.symbolColor
+        
         cell.myLabel.text = String(tmpTile.tId)
         cell.backgroundColor = tmpTile.tColor
         cell.layer.borderColor = tmpTile.tBorderColor.cgColor
         cell.myLabel.textColor = tmpTile.tTextColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 2
+        
+        let snakesAndLadders = board.getSnakeAndLadderInfo()
+        snakesAndLadders.forEach { s in
+            if indexPath.row == s.tileIndex {
+                cell.snakeOrLadderImage.image = s.symbol
+                cell.snakeOrLadderImage.tintColor = s.symbolColor
+            }
+        }
+        
         
         let imageArray = [cell.myImage!, cell.myImage2!, cell.myImage3!, cell.myImage4!]
         imageArray.forEach { u in

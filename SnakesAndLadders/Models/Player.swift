@@ -129,7 +129,7 @@ struct Player {
         return newPosition
     }
     
-    mutating func playerHasComeToSpecialTile(status: TileType, terminus: Int) -> Int {
+    mutating func ifPlayerHasComeToSpecialTile(status: TileType, terminus: Int) -> Int {
         var value = -1
         switch status {
         case .snake:
@@ -147,5 +147,6 @@ struct Player {
         }
         return value 
     }
+    
 }
 
