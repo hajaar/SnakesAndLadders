@@ -79,48 +79,13 @@ struct Board {
             snakesAndLadders.append(SnakeAndLadder(index: i, start: s.start, length: s.length, isSnake: s.isSnake))
         }
     }
-    
 
-    
     mutating private func addRandomFastAndSlowTiles(count: Int = 0) {
         for i in 0...count - 1{
             let s = FastAndSlowTile.generateRandomFastOrSlowTile()
             fastAndSlowTiles.append(FastAndSlowTile(index: i, tileId: s.tileId,isSlow: s.isSlow))
         }
     }
-    
-//    mutating private func addRandomSpecialTiles(count: Int = 0, specialTile: TileType = .normal) {
-//        for _ in 0...count - 1 {
-//
-//            var tileType: TileType = .normal
-//            var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
-//            var length = 0
-//            var endingPosition = startingPosition
-//
-//            switch specialTile {
-//            case .snake, .ladder:
-//                length = lengthSnakeAndLadder.allCases.randomElement()!.value
-//                tileType =  Bool.random() ? TileType.snake : TileType.ladder
-//            case .slow, .fast:
-//                tileType = Bool.random() ? TileType.slow : TileType.fast
-//            case .normal:
-//                return
-//            }
-//
-//            var value = doesSpecialTileViolateConstraints(tileType: tileType, start: startingPosition, length: length)
-//            endingPosition = value.endingPosition
-//            while value.valid {
-//                startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
-//                length = lengthSnakeAndLadder.allCases.randomElement()!.value
-//                value = doesSpecialTileViolateConstraints(tileType: tileType, start: startingPosition, length: length)
-//                endingPosition = value.endingPosition
-//
-//            }
-//            tiles[getTileIndexFromId(startingPosition)].tType = (tileType, endingPosition)
-//        }
-//    }
-    
-
 
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
         let currentPosition = players[playerCounter].getPosition()
