@@ -13,6 +13,7 @@ struct Player {
     private var name: String = ""
     private var token: String = ""
     private var position: Int = 1
+    private var isHuman: Bool = true
     
     private var playerImage: UIImage {
         UIImage(systemName: "\(playerId)\(symbolNames.playerName)")!
@@ -32,10 +33,11 @@ struct Player {
     private var nextTurnType: TurnType = .normal
     
     
-    init(playerID: Int, name: String, token: String) {
+    init(playerID: Int, name: String, token: String, isHuman: Bool = true) {
         self.playerId = playerID
         self.name = name
         self.token = token
+        self.isHuman = isHuman
         
         self.playerColor = AppDesign.returnRandomPlayerColor()
         

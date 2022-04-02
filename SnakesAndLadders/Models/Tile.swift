@@ -16,13 +16,21 @@ struct Tile {
         return keys[0]
     }
     
-    static func returnEndingPosition(isSnake: Bool, start: Int, length: Int) throws -> Int {
-        let endingPosition = start + (isSnake ? -1 : 1) * length
-        if isSnake && endingPosition <= 1 {
-            throw LengthError.exceed
-        }
-        if !isSnake && endingPosition >= AppConfig.boardSize {
-            throw LengthError.exceed
+    static func returnEndingPosition(tileType: TileType, start: Int, length: Int) throws -> Int {
+        var endingPosition = 0
+        switch tileType {
+        case .fast, .slow, .normal:
+            endingPosition = start
+        case .snake:
+            endingPosition = start - length
+            if endingPosition <= 1 {
+                throw BoardError.exceedsBoardSize
+            }
+        case .ladder:
+            endingPosition = start + length
+            if endingPosition >= AppConfig.boardSize {
+                throw BoardError.exceedsBoardSize
+            }
         }
         return endingPosition
     }
@@ -30,6 +38,11 @@ struct Tile {
     var tId: Int = 0 //shows the number of tile on the board
     var tIndex: Int = 0 //index of the tile in the array created by Board
 
+    init(tId: Int, tIndex: Int = 0) {
+        self.tId = tId
+        self.tIndex = tIndex
+    }
+    
     var tType: (status: TileType, terminus: Int) = (TileType.normal, -1) {
         didSet {
             Log.log("tileID: \(tId) contains \(tType.status) ending at \(tType.terminus )" , level: .debug)
@@ -69,14 +82,5 @@ struct Tile {
 
         return (UIImage(systemName: tmpString),tmpColor)
     }
-    
-
-    
-    init(tId: Int, tIndex: Int = 0) {
-        self.tId = tId
-        self.tIndex = tIndex
-    }
-
-
 
 }

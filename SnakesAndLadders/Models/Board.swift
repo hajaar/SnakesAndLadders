@@ -30,9 +30,10 @@ struct Board {
         isGameWon = false
         isGameOver = true
         resetBoard()
-        addRandomSpecialTiles(count: 3, isSnakeAndLadder: true)
-        addRandomSpecialTiles(count: 3, isSnakeAndLadder: false)
         createPlayers(name: "", token: "")
+        addRandomSpecialTiles(count: 3, specialTile: .snake)
+        addRandomSpecialTiles(count: 3, specialTile: .slow)
+
         playerCounter = 0
             //    playGame()
     }
@@ -73,40 +74,70 @@ struct Board {
         return tiles[index]
     }
     
-    mutating private func addRandomSpecialTiles(count: Int = 0, isSnakeAndLadder: Bool = true) {
+    mutating private func addRandomSpecialTiles(count: Int = 0, specialTile: TileType = .normal) {
         for _ in 0...count - 1 {
-            let isFirstValue = Bool.random()
+            
+            var tileType: TileType = .normal
             var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
-            var length = isSnakeAndLadder ? lengthSnakeAndLadder.allCases.randomElement()!.value : 0
-            while doesSpecialTileViolateConstraints(isFirstValue: isFirstValue, start: startingPosition, length: length) {
-                startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
-                length = isSnakeAndLadder ? lengthSnakeAndLadder.allCases.randomElement()!.value : 0
-            }
-            do {
-                let endingPosition = isSnakeAndLadder ? try Tile.returnEndingPosition(isSnake: isFirstValue, start: startingPosition, length: length) : startingPosition
-                Log.log("count: \(count) isSnakeAndLadder: \(isSnakeAndLadder)  isFirstValue? \(isFirstValue) start \(startingPosition) length \(length)", level: .trace)
-                tiles[getTileIndexFromId(startingPosition)].tType = isSnakeAndLadder ? (isFirstValue ? TileType.snake : TileType.ladder, endingPosition) : (isFirstValue ? TileType.slow : TileType.fast, endingPosition)
-            } catch {
+            var length = 0
+            var endingPosition = startingPosition
+            
+            switch specialTile {
+            case .snake, .ladder:
+                length = lengthSnakeAndLadder.allCases.randomElement()!.value
+                tileType =  Bool.random() ? TileType.snake : TileType.ladder
+            case .slow, .fast:
+                tileType = Bool.random() ? TileType.slow : TileType.fast
+            case .normal:
                 return
             }
+            
+            var value = doesSpecialTileViolateConstraints(tileType: tileType, start: startingPosition, length: length)
+            endingPosition = value.endingPosition
+            while value.valid {
+                startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
+                length = lengthSnakeAndLadder.allCases.randomElement()!.value
+                value = doesSpecialTileViolateConstraints(tileType: tileType, start: startingPosition, length: length)
+                endingPosition = value.endingPosition
+
+            }
+            tiles[getTileIndexFromId(startingPosition)].tType = (tileType, endingPosition)
         }
     }
     
-    mutating private func doesSpecialTileViolateConstraints(isFirstValue: Bool, start: Int, length: Int = 0) -> Bool {
+    mutating private func doesSpecialTileViolateConstraints(tileType: TileType, start: Int, length: Int = 0) -> (valid: Bool, endingPosition: Int) {
+        var endingPosition = 0
         if tiles[getTileIndexFromId(start)].tType.status != .normal {
-            return true
+            return (true, endingPosition)
         }
         do {
-            let endingPosition = try Tile.returnEndingPosition(isSnake: isFirstValue, start: start, length: length)
+            endingPosition = try Tile.returnEndingPosition(tileType: tileType, start: start, length: length)
             if tiles[getTileIndexFromId(endingPosition)].tType.status != .normal {
-                return true
+                return (true, endingPosition)
             }
+            return (false, endingPosition)
         } catch {
-            return true
+            return (true, endingPosition)
         }
-        return false
     }
     
+    private func getTileIndexFromId(_ tileId: Int) -> Int {
+        return Tile.mapIdToIndex[tileId] ?? -1
+    }
+    
+    
+    func getPlayerInfo() -> [(playerId: Int, tileIndex: Int, playerImage: UIImage, playerColor: UIColor)] {
+        var returnValue = [(playerId: Int, tileIndex: Int, playerImage: UIImage, playerColor: UIColor)]()
+        
+        players.forEach { player in
+            let tmpId = player.getId()
+            let tmpTileIndex = getTileIndexFromId(player.getPosition())
+            let tmpPlayerImage = player.getPlayerImage()
+            let tmpPlayerColor = player.getPlayerColor()
+            returnValue.append((playerId: tmpId, tileIndex: tmpTileIndex, playerImage: tmpPlayerImage, playerColor: tmpPlayerColor))
+        }
+        return returnValue
+    }
 
     
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
@@ -122,23 +153,7 @@ struct Board {
         return (getTileIndexFromId(currentPosition) , getTileIndexFromId(newPosition), getTileIndexFromId(terminus) )
     }
     
-    private func getTileIndexFromId(_ tileId: Int) -> Int {
-        return Tile.mapIdToIndex[tileId] ?? -1
-    }
 
-    
-    func getPlayerInfo() -> [(playerId: Int, tileIndex: Int, playerImage: UIImage, playerColor: UIColor)] {
-        var returnValue = [(playerId: Int, tileIndex: Int, playerImage: UIImage, playerColor: UIColor)]()
-        
-        players.forEach { player in
-            let tmpId = player.getId()
-            let tmpTileIndex = getTileIndexFromId(player.getPosition())
-            let tmpPlayerImage = player.getPlayerImage()
-            let tmpPlayerColor = player.getPlayerColor()
-            returnValue.append((playerId: tmpId, tileIndex: tmpTileIndex, playerImage: tmpPlayerImage, playerColor: tmpPlayerColor))
-        }
-        return returnValue
-    }
 }
 
 

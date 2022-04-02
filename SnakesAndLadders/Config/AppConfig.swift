@@ -48,7 +48,7 @@ struct symbolNames {
 
 
 enum  TileType {
-    case snake, fast, ladder, slow, normal
+    case snake, ladder, slow, fast, normal
 }
 
 enum TurnType {
@@ -72,8 +72,8 @@ enum lengthSnakeAndLadder: Int, CaseIterable {
     }
 }
 
-enum LengthError: Error {
-    case exceed
+enum BoardError: Error {
+    case exceedsBoardSize, specialTile
 }
 
 
