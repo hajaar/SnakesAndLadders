@@ -16,6 +16,17 @@ struct Tile {
         return keys[0]
     }
     
+    static func returnEndingPosition(isSnake: Bool, start: Int, length: Int) throws -> Int {
+        let endingPosition = start + (isSnake ? -1 : 1) * length
+        if isSnake && endingPosition <= 1 {
+            throw LengthError.exceed
+        }
+        if !isSnake && endingPosition >= AppConfig.boardSize {
+            throw LengthError.exceed
+        }
+        return endingPosition
+    }
+    
     var tId: Int = 0 //shows the number of tile on the board
     var tIndex: Int = 0 //index of the tile in the array created by Board
 

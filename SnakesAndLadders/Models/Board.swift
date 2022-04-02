@@ -83,7 +83,7 @@ struct Board {
                 length = isSnakeAndLadder ? lengthSnakeAndLadder.allCases.randomElement()!.value : 0
             }
             do {
-                let endingPosition = isSnakeAndLadder ? try returnEndingPosition(isSnake: isFirstValue, start: startingPosition, length: length) : startingPosition
+                let endingPosition = isSnakeAndLadder ? try Tile.returnEndingPosition(isSnake: isFirstValue, start: startingPosition, length: length) : startingPosition
                 Log.log("count: \(count) isSnakeAndLadder: \(isSnakeAndLadder)  isFirstValue? \(isFirstValue) start \(startingPosition) length \(length)", level: .trace)
                 tiles[getTileIndexFromId(startingPosition)].tType = isSnakeAndLadder ? (isFirstValue ? TileType.snake : TileType.ladder, endingPosition) : (isFirstValue ? TileType.slow : TileType.fast, endingPosition)
             } catch {
@@ -97,7 +97,7 @@ struct Board {
             return true
         }
         do {
-            let endingPosition = try returnEndingPosition(isSnake: isFirstValue, start: start, length: length)
+            let endingPosition = try Tile.returnEndingPosition(isSnake: isFirstValue, start: start, length: length)
             if tiles[getTileIndexFromId(endingPosition)].tType.status != .normal {
                 return true
             }
@@ -107,16 +107,7 @@ struct Board {
         return false
     }
     
-     func returnEndingPosition(isSnake: Bool, start: Int, length: Int) throws -> Int {
-        let endingPosition = start + (isSnake ? -1 : 1) * length
-            if isSnake && endingPosition <= 1 {
-                throw LengthError.exceed
-            }
-            if !isSnake && endingPosition >= AppConfig.boardSize {
-                throw LengthError.exceed
-            }
-        return endingPosition
-    }
+
     
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
         let currentPosition = players[playerCounter].getPosition()
