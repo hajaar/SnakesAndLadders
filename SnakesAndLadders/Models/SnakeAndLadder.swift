@@ -39,6 +39,23 @@ struct SnakeAndLadder {
         return SnakeAndLadder.mapIdToIndex[tileId] ?? -1
     }
     
+    static func areConstraintsViolated(tileType: TileType, start: Int, length: lengthSnakeAndLadder) -> (valid: Bool, endingPosition: Int) {
+        var endingPosition = 0
+        if SnakeAndLadder.getIndexFromId(start) != -1  {
+            return (true, endingPosition)
+        }
+        do {
+            endingPosition = try SnakeAndLadder.returnEndingPosition(tileType: tileType, start: start, length: length)
+            if SnakeAndLadder.getIndexFromId(endingPosition) != -1 {
+                return (true, endingPosition)
+            }
+            return (false, endingPosition)
+        } catch {
+            return (true, endingPosition)
+        }
+    }
+    
+    
     private var isSnake: Bool
     private var length: lengthSnakeAndLadder
     private var start: Int //position

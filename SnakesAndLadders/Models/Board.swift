@@ -77,11 +77,11 @@ struct Board {
             let tileType = isSnake ? TileType.snake : TileType.ladder
             var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
             var length = lengthSnakeAndLadder.allCases.randomElement()!
-            var value = doesSpecialTileViolateConstraints(tileType: tileType, start: startingPosition, length: length)
+            var value = SnakeAndLadder.areConstraintsViolated(tileType: tileType, start: startingPosition, length: length)
             while value.valid {
                 startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
                 length = lengthSnakeAndLadder.allCases.randomElement()!
-                value = doesSpecialTileViolateConstraints(tileType: tileType, start: startingPosition, length: length)
+                value = SnakeAndLadder.areConstraintsViolated(tileType: tileType, start: startingPosition, length: length)
             }
             snakesAndLadders.append(SnakeAndLadder(index: i, start: startingPosition, length: length, isSnake: isSnake))
         }
@@ -118,21 +118,7 @@ struct Board {
 //        }
 //    }
     
-    mutating private func doesSpecialTileViolateConstraints(tileType: TileType, start: Int, length: lengthSnakeAndLadder) -> (valid: Bool, endingPosition: Int) {
-        var endingPosition = 0
-        if SnakeAndLadder.getIndexFromId(start) != -1  {
-            return (true, endingPosition)
-        }
-        do {
-            endingPosition = try SnakeAndLadder.returnEndingPosition(tileType: tileType, start: start, length: length)
-            if SnakeAndLadder.getIndexFromId(endingPosition) != -1 {
-                return (true, endingPosition)
-            }
-            return (false, endingPosition)
-        } catch {
-            return (true, endingPosition)
-        }
-    }
+
 
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
         let currentPosition = players[playerCounter].getPosition()
