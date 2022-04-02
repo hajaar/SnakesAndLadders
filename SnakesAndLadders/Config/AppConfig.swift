@@ -72,6 +72,9 @@ enum lengthSnakeAndLadder: Int, CaseIterable {
     }
 }
 
+enum LengthError: Error {
+    case exceed
+}
 
 
 

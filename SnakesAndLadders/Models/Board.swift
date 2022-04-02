@@ -82,9 +82,13 @@ struct Board {
                 startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
                 length = isSnakeAndLadder ? lengthSnakeAndLadder.allCases.randomElement()!.value : 0
             }
-            let endingPosition = isSnakeAndLadder ? returnEndingPosition(isSnake: isFirstValue, start: startingPosition, length: length) : startingPosition
-            Log.log("count: \(count) isSnakeAndLadder: \(isSnakeAndLadder)  isFirstValue? \(isFirstValue) start \(startingPosition) length \(length)", level: .trace)
-            tiles[getTileIndexFromId(startingPosition)].tType = isSnakeAndLadder ? (isFirstValue ? TileType.snake : TileType.ladder, endingPosition) : (isFirstValue ? TileType.slow : TileType.fast, endingPosition)
+            do {
+                let endingPosition = isSnakeAndLadder ? try returnEndingPosition(isSnake: isFirstValue, start: startingPosition, length: length) : startingPosition
+                Log.log("count: \(count) isSnakeAndLadder: \(isSnakeAndLadder)  isFirstValue? \(isFirstValue) start \(startingPosition) length \(length)", level: .trace)
+                tiles[getTileIndexFromId(startingPosition)].tType = isSnakeAndLadder ? (isFirstValue ? TileType.snake : TileType.ladder, endingPosition) : (isFirstValue ? TileType.slow : TileType.fast, endingPosition)
+            } catch {
+                return
+            }
         }
     }
     
@@ -92,39 +96,33 @@ struct Board {
         if tiles[getTileIndexFromId(start)].tType.status != .normal {
             return true
         }
-        let endingPosition = returnEndingPosition(isSnake: isFirstValue, start: start, length: length)
-        if length != 0 {
-            if isFirstValue && endingPosition <= 1 {
+        do {
+            let endingPosition = try returnEndingPosition(isSnake: isFirstValue, start: start, length: length)
+            if tiles[getTileIndexFromId(endingPosition)].tType.status != .normal {
                 return true
             }
-            if !isFirstValue && endingPosition >= AppConfig.boardSize {
-                return true
-            }
-        }
-        if tiles[getTileIndexFromId(endingPosition)].tType.status != .normal {
+        } catch {
             return true
         }
         return false
     }
     
-    mutating func returnEndingPosition(isSnake: Bool, start: Int, length: Int) -> Int {
-        return start + (isSnake ? -1 : 1) * length
+     func returnEndingPosition(isSnake: Bool, start: Int, length: Int) throws -> Int {
+        let endingPosition = start + (isSnake ? -1 : 1) * length
+            if isSnake && endingPosition <= 1 {
+                throw LengthError.exceed
+            }
+            if !isSnake && endingPosition >= AppConfig.boardSize {
+                throw LengthError.exceed
+            }
+        return endingPosition
     }
-    
-    
-    mutating private func updatePlayerPosition(playerId: Int, tileId: Int) {
-        players[playerId].setPosition(tileId)
-    }
-    
     
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
         let currentPosition = players[playerCounter].getPosition()
-        print(currentPosition)
         let newPosition = players[playerCounter].playerRollsDice()
-        print(newPosition)
         let newTile = tiles[getTileIndexFromId(newPosition)].tType
         let terminus = players[playerCounter].playerHasComeToSpecialTile(status: newTile.status, terminus: newTile.terminus)
-        print(terminus)
         if Dice.returnRollSum() != 6 {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
         }
@@ -136,12 +134,11 @@ struct Board {
     private func getTileIndexFromId(_ tileId: Int) -> Int {
         return Tile.mapIdToIndex[tileId] ?? -1
     }
-    private func getPlayerPositionFromTilesForPlayer(_ playerId: Int) -> Int {
-        return players[playerId].getPosition()
-    }
+
     
     func getPlayerInfo() -> [(playerId: Int, tileIndex: Int, playerImage: UIImage, playerColor: UIColor)] {
         var returnValue = [(playerId: Int, tileIndex: Int, playerImage: UIImage, playerColor: UIColor)]()
+        
         players.forEach { player in
             let tmpId = player.getId()
             let tmpTileIndex = getTileIndexFromId(player.getPosition())
