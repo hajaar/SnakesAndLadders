@@ -73,17 +73,8 @@ struct Board {
 
     mutating private func addRandomSnakesAndLadders(count: Int = 0) {
         for i in 0...count - 1{
-            let isSnake = Bool.random()
-            let tileType = isSnake ? TileType.snake : TileType.ladder
-            var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
-            var length = lengthSnakeAndLadder.allCases.randomElement()!
-            var value = SnakeAndLadder.areConstraintsViolated(tileType: tileType, start: startingPosition, length: length)
-            while value.valid {
-                startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
-                length = lengthSnakeAndLadder.allCases.randomElement()!
-                value = SnakeAndLadder.areConstraintsViolated(tileType: tileType, start: startingPosition, length: length)
-            }
-            snakesAndLadders.append(SnakeAndLadder(index: i, start: startingPosition, length: length, isSnake: isSnake))
+            let s = SnakeAndLadder.generateRandomSnakeOrLadder()
+            snakesAndLadders.append(SnakeAndLadder(index: i, start: s.start, length: s.length, isSnake: s.isSnake))
         }
     }
     

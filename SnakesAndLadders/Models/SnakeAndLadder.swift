@@ -55,6 +55,20 @@ struct SnakeAndLadder {
         }
     }
     
+    static func generateRandomSnakeOrLadder() -> (start: Int, length: lengthSnakeAndLadder, isSnake: Bool) {
+        let isSnake = Bool.random()
+        let tileType = isSnake ? TileType.snake : TileType.ladder
+        var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
+        var length = lengthSnakeAndLadder.allCases.randomElement()!
+        var value = SnakeAndLadder.areConstraintsViolated(tileType: tileType, start: startingPosition, length: length)
+        while value.valid {
+            startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
+            length = lengthSnakeAndLadder.allCases.randomElement()!
+            value = SnakeAndLadder.areConstraintsViolated(tileType: tileType, start: startingPosition, length: length)
+        }
+        return (start: startingPosition, length: length, isSnake: isSnake)
+    }
+    
     
     private var isSnake: Bool
     private var length: lengthSnakeAndLadder
