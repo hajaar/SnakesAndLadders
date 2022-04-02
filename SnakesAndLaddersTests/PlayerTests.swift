@@ -71,5 +71,34 @@ class PlayerTests: XCTestCase {
         player.setPosition(99)
         XCTAssertEqual(player.playerRollsDice(), 99)
     }
+    
+    func testPlayerMovesToEndOfSnakeOWhenTheyComeToASnakeTile() {
+        let terminus = player.playerHasComeToSpecialTile(status: .snakeStart, terminus: 50)
+        XCTAssertEqual(terminus, 50)
+        XCTAssertEqual(player.getPosition(), 50)
+    }
+    
+    func testPlayerMovesToEndOfLadderOWhenTheyComeToALadderTile() {
+        let terminus = player.playerHasComeToSpecialTile(status: .ladderStart, terminus: 50)
+        XCTAssertEqual(terminus, 50)
+        XCTAssertEqual(player.getPosition(), 50)
+    }
+    
+    func testPlayerChangesNextTurnTypeWhenTheyComeToAFastTile() {
+        let terminus = player.playerHasComeToSpecialTile(status: .fastStart, terminus: 50)
+        XCTAssertEqual(terminus, -1)
+        XCTAssertEqual(player.getNextTurnType(), .fast)
+    }
 
+    func testPlayerChangesNextTurnTypeWhenTheyComeToASlowTile() {
+        let terminus = player.playerHasComeToSpecialTile(status: .slowStart, terminus: 50)
+        XCTAssertEqual(terminus, -1)
+        XCTAssertEqual(player.getNextTurnType(), .slow)
+    }
+    
+    func testPlayerDoesNotChangeTerminusWhenTheyComeToANormalTile() {
+        let terminus = player.playerHasComeToSpecialTile(status: .none, terminus: -1)
+        XCTAssertEqual(terminus, -1)
+        XCTAssertEqual(player.getNextTurnType(), .normal)
+    }
 }
