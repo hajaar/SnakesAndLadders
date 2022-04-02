@@ -16,6 +16,9 @@ struct Tile {
         return keys[0]
     }
     
+    static func getIndexFromId(_ tileId: Int) -> Int {
+        return Tile.mapIdToIndex[tileId] ?? -1
+    }
 
     
     var tId: Int = 0 //shows the number of tile on the board
