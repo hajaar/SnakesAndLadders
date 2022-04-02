@@ -17,6 +17,7 @@ struct Board {
     private var tiles: [Tile]
     private var players: [Player]
     private var snakesAndLadders: [SnakeAndLadder]
+    private var fastAndSlowTiles: [FastAndSlowTile]
     private var isGameOver: Bool = false
     private var playerCounter: Int = 0
     private var isGameWon: Bool = false
@@ -26,6 +27,7 @@ struct Board {
         tiles = [Tile]()
         players = [Player]()
         snakesAndLadders = [SnakeAndLadder]()
+        fastAndSlowTiles = [FastAndSlowTile]()
     }
     
     mutating func startNewGame() {
@@ -34,7 +36,7 @@ struct Board {
         resetBoard()
         createPlayers(name: "", token: "")
         addRandomSnakesAndLadders(count: 3)
-
+        addRandomFastAndSlowTiles(count: 3)
         playerCounter = 0
             //    playGame()
     }
@@ -75,6 +77,15 @@ struct Board {
         for i in 0...count - 1{
             let s = SnakeAndLadder.generateRandomSnakeOrLadder()
             snakesAndLadders.append(SnakeAndLadder(index: i, start: s.start, length: s.length, isSnake: s.isSnake))
+        }
+    }
+    
+
+    
+    mutating private func addRandomFastAndSlowTiles(count: Int = 0) {
+        for i in 0...count - 1{
+            let s = FastAndSlowTile.generateRandomFastOrSlowTile()
+            fastAndSlowTiles.append(FastAndSlowTile(index: i, tileId: s.tileId,isSlow: s.isSlow))
         }
     }
     
