@@ -16,14 +16,15 @@ struct AppConfig {
 
 
 struct AppDesign {
+    
     static let boardTextColor = (FlatColors.Clouds, IndianColors.SarawakWhitePepper)
     static let boardColor = FlatColors.GreenSea
     static let highlightTileColor = IndianColors.HighlighterLavender
-    static let tileColor = (FlatColors.BelizeHole, IndianColors.EndingNavyBlue)
+    static let tileColor = (FlatColors.MidnightBlue, IndianColors.EndingNavyBlue)
     static let diceColor = UIColor.black
     static let ladderColor = FlatColors.Emerald
     static let snakeColor = FlatColors.Alizarin
-    static var playerColors = [IndianColors.FallingStar, FlatColors.Turquoise, IndianColors.HoneyGlow, IndianColors.GeorgiaPeach]
+    static var playerColors = [IndianColors.FallingStar, FlatColors.Turquoise, IndianColors.HoneyGlow, IndianColors.GeorgiaPeach, IndianColors.ClearChill, FlatColors.Emerald]
     
     static func returnRandomPlayerColor() -> UIColor {
         let i = Int.random(in: 0...playerColors.count-1)
