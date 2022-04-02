@@ -47,13 +47,13 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
         board.delegate = self
         Dice.delegate = self
         
-        mainView.backgroundColor = AppConfig.boardColor
-        myCollectionView.layer.borderColor = AppConfig.boardColor.cgColor
+        mainView.backgroundColor = AppDesign.boardColor
+        myCollectionView.layer.borderColor = AppDesign.boardColor.cgColor
         myCollectionView.layer.borderWidth = 1
         myCollectionView.layer.cornerRadius = 2
         
         
-        diceImage.tintColor = AppConfig.diceColor
+        diceImage.tintColor = AppDesign.diceColor
         Dice.roll()
         diceImage.image = Dice.returnFirstRollSymbol()
         board.startNewGame()

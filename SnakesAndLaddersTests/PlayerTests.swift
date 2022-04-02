@@ -67,6 +67,11 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.getPosition(), 2)
     }
     
+    func testPlayerHasARandomlyAssignedColorFromAList() {
+        let tmpColor = player.getPlayerColor()
+        XCTAssertEqual(AppConfig.playerColors.contains(tmpColor), true)
+    }
+    
     func testPlayerShouldNotMoveBeyondMaximumSizeOfBoardnDiceRoll() {
         player.setPosition(99)
         XCTAssertEqual(player.playerRollsDice(), 99)

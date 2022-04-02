@@ -12,6 +12,10 @@ struct AppConfig {
     static let boardLength = 10
     static let boardSize = boardLength * boardLength
     static let numberofPlayers = 4
+}
+
+
+struct AppDesign {
     static let boardTextColor = (FlatColors.Clouds, IndianColors.SarawakWhitePepper)
     static let boardColor = FlatColors.GreenSea
     static let highlightTileColor = IndianColors.HighlighterLavender
@@ -19,11 +23,17 @@ struct AppConfig {
     static let diceColor = UIColor.black
     static let ladderColor = FlatColors.Emerald
     static let snakeColor = FlatColors.Alizarin
-    static let playerColors = [IndianColors.FallingStar, FlatColors.Turquoise, IndianColors.HoneyGlow, IndianColors.GeorgiaPeach]
+    static var playerColors = [IndianColors.FallingStar, FlatColors.Turquoise, IndianColors.HoneyGlow, IndianColors.GeorgiaPeach]
     
-
+    static func returnRandomPlayerColor() -> UIColor {
+        let i = Int.random(in: 0...playerColors.count-1)
+        let playerColor = playerColors[i]
+        playerColors.remove(at: i)
+        return playerColor
+    }
+    
+    
 }
-
 
 struct symbolNames {
     static let ladderStart: String = "arrowtriangle.up.fill"

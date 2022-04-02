@@ -55,7 +55,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor = AppConfig.highlightTileColor
+        cell?.backgroundColor = AppDesign.highlightTileColor
         print("You selected cell #\(indexPath.item)!")
     }
 

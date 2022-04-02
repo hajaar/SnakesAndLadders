@@ -37,7 +37,7 @@ struct Player {
         self.name = name
         self.token = token
         
-        self.playerColor = AppConfig.playerColors.randomElement()!
+        self.playerColor = AppDesign.returnRandomPlayerColor()
         
         Log.log("\(self.playerId) \(self.name) \(self.token)", level: .debug)
         

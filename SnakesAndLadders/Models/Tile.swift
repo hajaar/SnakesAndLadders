@@ -25,32 +25,32 @@ struct Tile {
         }
     }
     var tColor: UIColor {
-        self.tId.isMultiple(of: 2) ? AppConfig.tileColor.0 : AppConfig.tileColor.1
+        self.tId.isMultiple(of: 2) ? AppDesign.tileColor.0 : AppDesign.tileColor.1
     }
     var tTextColor: UIColor {
-        self.tId.isMultiple(of: 2) ? AppConfig.boardTextColor.0 : AppConfig.boardTextColor.1
+        self.tId.isMultiple(of: 2) ? AppDesign.boardTextColor.0 : AppDesign.boardTextColor.1
     }
     var tBorderColor: UIColor {
-        self.tId.isMultiple(of: 2) ? AppConfig.tileColor.1 : AppConfig.tileColor.0
+        self.tId.isMultiple(of: 2) ? AppDesign.tileColor.1 : AppDesign.tileColor.0
     }
     
     var tTypeImage: (symbol: UIImage?, symbolColor: UIColor) {
         var tmpString: String = ""
-        var tmpColor: UIColor = AppConfig.diceColor
+        var tmpColor: UIColor = AppDesign.diceColor
         
             switch tType.status {
             case .ladderStart:
                 tmpString = symbolNames.ladderStart
-                tmpColor = AppConfig.ladderColor
+                tmpColor = AppDesign.ladderColor
             case .slowStart:
                 tmpString = symbolNames.slowTile
-                tmpColor = AppConfig.snakeColor
+                tmpColor = AppDesign.snakeColor
             case .snakeStart:
                 tmpString = symbolNames.snakeStart
-                tmpColor = AppConfig.snakeColor
+                tmpColor = AppDesign.snakeColor
             case .fastStart:
                 tmpString = symbolNames.fastTile
-                tmpColor = AppConfig.ladderColor
+                tmpColor = AppDesign.ladderColor
                 
             default:
                 tmpString = ""

@@ -21,5 +21,4 @@ class Tiletests: XCTestCase {
         XCTAssertEqual(tiles[0].tIndex, 1)
         XCTAssertEqual(tiles[1].tIndex, 2)
     }
-
 }
