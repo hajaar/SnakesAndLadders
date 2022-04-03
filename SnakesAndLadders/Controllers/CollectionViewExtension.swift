@@ -33,8 +33,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 2
         
-        let snakesAndLadders = board.getSnakeAndLadderInfo()
-        snakesAndLadders.forEach { s in
+        let specialTiles = board.getSpecialTileInfo()
+        specialTiles.forEach { s in
             if indexPath.row == s.tileIndex {
                 cell.snakeOrLadderImage.image = s.symbol
                 cell.snakeOrLadderImage.tintColor = s.symbolColor

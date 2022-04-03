@@ -28,25 +28,17 @@ struct SnakeAndLadder {
         return endingPosition
     }
     
-    static var mapIdToIndex = [Int: Int]()
     
-    static func getIdFromIndex(value: Int) -> Int {
-        let keys = (Self.mapIdToIndex as NSDictionary).allKeys(for: value) as! [Int]
-        return keys[0]
-    }
-    
-    static func getIndexFromId(_ tileId: Int) -> Int {
-        return SnakeAndLadder.mapIdToIndex[tileId] ?? -1
-    }
+
     
     static func areConstraintsViolated(tileType: TileType, start: Int, length: lengthSnakeAndLadder) -> (valid: Bool, endingPosition: Int) {
         var endingPosition = 0
-        if SnakeAndLadder.getIndexFromId(start) != -1  {
+        if Board.getIndexFromId(start) != -1  {
             return (true, endingPosition)
         }
         do {
             endingPosition = try SnakeAndLadder.returnEndingPosition(tileType: tileType, start: start, length: length)
-            if SnakeAndLadder.getIndexFromId(endingPosition) != -1 {
+            if Board.getIndexFromId(endingPosition) != -1 {
                 return (true, endingPosition)
             }
             return (false, endingPosition)
@@ -55,9 +47,8 @@ struct SnakeAndLadder {
         }
     }
     
-    static func generateRandomSnakeOrLadder() -> (start: Int, length: lengthSnakeAndLadder, isSnake: Bool) {
-        let isSnake = Bool.random()
-        let tileType = isSnake ? TileType.snake : TileType.ladder
+    static func generateRandomSnakeOrLadder() -> (start: Int, length: lengthSnakeAndLadder, tileType: TileType) {
+        let tileType = Bool.random() ? TileType.snake : TileType.ladder
         var startingPosition = Int.random(in: 2...AppConfig.boardSize - 1)
         var length = lengthSnakeAndLadder.allCases.randomElement()!
         var value = SnakeAndLadder.areConstraintsViolated(tileType: tileType, start: startingPosition, length: length)
@@ -66,40 +57,48 @@ struct SnakeAndLadder {
             length = lengthSnakeAndLadder.allCases.randomElement()!
             value = SnakeAndLadder.areConstraintsViolated(tileType: tileType, start: startingPosition, length: length)
         }
-        return (start: startingPosition, length: length, isSnake: isSnake)
+        return (start: startingPosition, length: length, tileType: tileType)
     }
     
     
-    private var isSnake: Bool
+    private var tileType: TileType
     private var length: lengthSnakeAndLadder
     private var start: Int //position
     private var end: Int {
-        return start + (isSnake ? -1 : 1) * length.value
+        return start + (tileType == .snake ? -1 : 1) * length.value
     }
     private var index: Int
     private var symbolOfSnakeAndLadder: (symbol: UIImage, symbolColor: UIColor) {
         var tmpString: String = ""
         var tmpColor: UIColor = AppDesign.diceColor
         
-        if isSnake {
-
+        switch tileType {
+        case .snake:
             tmpString = symbolNames.snake
             tmpColor = AppDesign.snakeColor
-
-        }   else {
-                tmpString = symbolNames.ladder
-                tmpColor = AppDesign.ladderColor
-            }
+        case .ladder:
+            tmpString = symbolNames.ladder
+            tmpColor = AppDesign.ladderColor
+        case .slow:
+            tmpString = symbolNames.slow
+            tmpColor = AppDesign.snakeColor
+        case .fast:
+            tmpString = symbolNames.fast
+            tmpColor = AppDesign.ladderColor
+        case .normal:
+            tmpString = ""
+            tmpColor = AppDesign.ladderColor
+        }
+        
         return (UIImage(systemName: tmpString)!,tmpColor)
     }
     
-    init(index: Int, start: Int, length: lengthSnakeAndLadder, isSnake: Bool ) {
-        self.isSnake = isSnake
+    init(index: Int, start: Int, length: lengthSnakeAndLadder, tileType: TileType ) {
+        self.tileType = tileType
         self.length = length
         self.start = start
         self.index = index
         Log.log("start: \(start) end: \(self.end) length: \(length.value)", level: .debug)
-
     }
     
     func getStart() -> Int{

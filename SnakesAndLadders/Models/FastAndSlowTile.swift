@@ -19,19 +19,10 @@ struct FastAndSlowTile {
         return (tileId: tileId, isSlow: isSlow)
     }
     
-    static var mapIdToIndex = [Int: Int]()
-    
-    static func getIdFromIndex(value: Int) -> Int {
-        let keys = (Self.mapIdToIndex as NSDictionary).allKeys(for: value) as! [Int]
-        return keys[0]
-    }
-    
-    static func getIndexFromId(_ tileId: Int) -> Int {
-        return FastAndSlowTile.mapIdToIndex[tileId] ?? -1
-    }
+
     
     static func areConstraintsViolated(start: Int) -> Bool {
-        return FastAndSlowTile.getIndexFromId(start) != -1 ? true : false
+        return Board.getIndexFromId(start) != -1 ? true : false
     }
 
 
@@ -39,9 +30,36 @@ struct FastAndSlowTile {
     private var tileId: Int
     private var index: Int
     
+    private var symbolOfFastAndSlowTile: (symbol: UIImage, symbolColor: UIColor) {
+        var tmpString: String = ""
+        var tmpColor: UIColor = AppDesign.diceColor
+        
+        if isSlow {
+            
+            tmpString = symbolNames.slow
+            tmpColor = AppDesign.snakeColor
+            
+        }   else {
+            tmpString = symbolNames.fast
+            tmpColor = AppDesign.ladderColor
+        }
+        return (UIImage(systemName: tmpString)!,tmpColor)
+    }
+    
+    
     init(index: Int, tileId: Int, isSlow: Bool) {
         self.index = index
         self.tileId = tileId
         self.isSlow = isSlow
+        Log.log("tileId: \(tileId) isSlow: \(isSlow)", level: .debug)
     }
+    
+    func getStart() -> Int {
+        return tileId
+    }
+    
+    func getSymbolImage() -> (UIImage, UIColor) {
+        return symbolOfFastAndSlowTile
+    }
+    
 }
