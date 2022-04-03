@@ -12,7 +12,7 @@
 		F223552B27E2D0D300CA48EB /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223552A27E2D0D300CA48EB /* Tile.swift */; };
 		F223552D27E2D1D100CA48EB /* CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223552C27E2D1D100CA48EB /* CollectionViewExtension.swift */; };
 		F223553027E2DA5600CA48EB /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223552F27E2DA5600CA48EB /* Player.swift */; };
-		F223553227E2DFD900CA48EB /* SnakeAndLadder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223553127E2DFD900CA48EB /* SnakeAndLadder.swift */; };
+		F223553227E2DFD900CA48EB /* SpecialTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223553127E2DFD900CA48EB /* SpecialTile.swift */; };
 		F223553727E2FD4600CA48EB /* myCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223553627E2FD4600CA48EB /* myCollectionViewLayout.swift */; };
 		F287BC2B27E451C500197B8B /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BC2A27E451C500197B8B /* Dice.swift */; };
 		F2926F9F27E1A52E00D14578 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2926F9E27E1A52E00D14578 /* AppConfig.swift */; };
@@ -24,7 +24,6 @@
 		F2A5528727DDEF4500D0D15C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2A5528627DDEF4500D0D15C /* Assets.xcassets */; };
 		F2A5528A27DDEF4500D0D15C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A5528827DDEF4500D0D15C /* LaunchScreen.storyboard */; };
 		F2C4959627E0B2E40067ED90 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C4959527E0B2E40067ED90 /* Board.swift */; };
-		F2C8629B27F89FAE004213B3 /* FastAndSlowTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C8629A27F89FAE004213B3 /* FastAndSlowTile.swift */; };
 		F2ECB09527F5ABC7003FD12F /* DiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ECB09427F5ABC7003FD12F /* DiceTests.swift */; };
 		F2FCA3DB27F2AAD900A56E50 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FCA3DA27F2AAD900A56E50 /* Log.swift */; };
 		F2FCA3DF27F2AD6A00A56E50 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FCA3DE27F2AD6A00A56E50 /* Colors.swift */; };
@@ -46,7 +45,7 @@
 		F223552A27E2D0D300CA48EB /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F223552C27E2D1D100CA48EB /* CollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtension.swift; sourceTree = "<group>"; };
 		F223552F27E2DA5600CA48EB /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		F223553127E2DFD900CA48EB /* SnakeAndLadder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeAndLadder.swift; sourceTree = "<group>"; };
+		F223553127E2DFD900CA48EB /* SpecialTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialTile.swift; sourceTree = "<group>"; };
 		F223553627E2FD4600CA48EB /* myCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCollectionViewLayout.swift; sourceTree = SOURCE_ROOT; };
 		F287BC2A27E451C500197B8B /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		F2926F9E27E1A52E00D14578 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
@@ -60,7 +59,6 @@
 		F2A5528927DDEF4500D0D15C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2A5528B27DDEF4500D0D15C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2C4959527E0B2E40067ED90 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
-		F2C8629A27F89FAE004213B3 /* FastAndSlowTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastAndSlowTile.swift; sourceTree = "<group>"; };
 		F2ECB08A27F5ABAC003FD12F /* SnakesAndLaddersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnakesAndLaddersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2ECB09327F5ABC7003FD12F /* SnakesAndLaddersTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnakesAndLaddersTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		F2ECB09427F5ABC7003FD12F /* DiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceTests.swift; sourceTree = "<group>"; };
@@ -135,12 +133,11 @@
 		F2C4959727E0B2ED0067ED90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F223553127E2DFD900CA48EB /* SnakeAndLadder.swift */,
+				F223553127E2DFD900CA48EB /* SpecialTile.swift */,
 				F2C4959527E0B2E40067ED90 /* Board.swift */,
 				F223552A27E2D0D300CA48EB /* Tile.swift */,
 				F223552F27E2DA5600CA48EB /* Player.swift */,
 				F287BC2A27E451C500197B8B /* Dice.swift */,
-				F2C8629A27F89FAE004213B3 /* FastAndSlowTile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -279,7 +276,6 @@
 				F2A5528227DDEF4400D0D15C /* ViewController.swift in Sources */,
 				F223553727E2FD4600CA48EB /* myCollectionViewLayout.swift in Sources */,
 				F2926F9F27E1A52E00D14578 /* AppConfig.swift in Sources */,
-				F2C8629B27F89FAE004213B3 /* FastAndSlowTile.swift in Sources */,
 				F2926FA327E1F53200D14578 /* CollectionViewCell.swift in Sources */,
 				F223552B27E2D0D300CA48EB /* Tile.swift in Sources */,
 				F223552D27E2D1D100CA48EB /* CollectionViewExtension.swift in Sources */,
@@ -287,7 +283,7 @@
 				F2FCA3DB27F2AAD900A56E50 /* Log.swift in Sources */,
 				F2C4959627E0B2E40067ED90 /* Board.swift in Sources */,
 				F223553027E2DA5600CA48EB /* Player.swift in Sources */,
-				F223553227E2DFD900CA48EB /* SnakeAndLadder.swift in Sources */,
+				F223553227E2DFD900CA48EB /* SpecialTile.swift in Sources */,
 				F2A5528027DDEF4400D0D15C /* SceneDelegate.swift in Sources */,
 				F287BC2B27E451C500197B8B /* Dice.swift in Sources */,
 			);

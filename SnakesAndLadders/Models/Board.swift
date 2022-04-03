@@ -16,21 +16,18 @@ protocol BoardDelegate {
 struct Board {
     private var tiles: [Tile]
     private var players: [Player]
-    private var snakesAndLadders: [SnakeAndLadder]
-    private var fastAndSlowTiles: [FastAndSlowTile]
+    private var specialTiles: [SpecialTile]
     private var isGameOver: Bool = false
     private var playerCounter: Int = 0
     private var isGameWon: Bool = false
-    static var specialTileLookup = [Int: Int]()
+    
     
     var delegate: BoardDelegate?
     
     init() {
         tiles = [Tile]()
         players = [Player]()
-        snakesAndLadders = [SnakeAndLadder]()
-        fastAndSlowTiles = [FastAndSlowTile]()
-        
+        specialTiles = [SpecialTile]()
     }
     
     mutating func startNewGame() {
@@ -38,9 +35,7 @@ struct Board {
         isGameOver = true
         resetBoard()
         createPlayers(name: "", token: "")
-        Self.specialTileLookup = [Int: Int]()
-        addRandomSnakesAndLadders(count: 3)
-        addRandomFastAndSlowTiles(count: 3)
+        addRandomSpecialTiles(count: 3)
         playerCounter = 0
             //    playGame()
     }
@@ -77,27 +72,25 @@ struct Board {
         }
     }
 
-    mutating private func addRandomSnakesAndLadders(count: Int = 0) {
-        for i in 0...count - 1{
-            let s = SnakeAndLadder.generateRandomSnakeOrLadder()
-            snakesAndLadders.append(SnakeAndLadder(index: i, start: s.start, length: s.length, tileType: s.tileType ))
-            Self.specialTileLookup[s.start] = i
-        }
-    }
-
-    mutating private func addRandomFastAndSlowTiles(count: Int = 0) {
-        for i in 0...count - 1{
-            let s = FastAndSlowTile.generateRandomFastOrSlowTile()
-            fastAndSlowTiles.append(FastAndSlowTile(index: i, tileId: s.tileId,isSlow: s.isSlow))
-            Self.specialTileLookup[s.tileId] = i
+    mutating private func addRandomSpecialTiles(count: Int = 0) {
+        for i in 0...(2 * count - 1) {
+            var tileType: TileType
+            if i < count {
+                tileType = Bool.random() ? .slow : .fast
+            } else {
+                tileType = Bool.random() ? .snake : .ladder
+            }
+            let s = SpecialTile.generateSpecialTile(tileType: tileType)
+            specialTiles.append(SpecialTile(index: i, start: s.start, length: s.length, tileType: tileType ))
+            SpecialTile.specialTileLookup[s.start] = i
         }
     }
 
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
         let currentPosition = players[playerCounter].getPosition()
         let newPosition = players[playerCounter].playerRollsDice()
-        let s = Board.getIndexFromId(newPosition)
-        let terminus = s != -1 ? snakesAndLadders[s].getEnd() : newPosition
+        let s = SpecialTile.getIndexFromId(newPosition)
+        let terminus = s != -1 ? specialTiles[s].getEnd() : newPosition
 
         if Dice.returnRollSum() != 6 {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
@@ -107,8 +100,8 @@ struct Board {
         return (Tile.getIndexFromId(currentPosition) , Tile.getIndexFromId(newPosition), Tile.getIndexFromId(terminus) )
     }
     
-    func getTileInfo(index: Int) -> Tile {
-        return tiles[index]
+    func getTileInfo(index: Int) -> (tileId: Int, backgroundColor: UIColor, textColor: UIColor, borderColor: UIColor) {
+        return (tileId: tiles[index].tId, backgroundColor: tiles[index].tColor, textColor: tiles[index].tTextColor, borderColor: tiles[index].tTextColor)
     }
     
     func getPlayerInfo() -> [(playerId: Int, tileIndex: Int, playerImage: UIImage, playerColor: UIColor)] {
@@ -126,28 +119,14 @@ struct Board {
     
     func getSpecialTileInfo() -> [(tileIndex: Int, symbol: UIImage, symbolColor: UIColor)] {
         var returnValue = [(tileIndex: Int, symbol: UIImage, symbolColor: UIColor)]()
-        snakesAndLadders.forEach { s in
-            let tmpIndex = Tile.mapIdToIndex[s.getStart()]!
-            let sym = s.getSymbolImage()
-            returnValue.append((tileIndex: tmpIndex, symbol: sym.0, symbolColor: sym.1))
-        }
-        fastAndSlowTiles.forEach { s in
+        specialTiles.forEach { s in
             let tmpIndex = Tile.mapIdToIndex[s.getStart()]!
             let sym = s.getSymbolImage()
             returnValue.append((tileIndex: tmpIndex, symbol: sym.0, symbolColor: sym.1))
         }
         return returnValue
     }
-
     
-    static func getIdFromIndex(value: Int) -> Int {
-        let keys = (Self.specialTileLookup as NSDictionary).allKeys(for: value) as! [Int]
-        return keys[0]
-    }
-    
-    static func getIndexFromId(_ tileId: Int) -> Int {
-        return Self.specialTileLookup[tileId] ?? -1
-    }
  
 }
 

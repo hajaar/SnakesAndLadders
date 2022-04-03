@@ -26,7 +26,7 @@ struct Player {
             Log.log("playerId \(playerId) balance changed from \(oldValue) to \(balance) ", level: .trace)
         }
     }
-    private var createdSnakesAndLadders: [SnakeAndLadder] = []
+    private var createdSnakesAndLadders: [SpecialTile] = []
     private var wins: Int = 0
     private var remainingSnakesAndLaddersOptions: [lengthSnakeAndLadder] = [.S, .M, .L, .XL]
     

@@ -20,7 +20,6 @@ struct Tile {
         return Tile.mapIdToIndex[tileId] ?? -1
     }
 
-    
     var tId: Int = 0 //shows the number of tile on the board
     var tIndex: Int = 0 //index of the tile in the array created by Board
 

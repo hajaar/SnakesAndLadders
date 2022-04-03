@@ -24,12 +24,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! CollectionViewCell
 
-        let tmpTile = board.getTileInfo(index: indexPath.row)
+        let t = board.getTileInfo(index: indexPath.row)
         
-        cell.myLabel.text = String(tmpTile.tId)
-        cell.backgroundColor = tmpTile.tColor
-        cell.layer.borderColor = tmpTile.tBorderColor.cgColor
-        cell.myLabel.textColor = tmpTile.tTextColor
+        cell.myLabel.text = String(t.tileId)
+        cell.backgroundColor = t.backgroundColor
+        cell.layer.borderColor = t.borderColor.cgColor
+        cell.myLabel.textColor = t.textColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 2
         
@@ -69,8 +69,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        let tmpTile = board.getTileInfo(index: indexPath.row)
-        cell?.backgroundColor = tmpTile.tColor
+        let t = board.getTileInfo(index: indexPath.row)
+        cell?.backgroundColor = t.backgroundColor
         print("You deselected cell #\(indexPath.item)!")
     }
     
