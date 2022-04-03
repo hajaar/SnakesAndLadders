@@ -62,7 +62,7 @@ struct Board {
             } else {
                 tileType = Bool.random() ? .snake : .ladder
             }
-            let s = SpecialTile.generateSpecialTile(tileType: tileType)
+            let s = BoardHelper.generateSpecialTile(tileType: tileType)
             specialTiles.append(SpecialTile(index: i, start: s.start, length: s.length, tileType: tileType ))
             BoardHelper.specialTileLookup[s.start] = i
         }

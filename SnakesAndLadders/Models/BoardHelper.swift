@@ -55,7 +55,65 @@ struct BoardHelper {
         for i in 0...AppConfig.boardSize - 1 {
             tileLookup[arr[i]] = i
         }
-
-        
     }
+
+    static private func returnEndingPosition(tileType: TileType, start: Int, length: lengthSnakeAndLadder) throws -> Int {
+        var endingPosition = start
+        switch tileType {
+        case .fast, .slow, .normal:
+            return endingPosition
+        case .snake:
+            endingPosition = start - length.value
+            if endingPosition <= 1 {
+                throw BoardError.exceedsBoardSize
+            }
+            return endingPosition
+        case .ladder:
+            endingPosition = start + length.value
+            if endingPosition >= AppConfig.boardSize {
+                throw BoardError.exceedsBoardSize
+            }
+            return endingPosition
+        }
+    }
+
+    static private func areConstraintsViolated(tileType: TileType, start: Int, length: lengthSnakeAndLadder) -> Bool {
+        var endingPosition = start
+        if BoardHelper.getSpecialTileIndexFromId(start) != -1  {
+            return true
+        }
+        do {
+            endingPosition = try returnEndingPosition(tileType: tileType, start: start, length: length)
+            if BoardHelper.getSpecialTileIndexFromId(endingPosition) != -1 {
+                return true
+            }
+            return false
+        } catch {
+            return true
+        }
+    }
+
+    static func generateSpecialTile(tileType: TileType) -> (start: Int, length: lengthSnakeAndLadder) {
+        var start = Int.random(in: 2...AppConfig.boardSize - 1)
+        var length = returnRandomLengthForSpecialTile(tileType: tileType)
+        while BoardHelper.areConstraintsViolated(tileType: tileType, start: start, length: length) {
+            start = Int.random(in: 2...AppConfig.boardSize - 1)
+            length = returnRandomLengthForSpecialTile(tileType: tileType)
+        }
+        return (start: start, length: length)
+    }
+
+    static private func returnRandomLengthForSpecialTile(tileType: TileType) -> lengthSnakeAndLadder {
+        switch tileType {
+        case .snake, .ladder:
+            var l = lengthSnakeAndLadder.allCases.randomElement()
+            while l == .E {
+                l = lengthSnakeAndLadder.allCases.randomElement()
+            }
+            return l!
+        case .slow, .fast, .normal:
+            return .E
+        }
+    }
+
 }
