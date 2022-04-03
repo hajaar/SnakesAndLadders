@@ -33,14 +33,16 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 2
         
-        let specialTiles = board.getSpecialTileInfo()
-        specialTiles.forEach { s in
-            if indexPath.row == s.tileIndex {
-                cell.snakeOrLadderImage.image = s.symbol
-                cell.snakeOrLadderImage.tintColor = s.symbolColor
-            }
+        cell.snakeOrLadderImage.image = nil
+        let specialTileId = BoardHelper.getSpecialTileIndexFromId(indexPath.row)
+        if specialTileId != -1 {
+            print(BoardHelper.specialTileLookup)
+            print(indexPath.row)
+            print(specialTileId)
+            let specialTile = board.getSpecialTileInfo(index: specialTileId)
+            cell.snakeOrLadderImage.image = specialTile.symbol
+            cell.snakeOrLadderImage.tintColor = specialTile.symbolColor
         }
-        
         
         let imageArray = [cell.myImage!, cell.myImage2!, cell.myImage3!, cell.myImage4!]
         imageArray.forEach { u in

@@ -17,6 +17,7 @@
 		F287BC2B27E451C500197B8B /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BC2A27E451C500197B8B /* Dice.swift */; };
 		F2926F9F27E1A52E00D14578 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2926F9E27E1A52E00D14578 /* AppConfig.swift */; };
 		F2926FA327E1F53200D14578 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2926FA227E1F53200D14578 /* CollectionViewCell.swift */; };
+		F29934B327F99790001860E4 /* BoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29934B227F99790001860E4 /* BoardHelper.swift */; };
 		F2A5527E27DDEF4400D0D15C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5527D27DDEF4400D0D15C /* AppDelegate.swift */; };
 		F2A5528027DDEF4400D0D15C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5527F27DDEF4400D0D15C /* SceneDelegate.swift */; };
 		F2A5528227DDEF4400D0D15C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5528127DDEF4400D0D15C /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 		F287BC2A27E451C500197B8B /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		F2926F9E27E1A52E00D14578 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		F2926FA227E1F53200D14578 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		F29934B227F99790001860E4 /* BoardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHelper.swift; sourceTree = "<group>"; };
 		F2A5527A27DDEF4400D0D15C /* SnakesAndLadders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnakesAndLadders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A5527D27DDEF4400D0D15C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2A5527F27DDEF4400D0D15C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				F223552A27E2D0D300CA48EB /* Tile.swift */,
 				F223552F27E2DA5600CA48EB /* Player.swift */,
 				F287BC2A27E451C500197B8B /* Dice.swift */,
+				F29934B227F99790001860E4 /* BoardHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F29934B327F99790001860E4 /* BoardHelper.swift in Sources */,
 				F2FCA3DF27F2AD6A00A56E50 /* Colors.swift in Sources */,
 				F2A5528227DDEF4400D0D15C /* ViewController.swift in Sources */,
 				F223553727E2FD4600CA48EB /* myCollectionViewLayout.swift in Sources */,

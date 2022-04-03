@@ -48,27 +48,9 @@ struct Board {
     
     private mutating func resetBoard() {
         tiles = [Tile]()
-        for i in stride(from: AppConfig.boardSize, to: AppConfig.boardSize - (AppConfig.boardSize / AppConfig.boardLength), by: -1) {
-            tiles.append(Tile(tId: i))
-        }
-        var start = 0
-        var end = start + (AppConfig.boardSize / AppConfig.boardLength)
-        for _ in 1...AppConfig.boardLength {
-            var tmpId = [Int]()
-            for i in start...end - 1 {
-                tmpId.append(tiles[i].tId - AppConfig.boardLength)
-                
-            }
-            tmpId = tmpId.reversed()
-            for i in 0...AppConfig.boardLength - 1 {
-                tiles.append(Tile(tId: tmpId[i]))
-            }
-            start = end
-            end = start + (AppConfig.boardSize / AppConfig.boardLength)
-        }
+        BoardHelper.resetBoard()
         for i in 0...AppConfig.boardSize - 1 {
-            tiles[i].tIndex = i
-            Tile.mapIdToIndex[tiles[i].tId] = i
+            tiles.append(Tile(tId: BoardHelper.getTileIdFromIndex(value: i), tIndex: i))
         }
     }
 
@@ -82,14 +64,14 @@ struct Board {
             }
             let s = SpecialTile.generateSpecialTile(tileType: tileType)
             specialTiles.append(SpecialTile(index: i, start: s.start, length: s.length, tileType: tileType ))
-            SpecialTile.specialTileLookup[s.start] = i
+            BoardHelper.specialTileLookup[s.start] = i
         }
     }
 
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
         let currentPosition = players[playerCounter].getPosition()
         let newPosition = players[playerCounter].playerRollsDice()
-        let s = SpecialTile.getIndexFromId(newPosition)
+        let s = BoardHelper.getSpecialTileIndexFromId(newPosition)
         let terminus = s != -1 ? specialTiles[s].getEnd() : newPosition
 
         if Dice.returnRollSum() != 6 {
@@ -97,7 +79,7 @@ struct Board {
         }
         delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"))
         isGameWon = newPosition == AppConfig.boardSize ? true : false
-        return (Tile.getIndexFromId(currentPosition) , Tile.getIndexFromId(newPosition), Tile.getIndexFromId(terminus) )
+        return (BoardHelper.getTileIndexFromId(currentPosition) , BoardHelper.getTileIndexFromId(newPosition), BoardHelper.getTileIndexFromId(terminus) )
     }
     
     func getTileInfo(index: Int) -> (tileId: Int, backgroundColor: UIColor, textColor: UIColor, borderColor: UIColor) {
@@ -109,7 +91,7 @@ struct Board {
         
         players.forEach { player in
             let tmpId = player.getId()
-            let tmpTileIndex = Tile.getIndexFromId(player.getPosition())
+            let tmpTileIndex = BoardHelper.getTileIndexFromId(player.getPosition())
             let tmpPlayerImage = player.getPlayerImage()
             let tmpPlayerColor = player.getPlayerColor()
             returnValue.append((playerId: tmpId, tileIndex: tmpTileIndex, playerImage: tmpPlayerImage, playerColor: tmpPlayerColor))
@@ -117,14 +99,8 @@ struct Board {
         return returnValue
     }
     
-    func getSpecialTileInfo() -> [(tileIndex: Int, symbol: UIImage, symbolColor: UIColor)] {
-        var returnValue = [(tileIndex: Int, symbol: UIImage, symbolColor: UIColor)]()
-        specialTiles.forEach { s in
-            let tmpIndex = Tile.mapIdToIndex[s.getStart()]!
-            let sym = s.getSymbolImage()
-            returnValue.append((tileIndex: tmpIndex, symbol: sym.0, symbolColor: sym.1))
-        }
-        return returnValue
+    func getSpecialTileInfo(index: Int) -> (symbol: UIImage?, symbolColor: UIColor) {
+        return specialTiles[index].getSymbolImage()
     }
     
  

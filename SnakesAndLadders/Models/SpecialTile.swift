@@ -9,16 +9,7 @@ import Foundation
 import UIKit
 
 struct SpecialTile {
-    static var specialTileLookup = [Int: Int]()
-    
-    static func getIdFromIndex(value: Int) -> Int {
-        let keys = (Self.specialTileLookup as NSDictionary).allKeys(for: value) as! [Int]
-        return keys[0]
-    }
-    
-    static func getIndexFromId(_ tileId: Int) -> Int {
-        return Self.specialTileLookup[tileId] ?? -1
-    }
+
     
     static private func returnEndingPosition(tileType: TileType, start: Int, length: lengthSnakeAndLadder) throws -> Int {
         var endingPosition = start
@@ -42,12 +33,12 @@ struct SpecialTile {
 
     static private func areConstraintsViolated(tileType: TileType, start: Int, length: lengthSnakeAndLadder) -> Bool {
         var endingPosition = start
-        if Self.getIndexFromId(start) != -1  {
+        if BoardHelper.getSpecialTileIndexFromId(start) != -1  {
             return true
         }
         do {
             endingPosition = try SpecialTile.returnEndingPosition(tileType: tileType, start: start, length: length)
-            if Self.getIndexFromId(endingPosition) != -1 {
+            if BoardHelper.getSpecialTileIndexFromId(endingPosition) != -1 {
                 return true
             }
             return false
