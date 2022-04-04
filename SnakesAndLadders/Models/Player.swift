@@ -21,50 +21,18 @@ struct Player {
     
     private var playerColor: UIColor
     
-    private var balance: Int = 0 {
-        didSet {
-            Log.log("playerId \(playerId) balance changed from \(oldValue) to \(balance) ", level: .trace)
-        }
-    }
-    private var createdSnakesAndLadders: [SpecialTile] = []
-    private var wins: Int = 0
-    private var remainingSnakesAndLaddersOptions: [lengthSnakeAndLadder] = [.S, .M, .L, .XL]
-    
     private var nextTurnType: TurnType = .normal
-    
     
     init(playerID: Int, name: String, token: String, isHuman: Bool = true) {
         self.playerId = playerID
         self.name = name
         self.token = token
         self.isHuman = isHuman
-        
         self.playerColor = AppDesign.returnRandomPlayerColor()
         
         Log.log("\(self.playerId) \(self.name) \(self.token)", level: .debug)
-        
-        balance = 0
-        createdSnakesAndLadders = []
-        remainingSnakesAndLaddersOptions = [.S, .M, .L, .XL]
-        
-        Log.log("player: \(playerId) balance: \(balance)", level: .trace)
     }
-    
-    
-    
-    func getBalance() -> Int {
-        return balance
-    }
-    
-    mutating func changeBalance(amount: Int = 0, credit: Bool = true ) -> Int {
-        balance += credit ? amount : -1 * amount
-        return balance
-    }
-    
-    func checkForAvailableFunds(amount: Int = 0) -> Bool {
-        return balance - amount >= 0
-    }
-    
+
     func getId() -> Int {
         return playerId
     }
@@ -75,20 +43,6 @@ struct Player {
     
     mutating func setNextTurnType(turnType: TurnType) {
         self.nextTurnType = turnType
-    }
-    
-    mutating func nextTurnValue(roll: Int) -> Int {
-        var modifiedRoll = roll
-        switch nextTurnType {
-        case .normal:
-            modifiedRoll = roll
-        case .slow:
-            modifiedRoll = roll/2
-        case .fast:
-            modifiedRoll = roll * 2
-        }
-        nextTurnType = .normal
-        return modifiedRoll
     }
     
     func getName() -> String {
@@ -114,16 +68,28 @@ struct Player {
     func getPlayerColor() -> UIColor {
         return playerColor
     }
-    
+
+    mutating func nextTurnValue(roll: Int) -> Int {
+        var modifiedRoll = roll
+        switch nextTurnType {
+        case .normal:
+            modifiedRoll = roll
+        case .slow:
+            modifiedRoll = roll/2
+        case .fast:
+            modifiedRoll = roll * 2
+        }
+        nextTurnType = .normal
+        return modifiedRoll
+    }
+
     mutating func playerRollsDice() -> Int{
         Log.log(playerId, level: .trace)
-        let currentPosition = position
         Dice.roll()
         let roll = Dice.returnRollSum()
-        let modifiedRoll = nextTurnValue(roll: roll)
-        var newPosition = currentPosition + modifiedRoll
+        var newPosition = position + nextTurnValue(roll: roll)
         if newPosition > AppConfig.boardSize || newPosition < 1 {
-            newPosition = currentPosition
+            newPosition = position
         }
         position = newPosition
         return newPosition

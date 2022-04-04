@@ -10,23 +10,11 @@ import UIKit
 
 struct SpecialTile {
 
-
-    
-
-    
-    
     private var tileType: TileType
     private var length: lengthSnakeAndLadder
     private var start: Int //position
     private var end: Int {
-        switch tileType {
-        case .snake:
-            return start - length.value
-        case .ladder:
-            return start + length.value
-        case .slow, .fast, .normal:
-            return start
-        }
+        try! BoardHelper.returnEndingPosition(tileType: tileType, start: start, length: length)
     }
     private var index: Int //position in array
     private var tileId: Int { //tileIndex corresponding to indexpath.row
@@ -77,10 +65,6 @@ struct SpecialTile {
     func getSymbolImage() -> (UIImage, UIColor) {
         Log.log("\(start)", level: .trace)
         return specialTileSymbol
-    }
-
-    func getIndex() -> Int {
-        return index
     }
 
     func getTileType() -> TileType {

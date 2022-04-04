@@ -9,7 +9,7 @@ import Foundation
 
 struct BoardHelper {
      static var tileLookup = [Int: Int]() //has position and tileId
-     static var specialTileLookup = [Int: Int]() //has position and tileId
+     static var specialTileLookup = [Int: Int]() //has position and index. Use tileLookup to get tileid given position
     
     static func getTileIdFromIndex(value: Int) -> Int {
         let keys = (tileLookup as NSDictionary).allKeys(for: value) as! [Int]
@@ -55,7 +55,7 @@ struct BoardHelper {
         }
     }
 
-    static private func returnEndingPosition(tileType: TileType, start: Int, length: lengthSnakeAndLadder) throws -> Int {
+    static  func returnEndingPosition(tileType: TileType, start: Int, length: lengthSnakeAndLadder) throws -> Int {
         var endingPosition = start
         switch tileType {
         case .fast, .slow, .normal:

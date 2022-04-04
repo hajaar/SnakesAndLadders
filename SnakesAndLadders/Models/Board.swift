@@ -35,7 +35,7 @@ struct Board {
         isGameOver = true
         resetBoard()
         createPlayers(name: "", token: "")
-        addRandomSpecialTiles(count: 10)
+        addRandomSpecialTiles(count: 3)
         playerCounter = 0
             //    playGame()
     }
