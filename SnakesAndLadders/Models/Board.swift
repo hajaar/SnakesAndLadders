@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol BoardDelegate {
-    func playerDidSomething(_ controller: Board, text: String)
+    func playerDidSomething(_ controller: Board, text: String, currentPos: Int, newPos: Int, terminus: Int)
 }
 
 
@@ -88,7 +88,7 @@ struct Board {
         if Dice.returnRollSum() != 6 {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
         }
-        delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"))
+        delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"), currentPos: BoardHelper.getTileIndexFromId(currentPosition), newPos: BoardHelper.getTileIndexFromId(newPosition), terminus: BoardHelper.getTileIndexFromId(terminus))
         isGameWon = newPosition == AppConfig.boardSize ? true : false
         return (BoardHelper.getTileIndexFromId(currentPosition) , BoardHelper.getTileIndexFromId(newPosition), BoardHelper.getTileIndexFromId(terminus) )
     }

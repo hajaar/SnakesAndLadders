@@ -19,16 +19,13 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
         }
         rollDiceButton.isEnabled = true
     }
-    
-    
-    
-    func playerDidSomething(_ controller: Board, text: String) {
-        print(text)
+
+    func playerDidSomething(_ controller: Board, text: String, currentPos: Int, newPos: Int, terminus: Int) {
         messageText = text
-        
+        print("text: \(text) currentPos: \(currentPos) newPos: \(newPos) terminus: \(terminus)")
     }
-    
-    
+
+
     var board = Board()
     let reuseIdentifier = "cell"
     var counter: Int = 1
