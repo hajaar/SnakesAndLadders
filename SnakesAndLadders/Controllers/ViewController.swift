@@ -7,42 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, BoardDelegate, DiceDelegate {
-    func getAnimateSingleDieRoll(animatedImages: [UIImage], finalImage: UIImage) {
-        rollDiceButton.isEnabled = false
-        diceImage.animationImages = animatedImages
-        diceImage.animationDuration = 0.75
-        diceImage.startAnimating()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-            self.diceImage.stopAnimating()
-            self.diceImage.image = finalImage
-        }
-        rollDiceButton.isEnabled = true
-    }
-
-    func playerDidSomething(_ controller: Board, text: String, currentPos: Int, newPos: Int, terminus: Int) {
-        messageText = text
-        print("text: \(text) currentPos: \(currentPos) newPos: \(newPos) terminus: \(terminus)")
-        rollDiceButton.isEnabled = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-            var indexPaths: [NSIndexPath] = []
-            indexPaths.append(NSIndexPath(item: currentPos, section: 0))
-            self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
-            indexPaths = [NSIndexPath]()
-            indexPaths.append(NSIndexPath(item: newPos, section: 0))
-            self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
-            indexPaths = [NSIndexPath]()
-            if terminus > -1 {
-                indexPaths.append(NSIndexPath(item: terminus, section: 0))
-                self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
-                indexPaths = [NSIndexPath]()
-            }
-            self.messageLabel.text = self.messageText
-        }
-        rollDiceButton.isEnabled = true
-    }
-
-
+class ViewController: UIViewController {
+    
     var board = Board()
     let reuseIdentifier = "cell"
     var counter: Int = 1
