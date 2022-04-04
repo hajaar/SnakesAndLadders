@@ -70,6 +70,10 @@ struct Board {
         Log.log(BoardHelper.specialTileLookup, level: .debug)
     }
 
+
+
+
+
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
         let currentPosition = players[playerCounter].getPosition()
         let newPosition = players[playerCounter].playerRollsDice()
@@ -113,7 +117,6 @@ struct Board {
         } else {
             return nil
         }
-
     }
  
 }

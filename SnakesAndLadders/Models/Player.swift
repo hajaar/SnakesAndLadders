@@ -69,6 +69,10 @@ struct Player {
         return playerColor
     }
 
+    func getIsHuman() -> Bool {
+        return isHuman
+    }
+
     mutating func nextTurnValue(roll: Int) -> Int {
         var modifiedRoll = roll
         switch nextTurnType {
