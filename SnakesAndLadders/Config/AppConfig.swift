@@ -51,8 +51,19 @@ enum  TileType {
     case snake, ladder, slow, fast, normal
 }
 
-enum TurnType {
+enum TurnType: Int {
     case normal, slow, fast
+
+    var value: Int {
+        switch self {
+        case .normal:
+            return 1
+        case .slow:
+            return 1/2
+        case .fast:
+            return 2
+        }
+    }
 }
 
 enum lengthSnakeAndLadder: Int, CaseIterable {

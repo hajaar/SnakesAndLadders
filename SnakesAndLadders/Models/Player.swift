@@ -78,15 +78,7 @@ struct Player {
     }
 
     mutating func nextTurnValue(roll: Int) -> Int {
-        var modifiedRoll = roll
-        switch nextTurnType {
-        case .normal:
-            modifiedRoll = roll
-        case .slow:
-            modifiedRoll = roll/2
-        case .fast:
-            modifiedRoll = roll * 2
-        }
+        let modifiedRoll = roll * nextTurnType.value
         nextTurnType = .normal
         return modifiedRoll
     }

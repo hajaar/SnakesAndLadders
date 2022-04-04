@@ -43,16 +43,18 @@ struct Board {
             players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and
         }
         players[0].setHuman(isHuman: true)
-        players[1].setHuman(isHuman: false)
+        players[1].setHuman(isHuman: true)
         players[2].setHuman(isHuman: true)
-        players[3].setHuman(isHuman: false)
+        players[3].setHuman(isHuman: true)
     }
     
     private mutating func resetBoard() {
         tiles = [Tile]()
         BoardHelper.resetBoard()
+
         for i in 0...AppConfig.boardSize - 1 {
-            tiles.append(Tile(tId: BoardHelper.getTileIdFromIndex(value: i), tIndex: i))
+            tiles.append(Tile(tId: BoardHelper.getTileIdFromIndex(value: i),
+                              tIndex: i))
         }
     }
 
@@ -66,7 +68,10 @@ struct Board {
                 tileType = Bool.random() ? .snake : .ladder
             }
             let s = BoardHelper.generateSpecialTile(tileType: tileType)
-            specialTiles.append(SpecialTile(index: i, start: s.start, length: s.length, tileType: tileType))
+            specialTiles.append(SpecialTile(index: i,
+                                            start: s.start,
+                                            length: s.length,
+                                            tileType: tileType))
             BoardHelper.specialTileLookup[s.start] = i
         }
         Log.log(BoardHelper.specialTileLookup, level: .debug)
@@ -87,7 +92,11 @@ struct Board {
         if Dice.returnRollSum() != 6 {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
         }
-        delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"), currentPos: BoardHelper.getTileIndexFromId(currentPosition), newPos: BoardHelper.getTileIndexFromId(newPosition), terminus: BoardHelper.getTileIndexFromId(terminus))
+        delegate?.playerDidSomething(self,
+                                     text: String("Player: \(playerCounter) to Play"),
+                                     currentPos: BoardHelper.getTileIndexFromId(currentPosition),
+                                     newPos: BoardHelper.getTileIndexFromId(newPosition),
+                                     terminus: BoardHelper.getTileIndexFromId(terminus))
         isGameWon = newPosition == AppConfig.boardSize ? true : false
         if !players[playerCounter].getIsHuman() {
             playTurn()
@@ -106,7 +115,9 @@ struct Board {
             return nil
         }
         players.forEach { player in
-            returnValue.append((playerId: player.getId(), playerImage: player.getPlayerImage(), playerColor: player.getPlayerColor()))
+            returnValue.append((playerId: player.getId(),
+                                playerImage: player.getPlayerImage(),
+                                playerColor: player.getPlayerColor()))
         }
         return returnValue
     }
