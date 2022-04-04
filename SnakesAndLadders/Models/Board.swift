@@ -63,9 +63,10 @@ struct Board {
                 tileType = Bool.random() ? .snake : .ladder
             }
             let s = BoardHelper.generateSpecialTile(tileType: tileType)
-            specialTiles.append(SpecialTile(index: i, start: s.start, length: s.length, tileType: tileType ))
+            specialTiles.append(SpecialTile(index: i, start: s.start, length: s.length, tileType: tileType))
             BoardHelper.specialTileLookup[s.start] = i
         }
+        Log.log(BoardHelper.specialTileLookup, level: .debug)
     }
 
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
@@ -99,10 +100,15 @@ struct Board {
         return returnValue
     }
     
-    func getSpecialTileInfo(index: Int) -> (symbol: UIImage?, symbolColor: UIColor) {
-        return specialTiles[index].getSymbolImage()
+    func getSpecialTileInfo(tileId: Int) -> (symbol: UIImage, symbolColor: UIColor)? {
+        let i = BoardHelper.getSpecialTileIndexFromId(tileId)
+        if i != -1 {
+            return specialTiles[i].getSymbolImage()
+        } else {
+            return nil
+        }
+
     }
-    
  
 }
 

@@ -8,8 +8,8 @@
 import Foundation
 
 struct BoardHelper {
-     static var tileLookup = [Int: Int]()
-     static var specialTileLookup = [Int: Int]()
+     static var tileLookup = [Int: Int]() //has position and tileId
+     static var specialTileLookup = [Int: Int]() //has position and tileId
     
     static func getTileIdFromIndex(value: Int) -> Int {
         let keys = (tileLookup as NSDictionary).allKeys(for: value) as! [Int]
@@ -20,14 +20,12 @@ struct BoardHelper {
         return tileLookup[tileId] ?? -1
     }
     
-    static func getSpecialTileIdFromIndex(value: Int)  -> Int {
-        let keys = (Self.specialTileLookup as NSDictionary).allKeys(for: value) as! [Int]
-        return keys[0]
-    }
-    
     static func getSpecialTileIndexFromId(_ tileId: Int) -> Int {
         return Self.specialTileLookup[tileId] ?? -1
     }
+
+
+
     
     static func resetBoard()  {
         var arr = [Int]()

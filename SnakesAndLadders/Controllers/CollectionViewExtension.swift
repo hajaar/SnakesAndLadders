@@ -34,27 +34,24 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.layer.cornerRadius = 2
         
         cell.snakeOrLadderImage.image = nil
-        let specialTileId = BoardHelper.getSpecialTileIndexFromId(indexPath.row)
-        if specialTileId != -1 {
-            print(BoardHelper.specialTileLookup)
-            print(indexPath.row)
-            print(specialTileId)
-            let specialTile = board.getSpecialTileInfo(index: specialTileId)
+        let specialTileId = BoardHelper.getTileIdFromIndex(value: indexPath.row) //same tileId as a normal tile
+        Log.log("indexpath.row \(indexPath.row) specialTileid \(specialTileId)" , level: .debug)
+        if let specialTile = board.getSpecialTileInfo(tileId: specialTileId) {
             cell.snakeOrLadderImage.image = specialTile.symbol
             cell.snakeOrLadderImage.tintColor = specialTile.symbolColor
         }
-        
         let imageArray = [cell.myImage!, cell.myImage2!, cell.myImage3!, cell.myImage4!]
         imageArray.forEach { u in
             u.image = nil
         }
+
         let players = board.getPlayerInfo()
         players.forEach { player in
             if indexPath.row == player.tileIndex {
                 imageArray[player.playerId].image = player.playerImage
                 imageArray[player.playerId].tintColor = player.playerColor
             }
-        }
+        } //optimize later so that we check for presence of player on tile and then only get the info.
 
         return cell
     }

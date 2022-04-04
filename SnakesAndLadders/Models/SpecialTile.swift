@@ -28,7 +28,11 @@ struct SpecialTile {
             return start
         }
     }
-    private var index: Int
+    private var index: Int //position in array
+    private var tileId: Int { //tileIndex corresponding to indexpath.row
+        BoardHelper.getTileIndexFromId(start)
+    }
+
     private var specialTileSymbol: (symbol: UIImage, symbolColor: UIColor) {
         var tmpString: String = ""
         var tmpColor: UIColor = AppDesign.diceColor
@@ -71,6 +75,11 @@ struct SpecialTile {
     }
     
     func getSymbolImage() -> (UIImage, UIColor) {
+        Log.log("\(start)", level: .trace)
         return specialTileSymbol
+    }
+
+    func getIndex() -> Int {
+        return index
     }
 }
