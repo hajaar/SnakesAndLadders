@@ -74,7 +74,7 @@ struct Board {
 
 
 
-    mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
+    mutating func playTurn() {
         let currentPosition = players[playerCounter].getPosition()
         let newPosition = players[playerCounter].playerRollsDice()
         var terminus = newPosition
@@ -90,7 +90,6 @@ struct Board {
         }
         delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"), currentPos: BoardHelper.getTileIndexFromId(currentPosition), newPos: BoardHelper.getTileIndexFromId(newPosition), terminus: BoardHelper.getTileIndexFromId(terminus))
         isGameWon = newPosition == AppConfig.boardSize ? true : false
-        return (BoardHelper.getTileIndexFromId(currentPosition) , BoardHelper.getTileIndexFromId(newPosition), BoardHelper.getTileIndexFromId(terminus) )
     }
     
     func getTileInfo(index: Int) -> (tileId: Int, backgroundColor: UIColor, textColor: UIColor, borderColor: UIColor) {

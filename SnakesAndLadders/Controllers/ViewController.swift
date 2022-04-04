@@ -23,6 +23,23 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
     func playerDidSomething(_ controller: Board, text: String, currentPos: Int, newPos: Int, terminus: Int) {
         messageText = text
         print("text: \(text) currentPos: \(currentPos) newPos: \(newPos) terminus: \(terminus)")
+        rollDiceButton.isEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+            var indexPaths: [NSIndexPath] = []
+            indexPaths.append(NSIndexPath(item: currentPos, section: 0))
+            self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
+            indexPaths = [NSIndexPath]()
+            indexPaths.append(NSIndexPath(item: newPos, section: 0))
+            self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
+            indexPaths = [NSIndexPath]()
+            if terminus > -1 {
+                indexPaths.append(NSIndexPath(item: terminus, section: 0))
+                self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
+                indexPaths = [NSIndexPath]()
+            }
+            self.messageLabel.text = self.messageText
+        }
+        rollDiceButton.isEnabled = true
     }
 
 
@@ -57,26 +74,7 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
         
     }
     @IBAction func rollDice(_ sender: UIButton) {
-
-        let outcome = board.playTurn()
-        rollDiceButton.isEnabled = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-            var indexPaths: [NSIndexPath] = []
-            indexPaths.append(NSIndexPath(item: outcome.currentIndex, section: 0))
-            self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
-            indexPaths = [NSIndexPath]()
-            indexPaths.append(NSIndexPath(item: outcome.newIndex, section: 0))
-            self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
-            indexPaths = [NSIndexPath]()
-            if outcome.terminusIndex > -1 {
-                indexPaths.append(NSIndexPath(item: outcome.terminusIndex, section: 0))
-                self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
-                indexPaths = [NSIndexPath]()
-            }
-            self.messageLabel.text = self.messageText
-        } 
-        rollDiceButton.isEnabled = true
-
+        board.playTurn()
     }
 
     @IBAction func startNewGameButton(_ sender: UIButton) {
