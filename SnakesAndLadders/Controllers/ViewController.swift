@@ -81,6 +81,12 @@ class ViewController: UIViewController, BoardDelegate, DiceDelegate {
         rollDiceButton.isEnabled = true
 
     }
+
+    @IBAction func startNewGameButton(_ sender: UIButton) {
+        board.startNewGame()
+        myCollectionView.reloadData()
+    }
+
     
     
 }

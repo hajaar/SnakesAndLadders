@@ -112,6 +112,16 @@
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-ih-ULU" userLabel="Player Stack">
                                                 <rect key="frame" x="0.0" y="0.0" width="363.5" height="463.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmG-2N-QeU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="363.5" height="463.5"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="New Game"/>
+                                                        <connections>
+                                                            <action selector="startNewGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HHe-Up-zF4"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-gq-n56" userLabel="Dice Stack">
                                                 <rect key="frame" x="0.0" y="463.5" width="363.5" height="228.5"/>

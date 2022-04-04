@@ -55,6 +55,7 @@ struct Board {
     }
 
     mutating private func addRandomSpecialTiles(count: Int = 0) {
+        specialTiles = [SpecialTile]()
         for i in 0...(2 * count - 1) {
             var tileType: TileType
             if i < count {
@@ -72,8 +73,8 @@ struct Board {
     mutating func playTurn() -> (currentIndex: Int,newIndex: Int, terminusIndex: Int){
         let currentPosition = players[playerCounter].getPosition()
         let newPosition = players[playerCounter].playerRollsDice()
-        let s = BoardHelper.getSpecialTileIndexFromId(newPosition)
         var terminus = newPosition
+        let s = BoardHelper.getSpecialTileIndexFromId(newPosition)
         if s != -1 {
             let specialTile = specialTiles[s]
             terminus = players[playerCounter].ifPlayerHasComeToSpecialTile(status: specialTile.getTileType(), terminus: specialTile.getEnd())

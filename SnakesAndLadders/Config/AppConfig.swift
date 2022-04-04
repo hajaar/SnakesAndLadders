@@ -30,7 +30,7 @@ struct AppDesign {
     static func returnRandomPlayerColor() -> UIColor {
         let i = Int.random(in: 0...playerColors.count-1)
         let playerColor = playerColors[i]
-        playerColors.remove(at: i)
+     //   playerColors.remove(at: i)
         return playerColor
     }
     
