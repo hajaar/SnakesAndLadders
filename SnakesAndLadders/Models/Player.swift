@@ -145,6 +145,7 @@ struct Player {
         case .normal:
             value = -1
         }
+        Log.log("playerid: \(playerId) status: \(status) terminus: \(terminus) value: \(value)", level: .debug)
         return value 
     }
     

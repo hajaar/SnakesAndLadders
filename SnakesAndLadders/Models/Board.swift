@@ -35,7 +35,7 @@ struct Board {
         isGameOver = true
         resetBoard()
         createPlayers(name: "", token: "")
-        addRandomSpecialTiles(count: 3)
+        addRandomSpecialTiles(count: 10)
         playerCounter = 0
             //    playGame()
     }
@@ -73,8 +73,13 @@ struct Board {
         let currentPosition = players[playerCounter].getPosition()
         let newPosition = players[playerCounter].playerRollsDice()
         let s = BoardHelper.getSpecialTileIndexFromId(newPosition)
-        let terminus = s != -1 ? specialTiles[s].getEnd() : newPosition
+        var terminus = newPosition
+        if s != -1 {
+            let specialTile = specialTiles[s]
+            terminus = players[playerCounter].ifPlayerHasComeToSpecialTile(status: specialTile.getTileType(), terminus: specialTile.getEnd())
+        }
 
+        Log.log("player \(playerCounter) current: \(currentPosition) new: \(newPosition) terminus: \(terminus)", level: .debug)
         if Dice.returnRollSum() != 6 {
             playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
         }

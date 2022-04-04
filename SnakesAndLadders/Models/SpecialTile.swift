@@ -82,4 +82,8 @@ struct SpecialTile {
     func getIndex() -> Int {
         return index
     }
+
+    func getTileType() -> TileType {
+        return tileType
+    }
 }

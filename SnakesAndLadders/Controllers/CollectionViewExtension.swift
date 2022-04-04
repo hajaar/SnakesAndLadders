@@ -35,11 +35,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         
         cell.snakeOrLadderImage.image = nil
         let specialTileId = BoardHelper.getTileIdFromIndex(value: indexPath.row) //same tileId as a normal tile
-        Log.log("indexpath.row \(indexPath.row) specialTileid \(specialTileId)" , level: .debug)
+        Log.log("indexpath.row \(indexPath.row) specialTileid \(specialTileId)" , level: .trace)
         if let specialTile = board.getSpecialTileInfo(tileId: specialTileId) {
             cell.snakeOrLadderImage.image = specialTile.symbol
             cell.snakeOrLadderImage.tintColor = specialTile.symbolColor
         }
+        
         let imageArray = [cell.myImage!, cell.myImage2!, cell.myImage3!, cell.myImage4!]
         imageArray.forEach { u in
             u.image = nil
