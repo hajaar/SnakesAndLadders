@@ -12,10 +12,6 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     // MARK: - UICollectionViewDataSource protocol
 
-
-
-    
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return AppConfig.boardSize
     }

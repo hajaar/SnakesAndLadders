@@ -31,8 +31,7 @@ class ViewController: UIViewController {
         myCollectionView.layer.borderColor = AppDesign.tileBorderColor.cgColor
         myCollectionView.layer.borderWidth = 1
         myCollectionView.layer.cornerRadius = 2
-        
-        
+
         diceImage.tintColor = AppDesign.diceColor
         Dice.roll()
         diceImage.image = Dice.returnFirstRollSymbol()
@@ -47,8 +46,6 @@ class ViewController: UIViewController {
         board.startNewGame()
         myCollectionView.reloadData()
     }
-
-    
     
 }
 

@@ -12,7 +12,6 @@ protocol BoardDelegate {
     func playerDidSomething(_ controller: Board, text: String, currentPos: Int, newPos: Int, terminus: Int)
 }
 
-
 struct Board {
     private var tiles: [Tile]
     private var players: [Player]
@@ -20,8 +19,7 @@ struct Board {
     private var isGameOver: Bool = false
     private var playerCounter: Int = 0
     private var isGameWon: Bool = false
-    
-    
+
     var delegate: BoardDelegate?
     
     init() {
@@ -35,6 +33,10 @@ struct Board {
         isGameOver = true
         resetBoard()
         createPlayers(name: "", token: "")
+        players[0].setHuman(isHuman: true)
+        players[1].setHuman(isHuman: false)
+        players[2].setHuman(isHuman: true)
+        players[3].setHuman(isHuman: false)
         addRandomSpecialTiles(count: 3)
         playerCounter = 0
             //    playGame()
@@ -70,26 +72,27 @@ struct Board {
         Log.log(BoardHelper.specialTileLookup, level: .debug)
     }
 
-
-
-
-
     mutating func playTurn() {
-        let currentPosition = players[playerCounter].getPosition()
-        let newPosition = players[playerCounter].playerRollsDice()
-        var terminus = newPosition
-        let s = BoardHelper.getSpecialTileIndexFromId(newPosition)
-        if s != -1 {
-            let specialTile = specialTiles[s]
-            terminus = players[playerCounter].ifPlayerHasComeToSpecialTile(status: specialTile.getTileType(), terminus: specialTile.getEnd())
+
+            let currentPosition = players[playerCounter].getPosition()
+            let newPosition = players[playerCounter].playerRollsDice()
+            var terminus = newPosition
+            let s = BoardHelper.getSpecialTileIndexFromId(newPosition)
+            if s != -1 {
+                let specialTile = specialTiles[s]
+                terminus = players[playerCounter].ifPlayerHasComeToSpecialTile(status: specialTile.getTileType(), terminus: specialTile.getEnd())
+            }
+
+            Log.log("player \(playerCounter) current: \(currentPosition) new: \(newPosition) terminus: \(terminus)", level: .debug)
+            if Dice.returnRollSum() != 6 {
+                playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
+            }
+            delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"), currentPos: BoardHelper.getTileIndexFromId(currentPosition), newPos: BoardHelper.getTileIndexFromId(newPosition), terminus: BoardHelper.getTileIndexFromId(terminus))
+            isGameWon = newPosition == AppConfig.boardSize ? true : false
+            if !players[playerCounter].getIsHuman() {
+                playTurn()
         }
 
-        Log.log("player \(playerCounter) current: \(currentPosition) new: \(newPosition) terminus: \(terminus)", level: .debug)
-        if Dice.returnRollSum() != 6 {
-            playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
-        }
-        delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"), currentPos: BoardHelper.getTileIndexFromId(currentPosition), newPos: BoardHelper.getTileIndexFromId(newPosition), terminus: BoardHelper.getTileIndexFromId(terminus))
-        isGameWon = newPosition == AppConfig.boardSize ? true : false
     }
     
     func getTileInfo(index: Int) -> (tileId: Int, backgroundColor: UIColor, textColor: UIColor, borderColor: UIColor) {
@@ -117,7 +120,7 @@ struct Board {
             return nil
         }
     }
- 
+
 }
 
 

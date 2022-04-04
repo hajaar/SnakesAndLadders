@@ -73,6 +73,10 @@ struct Player {
         return isHuman
     }
 
+    mutating func setHuman(isHuman: Bool) {
+        self.isHuman = isHuman
+    }
+
     mutating func nextTurnValue(roll: Int) -> Int {
         var modifiedRoll = roll
         switch nextTurnType {
