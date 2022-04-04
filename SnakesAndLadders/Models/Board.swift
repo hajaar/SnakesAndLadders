@@ -99,15 +99,14 @@ struct Board {
         return (tileId: tiles[index].tId, backgroundColor: tiles[index].tColor, textColor: tiles[index].tTextColor, borderColor: tiles[index].tTextColor)
     }
     
-    func getPlayerInfo() -> [(playerId: Int, tileIndex: Int, playerImage: UIImage, playerColor: UIColor)] {
-        var returnValue = [(playerId: Int, tileIndex: Int, playerImage: UIImage, playerColor: UIColor)]()
-        
+    func getPlayerInfo(index: Int) -> [(playerId: Int,playerImage: UIImage, playerColor: UIColor)]? {
+        var returnValue = [(playerId: Int, playerImage: UIImage, playerColor: UIColor)]()
+        let players = players.filter() {$0.getPosition() == BoardHelper.getTileIdFromIndex(value: index)}
+        if players.isEmpty {
+            return nil
+        }
         players.forEach { player in
-            let tmpId = player.getId()
-            let tmpTileIndex = BoardHelper.getTileIndexFromId(player.getPosition())
-            let tmpPlayerImage = player.getPlayerImage()
-            let tmpPlayerColor = player.getPlayerColor()
-            returnValue.append((playerId: tmpId, tileIndex: tmpTileIndex, playerImage: tmpPlayerImage, playerColor: tmpPlayerColor))
+            returnValue.append((playerId: player.getId(), playerImage: player.getPlayerImage(), playerColor: player.getPlayerColor()))
         }
         return returnValue
     }

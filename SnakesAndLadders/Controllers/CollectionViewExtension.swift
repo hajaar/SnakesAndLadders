@@ -20,35 +20,28 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! CollectionViewCell
 
-        let t = board.getTileInfo(index: indexPath.row)
-        
-        cell.myLabel.text = String(t.tileId)
-        cell.backgroundColor = t.backgroundColor
-        cell.layer.borderColor = t.borderColor.cgColor
-        cell.myLabel.textColor = t.textColor
+        let tile = board.getTileInfo(index: indexPath.row)
+        cell.tileNumber.text = String(tile.tileId)
+        cell.backgroundColor = tile.backgroundColor
+        cell.layer.borderColor = tile.borderColor.cgColor
+        cell.tileNumber.textColor = tile.textColor
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 2
         
-        cell.snakeOrLadderImage.image = nil
-         //same tileId as a normal tile
-
+        cell.specialTile.image = nil
         if let specialTile = board.getSpecialTileInfo(index: indexPath.row) {
-            cell.snakeOrLadderImage.image = specialTile.symbol
-            cell.snakeOrLadderImage.tintColor = specialTile.symbolColor
+            cell.specialTile.image = specialTile.symbol
+            cell.specialTile.tintColor = specialTile.symbolColor
         }
         
         let imageArray = [cell.myImage!, cell.myImage2!, cell.myImage3!, cell.myImage4!]
-        imageArray.forEach { u in
-            u.image = nil
-        }
-
-        let players = board.getPlayerInfo()
-        players.forEach { player in
-            if indexPath.row == player.tileIndex {
+        imageArray.forEach { $0.image = nil }
+        if let players = board.getPlayerInfo(index: indexPath.row) {
+            players.forEach { player in
                 imageArray[player.playerId].image = player.playerImage
                 imageArray[player.playerId].tintColor = player.playerColor
             }
-        } //optimize later so that we check for presence of player on tile and then only get the info.
+        }
 
         return cell
     }
