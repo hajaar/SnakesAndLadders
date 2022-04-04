@@ -33,10 +33,6 @@ struct Board {
         isGameOver = true
         resetBoard()
         createPlayers(name: "", token: "")
-        players[0].setHuman(isHuman: true)
-        players[1].setHuman(isHuman: false)
-        players[2].setHuman(isHuman: true)
-        players[3].setHuman(isHuman: false)
         addRandomSpecialTiles(count: 3)
         playerCounter = 0
             //    playGame()
@@ -46,6 +42,10 @@ struct Board {
         for i in 0...AppConfig.numberofPlayers - 1 {
             players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and
         }
+        players[0].setHuman(isHuman: true)
+        players[1].setHuman(isHuman: false)
+        players[2].setHuman(isHuman: true)
+        players[3].setHuman(isHuman: false)
     }
     
     private mutating func resetBoard() {
@@ -74,27 +74,27 @@ struct Board {
 
     mutating func playTurn() {
 
-            let currentPosition = players[playerCounter].getPosition()
-            let newPosition = players[playerCounter].playerRollsDice()
-            var terminus = newPosition
-            let s = BoardHelper.getSpecialTileIndexFromId(newPosition)
-            if s != -1 {
-                let specialTile = specialTiles[s]
-                terminus = players[playerCounter].ifPlayerHasComeToSpecialTile(status: specialTile.getTileType(), terminus: specialTile.getEnd())
-            }
+        let currentPosition = players[playerCounter].getPosition()
+        let newPosition = players[playerCounter].playerRollsDice()
+        var terminus = newPosition
+        let s = BoardHelper.getSpecialTileIndexFromId(newPosition)
+        if s != -1 {
+            let specialTile = specialTiles[s]
+            terminus = players[playerCounter].ifPlayerHasComeToSpecialTile(status: specialTile.getTileType(), terminus: specialTile.getEnd())
+        }
 
-            Log.log("player \(playerCounter) current: \(currentPosition) new: \(newPosition) terminus: \(terminus)", level: .debug)
-            if Dice.returnRollSum() != 6 {
-                playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
-            }
-            delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"), currentPos: BoardHelper.getTileIndexFromId(currentPosition), newPos: BoardHelper.getTileIndexFromId(newPosition), terminus: BoardHelper.getTileIndexFromId(terminus))
-            isGameWon = newPosition == AppConfig.boardSize ? true : false
-            if !players[playerCounter].getIsHuman() {
-                playTurn()
+        Log.log("player \(playerCounter) current: \(currentPosition) new: \(newPosition) terminus: \(terminus)", level: .debug)
+        if Dice.returnRollSum() != 6 {
+            playerCounter = playerCounter == AppConfig.numberofPlayers - 1 ? 0 : playerCounter + 1
+        }
+        delegate?.playerDidSomething(self, text: String("Player: \(playerCounter) to Play"), currentPos: BoardHelper.getTileIndexFromId(currentPosition), newPos: BoardHelper.getTileIndexFromId(newPosition), terminus: BoardHelper.getTileIndexFromId(terminus))
+        isGameWon = newPosition == AppConfig.boardSize ? true : false
+        if !players[playerCounter].getIsHuman() {
+            playTurn()
         }
 
     }
-    
+
     func getTileInfo(index: Int) -> (tileId: Int, backgroundColor: UIColor, textColor: UIColor, borderColor: UIColor) {
         return (tileId: tiles[index].tId, backgroundColor: tiles[index].tColor, textColor: tiles[index].tTextColor, borderColor: tiles[index].tTextColor)
     }
@@ -112,10 +112,10 @@ struct Board {
         return returnValue
     }
     
-    func getSpecialTileInfo(tileId: Int) -> (symbol: UIImage, symbolColor: UIColor)? {
-        let i = BoardHelper.getSpecialTileIndexFromId(tileId)
-        if i != -1 {
-            return specialTiles[i].getSymbolImage()
+    func getSpecialTileInfo(index: Int) -> (symbol: UIImage, symbolColor: UIColor)? {
+        let specialTileId = BoardHelper.getSpecialTileIndexFromId(BoardHelper.getTileIdFromIndex(value: index))
+        if specialTileId != -1 {
+            return specialTiles[specialTileId].getSymbolImage()
         } else {
             return nil
         }

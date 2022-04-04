@@ -30,9 +30,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.layer.cornerRadius = 2
         
         cell.snakeOrLadderImage.image = nil
-        let specialTileId = BoardHelper.getTileIdFromIndex(value: indexPath.row) //same tileId as a normal tile
-        Log.log("indexpath.row \(indexPath.row) specialTileid \(specialTileId)" , level: .trace)
-        if let specialTile = board.getSpecialTileInfo(tileId: specialTileId) {
+         //same tileId as a normal tile
+
+        if let specialTile = board.getSpecialTileInfo(index: indexPath.row) {
             cell.snakeOrLadderImage.image = specialTile.symbol
             cell.snakeOrLadderImage.tintColor = specialTile.symbolColor
         }
