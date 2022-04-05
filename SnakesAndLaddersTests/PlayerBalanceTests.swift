@@ -26,24 +26,24 @@ class PlayerBalanceTests: XCTestCase {
     func testBalanceIsCredited() {
         let currentBalance = 20
         player.setBalance(currentBalance)
-        let credit = 10
-        player.creditAmount(credit)
-        XCTAssertEqual(player.getBalance(), credit + currentBalance)
+        let amount = 10
+        player.updateBalance(amount)
+        XCTAssertEqual(player.getBalance(), amount + currentBalance)
     }
 
     func testBalanceIsDebited() {
         let currentBalance = 20
         player.setBalance(currentBalance)
-        let debit = 9
-        player.debitAmount(debit)
-        XCTAssertEqual(player.getBalance(), currentBalance - debit)
+        let amount = -9
+        player.updateBalance(amount)
+        XCTAssertEqual(player.getBalance(), currentBalance + amount)
     }
 
     func testBalanceCannotGoNegativeEvenIfDebitAmountIsGreaterThanCurrentBalance() {
         let currentBalance = 20
         player.setBalance(currentBalance)
-        let debit = 2 * currentBalance
-        player.debitAmount(debit)
+        let amount = -2 * currentBalance
+        player.updateBalance(amount)
         XCTAssertEqual(player.getBalance(), 0)
     }
 

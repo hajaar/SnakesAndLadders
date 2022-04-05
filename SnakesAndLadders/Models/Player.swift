@@ -104,7 +104,7 @@ struct Player {
                                                   newPosition: newPosition,
                                                   turnType: nextTurnType)
         Log.log("currentBalance: \(balance) amount: \(amount)", level: .trace)
-        creditAmount(amount)
+        updateBalance(amount)
 
 
         position = newPosition
@@ -121,7 +121,7 @@ struct Player {
                                                       newPosition: terminus,
                                                       turnType: nextTurnType)
             Log.log("currentBalance: \(balance) amount: \(amount)", level: .trace)
-            creditAmount(amount)
+            updateBalance(amount)
             position = terminus
         case .fast:
             setNextTurnType(turnType: .fast)
@@ -134,13 +134,13 @@ struct Player {
         return value 
     }
 
-    mutating func creditAmount(_ credit: Int) {
-        self.balance += credit
+    mutating func updateBalance(_ amount: Int) {
+        self.balance += amount
+        if self.balance < 0 {
+            self.balance = 0
+        }
     }
 
-    mutating func debitAmount(_ debit: Int) {
-        balance = balance > debit ? balance - debit : 0
-    }
 
     mutating func calculateAmountForTilesMoved(currentPosition: Int, newPosition: Int, turnType: TurnType) -> Int {
         let tilesMoved = newPosition - currentPosition
