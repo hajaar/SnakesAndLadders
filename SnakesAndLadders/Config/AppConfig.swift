@@ -52,11 +52,11 @@ enum  TileType {
 }
 
 enum TurnType {
-    case normal, slow, fast
+    case snake, ladder, slow, fast, normal
 
-    var value: Double {
+    var turnSpeed: Double {
         switch self {
-        case .normal:
+        case .normal, .ladder, .snake:
             return 1.0
         case .slow:
             return 0.5
@@ -64,6 +64,23 @@ enum TurnType {
             return 2.0
         }
     }
+
+    var earningMultipler: Double {
+        switch self {
+        case .snake:
+            return 2.0
+        case .ladder:
+            return 0.5
+        case .slow:
+            return 2.0
+        case .fast:
+            return 0.5
+        case .normal:
+            return 1.0
+        }
+    }
+
+
 }
 
 enum lengthSnakeAndLadder: Int, CaseIterable {

@@ -83,6 +83,29 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.getBalance(), 0)
     }
 
+    func testPlayerGetsCreditProportionalToTheNumberOfTilesTheyMoveInOneTurn() {
+        let currentPosition = 1
+        let newPosition = 5
+        let multiplier = 1
+        let turnType = TurnType.normal
+        let amountEarned = player.calculateAmountForTilesMoved(currentPosition: currentPosition, newPosition: newPosition, turnType: turnType)
+        XCTAssertEqual(amountEarned, (newPosition - currentPosition) * multiplier)
+    }
+
+    func testPlayerBalanceIncreasesByCorrectAmountForMovingOnNormalTiles() {
+        let currentBalance = 20
+        player.setBalance(currentBalance)
+        let currentPosition  = 10
+        player.setPosition(currentPosition)
+        let turnType = TurnType.normal
+        player.setNextTurnType(turnType: turnType)
+        let newPosition = player.playerRollsDice()
+        let amountEarned = player.calculateAmountForTilesMoved(currentPosition: currentPosition, newPosition: newPosition, turnType: turnType)
+        XCTAssertEqual(player.getBalance(), currentBalance + amountEarned)
+    }
+
+
+
 
 
     func testPlayerHasANewPosition() {
@@ -110,14 +133,13 @@ class PlayerTests: XCTestCase {
         player.setNextTurnType(turnType: .fast)
         let modifiedRoll = player.nextTurnValue(roll: 5)
         XCTAssertEqual(modifiedRoll, 10)
-        XCTAssertEqual(player.getNextTurnType(), .normal)
     }
     
     func testPlayerReturnsRoundedDownModifiedRollValueWhenTurnTypeIsSlow() {
         player.setNextTurnType(turnType: .slow)
         let modifiedRoll = player.nextTurnValue(roll: 5)
         XCTAssertEqual(modifiedRoll, 2)
-        XCTAssertEqual(player.getNextTurnType(), .normal)
+
     }
 
     func testPlayerMovesOnRollingDice() {

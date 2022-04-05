@@ -88,9 +88,8 @@ struct Player {
     }
 
     mutating func nextTurnValue(roll: Int) -> Int {
-        let modifiedRoll = Double(roll) * nextTurnType.value
-        nextTurnType = .normal
-        return Int(modifiedRoll)
+        return Int(Double(roll) * nextTurnType.turnSpeed)
+
     }
 
     mutating func playerRollsDice() -> Int{
@@ -101,7 +100,15 @@ struct Player {
         if newPosition > AppConfig.boardSize || newPosition < 1 {
             newPosition = position
         }
+        let amount = calculateAmountForTilesMoved(currentPosition: position,
+                                                  newPosition: newPosition,
+                                                  turnType: nextTurnType)
+        Log.log("currentBalance: \(balance) amount: \(amount)", level: .trace)
+        creditAmount(amount)
+
+
         position = newPosition
+        nextTurnType = .normal
         return newPosition
     }
     
@@ -131,6 +138,11 @@ struct Player {
 
     mutating func debitAmount(_ debit: Int) {
         balance = balance > debit ? balance - debit : 0
+    }
+
+    mutating func calculateAmountForTilesMoved(currentPosition: Int, newPosition: Int, turnType: TurnType) -> Int {
+        let tilesMoved = newPosition - currentPosition
+        return Int(Double(tilesMoved) * turnType.earningMultipler)
     }
     
 }
