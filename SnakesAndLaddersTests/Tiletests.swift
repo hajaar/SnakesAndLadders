@@ -16,9 +16,18 @@ class Tiletests: XCTestCase {
         XCTAssertEqual(tile1.tId, 1)
     }
     
-    func testTilesHaveBeenCreatedWithSequentialIds() {
+    func testTilesHaveBeenCreatedWithIndex() {
         XCTAssertEqual(tile1.tIndex, 0)
-        XCTAssertEqual(tiles[0].tIndex, 1)
-        XCTAssertEqual(tiles[1].tIndex, 2)
     }
+
+    func testTilesHaveAlternatingBackgroundColors() {
+        XCTAssertNotEqual(tiles[0].tColor, tiles[1].tColor)
+        XCTAssertEqual(tile1.tColor, tiles[1].tColor)
+    }
+
+    func testTilesHaveAlternatingTextColors() {
+        XCTAssertNotEqual(tiles[0].tTextColor, tiles[1].tTextColor)
+        XCTAssertEqual(tile1.tTextColor, tiles[1].tTextColor)
+    }
+
 }
