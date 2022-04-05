@@ -82,6 +82,15 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.getNextTurnType(), .normal)
     }
 
+    func testPlayerMovesOnRollingDice() {
+        player.setNextTurnType(turnType: .normal)
+        let currentPosition = 30
+        player.setPosition(currentPosition)
+        let newPosition = player.playerRollsDice()
+        XCTAssertEqual(currentPosition + Dice.returnRollSum(), newPosition)
+
+    }
+
     func testPlayerShouldNotMoveBeyondMaximumSizeOfBoardnDiceRoll() {
         player.setPosition(99)
         XCTAssertEqual(player.playerRollsDice(), 99)
