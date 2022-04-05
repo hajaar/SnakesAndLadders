@@ -13,7 +13,8 @@ class PlayerTests: XCTestCase {
     var player = Player(playerID: 1, name: "Gummeemama", token: "capsule.fill")
     
     func testPlayerIsCreatedWithId() {
-        XCTAssertEqual(player.getId(), 1)
+        let id = player.getId()
+        XCTAssertEqual(id, 1)
     }
 
     func testPlayerIsCreatedWithName() {
@@ -24,25 +25,38 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.getToken(), "capsule.fill")
     }
 
-    func testPlayerIsCreatedAsHumanByDefault() {
+    func testPlayerHasBeenCreatedAtFirstTile() {
+        XCTAssertEqual(player.getPosition(), 1)
+    }
+
+    func testPlayerIsCreatedAsHuman() {
         XCTAssertEqual(player.getIsHuman(), true)
     }
 
+    func testPlayerHasAnImageOnCreation() {
+        let tmpImage = UIImage(systemName: "\(1)\(symbolNames.playerName)")
+        XCTAssertEqual(player.getPlayerImage(), tmpImage)
+    }
+
+    func testPlayerHasAColorFromAListOnCreation() {
+        XCTAssertEqual(AppDesign.playerColors.contains(player.getPlayerColor()), true)
+    }
 
 
     func testPlayerIsCreatedWithNormalNextTurnType() {
         XCTAssertEqual(player.getNextTurnType(), TurnType.normal)
     }
-    
-    func testPlayerHasBeenCreatedAtPositionOne() {
-        XCTAssertEqual(player.getPosition(), 1)
+
+    func testPlayerHasANewPosition() {
+        player.setPosition(2)
+        XCTAssertEqual(player.getPosition(), 2)
     }
-    
-    func testPlayerHasAnImageOnCreation() {
-        let tmpImage = UIImage(systemName: "\(1)\(symbolNames.playerName)")
-        XCTAssertEqual(player.getPlayerImage(), tmpImage)
+
+    func testPlayerCanBeSetAsAI() {
+        player.setHuman(isHuman: false)
+        XCTAssertEqual(player.getIsHuman(), false)
     }
-    
+
     func testPlayerReturnsUnmodifiedRollValueWhenTurnTypeIsNormal() {
         let roll = 4
         let modifiedRoll = player.nextTurnValue(roll: 4)
@@ -68,11 +82,6 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.getNextTurnType(), .normal)
     }
 
-    func testPlayerHasANewPosition() {
-        player.setPosition(2)
-        XCTAssertEqual(player.getPosition(), 2)
-    }
-    
     func testPlayerShouldNotMoveBeyondMaximumSizeOfBoardnDiceRoll() {
         player.setPosition(99)
         XCTAssertEqual(player.playerRollsDice(), 99)
