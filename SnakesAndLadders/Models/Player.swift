@@ -146,6 +146,28 @@ struct Player {
         let tilesMoved = newPosition - currentPosition
         return Int(Double(tilesMoved) * turnType.earningMultipler)
     }
+
+    func showAllowedLengths() -> [lengthSnakeAndLadder]! {
+        var allowedLengths = [lengthSnakeAndLadder]()
+        switch balance {
+        case lengthSnakeAndLadder.XL.cost... :
+            allowedLengths.append(.XL)
+            fallthrough
+        case lengthSnakeAndLadder.L.cost..<lengthSnakeAndLadder.XL.cost:
+            allowedLengths.append(.L)
+            fallthrough
+        case lengthSnakeAndLadder.M.cost..<lengthSnakeAndLadder.L.cost:
+            allowedLengths.append(.M)
+            fallthrough
+        case lengthSnakeAndLadder.S.cost..<lengthSnakeAndLadder.M.cost:
+            allowedLengths.append(.S)
+        case ..<lengthSnakeAndLadder.S.cost:
+            return nil
+        default:
+            return nil
+        }
+        return allowedLengths
+    }
     
 }
 

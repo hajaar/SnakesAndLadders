@@ -128,5 +128,56 @@ class PlayerBalanceTests: XCTestCase {
         XCTAssertEqual(player.getBalance(), currentBalance + amountCalculated)
     }
 
+    func testPlayerCanBuySnakeAndLadderOfAllValidLengthsIfTheirBalanceIsHighEnough() {
+        let currentBalance = lengthSnakeAndLadder.XL.cost
+        player.setBalance(currentBalance)
+        let allowedLengths: [lengthSnakeAndLadder]! = player.showAllowedLengths()
+        XCTAssertEqual(allowedLengths.contains(.E), false)
+        XCTAssertEqual(allowedLengths.contains(.S), true)
+        XCTAssertEqual(allowedLengths.contains(.M), true)
+        XCTAssertEqual(allowedLengths.contains(.L), true)
+        XCTAssertEqual(allowedLengths.contains(.XL), true)
+    }
+
+    func testPlayerCanBuyNoSnakeAndLadderIfTheirBalanceIsLowEnough() {
+        let currentBalance = 0
+        player.setBalance(currentBalance)
+        let allowedLengths: [lengthSnakeAndLadder]! = player.showAllowedLengths()
+        XCTAssertNil(allowedLengths)
+    }
+
+    func testPlayerCanBuySnakeAndLadderOfLengthsSOnly() {
+        let currentBalance = lengthSnakeAndLadder.S.cost
+        player.setBalance(currentBalance)
+        let allowedLengths: [lengthSnakeAndLadder]! = player.showAllowedLengths()
+        XCTAssertEqual(allowedLengths.contains(.E), false)
+        XCTAssertEqual(allowedLengths.contains(.S), true)
+        XCTAssertEqual(allowedLengths.contains(.M), false)
+        XCTAssertEqual(allowedLengths.contains(.L), false)
+        XCTAssertEqual(allowedLengths.contains(.XL), false)
+    }
+
+    func testPlayerCanBuySnakeAndLadderOfLengthsSMOnly() {
+        let currentBalance = lengthSnakeAndLadder.M.cost
+        player.setBalance(currentBalance)
+        let allowedLengths: [lengthSnakeAndLadder]! = player.showAllowedLengths()
+        XCTAssertEqual(allowedLengths.contains(.E), false)
+        XCTAssertEqual(allowedLengths.contains(.S), true)
+        XCTAssertEqual(allowedLengths.contains(.M), true)
+        XCTAssertEqual(allowedLengths.contains(.L), false)
+        XCTAssertEqual(allowedLengths.contains(.XL), false)
+    }
+
+    func testPlayerCanBuySnakeAndLadderOfLengthsSMLOnly() {
+        let currentBalance = lengthSnakeAndLadder.L.cost
+        player.setBalance(currentBalance)
+        let allowedLengths: [lengthSnakeAndLadder]! = player.showAllowedLengths()
+        XCTAssertEqual(allowedLengths.contains(.E), false)
+        XCTAssertEqual(allowedLengths.contains(.S), true)
+        XCTAssertEqual(allowedLengths.contains(.M), true)
+        XCTAssertEqual(allowedLengths.contains(.L), true)
+        XCTAssertEqual(allowedLengths.contains(.XL), false)
+    }
+
 
 }
