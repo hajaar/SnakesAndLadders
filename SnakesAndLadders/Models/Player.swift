@@ -115,14 +115,16 @@ struct Player {
     mutating func ifPlayerHasComeToSpecialTile(status: TileType, terminus: Int) -> Int {
         var value = -1
         switch status {
-        case .snake:
+        case .snake, .ladder:
             value = terminus
+            let amount = calculateAmountForTilesMoved(currentPosition: position,
+                                                      newPosition: terminus,
+                                                      turnType: nextTurnType)
+            Log.log("currentBalance: \(balance) amount: \(amount)", level: .trace)
+            creditAmount(amount)
             position = terminus
         case .fast:
             setNextTurnType(turnType: .fast)
-        case .ladder:
-            value = terminus
-            position = terminus
         case .slow:
             setNextTurnType(turnType: .slow)
         case .normal:

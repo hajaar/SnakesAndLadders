@@ -96,6 +96,37 @@ class PlayerBalanceTests: XCTestCase {
         XCTAssertEqual(player.getBalance(), currentBalance + amountEarned)
     }
 
+    func testPlayerBalanceGetsCorrectCreditUponTraversingASnake() {
+        let currentBalance = 20
+        player.setBalance(currentBalance)
+        let currentPosition  = 30
+        player.setPosition(currentPosition)
+        let turnType = TurnType.snake
+        let tileType = TileType.snake
+        player.setNextTurnType(turnType: turnType)
+        var terminus = 40
+        terminus = player.ifPlayerHasComeToSpecialTile(status: tileType, terminus: terminus)
+        let amountEarned = player.calculateAmountForTilesMoved(currentPosition: currentPosition, newPosition: terminus, turnType: turnType)
+        let amountCalculated = Int(Double(terminus - currentPosition) * turnType.earningMultipler)
+        XCTAssertEqual(amountEarned, amountCalculated)
+    }
+
+    func testPlayerBalanceIncreasesByCorrectAmountForTraveringASnake() {
+        let currentBalance = 20
+        player.setBalance(currentBalance)
+        let currentPosition  = 10
+        player.setPosition(currentPosition)
+        let tileType = TileType.snake
+        var turnType = TurnType.normal
+        player.setNextTurnType(turnType: turnType)
+        let newPosition = player.playerRollsDice()
+        var terminus = 40
+        turnType = TurnType.snake
+        player.setNextTurnType(turnType: turnType)
+        terminus = player.ifPlayerHasComeToSpecialTile(status: tileType, terminus: terminus)
+        let amountCalculated = Int(Double(terminus - newPosition) * turnType.earningMultipler) + Int(Double(newPosition - currentPosition) * TurnType.normal.earningMultipler)
+        XCTAssertEqual(player.getBalance(), currentBalance + amountCalculated)
+    }
 
 
 }
