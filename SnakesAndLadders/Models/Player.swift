@@ -78,9 +78,9 @@ struct Player {
     }
 
     mutating func nextTurnValue(roll: Int) -> Int {
-        let modifiedRoll = roll * nextTurnType.value
+        let modifiedRoll = Double(roll) * nextTurnType.value
         nextTurnType = .normal
-        return modifiedRoll
+        return Int(modifiedRoll)
     }
 
     mutating func playerRollsDice() -> Int{

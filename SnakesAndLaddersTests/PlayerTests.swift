@@ -23,7 +23,13 @@ class PlayerTests: XCTestCase {
     func testPlayerIsCreatedWithToken() {
         XCTAssertEqual(player.getToken(), "capsule.fill")
     }
-    
+
+    func testPlayerIsCreatedAsHumanByDefault() {
+        XCTAssertEqual(player.getIsHuman(), true)
+    }
+
+
+
     func testPlayerIsCreatedWithNormalNextTurnType() {
         XCTAssertEqual(player.getNextTurnType(), TurnType.normal)
     }
@@ -67,44 +73,37 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.getPosition(), 2)
     }
     
-//    func testPlayerHasDifferentColorFromOtherPlayer() {
-//
-//        let player2 = Player(playerID: 2, name: "Huey", token: "square.fill")
-//        XCTAssertNotEqual(player.getPlayerColor(), player2.getPlayerColor())
-//
-//    }
-    
     func testPlayerShouldNotMoveBeyondMaximumSizeOfBoardnDiceRoll() {
         player.setPosition(99)
         XCTAssertEqual(player.playerRollsDice(), 99)
     }
     
     func testPlayerMovesToEndOfSnakeOWhenTheyComeToASnakeTile() {
-        let terminus = player.playerHasComeToSpecialTile(status: .snakeStart, terminus: 50)
+        let terminus = player.ifPlayerHasComeToSpecialTile(status: .snake, terminus: 50)
         XCTAssertEqual(terminus, 50)
         XCTAssertEqual(player.getPosition(), 50)
     }
     
     func testPlayerMovesToEndOfLadderOWhenTheyComeToALadderTile() {
-        let terminus = player.playerHasComeToSpecialTile(status: .ladderStart, terminus: 50)
+        let terminus = player.ifPlayerHasComeToSpecialTile(status: .ladder, terminus: 50)
         XCTAssertEqual(terminus, 50)
         XCTAssertEqual(player.getPosition(), 50)
     }
     
     func testPlayerChangesNextTurnTypeWhenTheyComeToAFastTile() {
-        let terminus = player.playerHasComeToSpecialTile(status: .fastStart, terminus: 50)
+        let terminus = player.ifPlayerHasComeToSpecialTile(status: .fast, terminus: 50)
         XCTAssertEqual(terminus, -1)
         XCTAssertEqual(player.getNextTurnType(), .fast)
     }
 
     func testPlayerChangesNextTurnTypeWhenTheyComeToASlowTile() {
-        let terminus = player.playerHasComeToSpecialTile(status: .slowStart, terminus: 50)
+        let terminus = player.ifPlayerHasComeToSpecialTile(status: .slow, terminus: 50)
         XCTAssertEqual(terminus, -1)
         XCTAssertEqual(player.getNextTurnType(), .slow)
     }
     
     func testPlayerDoesNotChangeTerminusWhenTheyComeToANormalTile() {
-        let terminus = player.playerHasComeToSpecialTile(status: .none, terminus: -1)
+        let terminus = player.ifPlayerHasComeToSpecialTile(status: .normal, terminus: -1)
         XCTAssertEqual(terminus, -1)
         XCTAssertEqual(player.getNextTurnType(), .normal)
     }
