@@ -48,7 +48,7 @@ struct SpecialTile {
     
     init(index: Int, start: Int, length: lengthSnakeAndLadder, tileType: TileType ) {
         self.tileType = tileType
-        self.length = length
+        self.length = tileType == .slow || tileType == .fast ? .E : length
         self.start = start
         self.index = index
         Log.log("tiletype: \(tileType) start: \(start) end: \(self.end) length: \(length.value)", level: .debug)
