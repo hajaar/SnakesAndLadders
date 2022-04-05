@@ -51,6 +51,13 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.getBalance(), 0)
     }
 
+    func testBalanceIsCredited() {
+        let credit = 10
+        player.creditAmount(credit)
+        XCTAssertEqual(player.getBalance(), 10)
+    }
+
+
 
     func testPlayerHasANewPosition() {
         player.setPosition(2)

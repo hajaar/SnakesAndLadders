@@ -120,6 +120,10 @@ struct Player {
         Log.log("playerid: \(playerId) status: \(status) terminus: \(terminus) value: \(value)", level: .debug)
         return value 
     }
+
+    mutating func creditAmount(_ credit: Int) {
+        self.balance += credit
+    }
     
 }
 
