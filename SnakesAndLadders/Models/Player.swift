@@ -14,6 +14,7 @@ struct Player {
     private var token: String = ""
     private var position: Int = 1
     private var isHuman: Bool = true
+    private var balance: Int = 0
     
     private var playerImage: UIImage {
         UIImage(systemName: "\(playerId)\(symbolNames.playerName)")!
@@ -72,6 +73,11 @@ struct Player {
     func getIsHuman() -> Bool {
         return isHuman
     }
+
+    func getBalance() -> Int {
+        return balance
+    }
+
 
     mutating func setHuman(isHuman: Bool) {
         self.isHuman = isHuman

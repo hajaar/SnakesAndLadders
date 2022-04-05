@@ -47,6 +47,11 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.getNextTurnType(), TurnType.normal)
     }
 
+    func testPlayerIsCreatedWithZeroBalance() {
+        XCTAssertEqual(player.getBalance(), 0)
+    }
+
+
     func testPlayerHasANewPosition() {
         player.setPosition(2)
         XCTAssertEqual(player.getPosition(), 2)
