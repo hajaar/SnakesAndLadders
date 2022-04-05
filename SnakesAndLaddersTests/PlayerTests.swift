@@ -51,10 +51,36 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(player.getBalance(), 0)
     }
 
+    func testPlayerGetsANewBalance() {
+        let currentBalance = player.getBalance()
+        let newBalance = 20
+        player.setBalance(newBalance)
+        XCTAssertEqual(player.getBalance(), currentBalance + newBalance)
+    }
+
+
     func testBalanceIsCredited() {
+        let currentBalance = 20
+        player.setBalance(currentBalance)
         let credit = 10
         player.creditAmount(credit)
-        XCTAssertEqual(player.getBalance(), 10)
+        XCTAssertEqual(player.getBalance(), credit + currentBalance)
+    }
+
+    func testBalanceIsDebited() {
+        let currentBalance = 20
+        player.setBalance(currentBalance)
+        let debit = 9
+        player.debitAmount(debit)
+        XCTAssertEqual(player.getBalance(), currentBalance - debit)
+    }
+
+    func testBalanceCannotGoNegativeEvenIfDebitAmountIsGreaterThanCurrentBalance() {
+        let currentBalance = 20
+        player.setBalance(currentBalance)
+        let debit = 2 * currentBalance
+        player.debitAmount(debit)
+        XCTAssertEqual(player.getBalance(), 0)
     }
 
 

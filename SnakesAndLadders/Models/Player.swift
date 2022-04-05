@@ -78,6 +78,10 @@ struct Player {
         return balance
     }
 
+    mutating func setBalance(_ balance: Int) {
+        self.balance = balance
+    }
+
 
     mutating func setHuman(isHuman: Bool) {
         self.isHuman = isHuman
@@ -123,6 +127,10 @@ struct Player {
 
     mutating func creditAmount(_ credit: Int) {
         self.balance += credit
+    }
+
+    mutating func debitAmount(_ debit: Int) {
+        balance = balance > debit ? balance - debit : 0
     }
     
 }
