@@ -22,14 +22,17 @@ extension ViewController: BoardDelegate {
             indexPaths = [NSIndexPath]()
             indexPaths.append(NSIndexPath(item: newPos, section: 0))
             self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
-            indexPaths = [NSIndexPath]()
-            if terminus > -1 {
+        }
+
+        var indexPaths = [NSIndexPath]()
+        if terminus > -1 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 indexPaths.append(NSIndexPath(item: terminus, section: 0))
                 self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
-                indexPaths = [NSIndexPath]()
             }
-            self.messageLabel.text = self.messageText
         }
+        self.messageLabel.text = self.messageText
+
         rollDiceButton.isEnabled = true
     }
 }
