@@ -61,13 +61,13 @@ struct BoardHelper {
         case .fast, .slow, .normal:
             return endingPosition
         case .snake:
-            endingPosition = start - length.value
+            endingPosition = start - length.length
             if endingPosition <= 1 {
                 throw BoardError.exceedsBoardSize
             }
             return endingPosition
         case .ladder:
-            endingPosition = start + length.value
+            endingPosition = start + length.length
             if endingPosition >= AppConfig.boardSize {
                 throw BoardError.exceedsBoardSize
             }

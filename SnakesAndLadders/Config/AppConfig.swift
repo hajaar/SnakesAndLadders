@@ -86,7 +86,7 @@ enum TurnType {
 enum lengthSnakeAndLadder: Int, CaseIterable {
     case E, S, M, L, XL
     
-    var value: Int {
+    var length: Int {
         switch self {
         case .E:
             return 0
@@ -106,13 +106,13 @@ enum lengthSnakeAndLadder: Int, CaseIterable {
         case .E:
             return 0
         case .S:
-            return Int(Double(self.value) * 3.0)
+            return Int(Double(self.length) * 3.0)
         case .M:
-            return Int(Double(self.value) * 2.0)
+            return Int(Double(self.length) * 2.0)
         case .L:
-            return Int(Double(self.value) * 1.5)
+            return Int(Double(self.length) * 1.5)
         case .XL:
-            return Int(Double(self.value) * 1.0)
+            return Int(Double(self.length) * 1.0)
         }
     }
 }
