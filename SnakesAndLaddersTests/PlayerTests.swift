@@ -42,71 +42,9 @@ class PlayerTests: XCTestCase {
         XCTAssertEqual(AppDesign.playerColors.contains(player.getPlayerColor()), true)
     }
 
-
     func testPlayerIsCreatedWithNormalNextTurnType() {
         XCTAssertEqual(player.getNextTurnType(), TurnType.normal)
     }
-
-    func testPlayerIsCreatedWithZeroBalance() {
-        XCTAssertEqual(player.getBalance(), 0)
-    }
-
-    func testPlayerGetsANewBalance() {
-        let currentBalance = player.getBalance()
-        let newBalance = 20
-        player.setBalance(newBalance)
-        XCTAssertEqual(player.getBalance(), currentBalance + newBalance)
-    }
-
-
-    func testBalanceIsCredited() {
-        let currentBalance = 20
-        player.setBalance(currentBalance)
-        let credit = 10
-        player.creditAmount(credit)
-        XCTAssertEqual(player.getBalance(), credit + currentBalance)
-    }
-
-    func testBalanceIsDebited() {
-        let currentBalance = 20
-        player.setBalance(currentBalance)
-        let debit = 9
-        player.debitAmount(debit)
-        XCTAssertEqual(player.getBalance(), currentBalance - debit)
-    }
-
-    func testBalanceCannotGoNegativeEvenIfDebitAmountIsGreaterThanCurrentBalance() {
-        let currentBalance = 20
-        player.setBalance(currentBalance)
-        let debit = 2 * currentBalance
-        player.debitAmount(debit)
-        XCTAssertEqual(player.getBalance(), 0)
-    }
-
-    func testPlayerGetsCreditProportionalToTheNumberOfTilesTheyMoveInOneTurn() {
-        let currentPosition = 1
-        let newPosition = 5
-        let multiplier = 1
-        let turnType = TurnType.normal
-        let amountEarned = player.calculateAmountForTilesMoved(currentPosition: currentPosition, newPosition: newPosition, turnType: turnType)
-        XCTAssertEqual(amountEarned, (newPosition - currentPosition) * multiplier)
-    }
-
-    func testPlayerBalanceIncreasesByCorrectAmountForMovingOnNormalTiles() {
-        let currentBalance = 20
-        player.setBalance(currentBalance)
-        let currentPosition  = 10
-        player.setPosition(currentPosition)
-        let turnType = TurnType.normal
-        player.setNextTurnType(turnType: turnType)
-        let newPosition = player.playerRollsDice()
-        let amountEarned = player.calculateAmountForTilesMoved(currentPosition: currentPosition, newPosition: newPosition, turnType: turnType)
-        XCTAssertEqual(player.getBalance(), currentBalance + amountEarned)
-    }
-
-
-
-
 
     func testPlayerHasANewPosition() {
         player.setPosition(2)
@@ -139,7 +77,6 @@ class PlayerTests: XCTestCase {
         player.setNextTurnType(turnType: .slow)
         let modifiedRoll = player.nextTurnValue(roll: 5)
         XCTAssertEqual(modifiedRoll, 2)
-
     }
 
     func testPlayerMovesOnRollingDice() {
@@ -148,7 +85,6 @@ class PlayerTests: XCTestCase {
         player.setPosition(currentPosition)
         let newPosition = player.playerRollsDice()
         XCTAssertEqual(currentPosition + Dice.returnRollSum(), newPosition)
-
     }
 
     func testPlayerShouldNotMoveBeyondMaximumSizeOfBoardnDiceRoll() {
