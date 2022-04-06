@@ -38,22 +38,14 @@ class ViewController: UIViewController {
         
         board.delegate = self
         Dice.delegate = self
-        
-        mainView.backgroundColor = AppDesign.boardColor
-        myCollectionView.layer.borderColor = AppDesign.tileBorderColor.cgColor
-        myCollectionView.layer.borderWidth = 1
-        myCollectionView.layer.cornerRadius = 2
 
-        togglePlayerDetailFields(isEdit: shouldEdit)
-        diceImage.tintColor = AppDesign.diceColor
         Dice.roll()
         diceImage.image = Dice.returnFirstRollSymbol()
 
-
-
         board.startNewGame()
+        initialUISetup()
         getPlayerDetails(playerId: 0)
-        
+
     }
     @IBAction func rollDice(_ sender: UIButton) {
         board.playTurn()
@@ -83,25 +75,17 @@ class ViewController: UIViewController {
         editPlayerDetailsButton.tintColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
         playerNameText.backgroundColor = isEdit ? .white : AppDesign.boardColor
         playerNameText.textColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
-        currencyImage.tintColor = AppDesign.boardTextColor.1
-        playerBalanceLabel.textColor = AppDesign.boardTextColor.0
-        chooseHumanSwitch.onTintColor =  AppDesign.tileColor.1
-
-
 
     }
 
     func getPlayerDetails(playerId: Int) {
         playerNameText.text = board.getPlayerName(playerId: playerId)
-        
     }
-
-    
 
     @IBAction func changeHumanToggle(_ sender: UISwitch) {
         chooseHumanSwitch.thumbTintColor = sender.isOn ? AppDesign.ladderColor : AppDesign.snakeColor
         board.setPlayerHuman(playerId: 0, isHuman: sender.isOn)
-
+        isHumanLabel.text = sender.isOn ? "Human" : "AI"
     }
 
     @IBAction func chooseSymbol(_ sender: UIButton) {
@@ -109,6 +93,25 @@ class ViewController: UIViewController {
     }
 
     @IBAction func chooseColor(_ sender: UIButton) {
+    }
+
+    func initialUISetup() {
+        mainView.backgroundColor = AppDesign.boardColor
+        myCollectionView.layer.borderColor = AppDesign.tileBorderColor.cgColor
+        myCollectionView.layer.borderWidth = 1
+        myCollectionView.layer.cornerRadius = 2
+
+        togglePlayerDetailFields(isEdit: shouldEdit)
+        diceImage.tintColor = AppDesign.diceColor
+
+        chooseHumanSwitch.thumbTintColor = AppDesign.ladderColor
+        currencyImage.tintColor = AppDesign.boardTextColor.1
+        playerBalanceLabel.textColor = AppDesign.boardTextColor.0
+        chooseHumanSwitch.onTintColor =  AppDesign.tileColor.1
+
+        editPlayerDetailsButton.tintColor = AppDesign.tileColor.1
+        playerNameText.backgroundColor = AppDesign.boardColor
+        playerNameText.textColor = AppDesign.tileColor.0
     }
 
 }
