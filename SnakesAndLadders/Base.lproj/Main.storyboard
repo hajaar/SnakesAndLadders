@@ -151,8 +151,22 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AK6-R0-OfB" userLabel="Set Name">
                                                                 <rect key="frame" x="0.0" y="0.0" width="363.5" height="61"/>
                                                                 <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cez-4g-8u3">
+                                                                        <rect key="frame" x="0.0" y="10" width="109" height="41"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3eV-88-xt6">
+                                                                        <rect key="frame" x="109" y="4" width="36.5" height="53"/>
+                                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <imageReference key="image" image="indianrupeesign.circle" catalog="system" symbolScale="large"/>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
+                                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
+                                                                        </preferredSymbolConfiguration>
+                                                                    </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edy-Wg-kGe">
-                                                                        <rect key="frame" x="0.0" y="8.5" width="36.5" height="44"/>
+                                                                        <rect key="frame" x="145.5" y="8.5" width="36.5" height="44"/>
                                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain">
@@ -166,26 +180,14 @@
                                                                         </connections>
                                                                     </button>
                                                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Player" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22u-Qx-ZWJ">
-                                                                        <rect key="frame" x="36.5" y="10.5" width="181.5" height="39.5"/>
+                                                                        <rect key="frame" x="182" y="10.5" width="181.5" height="39.5"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" textContentType="name"/>
                                                                     </textField>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cez-4g-8u3">
-                                                                        <rect key="frame" x="218" y="15.5" width="109" height="29.5"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inx-p9-xeQ">
-                                                                        <rect key="frame" x="327" y="15.5" width="36.5" height="29.5"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="inx-p9-xeQ" firstAttribute="width" secondItem="AK6-R0-OfB" secondAttribute="width" multiplier="0.1" id="2Xj-Pa-d5R"/>
                                                                     <constraint firstItem="edy-Wg-kGe" firstAttribute="width" secondItem="AK6-R0-OfB" secondAttribute="width" multiplier="0.1" id="gNW-xd-1Rj"/>
+                                                                    <constraint firstItem="3eV-88-xt6" firstAttribute="width" secondItem="AK6-R0-OfB" secondAttribute="width" multiplier="0.1" id="h8R-0w-qZ1"/>
                                                                     <constraint firstItem="cez-4g-8u3" firstAttribute="width" secondItem="AK6-R0-OfB" secondAttribute="width" multiplier="0.3" id="hiS-AJ-eGt"/>
                                                                     <constraint firstItem="22u-Qx-ZWJ" firstAttribute="width" secondItem="AK6-R0-OfB" secondAttribute="width" multiplier="0.5" id="yPG-XC-Dnk"/>
                                                                 </constraints>
@@ -498,7 +500,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lbF-kj-v6U" userLabel="Play View">
                                                 <rect key="frame" x="0.0" y="553.5" width="363.5" height="138.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu3-57-nJg" userLabel="Message">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu3-57-nJg" userLabel="Message">
                                                         <rect key="frame" x="0.0" y="0.0" width="363.5" height="28"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                         <nil key="textColor"/>
@@ -514,6 +516,7 @@
                                                                 <rect key="frame" x="182" y="0.0" width="181.5" height="110.5"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" title="Roll">
+                                                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
                                                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
@@ -560,8 +563,10 @@
                         <outlet property="chooseColorButton" destination="Gnj-le-STV" id="R0z-0A-Fgn"/>
                         <outlet property="chooseHumanSwitch" destination="80B-eq-Jv3" id="6zg-Pj-mBl"/>
                         <outlet property="chooseSymbolButton" destination="ID3-dJ-pcT" id="2Mt-hs-Di2"/>
+                        <outlet property="currencyImage" destination="3eV-88-xt6" id="GgK-jw-EaM"/>
                         <outlet property="diceImage" destination="Qim-kR-fU1" id="Wp2-Wf-Dmk"/>
                         <outlet property="editPlayerDetailsButton" destination="edy-Wg-kGe" id="EWD-L4-1XV"/>
+                        <outlet property="isHumanLabel" destination="R8T-uF-JVY" id="enk-PH-utK"/>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="EHM-Ka-a8d"/>
                         <outlet property="messageLabel" destination="Hu3-57-nJg" id="ztg-A3-oMn"/>
                         <outlet property="myCollectionView" destination="lmN-Wh-MHV" id="2u6-9d-Mei"/>
@@ -569,7 +574,6 @@
                         <outlet property="playerBalanceLabel" destination="cez-4g-8u3" id="y7t-KG-zaN"/>
                         <outlet property="playerNameText" destination="22u-Qx-ZWJ" id="fCH-d4-2sd"/>
                         <outlet property="rollDiceButton" destination="2jz-mS-x9h" id="eqT-KE-AQj"/>
-                        <outlet property="rupeeLabel" destination="inx-p9-xeQ" id="AcV-uw-O93"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -579,6 +583,7 @@
     </scenes>
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="indianrupeesign.circle" catalog="system" width="128" height="121"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">

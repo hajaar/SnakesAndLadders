@@ -25,7 +25,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var editPlayerDetailsButton: UIButton!
     @IBOutlet weak var playerNameText: UITextField!
     @IBOutlet weak var playerBalanceLabel: UILabel!
-    @IBOutlet weak var rupeeLabel: UILabel!
+    @IBOutlet weak var currencyImage: UIImageView!
+    @IBOutlet weak var isHumanLabel: UILabel!
     @IBOutlet weak var chooseHumanSwitch: UISwitch!
     @IBOutlet weak var chooseSymbolButton: UIButton!
     @IBOutlet weak var chooseColorButton: UIButton!
@@ -47,6 +48,8 @@ class ViewController: UIViewController {
         diceImage.tintColor = AppDesign.diceColor
         Dice.roll()
         diceImage.image = Dice.returnFirstRollSymbol()
+
+
 
         board.startNewGame()
         getPlayerDetails(playerId: 0)
@@ -73,6 +76,16 @@ class ViewController: UIViewController {
         chooseHumanSwitch.isEnabled = isEdit
         chooseSymbolButton.isEnabled = isEdit
         chooseColorButton.isEnabled = isEdit
+        isHumanLabel.isHidden = !isEdit
+        chooseHumanSwitch.isHidden = !isEdit
+        chooseSymbolButton.isHidden = !isEdit
+        chooseColorButton.isHidden = !isEdit
+        editPlayerDetailsButton.tintColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
+        playerNameText.backgroundColor = isEdit ? .white : AppDesign.boardColor
+        playerNameText.textColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
+        currencyImage.tintColor = AppDesign.boardTextColor.1
+        playerBalanceLabel.textColor = AppDesign.boardTextColor.0
+        
     }
 
     func getPlayerDetails(playerId: Int) {
@@ -87,6 +100,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func chooseSymbol(_ sender: UIButton) {
+
     }
 
     @IBAction func chooseColor(_ sender: UIButton) {
