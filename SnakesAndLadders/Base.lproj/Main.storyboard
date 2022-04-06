@@ -151,13 +151,8 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AK6-R0-OfB" userLabel="Set Name">
                                                                 <rect key="frame" x="0.0" y="0.0" width="363.5" height="61"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Player" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22u-Qx-ZWJ">
-                                                                        <rect key="frame" x="0.0" y="10.5" width="182" height="39.5"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" textContentType="name"/>
-                                                                    </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edy-Wg-kGe">
-                                                                        <rect key="frame" x="182" y="8.5" width="36" height="44"/>
+                                                                        <rect key="frame" x="0.0" y="8.5" width="36.5" height="44"/>
                                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain">
@@ -166,7 +161,15 @@
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                                             </preferredSymbolConfiguration>
                                                                         </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="editPlayerDetails:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Drg-MP-sKL"/>
+                                                                        </connections>
                                                                     </button>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Player" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22u-Qx-ZWJ">
+                                                                        <rect key="frame" x="36.5" y="10.5" width="181.5" height="39.5"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" textContentType="name"/>
+                                                                    </textField>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cez-4g-8u3">
                                                                         <rect key="frame" x="218" y="15.5" width="109" height="29.5"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
@@ -198,6 +201,9 @@
                                                                     </label>
                                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" title="human" translatesAutoresizingMaskIntoConstraints="NO" id="80B-eq-Jv3">
                                                                         <rect key="frame" x="73" y="14.5" width="74.5" height="31"/>
+                                                                        <connections>
+                                                                            <action selector="changeHumanToggle:" destination="BYZ-38-t0r" eventType="valueChanged" id="pi0-Wn-EYb"/>
+                                                                        </connections>
                                                                     </switch>
                                                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ID3-dJ-pcT">
                                                                         <rect key="frame" x="145.5" y="15" width="109" height="30"/>
@@ -208,6 +214,9 @@
                                                                             </children>
                                                                         </menu>
                                                                         <state key="normal" title="Button"/>
+                                                                        <connections>
+                                                                            <action selector="chooseSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qtp-7o-teD"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnj-le-STV">
                                                                         <rect key="frame" x="254.5" y="15" width="109" height="30"/>
@@ -218,6 +227,9 @@
                                                                             </children>
                                                                         </menu>
                                                                         <state key="normal" title="Button"/>
+                                                                        <connections>
+                                                                            <action selector="chooseColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vHS-1k-URk"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
@@ -545,11 +557,19 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="chooseColorButton" destination="Gnj-le-STV" id="R0z-0A-Fgn"/>
+                        <outlet property="chooseHumanSwitch" destination="80B-eq-Jv3" id="6zg-Pj-mBl"/>
+                        <outlet property="chooseSymbolButton" destination="ID3-dJ-pcT" id="2Mt-hs-Di2"/>
                         <outlet property="diceImage" destination="Qim-kR-fU1" id="Wp2-Wf-Dmk"/>
+                        <outlet property="editPlayerDetailsButton" destination="edy-Wg-kGe" id="EWD-L4-1XV"/>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="EHM-Ka-a8d"/>
                         <outlet property="messageLabel" destination="Hu3-57-nJg" id="ztg-A3-oMn"/>
                         <outlet property="myCollectionView" destination="lmN-Wh-MHV" id="2u6-9d-Mei"/>
+                        <outlet property="player0Stack" destination="y7e-Iq-WsR" id="ZgZ-95-MTR"/>
+                        <outlet property="playerBalanceLabel" destination="cez-4g-8u3" id="y7t-KG-zaN"/>
+                        <outlet property="playerNameText" destination="22u-Qx-ZWJ" id="fCH-d4-2sd"/>
                         <outlet property="rollDiceButton" destination="2jz-mS-x9h" id="eqT-KE-AQj"/>
+                        <outlet property="rupeeLabel" destination="inx-p9-xeQ" id="AcV-uw-O93"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

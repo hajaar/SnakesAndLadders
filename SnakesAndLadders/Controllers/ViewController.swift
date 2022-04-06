@@ -13,14 +13,25 @@ class ViewController: UIViewController {
     let reuseIdentifier = "cell"
     var counter: Int = 1
     var messageText: String = ""
-    
+    var shouldEdit: Bool = false
+
     @IBOutlet weak var diceImage: UIImageView!
+    @IBOutlet weak var rollDiceButton: UIButton!
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet var mainView: UIView!
+
+    @IBOutlet weak var editPlayerDetailsButton: UIButton!
+    @IBOutlet weak var playerNameText: UITextField!
+    @IBOutlet weak var playerBalanceLabel: UILabel!
+    @IBOutlet weak var rupeeLabel: UILabel!
+    @IBOutlet weak var chooseHumanSwitch: UISwitch!
+    @IBOutlet weak var chooseSymbolButton: UIButton!
+    @IBOutlet weak var chooseColorButton: UIButton!
+    @IBOutlet weak var player0Stack: UIStackView!
+
     
-    @IBOutlet weak var rollDiceButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,10 +42,11 @@ class ViewController: UIViewController {
         myCollectionView.layer.borderColor = AppDesign.tileBorderColor.cgColor
         myCollectionView.layer.borderWidth = 1
         myCollectionView.layer.cornerRadius = 2
-
+        togglePlayerDetailFields(isEdit: shouldEdit)
         diceImage.tintColor = AppDesign.diceColor
         Dice.roll()
         diceImage.image = Dice.returnFirstRollSymbol()
+
         board.startNewGame()
         
     }
@@ -46,7 +58,31 @@ class ViewController: UIViewController {
         board.startNewGame()
         myCollectionView.reloadData()
     }
-    
+
+    @IBAction func editPlayerDetails(_ sender: UIButton) {
+        togglePlayerDetailFields(isEdit: shouldEdit)
+        shouldEdit.toggle()
+    }
+
+    func togglePlayerDetailFields(isEdit: Bool) {
+        playerNameText.isEnabled = isEdit
+        chooseHumanSwitch.isEnabled = isEdit
+        chooseSymbolButton.isEnabled = isEdit
+        chooseColorButton.isEnabled = isEdit
+
+    }
+
+
+
+    @IBAction func changeHumanToggle(_ sender: UISwitch) {
+    }
+
+    @IBAction func chooseSymbol(_ sender: UIButton) {
+    }
+
+    @IBAction func chooseColor(_ sender: UIButton) {
+    }
+
 }
 
 
