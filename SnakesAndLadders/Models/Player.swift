@@ -168,6 +168,11 @@ struct Player {
         }
         return allowedLengths
     }
-    
+
+    mutating func setName(name: String) {
+        self.name = name
+    }
+
+ 
 }
 

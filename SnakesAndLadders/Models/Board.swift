@@ -40,8 +40,9 @@ struct Board {
     
     private mutating func createPlayers(name: String, token: String) {
         for i in 0...AppConfig.numberofPlayers - 1 {
-            players.append(Player(playerID: i, name: name, token: token)) //add function to get player input and
+            players.append(Player(playerID: i, name: "gummeemama", token: token)) //add function to get player input and
         }
+
         players[0].setHuman(isHuman: true)
         players[1].setHuman(isHuman: true)
         players[2].setHuman(isHuman: true)
@@ -142,6 +143,10 @@ struct Board {
 
     func getPlayerBalance(playerId: Int) -> Int {
         return players[playerId].getBalance()
+    }
+
+    mutating func setPlayerName(playerId: Int, name: String) {
+        players[playerId].setName(name: name)
     }
 
 }

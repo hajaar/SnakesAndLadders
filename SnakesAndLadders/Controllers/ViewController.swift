@@ -42,12 +42,14 @@ class ViewController: UIViewController {
         myCollectionView.layer.borderColor = AppDesign.tileBorderColor.cgColor
         myCollectionView.layer.borderWidth = 1
         myCollectionView.layer.cornerRadius = 2
+
         togglePlayerDetailFields(isEdit: shouldEdit)
         diceImage.tintColor = AppDesign.diceColor
         Dice.roll()
         diceImage.image = Dice.returnFirstRollSymbol()
 
         board.startNewGame()
+        getPlayerDetails(playerId: 0)
         
     }
     @IBAction func rollDice(_ sender: UIButton) {
@@ -62,6 +64,8 @@ class ViewController: UIViewController {
     @IBAction func editPlayerDetails(_ sender: UIButton) {
         togglePlayerDetailFields(isEdit: shouldEdit)
         shouldEdit.toggle()
+        board.setPlayerName(playerId: 0, name: playerNameText.text!)
+
     }
 
     func togglePlayerDetailFields(isEdit: Bool) {
