@@ -11,7 +11,7 @@ import UIKit
 extension ViewController: BoardDelegate {
 
 
-    func playerDidSomething(_ controller: Board, text: String, currentPos: Int, newPos: Int, terminus: Int) {
+    func playerDidSomething(_ controller: Board, playerId: Int, balance: Int, text: String, currentPos: Int, newPos: Int, terminus: Int) {
         messageText = text
         print("text: \(text) currentPos: \(currentPos) newPos: \(newPos) terminus: \(terminus)")
         rollDiceButton.isEnabled = false
@@ -38,6 +38,7 @@ extension ViewController: BoardDelegate {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.messageLabel.text = self.messageText
+            self.playerBalanceLabel.text = String(balance)
             self.rollDiceButton.isEnabled = true
         }
 

@@ -69,10 +69,14 @@ class ViewController: UIViewController {
         chooseHumanSwitch.isEnabled = isEdit
         chooseSymbolButton.isEnabled = isEdit
         chooseColorButton.isEnabled = isEdit
-
     }
 
+    func getPlayerDetails(playerId: Int) {
+        playerNameText.text = board.getPlayerName(playerId: playerId)
+        
+    }
 
+    
 
     @IBAction func changeHumanToggle(_ sender: UISwitch) {
     }
