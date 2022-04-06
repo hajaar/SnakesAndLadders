@@ -149,6 +149,10 @@ struct Board {
         players[playerId].setName(name: name)
     }
 
+    mutating func setPlayerHuman(playerId: Int, isHuman: Bool) {
+        players[playerId].setHuman(isHuman: isHuman)
+    }
+
 }
 
 

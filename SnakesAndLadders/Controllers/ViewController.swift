@@ -83,6 +83,7 @@ class ViewController: UIViewController {
     
 
     @IBAction func changeHumanToggle(_ sender: UISwitch) {
+        board.setPlayerHuman(playerId: 0, isHuman: sender.isOn)
     }
 
     @IBAction func chooseSymbol(_ sender: UIButton) {
