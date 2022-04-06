@@ -68,7 +68,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func configureContextMenu(index: Int) -> UIContextMenuConfiguration{
+
+        
         let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
+
             
             let edit = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in
                 print("edit button clicked")

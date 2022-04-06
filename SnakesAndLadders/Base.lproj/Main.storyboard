@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad7_9" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,14 +14,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SnakesAndLadders" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwV-ga-cYM" userLabel="Main Stack">
-                                <rect key="frame" x="16" y="8" width="568" height="592"/>
+                                <rect key="frame" x="16" y="32" width="1101" height="692"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lmN-Wh-MHV">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="726.5" height="692"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewLayout key="collectionViewLayout" id="ii7-ph-jCn" customClass="myCollectionViewLayout" customModule="SnakesAndLadders" customModuleProvider="target"/>
                                         <cells>
@@ -104,16 +105,21 @@
                                         </connections>
                                     </collectionView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eLM-eY-bBC" userLabel="Space Stack View">
-                                        <rect key="frame" x="375" y="0.0" width="5.5" height="592"/>
+                                        <rect key="frame" x="726.5" y="0.0" width="11" height="692"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="x3B-dh-vlR" userLabel="Control Stack">
-                                        <rect key="frame" x="380.5" y="0.0" width="187.5" height="592"/>
+                                        <rect key="frame" x="737.5" y="0.0" width="363.5" height="692"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-ih-ULU" userLabel="Player Stack">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="396.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lsp-rZ-pBf" userLabel="Game Stack">
+                                                <rect key="frame" x="0.0" y="0.0" width="363.5" height="69"/>
                                                 <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbx-sd-X9I" userLabel="Settings">
+                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="69"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmG-2N-QeU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="396.5"/>
+                                                        <rect key="frame" x="182" y="0.0" width="181.5" height="69"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="New Game"/>
                                                         <connections>
@@ -122,44 +128,48 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-gq-n56" userLabel="Dice Stack">
-                                                <rect key="frame" x="0.0" y="396.5" width="187.5" height="195.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-ih-ULU" userLabel="Player Stack">
+                                                <rect key="frame" x="0.0" y="69" width="363.5" height="484.5"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lbF-kj-v6U" userLabel="Play View">
+                                                <rect key="frame" x="0.0" y="553.5" width="363.5" height="138.5"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lbF-kj-v6U">
-                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="195.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu3-57-nJg" userLabel="Message">
+                                                        <rect key="frame" x="0.0" y="0.0" width="363.5" height="28"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-gq-n56" userLabel="Dice Stack">
+                                                        <rect key="frame" x="0.0" y="28" width="363.5" height="110.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu3-57-nJg" userLabel="Message">
-                                                                <rect key="frame" x="0.0" y="0.0" width="94" height="101.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qim-kR-fU1">
-                                                                <rect key="frame" x="0.0" y="101.5" width="94" height="94"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="182" height="110.5"/>
                                                             </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-mS-x9h">
+                                                                <rect key="frame" x="182" y="0.0" width="181.5" height="110.5"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="Roll">
+                                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="rollDice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P7F-gh-ST5"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jz-mS-x9h">
-                                                        <rect key="frame" x="94" y="0.0" width="93.5" height="195.5"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Roll">
-                                                            <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                        </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="rollDice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P7F-gh-ST5"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="lbF-kj-v6U" firstAttribute="width" secondItem="rdh-gq-n56" secondAttribute="width" multiplier="0.5" id="9SG-72-3yh"/>
-                                                    <constraint firstItem="2jz-mS-x9h" firstAttribute="width" secondItem="rdh-gq-n56" secondAttribute="width" multiplier="0.5" id="kk5-1l-OgK"/>
+                                                    <constraint firstItem="Hu3-57-nJg" firstAttribute="height" secondItem="lbF-kj-v6U" secondAttribute="height" multiplier="0.2" id="Nv1-kB-eRL"/>
+                                                    <constraint firstItem="rdh-gq-n56" firstAttribute="height" secondItem="lbF-kj-v6U" secondAttribute="height" multiplier="0.8" id="fce-z3-Epz"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="rdh-gq-n56" firstAttribute="height" secondItem="x3B-dh-vlR" secondAttribute="height" multiplier="0.33" id="RFx-BV-mTA"/>
-                                            <constraint firstItem="hdr-ih-ULU" firstAttribute="height" secondItem="x3B-dh-vlR" secondAttribute="height" multiplier="0.67" id="njV-Dv-98D"/>
+                                            <constraint firstItem="lbF-kj-v6U" firstAttribute="height" secondItem="x3B-dh-vlR" secondAttribute="height" multiplier="0.2" id="B6p-FV-COc"/>
+                                            <constraint firstItem="hdr-ih-ULU" firstAttribute="height" secondItem="x3B-dh-vlR" secondAttribute="height" multiplier="0.7" id="P5G-6v-Ehb"/>
+                                            <constraint firstItem="Lsp-rZ-pBf" firstAttribute="height" secondItem="x3B-dh-vlR" secondAttribute="height" multiplier="0.1" id="mqC-pK-jjB"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
