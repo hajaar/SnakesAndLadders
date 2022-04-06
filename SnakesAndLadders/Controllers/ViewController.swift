@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         chooseSymbolButton.isHidden = !isEdit
         chooseColorButton.isHidden = !isEdit
         editPlayerDetailsButton.tintColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
-        playerNameText.backgroundColor = isEdit ? .white : AppDesign.boardColor
+        playerNameText.backgroundColor = isEdit ? AppDesign.boardTextColor.1 : AppDesign.boardColor
         playerNameText.textColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
 
     }
@@ -105,13 +105,21 @@ class ViewController: UIViewController {
         diceImage.tintColor = AppDesign.diceColor
 
         chooseHumanSwitch.thumbTintColor = AppDesign.ladderColor
+        chooseHumanSwitch.onTintColor =  AppDesign.tileColor.1
         currencyImage.tintColor = AppDesign.boardTextColor.1
         playerBalanceLabel.textColor = AppDesign.boardTextColor.0
-        chooseHumanSwitch.onTintColor =  AppDesign.tileColor.1
+
 
         editPlayerDetailsButton.tintColor = AppDesign.tileColor.1
+
         playerNameText.backgroundColor = AppDesign.boardColor
         playerNameText.textColor = AppDesign.tileColor.0
+        playerNameText.clipsToBounds = true
+        playerNameText.layer.cornerRadius = 20
+
+
+
+
     }
 
 }
