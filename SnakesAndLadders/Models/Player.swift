@@ -47,7 +47,7 @@ struct Player {
     }
     
     func getName() -> String {
-        return name
+        return name.isEmpty ? "Player" : name
     }
     
     func getToken() -> String {

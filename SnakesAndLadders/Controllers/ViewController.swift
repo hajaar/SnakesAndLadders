@@ -85,7 +85,10 @@ class ViewController: UIViewController {
         playerNameText.textColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
         currencyImage.tintColor = AppDesign.boardTextColor.1
         playerBalanceLabel.textColor = AppDesign.boardTextColor.0
-        
+        chooseHumanSwitch.onTintColor =  AppDesign.tileColor.1
+
+
+
     }
 
     func getPlayerDetails(playerId: Int) {
@@ -96,7 +99,9 @@ class ViewController: UIViewController {
     
 
     @IBAction func changeHumanToggle(_ sender: UISwitch) {
+        chooseHumanSwitch.thumbTintColor = sender.isOn ? AppDesign.ladderColor : AppDesign.snakeColor
         board.setPlayerHuman(playerId: 0, isHuman: sender.isOn)
+
     }
 
     @IBAction func chooseSymbol(_ sender: UIButton) {
