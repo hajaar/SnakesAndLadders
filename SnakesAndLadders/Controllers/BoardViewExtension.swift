@@ -15,7 +15,7 @@ extension ViewController: BoardDelegate {
         messageText = text
         print("text: \(text) currentPos: \(currentPos) newPos: \(newPos) terminus: \(terminus)")
         rollDiceButton.isEnabled = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
             var indexPaths: [NSIndexPath] = []
             indexPaths.append(NSIndexPath(item: currentPos, section: 0))
             self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
@@ -24,15 +24,22 @@ extension ViewController: BoardDelegate {
             self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
         }
 
-        var indexPaths = [NSIndexPath]()
-        if terminus > -1 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if terminus > -1 {
+                var indexPaths = [NSIndexPath]()
                 indexPaths.append(NSIndexPath(item: terminus, section: 0))
                 self.myCollectionView?.reloadItems(at: indexPaths as [IndexPath])
             }
+            self.messageLabel.text = self.messageText
+            self.rollDiceButton.isEnabled = true
         }
-        self.messageLabel.text = self.messageText
 
-        rollDiceButton.isEnabled = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.messageLabel.text = self.messageText
+            self.rollDiceButton.isEnabled = true
+        }
+
     }
 }
