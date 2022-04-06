@@ -50,6 +50,8 @@ struct Board {
     
     private mutating func resetBoard() {
         tiles = [Tile]()
+        players = [Player]()
+        specialTiles = [SpecialTile]()
         BoardHelper.resetBoard()
 
         for i in 0...AppConfig.boardSize - 1 {
