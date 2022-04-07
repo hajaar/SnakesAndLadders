@@ -149,13 +149,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="363.5" height="121.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cez-4g-8u3">
-                                                                <rect key="frame" x="0.0" y="0.0" width="109" height="121.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="73" height="121.5"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3eV-88-xt6">
-                                                                <rect key="frame" x="109" y="-5.5" width="36.5" height="132.5"/>
+                                                                <rect key="frame" x="73" y="-5.5" width="36" height="132.5"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <imageReference key="image" image="indianrupeesign.circle" catalog="system" symbolScale="large"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="regular">
@@ -163,18 +163,18 @@
                                                                 </preferredSymbolConfiguration>
                                                             </imageView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Apm-Y8-MZQ">
-                                                                <rect key="frame" x="145.5" y="0.0" width="218" height="121.5"/>
+                                                                <rect key="frame" x="109" y="0.0" width="254.5" height="121.5"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AK6-R0-OfB" userLabel="Set Name">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="218" height="61"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="254.5" height="61"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Player" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22u-Qx-ZWJ">
-                                                                                <rect key="frame" x="0.0" y="10.5" width="174.5" height="39.5"/>
+                                                                                <rect key="frame" x="0.0" y="10.5" width="203.5" height="39.5"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" textContentType="name"/>
                                                                             </textField>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edy-Wg-kGe">
-                                                                                <rect key="frame" x="174.5" y="8.5" width="43.5" height="44"/>
+                                                                                <rect key="frame" x="203.5" y="8.5" width="51" height="44"/>
                                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <state key="normal" title="Button"/>
                                                                                 <buttonConfiguration key="configuration" style="plain">
@@ -193,23 +193,21 @@
                                                                             <constraint firstItem="22u-Qx-ZWJ" firstAttribute="width" secondItem="AK6-R0-OfB" secondAttribute="width" multiplier="0.8" id="yPG-XC-Dnk"/>
                                                                         </constraints>
                                                                     </stackView>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7ZT-qL-T8y" userLabel="Set Symbol">
-                                                                        <rect key="frame" x="0.0" y="61" width="218" height="60.5"/>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7ZT-qL-T8y" userLabel="Set Symbol">
+                                                                        <rect key="frame" x="0.0" y="61" width="254.5" height="60.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Human?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8T-uF-JVY">
-                                                                                <rect key="frame" x="0.0" y="19.5" width="43.5" height="21"/>
-                                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" title="human" translatesAutoresizingMaskIntoConstraints="NO" id="80B-eq-Jv3">
-                                                                                <rect key="frame" x="43.5" y="14.5" width="45.5" height="31"/>
+                                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LuD-90-6Zn">
+                                                                                <rect key="frame" x="0.0" y="14.5" width="85" height="32"/>
+                                                                                <segments>
+                                                                                    <segment title="" image="person.fill" catalog="system"/>
+                                                                                    <segment title="" image="laptopcomputer" catalog="system"/>
+                                                                                </segments>
                                                                                 <connections>
-                                                                                    <action selector="changeHumanToggle:" destination="BYZ-38-t0r" eventType="valueChanged" id="pi0-Wn-EYb"/>
+                                                                                    <action selector="chooseHumanOrComp:" destination="BYZ-38-t0r" eventType="valueChanged" id="s3n-pG-sgG"/>
                                                                                 </connections>
-                                                                            </switch>
+                                                                            </segmentedControl>
                                                                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ID3-dJ-pcT">
-                                                                                <rect key="frame" x="87" y="15" width="65.5" height="30"/>
+                                                                                <rect key="frame" x="85" y="15" width="84.5" height="30"/>
                                                                                 <menu key="menu" id="ct5-sp-dxH">
                                                                                     <children>
                                                                                         <command title="Item 1" id="Grx-cV-yVh"/>
@@ -222,7 +220,7 @@
                                                                                 </connections>
                                                                             </button>
                                                                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnj-le-STV">
-                                                                                <rect key="frame" x="152.5" y="15" width="65.5" height="30"/>
+                                                                                <rect key="frame" x="169.5" y="15" width="85" height="30"/>
                                                                                 <menu key="menu" id="iHH-AI-nCp">
                                                                                     <children>
                                                                                         <command title="Item 1" id="oAh-UK-YsP"/>
@@ -235,20 +233,14 @@
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
-                                                                        <constraints>
-                                                                            <constraint firstItem="80B-eq-Jv3" firstAttribute="width" secondItem="7ZT-qL-T8y" secondAttribute="width" multiplier="0.2" id="a7w-J6-b7u"/>
-                                                                            <constraint firstItem="R8T-uF-JVY" firstAttribute="width" secondItem="7ZT-qL-T8y" secondAttribute="width" multiplier="0.2" id="mUx-jp-tkU"/>
-                                                                            <constraint firstItem="Gnj-le-STV" firstAttribute="width" secondItem="7ZT-qL-T8y" secondAttribute="width" multiplier="0.3" id="wc0-Aw-x6d"/>
-                                                                            <constraint firstItem="ID3-dJ-pcT" firstAttribute="width" secondItem="7ZT-qL-T8y" secondAttribute="width" multiplier="0.3" id="wgN-sW-DUa"/>
-                                                                        </constraints>
                                                                     </stackView>
                                                                 </subviews>
                                                             </stackView>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="cez-4g-8u3" firstAttribute="width" secondItem="jMi-Rc-dDJ" secondAttribute="width" multiplier="0.3" id="6cA-8s-9sp"/>
+                                                            <constraint firstItem="cez-4g-8u3" firstAttribute="width" secondItem="jMi-Rc-dDJ" secondAttribute="width" multiplier="0.2" id="6cA-8s-9sp"/>
                                                             <constraint firstItem="3eV-88-xt6" firstAttribute="width" secondItem="jMi-Rc-dDJ" secondAttribute="width" multiplier="0.1" id="H8G-05-gqL"/>
-                                                            <constraint firstItem="Apm-Y8-MZQ" firstAttribute="width" secondItem="jMi-Rc-dDJ" secondAttribute="width" multiplier="0.6" id="dzU-Ab-tCh"/>
+                                                            <constraint firstItem="Apm-Y8-MZQ" firstAttribute="width" secondItem="jMi-Rc-dDJ" secondAttribute="width" multiplier="0.7" id="dzU-Ab-tCh"/>
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7v-iZ-Znu">
@@ -635,12 +627,11 @@
                     </view>
                     <connections>
                         <outlet property="chooseColorButton" destination="Gnj-le-STV" id="R0z-0A-Fgn"/>
-                        <outlet property="chooseHumanSwitch" destination="80B-eq-Jv3" id="6zg-Pj-mBl"/>
                         <outlet property="chooseSymbolButton" destination="ID3-dJ-pcT" id="2Mt-hs-Di2"/>
                         <outlet property="currencyImage" destination="3eV-88-xt6" id="GgK-jw-EaM"/>
                         <outlet property="diceImage" destination="Qim-kR-fU1" id="Wp2-Wf-Dmk"/>
                         <outlet property="editPlayerDetailsButton" destination="edy-Wg-kGe" id="EWD-L4-1XV"/>
-                        <outlet property="isHumanLabel" destination="R8T-uF-JVY" id="enk-PH-utK"/>
+                        <outlet property="humanOrComp" destination="LuD-90-6Zn" id="8Il-s1-E0G"/>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="EHM-Ka-a8d"/>
                         <outlet property="messageLabel" destination="Hu3-57-nJg" id="ztg-A3-oMn"/>
                         <outlet property="myCollectionView" destination="lmN-Wh-MHV" id="2u6-9d-Mei"/>
@@ -657,6 +648,8 @@
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="indianrupeesign.circle" catalog="system" width="128" height="121"/>
+        <image name="laptopcomputer" catalog="system" width="128" height="73"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">

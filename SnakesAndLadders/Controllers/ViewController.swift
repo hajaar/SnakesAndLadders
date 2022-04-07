@@ -26,8 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var playerNameText: UITextField!
     @IBOutlet weak var playerBalanceLabel: UILabel!
     @IBOutlet weak var currencyImage: UIImageView!
-    @IBOutlet weak var isHumanLabel: UILabel!
-    @IBOutlet weak var chooseHumanSwitch: UISwitch!
+    @IBOutlet weak var humanOrComp: UISegmentedControl!
     @IBOutlet weak var chooseSymbolButton: UIButton!
     @IBOutlet weak var chooseColorButton: UIButton!
     @IBOutlet weak var player0Stack: UIStackView!
@@ -65,13 +64,12 @@ class ViewController: UIViewController {
 
     func togglePlayerDetailFields(isEdit: Bool) {
         playerNameText.isEnabled = isEdit
-        chooseHumanSwitch.isEnabled = isEdit
+        humanOrComp.isEnabled = isEdit
         chooseSymbolButton.isEnabled = isEdit
         chooseColorButton.isEnabled = isEdit
-        isHumanLabel.isHidden = !isEdit
-        chooseHumanSwitch.isHidden = !isEdit
-        chooseSymbolButton.isHidden = !isEdit
-        chooseColorButton.isHidden = !isEdit
+//        humanOrComp.isHidden = !isEdit
+//        chooseSymbolButton.isHidden = !isEdit
+//        chooseColorButton.isHidden = !isEdit
         editPlayerDetailsButton.tintColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
         playerNameText.backgroundColor = isEdit ? AppDesign.boardTextColor.1 : AppDesign.boardColor
         playerNameText.textColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
@@ -82,11 +80,10 @@ class ViewController: UIViewController {
         playerNameText.text = board.getPlayerName(playerId: playerId)
     }
 
-    @IBAction func changeHumanToggle(_ sender: UISwitch) {
-        chooseHumanSwitch.thumbTintColor = sender.isOn ? AppDesign.ladderColor : AppDesign.snakeColor
-        board.setPlayerHuman(playerId: 0, isHuman: sender.isOn)
-        isHumanLabel.text = sender.isOn ? "Human" : "AI"
+    @IBAction func chooseHumanOrComp(_ sender: UISegmentedControl) {
+        board.setPlayerHuman(playerId: 0, isHuman: sender.selectedSegmentIndex == 0 ? true : false )
     }
+    
 
     @IBAction func chooseSymbol(_ sender: UIButton) {
 
@@ -104,8 +101,6 @@ class ViewController: UIViewController {
         togglePlayerDetailFields(isEdit: shouldEdit)
         diceImage.tintColor = AppDesign.diceColor
 
-        chooseHumanSwitch.thumbTintColor = AppDesign.ladderColor
-        chooseHumanSwitch.onTintColor =  AppDesign.tileColor.1
         currencyImage.tintColor = AppDesign.boardTextColor.1
         playerBalanceLabel.textColor = AppDesign.boardTextColor.0
 
@@ -117,6 +112,8 @@ class ViewController: UIViewController {
         playerNameText.clipsToBounds = true
         playerNameText.layer.cornerRadius = 20
 
+        humanOrComp.selectedSegmentTintColor = AppDesign.ladderColor
+        humanOrComp.backgroundColor = AppDesign.snakeColor
 
 
 
