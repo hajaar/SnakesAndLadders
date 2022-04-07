@@ -116,14 +116,15 @@ class ViewController: UIViewController {
         humanOrComp.selectedSegmentTintColor = AppDesign.ladderColor
         humanOrComp.backgroundColor = AppDesign.snakeColor
 
-
+        rollDiceButton.backgroundColor = AppDesign.diceColor
+        rollDiceButton.layer.cornerRadius = 30
+        rollDiceButton.tintColor = .white
 
     }
 
 
     func assignbackground(v: UIView){
         let background = UIImage(named: "space")
-
         var imageView : UIImageView!
         imageView = UIImageView(frame: view.bounds)
         imageView.contentMode =  UIView.ContentMode.scaleAspectFill
