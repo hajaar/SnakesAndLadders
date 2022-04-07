@@ -93,7 +93,8 @@ class ViewController: UIViewController {
     }
 
     func initialUISetup() {
-        mainView.backgroundColor = AppDesign.boardColor
+   //     mainView.backgroundColor = AppDesign.boardColor
+        assignbackground(v: mainView)
         myCollectionView.layer.borderColor = AppDesign.tileBorderColor.cgColor
         myCollectionView.layer.borderWidth = 1
         myCollectionView.layer.cornerRadius = 2
@@ -119,6 +120,19 @@ class ViewController: UIViewController {
 
     }
 
+
+    func assignbackground(v: UIView){
+        let background = UIImage(named: "space")
+
+        var imageView : UIImageView!
+        imageView = UIImageView(frame: view.bounds)
+        imageView.contentMode =  UIView.ContentMode.scaleAspectFill
+        imageView.clipsToBounds = false
+        imageView.image = background
+        imageView.center = v.center
+        v.addSubview(imageView)
+        v.sendSubviewToBack(imageView)
+    }
 }
 
 
