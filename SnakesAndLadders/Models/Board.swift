@@ -154,10 +154,10 @@ struct Board {
     }
 
 
-    func getAllowedSnakeLengths(index: Int) -> [lengthSnakeAndLadder]? {
+    func getAllowedLengths(index: Int, tileType: TileType) -> [lengthSnakeAndLadder]? {
 
         if let allowedSnakes = players[playerCounter].showAllowedLengthsBasedOnCost() {
-            if let allowedLength = BoardHelper.showAllowedLengthsBasedOnPosition(index: index, type: .snake) {
+            if let allowedLength = BoardHelper.showAllowedLengthsBasedOnPosition(index: index, type: tileType) {
                 return allowedSnakes.count > allowedLength.count ? allowedLength : allowedSnakes
             }
             return nil
@@ -169,9 +169,8 @@ struct Board {
         let i = specialTiles.count
         let s = SpecialTile(index: i, start: BoardHelper.getTileIdFromIndex(value: index), length: length, tileType: tileType)
         specialTiles.append(s)
-        print(BoardHelper.specialTileLookup)
         BoardHelper.specialTileLookup[s.getStart()] = i
-        print(BoardHelper.specialTileLookup)
+        players[playerCounter].updateBalance(-10)
     }
 
 }

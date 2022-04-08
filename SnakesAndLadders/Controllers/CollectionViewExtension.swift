@@ -72,7 +72,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         let identifier = "\(index)" as NSString
         let context = UIContextMenuConfiguration(identifier: identifier, previewProvider: nil) { (action) -> UIMenu? in
 
-            let allowedLengths = self.board.getAllowedSnakeLengths(index: index) ?? [lengthSnakeAndLadder]()
+            var allowedLengths = self.board.getAllowedLengths(index: index, tileType: .snake) ?? [lengthSnakeAndLadder]()
             var children = [UIAction]()
 
             if allowedLengths.isEmpty {
@@ -93,11 +93,29 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
             let snake = UIMenu(title: "Snake", image: UIImage(systemName: symbolNames.snake), children: children)
 
-            let ladder = UIAction(title: "Ladder", image: UIImage(systemName: symbolNames.ladder), identifier: nil, discoverabilityTitle: nil,state: .off) { (_) in
-                print("delete button clicked")
-                print(identifier)
-                    //add tasks...
+            allowedLengths = [lengthSnakeAndLadder]()
+            allowedLengths = self.board.getAllowedLengths(index: index, tileType: .ladder) ?? [lengthSnakeAndLadder]()
+            children = [UIAction]()
+
+            if allowedLengths.isEmpty {
+
+            } else {
+                allowedLengths.forEach { l in
+                    let c = UIAction(title: l.name, image: UIImage(systemName: l.symbolname), identifier: nil, discoverabilityTitle: nil,state: .off) { (_) in
+                        print("inside the collection view \(l.name)")
+                        self.board.addUserDefinedSnakeAndLadder(index: index, length: l, tileType: .ladder)
+                        var indexPaths: [NSIndexPath] = []
+                        indexPaths.append(NSIndexPath(item: index, section: 0))
+                        self.myCollectionView.reloadItems(at: indexPaths as [IndexPath])
+                    }
+                    children.append(c)
+
+                }
             }
+
+            let ladder = UIMenu(title: "Ladder", image: UIImage(systemName: symbolNames.ladder), children: children)
+
+            
             return UIMenu(title: "Options", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [snake,ladder])
         }
         return context
