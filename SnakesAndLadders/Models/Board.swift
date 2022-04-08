@@ -165,6 +165,15 @@ struct Board {
         return nil
     }
 
+    mutating func addUserDefinedSnakeAndLadder(index: Int, length: lengthSnakeAndLadder, tileType: TileType) {
+        let i = specialTiles.count
+        let s = SpecialTile(index: i, start: BoardHelper.getTileIdFromIndex(value: index), length: length, tileType: tileType)
+        specialTiles.append(s)
+        print(BoardHelper.specialTileLookup)
+        BoardHelper.specialTileLookup[s.getStart()] = i
+        print(BoardHelper.specialTileLookup)
+    }
+
 }
 
 
