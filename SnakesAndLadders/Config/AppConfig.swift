@@ -130,6 +130,21 @@ enum lengthSnakeAndLadder: Int, CaseIterable {
             return "Extra-large"
         }
     }
+
+    var symbolname: String {
+        switch self {
+        case .E:
+            return "e.square.fill"
+        case .S:
+            return "s.square.fill"
+        case .M:
+            return "m.square.fill"
+        case .L:
+            return "l.square.fill"
+        case .XL:
+            return "x.square.fill"
+        }
+    }
 }
 
 enum BoardError: Error {

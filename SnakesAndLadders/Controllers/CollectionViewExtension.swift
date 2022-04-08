@@ -76,24 +76,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             var children = [UIAction]()
 
             if allowedLengths.isEmpty {
-
+                
             } else {
                 allowedLengths.forEach { l in
-                    let c = UIAction(title: l.name, image: UIImage(systemName: "s.square.fill"), identifier: nil, discoverabilityTitle: nil,state: .off) { (_) in
-                        print("\(l.name)clicked")
-                        print(identifier)
+                    let c = UIAction(title: l.name, image: UIImage(systemName: l.symbolname), identifier: nil, discoverabilityTitle: nil,state: .off) { (_) in
                     }
                     children.append(c)
                 }
             }
-
-
-
-                //            let snake = UIAction(title: "Snake \(tmpid)", image: UIImage(systemName: symbolNames.snake), identifier: nil, discoverabilityTitle: nil,state: .off) { (_) in
-                //                print("edit button clicked")
-                //                print(identifier)
-                //                    //add tasks...
-                //            }
 
             let snake = UIMenu(title: "Snake", image: UIImage(systemName: symbolNames.snake), children: children)
 
