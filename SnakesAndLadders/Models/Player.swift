@@ -147,7 +147,7 @@ struct Player {
         return Int(Double(tilesMoved) * turnType.earningMultipler)
     }
 
-    func showAllowedLengths() -> [lengthSnakeAndLadder]! {
+    func showAllowedLengthsBasedOnCost() -> [lengthSnakeAndLadder]? {
         var allowedLengths = [lengthSnakeAndLadder]()
         switch balance {
         case lengthSnakeAndLadder.XL.cost... :

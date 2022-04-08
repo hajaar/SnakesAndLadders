@@ -114,5 +114,27 @@ struct BoardHelper {
         }
     }
 
+    static func showAllowedLengthsBasedOnPosition(pos: Int, type: TileType) -> [lengthSnakeAndLadder]? {
+        var allowedLengths = [lengthSnakeAndLadder]()
+        let bound = type == TileType.snake ? AppConfig.boardSize - 1 - pos : pos
+        switch bound {
+        case lengthSnakeAndLadder.XL.length... :
+            allowedLengths.append(.XL)
+            fallthrough
+        case lengthSnakeAndLadder.L.length..<lengthSnakeAndLadder.XL.cost:
+            allowedLengths.append(.L)
+            fallthrough
+        case lengthSnakeAndLadder.M.length..<lengthSnakeAndLadder.L.cost:
+            allowedLengths.append(.M)
+            fallthrough
+        case lengthSnakeAndLadder.S.length..<lengthSnakeAndLadder.M.cost:
+            allowedLengths.append(.S)
+        case ..<lengthSnakeAndLadder.S.length:
+            return nil
+        default:
+            return nil
+        }
+        return allowedLengths
+    }
 
 }

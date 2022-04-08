@@ -152,7 +152,7 @@
                                             <stackView opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lPk-fh-wEe" userLabel="Player Stack">
                                                 <rect key="frame" x="0.0" y="90" width="363.5" height="456.5"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMi-Rc-dDJ" userLabel="0">
+                                                    <stackView alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMi-Rc-dDJ" userLabel="0">
                                                         <rect key="frame" x="0.0" y="0.0" width="363.5" height="105"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cez-4g-8u3">
@@ -576,7 +576,7 @@
                                                 <rect key="frame" x="0.0" y="546.5" width="363.5" height="21"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <stackView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lbF-kj-v6U" userLabel="Play View">
+                                            <stackView alpha="0.80000000000000004" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lbF-kj-v6U" userLabel="Play View">
                                                 <rect key="frame" x="0.0" y="567.5" width="363.5" height="103.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s60-GU-5AQ">

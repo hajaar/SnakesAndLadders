@@ -115,6 +115,21 @@ enum lengthSnakeAndLadder: Int, CaseIterable {
             return Int(Double(self.length) * 1.0)
         }
     }
+
+    var name: String {
+        switch self {
+        case .E:
+            return "Empty"
+        case .S:
+            return "Small"
+        case .M:
+            return "Medium"
+        case .L:
+            return "Large"
+        case .XL:
+            return "Extra-large"
+        }
+    }
 }
 
 enum BoardError: Error {

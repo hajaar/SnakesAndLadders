@@ -1,16 +1,16 @@
-//
-//  CollectionViewExtension.swift
-//  SnakesAndLadders
-//
-//  Created by Kartik Narayanan on 17/03/22.
-//
+    //
+    //  CollectionViewExtension.swift
+    //  SnakesAndLadders
+    //
+    //  Created by Kartik Narayanan on 17/03/22.
+    //
 
 import Foundation
 import UIKit
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
-    // MARK: - UICollectionViewDataSource protocol
+        // MARK: - UICollectionViewDataSource protocol
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return AppConfig.boardSize
@@ -47,10 +47,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     }
 
 
-    // MARK: - UICollectionViewDelegate protocol
+        // MARK: - UICollectionViewDelegate protocol
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
+            // handle tap events
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.backgroundColor = AppDesign.highlightTileColor
         print("You selected cell #\(indexPath.item)!")
@@ -69,22 +69,43 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func configureContextMenu(index: Int) -> UIContextMenuConfiguration{
 
-        
-        let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
+        let identifier = "\(index)" as NSString
+        let context = UIContextMenuConfiguration(identifier: identifier, previewProvider: nil) { (action) -> UIMenu? in
 
-            
-            let edit = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in
-                print("edit button clicked")
-                    //add tasks...
+            let allowedLengths = self.board.getAllowedSnakeLengths(index: index) ?? [lengthSnakeAndLadder]()
+            var children = [UIAction]()
+
+            if allowedLengths.isEmpty {
+
+            } else {
+                allowedLengths.forEach { l in
+                    let c = UIAction(title: l.name, image: UIImage(systemName: "s.square.fill"), identifier: nil, discoverabilityTitle: nil,state: .off) { (_) in
+                        print("\(l.name)clicked")
+                        print(identifier)
+                    }
+                    children.append(c)
+                }
             }
-            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: nil, discoverabilityTitle: nil,attributes: .destructive, state: .off) { (_) in
+
+
+
+                //            let snake = UIAction(title: "Snake \(tmpid)", image: UIImage(systemName: symbolNames.snake), identifier: nil, discoverabilityTitle: nil,state: .off) { (_) in
+                //                print("edit button clicked")
+                //                print(identifier)
+                //                    //add tasks...
+                //            }
+
+            let snake = UIMenu(title: "Snake", image: UIImage(systemName: symbolNames.snake), children: children)
+
+            let ladder = UIAction(title: "Ladder", image: UIImage(systemName: symbolNames.ladder), identifier: nil, discoverabilityTitle: nil,state: .off) { (_) in
                 print("delete button clicked")
+                print(identifier)
                     //add tasks...
             }
-            return UIMenu(title: "Options", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [edit,delete])
+            return UIMenu(title: "Options", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [snake,ladder])
         }
         return context
     }
 }
-    
+
 

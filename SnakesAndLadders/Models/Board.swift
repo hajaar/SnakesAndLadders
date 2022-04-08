@@ -40,7 +40,7 @@ struct Board {
     
     private mutating func createPlayers(name: String, token: String) {
         for i in 0...AppConfig.numberofPlayers - 1 {
-            players.append(Player(playerID: i, name: "gummeemama", token: token)) //add function to get player input and
+            players.append(Player(playerID: i, name: "guhmeemama", token: token)) //add function to get player input and
         }
 
         players[0].setHuman(isHuman: true)
@@ -151,6 +151,20 @@ struct Board {
 
     mutating func setPlayerHuman(playerId: Int, isHuman: Bool) {
         players[playerId].setHuman(isHuman: isHuman)
+    }
+
+
+    func getAllowedSnakeLengths(index: Int) -> [lengthSnakeAndLadder]? {
+
+        if let allowedSnakes = players[playerCounter].showAllowedLengthsBasedOnCost() {
+            print("allowedSnakes \(allowedSnakes)")
+            if let allowedLength = BoardHelper.showAllowedLengthsBasedOnPosition(pos: index, type: .snake) {
+                print("allowedLength \(allowedLength)")
+                return allowedSnakes.count > allowedLength.count ? allowedLength : allowedSnakes
+            }
+            return allowedSnakes
+        }
+        return nil
     }
 
 }
