@@ -157,12 +157,10 @@ struct Board {
     func getAllowedSnakeLengths(index: Int) -> [lengthSnakeAndLadder]? {
 
         if let allowedSnakes = players[playerCounter].showAllowedLengthsBasedOnCost() {
-            print("allowedSnakes \(allowedSnakes)")
-            if let allowedLength = BoardHelper.showAllowedLengthsBasedOnPosition(pos: index, type: .snake) {
-                print("allowedLength \(allowedLength)")
+            if let allowedLength = BoardHelper.showAllowedLengthsBasedOnPosition(index: index, type: .snake) {
                 return allowedSnakes.count > allowedLength.count ? allowedLength : allowedSnakes
             }
-            return allowedSnakes
+            return nil
         }
         return nil
     }
