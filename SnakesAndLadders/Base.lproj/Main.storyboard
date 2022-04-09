@@ -673,7 +673,6 @@
                     <connections>
                         <outlet property="chooseColorButton" destination="Gnj-le-STV" id="R0z-0A-Fgn"/>
                         <outlet property="chooseSymbolButton" destination="ID3-dJ-pcT" id="2Mt-hs-Di2"/>
-                        <outlet property="currencyImage" destination="3eV-88-xt6" id="GgK-jw-EaM"/>
                         <outlet property="diceImage" destination="Qim-kR-fU1" id="Wp2-Wf-Dmk"/>
                         <outlet property="editPlayerDetailsButton" destination="edy-Wg-kGe" id="EWD-L4-1XV"/>
                         <outlet property="humanOrComp" destination="LuD-90-6Zn" id="8Il-s1-E0G"/>
@@ -686,6 +685,10 @@
                         <outletCollection property="playerBalanceLabel" destination="XnS-Ga-Ztr" collectionClass="NSMutableArray" id="uJl-GU-5cj"/>
                         <outletCollection property="playerBalanceLabel" destination="oSy-3r-cDj" collectionClass="NSMutableArray" id="rmO-mf-ZgH"/>
                         <outletCollection property="playerBalanceLabel" destination="R3O-OK-mSX" collectionClass="NSMutableArray" id="k9N-2L-ISo"/>
+                        <outletCollection property="currencyImages" destination="3eV-88-xt6" collectionClass="NSMutableArray" id="xuR-Ir-bgW"/>
+                        <outletCollection property="currencyImages" destination="y60-iJ-5qc" collectionClass="NSMutableArray" id="jD9-Qb-fsX"/>
+                        <outletCollection property="currencyImages" destination="kLE-vY-F0S" collectionClass="NSMutableArray" id="I4U-eK-qdU"/>
+                        <outletCollection property="currencyImages" destination="jbO-r8-EnX" collectionClass="NSMutableArray" id="XHs-4B-THF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

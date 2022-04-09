@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var editPlayerDetailsButton: UIButton!
     @IBOutlet weak var playerNameText: UITextField!
-    @IBOutlet weak var currencyImage: UIImageView!
+    @IBOutlet var currencyImages: [UIImageView]!
     @IBOutlet weak var humanOrComp: UISegmentedControl!
     @IBOutlet weak var chooseSymbolButton: UIButton!
     @IBOutlet weak var chooseColorButton: UIButton!
@@ -104,7 +104,10 @@ class ViewController: UIViewController {
         togglePlayerDetailFields(isEdit: shouldEdit)
         diceImage.tintColor = AppDesign.diceColor
 
-        currencyImage.tintColor = AppDesign.boardTextColor.1
+        currencyImages.forEach { c in
+            c.tintColor = AppDesign.boardTextColor.1
+        }
+
         playerBalanceLabel.forEach { u in
             u.textColor = AppDesign.boardTextColor.0
         }
