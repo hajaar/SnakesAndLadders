@@ -24,12 +24,14 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var editPlayerDetailsButton: UIButton!
     @IBOutlet weak var playerNameText: UITextField!
-    @IBOutlet weak var playerBalanceLabel: UILabel!
     @IBOutlet weak var currencyImage: UIImageView!
     @IBOutlet weak var humanOrComp: UISegmentedControl!
     @IBOutlet weak var chooseSymbolButton: UIButton!
     @IBOutlet weak var chooseColorButton: UIButton!
-    @IBOutlet weak var player0Stack: UIStackView!
+    @IBOutlet var playerBalanceLabel: [UILabel]!
+    
+
+
 
     
     override func viewDidLoad() {
@@ -103,9 +105,10 @@ class ViewController: UIViewController {
         diceImage.tintColor = AppDesign.diceColor
 
         currencyImage.tintColor = AppDesign.boardTextColor.1
-        playerBalanceLabel.textColor = AppDesign.boardTextColor.0
-
-
+        playerBalanceLabel.forEach { u in
+            u.textColor = AppDesign.boardTextColor.0
+        }
+        
         editPlayerDetailsButton.tintColor = AppDesign.tileColor.1
 
         playerNameText.backgroundColor = AppDesign.boardColor

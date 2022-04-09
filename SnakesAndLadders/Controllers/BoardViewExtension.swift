@@ -38,7 +38,7 @@ extension ViewController: BoardDelegate {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.messageLabel.text = self.messageText
-            self.playerBalanceLabel.text = String(balance)
+            self.playerBalanceLabel[playerId].text = String(balance)
             self.rollDiceButton.isEnabled = true
         }
 
