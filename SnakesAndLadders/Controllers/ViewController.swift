@@ -25,13 +25,14 @@ class ViewController: UIViewController {
 
     @IBOutlet var playerNameText: [UITextField]!
     @IBOutlet var currencyImages: [UIImageView]!
-    @IBOutlet weak var humanOrComp: UISegmentedControl!
+
     @IBOutlet weak var chooseSymbolButton: UIButton!
     @IBOutlet weak var chooseColorButton: UIButton!
     @IBOutlet var playerBalanceLabel: [UILabel]!
     
     @IBOutlet var editPlayersButtons: [UIButton]!
 
+    @IBOutlet var humanOrComps: [UISegmentedControl]!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,7 +69,7 @@ class ViewController: UIViewController {
         playerNameText[playerId].textColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
 
 
-        humanOrComp.isEnabled = isEdit
+        humanOrComps[playerId].isEnabled = isEdit
         chooseSymbolButton.isEnabled = isEdit
         chooseColorButton.isEnabled = isEdit
 
@@ -81,7 +82,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func chooseHumanOrComp(_ sender: UISegmentedControl) {
-        board.setPlayerHuman(playerId: 0, isHuman: sender.selectedSegmentIndex == 0 ? true : false )
+        board.setPlayerHuman(playerId: sender.tag - 1, isHuman: sender.selectedSegmentIndex == 0 ? true : false )
     }
     
 
@@ -127,9 +128,11 @@ class ViewController: UIViewController {
             i += 1
         }
 
+        humanOrComps.forEach { h in
+            h.selectedSegmentTintColor = AppDesign.ladderColor
+            h.backgroundColor = AppDesign.snakeColor
+        }
 
-        humanOrComp.selectedSegmentTintColor = AppDesign.ladderColor
-        humanOrComp.backgroundColor = AppDesign.snakeColor
 
         rollDiceButton.backgroundColor = AppDesign.diceColor
         rollDiceButton.layer.cornerRadius = 30

@@ -313,7 +313,7 @@
                                                                                     <segment title="" image="laptopcomputer" catalog="system"/>
                                                                                 </segments>
                                                                                 <connections>
-                                                                                    <action selector="chooseHumanOrComp:" destination="BYZ-38-t0r" eventType="valueChanged" id="Fpn-W2-dpz"/>
+                                                                                    <action selector="chooseHumanOrComp:" destination="BYZ-38-t0r" eventType="valueChanged" id="4RA-nO-3aE"/>
                                                                                 </connections>
                                                                             </segmentedControl>
                                                                             <button opaque="NO" tag="2" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXK-ZD-rSG">
@@ -416,7 +416,7 @@
                                                                                     <segment title="" image="laptopcomputer" catalog="system"/>
                                                                                 </segments>
                                                                                 <connections>
-                                                                                    <action selector="chooseHumanOrComp:" destination="BYZ-38-t0r" eventType="valueChanged" id="sqM-lb-fwa"/>
+                                                                                    <action selector="chooseHumanOrComp:" destination="BYZ-38-t0r" eventType="valueChanged" id="dm2-w8-vlq"/>
                                                                                 </connections>
                                                                             </segmentedControl>
                                                                             <button opaque="NO" tag="3" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbO-p4-gey">
@@ -519,7 +519,7 @@
                                                                                     <segment title="" image="laptopcomputer" catalog="system"/>
                                                                                 </segments>
                                                                                 <connections>
-                                                                                    <action selector="chooseHumanOrComp:" destination="BYZ-38-t0r" eventType="valueChanged" id="U8p-I9-hmw"/>
+                                                                                    <action selector="chooseHumanOrComp:" destination="BYZ-38-t0r" eventType="valueChanged" id="dlJ-P7-IkF"/>
                                                                                 </connections>
                                                                             </segmentedControl>
                                                                             <button opaque="NO" tag="4" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvt-n0-zVr">
@@ -674,7 +674,6 @@
                         <outlet property="chooseColorButton" destination="Gnj-le-STV" id="R0z-0A-Fgn"/>
                         <outlet property="chooseSymbolButton" destination="ID3-dJ-pcT" id="2Mt-hs-Di2"/>
                         <outlet property="diceImage" destination="Qim-kR-fU1" id="Wp2-Wf-Dmk"/>
-                        <outlet property="humanOrComp" destination="LuD-90-6Zn" id="8Il-s1-E0G"/>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="EHM-Ka-a8d"/>
                         <outlet property="messageLabel" destination="Hu3-57-nJg" id="ztg-A3-oMn"/>
                         <outlet property="myCollectionView" destination="lmN-Wh-MHV" id="2u6-9d-Mei"/>
@@ -695,6 +694,10 @@
                         <outletCollection property="editPlayersButtons" destination="Ifq-Tc-mxh" collectionClass="NSMutableArray" id="Gn9-pP-fcZ"/>
                         <outletCollection property="editPlayersButtons" destination="gHj-tO-U6L" collectionClass="NSMutableArray" id="bJG-vt-7Eb"/>
                         <outletCollection property="editPlayersButtons" destination="rDe-Mx-rjX" collectionClass="NSMutableArray" id="79C-kW-A3q"/>
+                        <outletCollection property="humanOrComps" destination="LuD-90-6Zn" collectionClass="NSMutableArray" id="54k-pL-KTO"/>
+                        <outletCollection property="humanOrComps" destination="kXJ-WI-KWr" collectionClass="NSMutableArray" id="Zbp-Qx-GVP"/>
+                        <outletCollection property="humanOrComps" destination="ep3-By-6Nq" collectionClass="NSMutableArray" id="HtE-hx-YS4"/>
+                        <outletCollection property="humanOrComps" destination="l30-fF-EhE" collectionClass="NSMutableArray" id="u1H-k3-T5r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
