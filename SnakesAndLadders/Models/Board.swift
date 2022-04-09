@@ -40,7 +40,7 @@ struct Board {
     
     private mutating func createPlayers(name: String, token: String) {
         for i in 0...AppConfig.numberofPlayers - 1 {
-            players.append(Player(playerID: i, name: "guhmeemama", token: token)) //add function to get player input and
+            players.append(Player(playerID: i, name: "Player \(i)", token: token)) //add function to get player input and
         }
 
         players[0].setHuman(isHuman: true)

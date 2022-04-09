@@ -23,7 +23,8 @@ class ViewController: UIViewController {
     @IBOutlet var mainView: UIView!
 
     @IBOutlet weak var editPlayerDetailsButton: UIButton!
-    @IBOutlet weak var playerNameText: UITextField!
+
+    @IBOutlet var playerNameText: [UITextField]!
     @IBOutlet var currencyImages: [UIImageView]!
     @IBOutlet weak var humanOrComp: UISegmentedControl!
     @IBOutlet weak var chooseSymbolButton: UIButton!
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
 
         board.startNewGame()
         initialUISetup()
-        getPlayerDetails(playerId: 0)
+
 
     }
     @IBAction func rollDice(_ sender: UIButton) {
@@ -60,12 +61,17 @@ class ViewController: UIViewController {
     @IBAction func editPlayerDetails(_ sender: UIButton) {
         togglePlayerDetailFields(isEdit: shouldEdit)
         shouldEdit.toggle()
-        board.setPlayerName(playerId: 0, name: playerNameText.text!)
+        board.setPlayerName(playerId: sender.tag - 1, name: playerNameText[sender.tag].text!)
 
     }
 
     func togglePlayerDetailFields(isEdit: Bool) {
-        playerNameText.isEnabled = isEdit
+        playerNameText.forEach { p in
+            p.isEnabled = isEdit
+            p.backgroundColor = isEdit ? AppDesign.boardTextColor.1 : AppDesign.boardColor
+            p.textColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
+        }
+
         humanOrComp.isEnabled = isEdit
         chooseSymbolButton.isEnabled = isEdit
         chooseColorButton.isEnabled = isEdit
@@ -73,13 +79,12 @@ class ViewController: UIViewController {
 //        chooseSymbolButton.isHidden = !isEdit
 //        chooseColorButton.isHidden = !isEdit
         editPlayerDetailsButton.tintColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
-        playerNameText.backgroundColor = isEdit ? AppDesign.boardTextColor.1 : AppDesign.boardColor
-        playerNameText.textColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
+
 
     }
 
     func getPlayerDetails(playerId: Int) {
-        playerNameText.text = board.getPlayerName(playerId: playerId)
+        playerNameText[playerId].text = board.getPlayerName(playerId: playerId)
     }
 
     @IBAction func chooseHumanOrComp(_ sender: UISegmentedControl) {
@@ -114,10 +119,16 @@ class ViewController: UIViewController {
         
         editPlayerDetailsButton.tintColor = AppDesign.tileColor.1
 
-        playerNameText.backgroundColor = AppDesign.boardColor
-        playerNameText.textColor = AppDesign.tileColor.0
-        playerNameText.clipsToBounds = true
-        playerNameText.layer.cornerRadius = 20
+        var i = 0
+        playerNameText.forEach { p in
+            p.backgroundColor = AppDesign.boardColor
+            p.textColor = AppDesign.tileColor.0
+            p.clipsToBounds = true
+            p.layer.cornerRadius = 20
+            getPlayerDetails(playerId: i)
+            i += 1
+        }
+
 
         humanOrComp.selectedSegmentTintColor = AppDesign.ladderColor
         humanOrComp.backgroundColor = AppDesign.snakeColor
