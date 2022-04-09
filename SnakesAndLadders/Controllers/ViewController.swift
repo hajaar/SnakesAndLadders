@@ -61,7 +61,7 @@ class ViewController: UIViewController {
     @IBAction func editPlayerDetails(_ sender: UIButton) {
         togglePlayerDetailFields(isEdit: shouldEdit)
         shouldEdit.toggle()
-        board.setPlayerName(playerId: sender.tag - 1, name: playerNameText[sender.tag].text!)
+        board.setPlayerName(playerId: sender.tag - 1, name: playerNameText[sender.tag - 1].text!)
 
     }
 
@@ -75,9 +75,6 @@ class ViewController: UIViewController {
         humanOrComp.isEnabled = isEdit
         chooseSymbolButton.isEnabled = isEdit
         chooseColorButton.isEnabled = isEdit
-//        humanOrComp.isHidden = !isEdit
-//        chooseSymbolButton.isHidden = !isEdit
-//        chooseColorButton.isHidden = !isEdit
         editPlayerDetailsButton.tintColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
 
 

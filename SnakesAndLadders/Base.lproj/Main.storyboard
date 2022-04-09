@@ -294,7 +294,7 @@
                                                                                     </preferredSymbolConfiguration>
                                                                                 </buttonConfiguration>
                                                                                 <connections>
-                                                                                    <action selector="editPlayerDetails:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PT7-Oh-ujw"/>
+                                                                                    <action selector="editPlayerDetails:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oPq-v0-ply"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -397,7 +397,7 @@
                                                                                     </preferredSymbolConfiguration>
                                                                                 </buttonConfiguration>
                                                                                 <connections>
-                                                                                    <action selector="editPlayerDetails:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1iA-5l-T39"/>
+                                                                                    <action selector="editPlayerDetails:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Phb-hg-bEM"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -500,7 +500,7 @@
                                                                                     </preferredSymbolConfiguration>
                                                                                 </buttonConfiguration>
                                                                                 <connections>
-                                                                                    <action selector="editPlayerDetails:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rAS-jf-LFr"/>
+                                                                                    <action selector="editPlayerDetails:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kdW-S1-Hbf"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
