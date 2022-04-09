@@ -62,18 +62,18 @@ class ViewController: UIViewController {
     }
 
     func togglePlayerDetailFields(isEdit: Bool, playerId: Int) {
-        playerNameText.forEach { p in
-            p.isEnabled = isEdit
-            p.backgroundColor = isEdit ? AppDesign.boardTextColor.1 : AppDesign.boardColor
-            p.textColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
-        }
+
+        playerNameText[playerId].isEnabled = isEdit
+        playerNameText[playerId].backgroundColor = isEdit ? AppDesign.boardTextColor.1 : AppDesign.boardColor
+        playerNameText[playerId].textColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
+
 
         humanOrComp.isEnabled = isEdit
         chooseSymbolButton.isEnabled = isEdit
         chooseColorButton.isEnabled = isEdit
-        editPlayersButtons.forEach { b in
-            b.tintColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
-        }
+
+        editPlayersButtons[playerId].tintColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
+
     }
 
     func getPlayerDetails(playerId: Int) {
