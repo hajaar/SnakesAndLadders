@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet var mainView: UIView!
 
-    @IBOutlet weak var editPlayerDetailsButton: UIButton!
 
     @IBOutlet var playerNameText: [UITextField]!
     @IBOutlet var currencyImages: [UIImageView]!
@@ -31,10 +30,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var chooseColorButton: UIButton!
     @IBOutlet var playerBalanceLabel: [UILabel]!
     
+    @IBOutlet var editPlayersButtons: [UIButton]!
 
-
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +44,6 @@ class ViewController: UIViewController {
         board.startNewGame()
         initialUISetup()
 
-
     }
     @IBAction func rollDice(_ sender: UIButton) {
         board.playTurn()
@@ -59,13 +55,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func editPlayerDetails(_ sender: UIButton) {
-        togglePlayerDetailFields(isEdit: shouldEdit)
+        togglePlayerDetailFields(isEdit: shouldEdit, playerId: sender.tag - 1)
         shouldEdit.toggle()
         board.setPlayerName(playerId: sender.tag - 1, name: playerNameText[sender.tag - 1].text!)
 
     }
 
-    func togglePlayerDetailFields(isEdit: Bool) {
+    func togglePlayerDetailFields(isEdit: Bool, playerId: Int) {
         playerNameText.forEach { p in
             p.isEnabled = isEdit
             p.backgroundColor = isEdit ? AppDesign.boardTextColor.1 : AppDesign.boardColor
@@ -75,9 +71,9 @@ class ViewController: UIViewController {
         humanOrComp.isEnabled = isEdit
         chooseSymbolButton.isEnabled = isEdit
         chooseColorButton.isEnabled = isEdit
-        editPlayerDetailsButton.tintColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
-
-
+        editPlayersButtons.forEach { b in
+            b.tintColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
+        }
     }
 
     func getPlayerDetails(playerId: Int) {
@@ -103,7 +99,9 @@ class ViewController: UIViewController {
         myCollectionView.layer.borderWidth = 1
         myCollectionView.layer.cornerRadius = 2
 
-        togglePlayerDetailFields(isEdit: shouldEdit)
+        for i in 0...3 {
+        togglePlayerDetailFields(isEdit: shouldEdit, playerId: i)
+        }
         diceImage.tintColor = AppDesign.diceColor
 
         currencyImages.forEach { c in
@@ -113,8 +111,11 @@ class ViewController: UIViewController {
         playerBalanceLabel.forEach { u in
             u.textColor = AppDesign.boardTextColor.0
         }
-        
-        editPlayerDetailsButton.tintColor = AppDesign.tileColor.1
+
+        editPlayersButtons.forEach { b in
+            b.tintColor = AppDesign.tileColor.1
+        }
+
 
         var i = 0
         playerNameText.forEach { p in

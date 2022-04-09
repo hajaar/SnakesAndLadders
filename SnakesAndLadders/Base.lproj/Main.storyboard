@@ -674,7 +674,6 @@
                         <outlet property="chooseColorButton" destination="Gnj-le-STV" id="R0z-0A-Fgn"/>
                         <outlet property="chooseSymbolButton" destination="ID3-dJ-pcT" id="2Mt-hs-Di2"/>
                         <outlet property="diceImage" destination="Qim-kR-fU1" id="Wp2-Wf-Dmk"/>
-                        <outlet property="editPlayerDetailsButton" destination="edy-Wg-kGe" id="EWD-L4-1XV"/>
                         <outlet property="humanOrComp" destination="LuD-90-6Zn" id="8Il-s1-E0G"/>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="EHM-Ka-a8d"/>
                         <outlet property="messageLabel" destination="Hu3-57-nJg" id="ztg-A3-oMn"/>
@@ -692,6 +691,10 @@
                         <outletCollection property="playerNameText" destination="Gml-xb-Lhm" collectionClass="NSMutableArray" id="yT0-qv-HY3"/>
                         <outletCollection property="playerNameText" destination="eQW-G7-sWq" collectionClass="NSMutableArray" id="qcn-9F-Sxs"/>
                         <outletCollection property="playerNameText" destination="5dG-Ty-NYF" collectionClass="NSMutableArray" id="Xvf-cc-cQX"/>
+                        <outletCollection property="editPlayersButtons" destination="edy-Wg-kGe" collectionClass="NSMutableArray" id="Z16-FQ-sgD"/>
+                        <outletCollection property="editPlayersButtons" destination="Ifq-Tc-mxh" collectionClass="NSMutableArray" id="Gn9-pP-fcZ"/>
+                        <outletCollection property="editPlayersButtons" destination="gHj-tO-U6L" collectionClass="NSMutableArray" id="bJG-vt-7Eb"/>
+                        <outletCollection property="editPlayersButtons" destination="rDe-Mx-rjX" collectionClass="NSMutableArray" id="79C-kW-A3q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
