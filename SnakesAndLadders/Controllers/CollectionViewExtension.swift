@@ -32,17 +32,20 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         if let specialTile = board.getSpecialTileInfo(index: indexPath.row) {
             cell.specialTile.image = specialTile.symbol
             cell.specialTile.tintColor = specialTile.symbolColor
+            cell.tileNumber.text = ""
         }
         
         let imageArray = [cell.myImage!, cell.myImage2!, cell.myImage3!, cell.myImage4!]
         imageArray.forEach { $0.image = nil }
         if let players = board.getPlayerInfo(index: indexPath.row) {
+            cell.tileNumber.text = ""
             if players.count == 1 && board.getSpecialTileInfo(index: indexPath.row) == nil {
                 players.forEach { player in
-                    if player.playerId != nil {
+
                         cell.specialTile.image = player.playerImage
                         cell.specialTile.tintColor = player.playerColor
-                    }
+
+
                 }
             } else {
             players.forEach { player in
