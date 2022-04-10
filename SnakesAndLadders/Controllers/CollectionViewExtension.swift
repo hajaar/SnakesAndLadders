@@ -40,18 +40,20 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         if let players = board.getPlayerInfo(index: indexPath.row) {
             cell.tileNumber.text = ""
             if players.count == 1 && board.getSpecialTileInfo(index: indexPath.row) == nil {
-                players.forEach { player in
 
-                        cell.specialTile.image = player.playerImage
-                        cell.specialTile.tintColor = player.playerColor
+                players.forEach { player in
+                    cell.specialTile.image = nil
+                    UIView.transition(with: cell.specialTile!, duration: 1, options: .transitionFlipFromLeft, animations: {cell.specialTile.image = player.playerImage }, completion: nil)
+                    cell.specialTile.tintColor = player.playerColor
 
 
                 }
             } else {
-            players.forEach { player in
-                imageArray[player.playerId].image = player.playerImage
-                imageArray[player.playerId].tintColor = player.playerColor
-            }
+                players.forEach { player in
+                    cell.specialTile.image = nil
+                    UIView.transition(with: imageArray[player.playerId], duration: 1, options: .transitionFlipFromLeft, animations: {imageArray[player.playerId].image = player.playerImage }, completion: nil)
+                    imageArray[player.playerId].tintColor = player.playerColor
+                }
             }
         }
 
