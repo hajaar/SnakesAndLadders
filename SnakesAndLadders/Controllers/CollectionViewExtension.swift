@@ -80,7 +80,6 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             } else {
                 allowedLengths.forEach { l in
                     let c = UIAction(title: l.name, image: UIImage(systemName: l.symbolname), identifier: nil, discoverabilityTitle: nil,state: .off) { (_) in
-                        print("inside the collection view \(l.name)")
                         self.board.addUserDefinedSnakeAndLadder(index: index, length: l, tileType: .snake)
                         var indexPaths: [NSIndexPath] = []
                         indexPaths.append(NSIndexPath(item: index, section: 0))

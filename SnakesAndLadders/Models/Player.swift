@@ -16,9 +16,9 @@ struct Player {
     private var isHuman: Bool = true
     private var balance: Int = 0
     
-    private var playerImage: UIImage {
-        UIImage(systemName: "\(playerId)\(symbolNames.playerName)")!
-    }
+    private var playerImage: UIImage
+
+
     
     private var playerColor: UIColor
     
@@ -30,6 +30,7 @@ struct Player {
         self.token = token
         self.isHuman = isHuman
         self.playerColor = AppDesign.returnRandomPlayerColor()
+        self.playerImage = UIImage(systemName: "\(playerId)\(symbolNames.playerName)")!
         
         Log.log("\(self.playerId) \(self.name) \(self.token)", level: .debug)
     }
@@ -171,6 +172,14 @@ struct Player {
 
     mutating func setName(name: String) {
         self.name = name
+    }
+
+    mutating func setColor(color: UIColor) {
+        self.playerColor = color
+    }
+
+    mutating func setSymbol(image: UIImage) {
+        self.playerImage = image
     }
 
  

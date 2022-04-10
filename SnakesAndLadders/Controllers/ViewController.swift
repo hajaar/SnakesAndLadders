@@ -25,9 +25,9 @@ class ViewController: UIViewController {
 
     @IBOutlet var playerNameText: [UITextField]!
     @IBOutlet var currencyImages: [UIImageView]!
-
-    @IBOutlet weak var chooseSymbolButton: UIButton!
-    @IBOutlet weak var chooseColorButton: UIButton!
+    @IBOutlet var chooseSymbols: [UIButton]!
+    @IBOutlet var chooseColors: [UIButton]!
+    
     @IBOutlet var playerBalanceLabel: [UILabel]!
     
     @IBOutlet var editPlayersButtons: [UIButton]!
@@ -70,10 +70,13 @@ class ViewController: UIViewController {
 
 
         humanOrComps[playerId].isEnabled = isEdit
-        chooseSymbolButton.isEnabled = isEdit
-        chooseColorButton.isEnabled = isEdit
 
         editPlayersButtons[playerId].tintColor = isEdit ? AppDesign.tileColor.1 : AppDesign.tileColor.0
+
+        chooseColors.filter() {$0.tag == playerId + 1}[0].isEnabled = isEdit
+        chooseSymbols.filter() {$0.tag == playerId + 1}[0].isEnabled = isEdit
+
+
 
     }
 
@@ -84,14 +87,7 @@ class ViewController: UIViewController {
     @IBAction func chooseHumanOrComp(_ sender: UISegmentedControl) {
         board.setPlayerHuman(playerId: sender.tag - 1, isHuman: sender.selectedSegmentIndex == 0 ? true : false )
     }
-    
 
-    @IBAction func chooseSymbol(_ sender: UIButton) {
-
-    }
-
-    @IBAction func chooseColor(_ sender: UIButton) {
-    }
 
     func initialUISetup() {
    //     mainView.backgroundColor = AppDesign.boardColor
@@ -138,7 +134,11 @@ class ViewController: UIViewController {
         rollDiceButton.layer.cornerRadius = 30
         rollDiceButton.tintColor = .white
 
+        configureColorButtonMenu()
+        configureSymbolButtonMenu()
+
     }
+  
 
 
     func assignbackground(v: UIView){
@@ -152,6 +152,45 @@ class ViewController: UIViewController {
         v.addSubview(imageView)
         v.sendSubviewToBack(imageView)
     }
+
+    func configureColorButtonMenu() {
+
+        chooseColors.forEach { c in
+            var menuItems: [UIAction] = [UIAction]()
+                AppDesign.playerColors.forEach { pc in
+                    let i = UIImage(systemName: "square.fill")!
+                    i.withTintColor(pc)
+                    let u = UIAction(title: "Standard item", image: i, handler: { (_) in
+                        self.board.setPlayerColor(playerId: c.tag - 1 , color: pc)
+                    })
+                    menuItems.append(u)
+                }
+
+
+            c.menu = UIMenu(title: "Colours", image: nil, identifier: nil, options: [], children: menuItems)
+            c.showsMenuAsPrimaryAction = true
+        }
+    }
+
+    func configureSymbolButtonMenu() {
+
+        chooseSymbols.forEach { c in
+            var menuItems: [UIAction] = [UIAction]()
+            symbolNames.playerSymbols.forEach { pc in
+                let i = UIImage(systemName: pc)!
+                let u = UIAction(title: "Standard item", image: i, handler: { (_) in
+                    self.board.setPlayerSymbol(playerId: c.tag - 1 , image: i)
+                })
+                menuItems.append(u)
+            }
+
+
+            c.menu = UIMenu(title: "Symbols", image: nil, identifier: nil, options: [], children: menuItems)
+            c.showsMenuAsPrimaryAction = true
+        }
+    }
+
+
 }
 
 

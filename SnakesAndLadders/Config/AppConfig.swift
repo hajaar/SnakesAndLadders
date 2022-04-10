@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct AppConfig {
-    static let boardLength = 10
+    static let boardLength = 12
     static let boardSize = boardLength * boardLength
     static let numberofPlayers = 4
 }
@@ -44,6 +44,7 @@ struct symbolNames {
     static let tile: String = ".square"
     static let fast: String = "hare.fill"
     static let slow: String = "tortoise.fill"
+    static let playerSymbols = ["pawprint.fill","bolt.fill","heart.fill","rhombus.fill","hourglass","scissors"]
 }
 
 

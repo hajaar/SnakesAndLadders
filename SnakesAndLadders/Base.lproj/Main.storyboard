@@ -6,7 +6,6 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -213,31 +212,15 @@
                                                                                     <action selector="chooseHumanOrComp:" destination="BYZ-38-t0r" eventType="valueChanged" id="s3n-pG-sgG"/>
                                                                                 </connections>
                                                                             </segmentedControl>
-                                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ID3-dJ-pcT">
-                                                                                <rect key="frame" x="85" y="11" width="84.5" height="30"/>
-                                                                                <menu key="menu" id="ct5-sp-dxH">
-                                                                                    <children>
-                                                                                        <command title="Item 1" id="Grx-cV-yVh"/>
-                                                                                        <command title="Item 2" id="UGY-Qq-YqK"/>
-                                                                                    </children>
-                                                                                </menu>
+                                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdh-wF-bQI">
+                                                                                <rect key="frame" x="85" y="10.5" width="84.5" height="31"/>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <connections>
-                                                                                    <action selector="chooseSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qtp-7o-teD"/>
-                                                                                </connections>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                             </button>
-                                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gnj-le-STV">
-                                                                                <rect key="frame" x="169.5" y="11" width="85" height="30"/>
-                                                                                <menu key="menu" id="iHH-AI-nCp">
-                                                                                    <children>
-                                                                                        <command title="Item 1" id="oAh-UK-YsP"/>
-                                                                                        <command title="Item 2" id="LE8-4U-Icx"/>
-                                                                                    </children>
-                                                                                </menu>
+                                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2G-lg-k1W">
+                                                                                <rect key="frame" x="169.5" y="10.5" width="85" height="31"/>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <connections>
-                                                                                    <action selector="chooseColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vHS-1k-URk"/>
-                                                                                </connections>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                             </button>
                                                                         </subviews>
                                                                     </stackView>
@@ -316,31 +299,15 @@
                                                                                     <action selector="chooseHumanOrComp:" destination="BYZ-38-t0r" eventType="valueChanged" id="4RA-nO-3aE"/>
                                                                                 </connections>
                                                                             </segmentedControl>
-                                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXK-ZD-rSG">
-                                                                                <rect key="frame" x="85" y="11.5" width="84.5" height="30"/>
-                                                                                <menu key="menu" id="UPv-oO-3Wx">
-                                                                                    <children>
-                                                                                        <command title="Item 1" id="a4m-uQ-xl2"/>
-                                                                                        <command title="Item 2" id="fAr-LH-01p"/>
-                                                                                    </children>
-                                                                                </menu>
+                                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAl-NH-RBw">
+                                                                                <rect key="frame" x="85" y="11" width="84.5" height="31"/>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <connections>
-                                                                                    <action selector="chooseSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LjN-sm-2MA"/>
-                                                                                </connections>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                             </button>
-                                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSb-71-QtJ">
-                                                                                <rect key="frame" x="169.5" y="11.5" width="85" height="30"/>
-                                                                                <menu key="menu" id="3Kt-zA-9Qj">
-                                                                                    <children>
-                                                                                        <command title="Item 1" id="lZl-uc-EGX"/>
-                                                                                        <command title="Item 2" id="61r-af-gJe"/>
-                                                                                    </children>
-                                                                                </menu>
+                                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyr-8J-qXt">
+                                                                                <rect key="frame" x="169.5" y="11" width="85" height="31"/>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <connections>
-                                                                                    <action selector="chooseColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UXc-7h-DR3"/>
-                                                                                </connections>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                             </button>
                                                                         </subviews>
                                                                     </stackView>
@@ -419,31 +386,15 @@
                                                                                     <action selector="chooseHumanOrComp:" destination="BYZ-38-t0r" eventType="valueChanged" id="dm2-w8-vlq"/>
                                                                                 </connections>
                                                                             </segmentedControl>
-                                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbO-p4-gey">
-                                                                                <rect key="frame" x="85" y="11" width="84.5" height="30"/>
-                                                                                <menu key="menu" id="rfj-Tp-1oC">
-                                                                                    <children>
-                                                                                        <command title="Item 1" id="eTh-X6-yjh"/>
-                                                                                        <command title="Item 2" id="EU7-Ky-kOL"/>
-                                                                                    </children>
-                                                                                </menu>
+                                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ala-Y7-cxh">
+                                                                                <rect key="frame" x="85" y="10.5" width="84.5" height="31"/>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <connections>
-                                                                                    <action selector="chooseSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7AB-jP-loH"/>
-                                                                                </connections>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                             </button>
-                                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dJ-Ep-IvZ">
-                                                                                <rect key="frame" x="169.5" y="11" width="85" height="30"/>
-                                                                                <menu key="menu" id="yrr-j3-iBr">
-                                                                                    <children>
-                                                                                        <command title="Item 1" id="9AJ-3e-lhG"/>
-                                                                                        <command title="Item 2" id="eq3-hi-X5v"/>
-                                                                                    </children>
-                                                                                </menu>
+                                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZy-Bm-kLx">
+                                                                                <rect key="frame" x="169.5" y="10.5" width="85" height="31"/>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <connections>
-                                                                                    <action selector="chooseColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0EB-Ia-aaZ"/>
-                                                                                </connections>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                             </button>
                                                                         </subviews>
                                                                     </stackView>
@@ -522,31 +473,15 @@
                                                                                     <action selector="chooseHumanOrComp:" destination="BYZ-38-t0r" eventType="valueChanged" id="dlJ-P7-IkF"/>
                                                                                 </connections>
                                                                             </segmentedControl>
-                                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvt-n0-zVr">
-                                                                                <rect key="frame" x="85" y="11.5" width="84.5" height="30"/>
-                                                                                <menu key="menu" id="QAQ-VS-hrH">
-                                                                                    <children>
-                                                                                        <command title="Item 1" id="Zhi-1J-SEi"/>
-                                                                                        <command title="Item 2" id="Ht3-15-7bi"/>
-                                                                                    </children>
-                                                                                </menu>
+                                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z80-Ut-UEc">
+                                                                                <rect key="frame" x="85" y="11" width="84.5" height="31"/>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <connections>
-                                                                                    <action selector="chooseSymbol:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FgZ-SP-Ioa"/>
-                                                                                </connections>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                             </button>
-                                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hap-II-zxG">
-                                                                                <rect key="frame" x="169.5" y="11.5" width="85" height="30"/>
-                                                                                <menu key="menu" id="FCv-JY-Kh0">
-                                                                                    <children>
-                                                                                        <command title="Item 1" id="k8F-UM-SbW"/>
-                                                                                        <command title="Item 2" id="I2r-zz-TtP"/>
-                                                                                    </children>
-                                                                                </menu>
+                                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l84-6j-LJV">
+                                                                                <rect key="frame" x="169.5" y="11" width="85" height="31"/>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <connections>
-                                                                                    <action selector="chooseColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MFg-r8-72S"/>
-                                                                                </connections>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                             </button>
                                                                         </subviews>
                                                                     </stackView>
@@ -671,8 +606,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="chooseColorButton" destination="Gnj-le-STV" id="R0z-0A-Fgn"/>
-                        <outlet property="chooseSymbolButton" destination="ID3-dJ-pcT" id="2Mt-hs-Di2"/>
                         <outlet property="diceImage" destination="Qim-kR-fU1" id="Wp2-Wf-Dmk"/>
                         <outlet property="mainView" destination="8bC-Xf-vdC" id="EHM-Ka-a8d"/>
                         <outlet property="messageLabel" destination="Hu3-57-nJg" id="ztg-A3-oMn"/>
@@ -698,6 +631,14 @@
                         <outletCollection property="humanOrComps" destination="kXJ-WI-KWr" collectionClass="NSMutableArray" id="Zbp-Qx-GVP"/>
                         <outletCollection property="humanOrComps" destination="ep3-By-6Nq" collectionClass="NSMutableArray" id="HtE-hx-YS4"/>
                         <outletCollection property="humanOrComps" destination="l30-fF-EhE" collectionClass="NSMutableArray" id="u1H-k3-T5r"/>
+                        <outletCollection property="chooseSymbols" destination="fdh-wF-bQI" collectionClass="NSMutableArray" id="J58-gd-GVG"/>
+                        <outletCollection property="chooseColors" destination="v2G-lg-k1W" collectionClass="NSMutableArray" id="UBx-Qg-4tY"/>
+                        <outletCollection property="chooseSymbols" destination="WAl-NH-RBw" collectionClass="NSMutableArray" id="qOi-cM-243"/>
+                        <outletCollection property="chooseSymbols" destination="ala-Y7-cxh" collectionClass="NSMutableArray" id="fP1-GL-bkH"/>
+                        <outletCollection property="chooseSymbols" destination="z80-Ut-UEc" collectionClass="NSMutableArray" id="fxV-6I-QqN"/>
+                        <outletCollection property="chooseColors" destination="l84-6j-LJV" collectionClass="NSMutableArray" id="1mw-6y-SNE"/>
+                        <outletCollection property="chooseColors" destination="hZy-Bm-kLx" collectionClass="NSMutableArray" id="TnZ-Ui-xs9"/>
+                        <outletCollection property="chooseColors" destination="uyr-8J-qXt" collectionClass="NSMutableArray" id="wqk-YS-8l2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
