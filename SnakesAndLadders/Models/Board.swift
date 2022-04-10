@@ -43,10 +43,6 @@ struct Board {
             players.append(Player(playerID: i, name: "Player \(i + 1)", token: token)) //add function to get player input and
         }
 
-        players[0].setHuman(isHuman: true)
-        players[1].setHuman(isHuman: true)
-        players[2].setHuman(isHuman: true)
-        players[3].setHuman(isHuman: true)
     }
     
     private mutating func resetBoard() {

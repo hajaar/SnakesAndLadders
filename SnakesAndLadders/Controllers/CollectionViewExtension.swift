@@ -37,9 +37,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         let imageArray = [cell.myImage!, cell.myImage2!, cell.myImage3!, cell.myImage4!]
         imageArray.forEach { $0.image = nil }
         if let players = board.getPlayerInfo(index: indexPath.row) {
+            if players.count == 1 && board.getSpecialTileInfo(index: indexPath.row) == nil {
+                players.forEach { player in
+                    if player.playerId != nil {
+                        cell.specialTile.image = player.playerImage
+                        cell.specialTile.tintColor = player.playerColor
+                    }
+                }
+            } else {
             players.forEach { player in
                 imageArray[player.playerId].image = player.playerImage
                 imageArray[player.playerId].tintColor = player.playerColor
+            }
             }
         }
 
