@@ -95,7 +95,7 @@ struct Board {
         delegate?.playerDidSomething(self,
                                      playerId: oldPlayerCounter,
                                      balance: players[oldPlayerCounter].getBalance(),
-                                     text: String("Player: \(playerCounter) to Play"),
+                                     text: String("\(players[playerCounter].getName()) to Play"),
                                      currentPos: BoardHelper.getTileIndexFromId(currentPosition),
                                      newPos: BoardHelper.getTileIndexFromId(newPosition),
                                      terminus: BoardHelper.getTileIndexFromId(terminus))
