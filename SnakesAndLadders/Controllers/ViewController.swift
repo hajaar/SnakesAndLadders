@@ -178,7 +178,7 @@ class ViewController: UIViewController {
             var menuItems: [UIAction] = [UIAction]()
             symbolNames.playerSymbols.forEach { pc in
                 let i = UIImage(systemName: pc)!
-                let u = UIAction(title: "Standard item", image: i, handler: { (_) in
+                let u = UIAction( image: i, handler: { (_) in
                     self.board.setPlayerSymbol(playerId: c.tag - 1 , image: i)
                 })
                 menuItems.append(u)
@@ -189,7 +189,6 @@ class ViewController: UIViewController {
             c.showsMenuAsPrimaryAction = true
         }
     }
-
 
 }
 

@@ -30,7 +30,7 @@ struct Player {
         self.token = token
         self.isHuman = isHuman
         self.playerColor = AppDesign.returnRandomPlayerColor()
-        self.playerImage = UIImage(systemName: "\(playerId)\(symbolNames.playerName)")!
+        self.playerImage = UIImage(systemName: "\(playerId + 1)\(symbolNames.playerName)")!
         
         Log.log("\(self.playerId) \(self.name) \(self.token)", level: .debug)
     }
